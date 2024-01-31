@@ -1,0 +1,61 @@
+﻿@model IEnumerable<smartlivestock.Models.Trainingvideo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .table {
+        border: black;
+    }
+</style>
+
+
+<a asp-action="Create" class="btn btn-primary ">Create New Video</a>
+<br />
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                ভিডিও নাম
+            </th>
+            <th>
+                ভিডিও আইডি 
+            </th>
+            <th>
+                তারিখ
+            </th>
+            <th>
+                 ইউজার
+            </th>
+            <th>
+                Edit/Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VideoName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.videoLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.vdoId">Edit</a>
+                @*  <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.vdoId">Details</a> *@
+                 <a asp-action="Delete" class="btn btn-primary" asp-route-id="@item.vdoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+

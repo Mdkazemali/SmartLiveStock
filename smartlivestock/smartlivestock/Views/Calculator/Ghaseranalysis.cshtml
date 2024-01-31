@@ -1,0 +1,806 @@
+﻿ @{
+    ViewData["Title"] = "দানাদার ও ঘাসের পুষ্টি উপাদান (Analysis)";
+}
+@{
+
+    var header = "উপজেলা প্রাণিসম্পদ দপ্তর ও ভেটেরিনারি হাসপাতাস";
+
+    var Username = User.Identity.Name.Split('@')[0];
+    var d = DateTime.Now;
+    var date = d.ToString("dd-MM-yyyy hh:mm tt");
+
+}
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+        transition: box-shadow 0.2s ease; /* Add transition for smooth hover effect */
+    }
+
+         .card:hover {
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.9); /* Change shadow on hover */
+        }
+
+    .card-body {
+        background-color: #f8f9fa; /* Set background color */
+        border-radius: 8px; /* Add border radius for rounded corners */
+        padding: 05px; /* Add padding for content */
+    }
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+       
+
+
+        <div class="col-md-12 mb-4">
+            <div class="card bg-info text-black">
+                <div class="card-body">
+
+                    <div style="background-color:powderblue;">
+
+                        <div style="padding-bottom:3px;" id="print_areBig">
+
+
+
+                            <style>
+                                body {
+                                    font-family: Arial, sans-serif;                                  
+                                   background-color: powderblue;
+                                }
+
+                                h1 {
+                                    color: #333;
+                                }
+
+                                table {
+                                    border-collapse: collapse;  
+                                    object-position: center;
+                                    margin:1%;
+                                    width: 98%;
+                                    margin-top:110px;
+                                    background-color: #ddd;
+                                    border: 2px solid black;
+                                }
+
+                                .hedr {
+                                    position: absolute;
+                                    top: 6px;
+                                    left:0px;
+                                    margin: 2%;
+                                    height: 90px;
+                                    width: 96%;
+                                    margin-top: 6px;
+                                    background-color:powderblue;
+                                    pointer-events: none;
+                                }
+
+                           
+                                
+                                th,td {
+                                    border: 1px solid #ddd;
+                                    text-align: center;
+                                    line-height: 16px;
+                                    font-size:12px;
+                                    padding-left: 10px;
+                                    border: 1px solid black;
+                                }
+
+                                th {
+                                   
+                                    text-align: center;
+                                    font-size:12px;
+                                    border: 1px solid black;
+                                
+                                }                             
+
+                                input {
+                                    width: 98%;
+                                    border: 1px solid #ddd;
+                                    border-radius: 2px;
+                                    line-height: 16px;
+                                    text-align:center;                                
+                                    border: none;
+                                    z-index: 2;
+                                }
+
+                          
+
+                                #output {
+                                    margin: 2px auto;
+                                    max-width: 98%;
+                                    background-color: #ddd;
+                                    
+                                }
+
+
+                                .watermark {
+                                    position: fixed;
+                                    top: 35%;
+                                    left: 50%;
+                                    width: 63vw;
+                                    height: 42vh;
+                                    transform: translate(-50%, -50%);
+                                    opacity: 0.1;
+                                    z-index: 1; /* Lower z-index than the input field */
+                                    pointer-events: none;
+                                }
+
+                                input::-webkit-input-placeholder {
+                                    color: black; /*Change the placeholder color*/
+                                    opacity: .5; /*Change the opacity between 0 and 1*/
+                                    text-align:center;
+                                }
+
+                                .red-bg {
+                                    background-color: red;
+                                    color:yellow;
+                                }
+                                #username {
+                                    position: absolute;
+                                    top: 70%;
+                                    left: 70%;
+                                    transform: translate(-50%, -50%);
+                                }
+
+                          
+
+
+                            </style>
+
+
+                            <img src="~/imageslogo/ismartlogo.png" class="watermark" />
+
+                            <img src="~/headerimages/lgdana.png" class="hedr" />
+
+
+                            <table>
+                                <thead>
+                                    <tr >
+                                        <th style="text-align:left; padding-left:4px;"> খাদ্য </th>
+                                        <th>প্রয়োজনীয় পরিমাণ (কেজি)</th>
+                                        <th>প্রাপ্ত শুস্ক পদার্থ (কেজি)</th>
+                                        <th>প্রাপ্ত শক্তি (এম.জে)</th>
+                                        <th>প্রাপ্ত ক্রুড প্রোটিন (কেজি)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">খড়</td>
+                                        <td><input  id="KhorInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'GomerInput')"></td>
+                                        <td id="KhorerOutputA"></td>
+                                        <td id="KhorerOutputB"></td>
+                                        <td id="KhorerOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">গমের ভুসি </td>
+                                        <td><input  id="GomerInput" oninput="calculateValues()" style="border:none;  background-color:#ddd" placeholder="ইনপুট দিন 19 " onkeydown="moveToNextInput(event, 'GuraInput')"></td>
+                                        <td id="GomerOutputA"></td>
+                                        <td id="GomerOutputB"></td>
+                                        <td id="GomerOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">গুড়া </td>
+                                        <td><input  id="GuraInput" oninput="calculateValues()" style="border:none;  background-color:#ddd" placeholder="ইনপুট দিন 15 " onkeydown="moveToNextInput(event, 'VutradanaInput')"></td>
+                                        <td id="GuraOutputA"></td>
+                                        <td id="GuraOutputB"></td>
+                                        <td id="GuraOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">ভূট্টা দানা </td>
+                                        <td><input  id="VutradanaInput" oninput="calculateValues()" style="border:none; background-color:#ddd" placeholder="ইনপুট দিন 10 " onkeydown="moveToNextInput(event, 'KhesarisohoInput')"></td>
+                                        <td id="VutradanaOutputA"></td>
+                                        <td id="VutradanaOutputB"></td>
+                                        <td id="VutradanaOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">খেসারিসহ গাছ</td>
+                                        <td><input  id="KhesarisohoInput" oninput="calculateValues()" style="border:none; background-color:#ddd" placeholder="ইনপুট দিন 0 " onkeydown="moveToNextInput(event, 'MaskalaisohoInput')"></td>
+                                        <td id="KhesarisohoOutputA"></td>
+                                        <td id="KhesarisohoOutputB"></td>
+                                        <td id="KhesarisohoOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">মাসকালাইসহ গাছ</td>
+                                        <td><input  id="MaskalaisohoInput" oninput="calculateValues()" style="border:none; background-color:#ddd" placeholder="ইনপুট দিন 1 " onkeydown="moveToNextInput(event, 'SoyabinmillInput')"></td>
+                                        <td id="MaskalaisohoOutputA"></td>
+                                        <td id="MaskalaisohoOutputB"></td>
+                                        <td id="MaskalaisohoOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">সয়াবিন মিল</td>
+                                        <td><input  id="SoyabinmillInput" oninput="calculateValues()" style="border:none; background-color:#ddd" placeholder="ইনপুট দিন 2 " onkeydown="moveToNextInput(event, 'TelerKhoilInput')"></td>
+                                        <td id="SoyabinmillOutputA"></td>
+                                        <td id="SoyabinmillOutputB"></td>
+                                        <td id="SoyabinmillOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">তিলের খৈল /খৈল </td>
+                                        <td><input  id="TelerKhoilInput" oninput="calculateValues()" style="border:none; background-color:#ddd" placeholder="ইনপুট দিন 1 " onkeydown="moveToNextInput(event, 'CholaInput')"></td>
+                                        <td id="TelerKhoilOutputA"></td>
+                                        <td id="TelerKhoilOutputB"></td>
+                                        <td id="TelerKhoilOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">ছোলা  </td>
+                                        <td><input  id="CholaInput" oninput="calculateValues()" style="border:none; background-color:#ddd" placeholder="ইনপুট দিন 0 " onkeydown="moveToNextInput(event, 'LaliGurInput')"></td>
+                                        <td id="CholaOutputA"></td>
+                                        <td id="CholaOutputB"></td>
+                                        <td id="CholaOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">লালিগুড়/চিটাগুড়  </td>
+                                        <td><input  id="LaliGurInput" oninput="calculateValues()" style="border:none; background-color:#ddd" placeholder="ইনপুট দিন 0 " onkeydown="moveToNextInput(event, 'ChockPowderInput')"></td>
+                                        <td id="LaliGurOutputA"></td>
+                                        <td id="LaliGurOutputB"></td>
+                                        <td id="LaliGurOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">চক পাউডার   </td>
+                                        <td><input  id="ChockPowderInput" placeholder="ইনপুট দিন 0 " oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RockSoltInput')"></td>
+                                        <td id="ChockPowderOutputA"></td>
+                                        <td id="ChockPowderOutputB"></td>
+                                        <td id="ChockPowderOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">রক সল্ট </td>
+                                        <td><input  id="RockSoltInput" placeholder="ইনপুট দিন 0 " oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DcpInput')"></td>
+                                        <td id="RockSoltOutputA"></td>
+                                        <td id="RockSoltOutputB"></td>
+                                        <td id="RockSoltOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">ডিসিপি </td>
+                                        <td><input  id="DcpInput" placeholder="ইনপুট দিন 1 " oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LobonInput')"></td>
+                                        <td id="DcpOutputA"></td>
+                                        <td id="DcpOutputB"></td>
+                                        <td id="DcpOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">লবণ</td>
+                                        <td><input  id="LobonInput" placeholder="ইনপুট দিন 1 " oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'NapiarPakInput')"></td>
+                                        <td id="LobonOutputA"></td>
+                                        <td id="LobonOutputB"></td>
+                                        <td id="LobonOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">নেপিয়ার পাকচং</td>
+                                        <td><input  id="NapiarPakInput" placeholder="ইনপুট দিন 15 " oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'JarmanInput')"></td>
+                                        <td id="NapiarPakOutputA"></td>
+                                        <td id="NapiarPakOutputB"></td>
+                                        <td id="NapiarPakOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">পারা/জার্মান </td>
+                                        <td><input  id="JarmanInput" placeholder="ইনপুট দিন 0 " oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DesiGhasInput')"></td>
+                                        <td id="JarmanOutputA"></td>
+                                        <td id="JarmanOutputB"></td>
+                                        <td id="JarmanOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">দেশি ঘাস/সাইলেজ </td>
+                                        <td><input  id="DesiGhasInput" placeholder="ইনপুট দিন 15 " oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'GhashPlusDanadarInput')"></td>
+                                        <td id="DesiGhasOutputA"></td>
+                                        <td id="DesiGhasOutputB"></td>
+                                        <td id="DesiGhasOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px; font-weight:bold;">মোট </td>
+                                        <td style="font-weight:bold;" id="TotalOutputInput"></td>
+                                        <td style="font-weight:bold;" id="TotalOutputA"></td>
+                                        <td style="font-weight:bold;" id="TotalOutputB"></td>
+                                        <td style="font-weight:bold;" id="TotalOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">কেজি প্রতি  </td>
+                                        <td></td>
+                                        <td id="KejiprotiA"></td>
+                                        <td id="KejiprotiB"></td>
+                                        <td id="KejiprotiC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">প্রকৃত ঘাস+দানাদার  </td>
+                                        <td><input  id="GhashPlusDanadarInput" placeholder="ইনপুট দিন 14.76 " oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'print')"></td>
+                                        <td id="GhashPlusDanadarA"></td>
+                                        <td id="GhashPlusDanadarB"></td>
+                                        <td id="GhashPlusDanadarC"></td>
+
+                                    </tr>
+
+                                </tbody>
+                               
+
+                                
+                            </table>
+                           
+                            <script>
+
+
+
+                                function moveToNextInput(event, nextInputId) {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+
+                                        const currentInput = event.target;
+                                        const allInputs = document.querySelectorAll('input'); // Get all input fields
+                                        const printElement = document.getElementById('print');
+
+                                        let nextIndex = -1;
+
+                                        // Find the index of the current input
+                                        for (let i = 0; i < allInputs.length; i++) {
+                                            if (allInputs[i] === currentInput) {
+                                                nextIndex = i + 1;
+                                                break;
+                                            }
+                                        }
+
+                                        if (nextIndex < allInputs.length) {
+                                            // If there is a next input, select it
+                                            allInputs[nextIndex].select();
+                                        } else if (printElement) {
+                                            // If it's the last input, focus on the print button
+                                            printElement.focus();
+                                        }
+                                    }
+                                }
+
+
+
+
+
+                                function calculateValues() {      
+                                    var KhorInput = document.getElementById("KhorInput").value;
+                                    if (KhorInput === "") {
+                                        KhorInput = 20;
+                                        document.getElementById("KhorInput").value = KhorInput;
+                                    }
+                                    var GomerInput = document.getElementById("GomerInput").value;
+                                    if (GomerInput === "") {
+                                        GomerInput = 19;
+                                        document.getElementById("GomerInput").value = GomerInput;
+                                    }
+
+                                    var GuraInput = document.getElementById("GuraInput").value;
+                                    if (GuraInput === "") {
+                                        GuraInput = 15;
+                                        document.getElementById("GuraInput").value = GuraInput;
+                                    }
+
+                                    var VutradanaInput = document.getElementById("VutradanaInput").value;
+                                    if (VutradanaInput === "") {
+                                        VutradanaInput = 10;
+                                        document.getElementById("VutradanaInput").value = VutradanaInput;
+                                    }
+
+                                    var KhesarisohoInput = document.getElementById("KhesarisohoInput").value;
+                                    if (KhesarisohoInput === "") {
+                                        KhesarisohoInput = 0;
+                                        document.getElementById("KhesarisohoInput").value = KhesarisohoInput;
+                                    }
+
+                                    var MaskalaisohoInput = document.getElementById("MaskalaisohoInput").value;
+                                    if (MaskalaisohoInput === "") {
+                                        MaskalaisohoInput = 1;
+                                        document.getElementById("MaskalaisohoInput").value = MaskalaisohoInput;
+                                    }
+
+                                    var SoyabinmillInput = document.getElementById("SoyabinmillInput").value;
+                                    if (SoyabinmillInput === "") {
+                                        SoyabinmillInput = 2;
+                                        document.getElementById("SoyabinmillInput").value = SoyabinmillInput;
+                                    }
+
+                                    var TelerKhoilInput = document.getElementById("TelerKhoilInput").value;
+                                    if (TelerKhoilInput === "") {
+                                        TelerKhoilInput = 1;
+                                        document.getElementById("TelerKhoilInput").value = TelerKhoilInput;
+                                    }
+
+                                    var CholaInput = document.getElementById("CholaInput").value;
+                                    if (CholaInput === "") {
+                                        CholaInput = 0;
+                                        document.getElementById("CholaInput").value = CholaInput;
+                                    }
+
+                                    var LaliGurInput = document.getElementById("LaliGurInput").value;
+                                    if (LaliGurInput === "") {
+                                        LaliGurInput = 0;
+                                        document.getElementById("LaliGurInput").value = LaliGurInput;
+                                    }
+
+                                    var ChockPowderInput = document.getElementById("ChockPowderInput").value;
+                                    if (ChockPowderInput === "") {
+                                        ChockPowderInput = 0;
+                                        document.getElementById("ChockPowderInput").value = ChockPowderInput;
+                                    }
+
+                                    var RockSoltInput = document.getElementById("RockSoltInput").value;
+                                    if (RockSoltInput === "") {
+                                        RockSoltInput = 0;
+                                        document.getElementById("RockSoltInput").value = RockSoltInput;
+                                    }
+
+                                    var DcpInput = document.getElementById("DcpInput").value;
+                                    if (DcpInput === "") {
+                                        DcpInput = 1;
+                                        document.getElementById("DcpInput").value = DcpInput;
+                                    }
+
+                                    var LobonInput = document.getElementById("LobonInput").value;
+                                    if (LobonInput === "") {
+                                        LobonInput = 1;
+                                        document.getElementById("LobonInput").value = LobonInput;
+                                    }
+
+                                    var NapiarPakInput = document.getElementById("NapiarPakInput").value;
+                                    if (NapiarPakInput === "") {
+                                        NapiarPakInput = 15;
+                                        document.getElementById("NapiarPakInput").value = NapiarPakInput;
+                                    }
+
+                                    var JarmanInput = document.getElementById("JarmanInput").value;
+                                    if (JarmanInput === "") {
+                                        JarmanInput = 0;
+                                        document.getElementById("JarmanInput").value = JarmanInput;
+                                    }
+
+                                    var DesiGhasInput = document.getElementById("DesiGhasInput").value;
+                                    if (DesiGhasInput === "") {
+                                        DesiGhasInput = 15;
+                                        document.getElementById("DesiGhasInput").value = DesiGhasInput;
+                                    }
+
+                                    var GhashPlusDanadarInput = document.getElementById("GhashPlusDanadarInput").value;
+                                    if (GhashPlusDanadarInput === "") {
+                                        GhashPlusDanadarInput = 14.76;
+                                        document.getElementById("GhashPlusDanadarInput").value = GhashPlusDanadarInput;
+                                    }
+
+
+
+                                    // Validate input to ensure it is a number
+                                  //  if (isNaN(KhorInput) || isNaN(GomerInput) || isNaN(GuraInput) || isNaN(VutradanaInput) || isNaN(KhesarisohoInput) || isNaN(MaskalaisohoInput) || isNaN(SoyabinmillInput) || isNaN(TelerKhoilInput) || isNaN(CholaInput) || isNaN(LaliGurInput) || isNaN(ChockPowderInput) || isNaN(RockSoltInput) || isNaN(DcpInput) || isNaN(LobonInput) || isNaN(NapiarPakInput) || isNaN(JarmanInput) || isNaN(DesiGhasInput)
+                                   // ) {
+                                   //     alert("Please enter valid numeric values.");
+                                   //     return;
+                                   // }
+
+                                    var KhorA = 860;
+                                    var KhorB = 5;
+                                    var KhorC = 30;
+
+                                    var gomervusiA = 880;
+                                    var gomervusiB = 10.1;
+                                    var gomervusiC = 100;
+
+                                    var guraA = 905;
+                                    var guraB = 11;
+                                    var guraC = 160;
+
+                                    var VutradanaA = 860;
+                                    var VutradanaB = 14.2;
+                                    var VutradanaC = 98;
+
+                                    var KhesarisohoA = 860;
+                                    var KhesarisohoB = 13.8;
+                                    var KhesarisohoC = 190;
+
+                                    var MaskalaisohoA = 860;
+                                    var MaskalaisohoB = 13.4;
+                                    var MaskalaisohoC = 140;
+
+                                    var SoyabinmillA = 900;
+                                    var SoyabinmillB = 15.5;
+                                    var SoyabinmillC = 450;
+
+                                    var TelerKhoilA = 900;
+                                    var TelerKhoilB = 12;
+                                    var TelerKhoilC = 350;
+
+                                    var CholaA = 860;
+                                    var CholaB = 12.4;
+                                    var CholaC = 175;
+
+                                    var LaliGurA = 700;
+                                    var LaliGurB = 12.9;
+                                    var LaliGurC = 55;
+
+                                    var ChockPowderA = 990;
+                                    var ChockPowderB = 0;
+                                    var ChockPowderC = 0;
+
+                                    var RockSoltA = 980;
+                                    var RockSoltB = 0;
+                                    var RockSoltC = 0;
+
+                                    var DcpA = 990;
+                                    var DcpB = 0;
+                                    var DcpC = 0;
+
+                                    var LobonA = 900;
+                                    var LobonB = 0;
+                                    var LobonC = 0;
+
+                                    var NapiarPakA = 200;
+                                    var NapiarPakB = 10;
+                                    var NapiarPakC = 150;
+
+                                    var JarmanA = 200;
+                                    var JarmanB = 8;
+                                    var JarmanC = 61;
+
+                                    var DesiGhasA = 200;
+                                    var DesiGhasB = 9;
+                                    var DesiGhasC = 210;
+
+
+                                    var KhorerOutputA = ((KhorA * KhorInput) / 1000).toFixed(2);
+                                    var KhorerOutputB = (KhorB * KhorInput).toFixed(2);
+                                    var KhorerOutputC = ((KhorC * KhorInput) / 1000).toFixed(2);
+
+
+                                    var GomerOutputA = ((gomervusiA * GomerInput) / 1000).toFixed(2);
+                                    var GomerOutputB = (gomervusiB * GomerInput).toFixed(2);
+                                    var GomerOutputC = ((gomervusiC * GomerInput) / 1000).toFixed(2);
+
+                                    var GuraOutputA = ((guraA * GuraInput) / 1000).toFixed(2);
+                                    var GuraOutputB = (guraB * GuraInput).toFixed(2);
+                                    var GuraOutputC = ((guraC * GuraInput) / 1000).toFixed(2);
+
+                                    var VutradanaOutputA = ((VutradanaA * VutradanaInput) / 1000).toFixed(2);
+                                    var VutradanaOutputB = (VutradanaB * VutradanaInput).toFixed(2);
+                                    var VutradanaOutputC = ((VutradanaC * VutradanaInput) / 1000).toFixed(2);
+
+                                    var KhesarisohoOutputA = ((KhesarisohoA * KhesarisohoInput) / 1000).toFixed(2);
+                                    var KhesarisohoOutputB = (KhesarisohoB * KhesarisohoInput).toFixed(2);
+                                    var KhesarisohoOutputC = ((KhesarisohoC * KhesarisohoInput) / 1000).toFixed(2);
+
+
+                                    var MaskalaisohoOutputA = ((MaskalaisohoA * MaskalaisohoInput) / 1000).toFixed(2);
+                                    var MaskalaisohoOutputB = (MaskalaisohoB * MaskalaisohoInput).toFixed(2);
+                                    var MaskalaisohoOutputC = ((MaskalaisohoC * MaskalaisohoInput) / 1000).toFixed(2);
+
+
+                                    var SoyabinmillOutputA = ((SoyabinmillA * SoyabinmillInput) / 1000).toFixed(2);
+                                    var SoyabinmillOutputB = (SoyabinmillB * SoyabinmillInput).toFixed(2);
+                                    var SoyabinmillOutputC = ((SoyabinmillC * SoyabinmillInput) / 1000).toFixed(2);
+
+                                    var TelerKhoilOutputA = ((TelerKhoilA * TelerKhoilInput) / 1000).toFixed(2);
+                                    var TelerKhoilOutputB = (TelerKhoilB * TelerKhoilInput).toFixed(2);
+                                    var TelerKhoilOutputC = ((TelerKhoilC * TelerKhoilInput) / 1000).toFixed(2);
+
+                                    var CholaOutputA = ((CholaA * CholaInput) / 1000).toFixed(2);
+                                    var CholaOutputB = (CholaB * CholaInput).toFixed(2);
+                                    var CholaOutputC = ((CholaC * CholaInput) / 1000).toFixed(2);
+
+                                    var LaliGurOutputA = ((LaliGurA * LaliGurInput) / 1000).toFixed(2);
+                                    var LaliGurOutputB = (LaliGurB * LaliGurInput).toFixed(2);
+                                    var LaliGurOutputC = ((LaliGurC * LaliGurInput) / 1000).toFixed(2);
+
+                                    var ChockPowderOutputA = ((ChockPowderA * ChockPowderInput) / 1000).toFixed(2);
+                                    var ChockPowderOutputB = (ChockPowderB * ChockPowderInput).toFixed(2);
+                                    var ChockPowderOutputC = ((ChockPowderC * ChockPowderInput) / 1000).toFixed(2);
+
+
+                                    var RockSoltOutputA = ((RockSoltA * RockSoltInput) / 1000).toFixed(2);
+                                    var RockSoltOutputB = (RockSoltB * RockSoltInput).toFixed(2);
+                                    var RockSoltOutputC = ((RockSoltC * RockSoltInput) / 1000).toFixed(2);
+
+                                    var DcpOutputA = ((DcpA * DcpInput) / 1000).toFixed(2);
+                                    var DcpOutputB = (DcpB * DcpInput).toFixed(2);
+                                    var DcpOutputC = ((DcpC * DcpInput) / 1000).toFixed(2);
+
+                                    var LobonOutputA = ((LobonA * LobonInput) / 1000).toFixed(2);
+                                    var LobonOutputB = (LobonB * LobonInput).toFixed(2);
+                                    var LobonOutputC = ((LobonC * LobonInput) / 1000).toFixed(2);
+
+                                    var NapiarPakOutputA = ((NapiarPakA * NapiarPakInput) / 1000).toFixed(2);
+                                    var NapiarPakOutputB = (NapiarPakB * NapiarPakInput).toFixed(2);
+                                    var NapiarPakOutputC = ((NapiarPakC * NapiarPakInput) / 1000).toFixed(2);
+
+                                    var JarmanOutputA = ((JarmanA * JarmanInput) / 1000).toFixed(2);
+                                    var JarmanOutputB = (JarmanB * JarmanInput).toFixed(2);
+                                    var JarmanOutputC = ((JarmanC * JarmanInput) / 1000).toFixed(2);
+
+                                    var DesiGhasOutputA = ((DesiGhasA * DesiGhasInput) / 1000).toFixed(2);
+                                    var DesiGhasOutputB = (DesiGhasB * DesiGhasInput).toFixed(2);
+                                    var DesiGhasOutputC = ((DesiGhasC * DesiGhasInput) / 1000).toFixed(2);
+
+                                    var TotalOutputInput = parseFloat(DesiGhasInput) + parseFloat(JarmanInput) + parseFloat(NapiarPakInput) + parseFloat(LobonInput)
+                                        + parseFloat(DcpInput) + parseFloat(RockSoltInput) + parseFloat(ChockPowderInput) + parseFloat(LaliGurInput) + parseFloat(CholaInput)
+                                        + parseFloat(TelerKhoilInput) + parseFloat(SoyabinmillInput) + parseFloat(MaskalaisohoInput) + parseFloat(KhesarisohoInput)
+                                        + parseFloat(VutradanaInput) + parseFloat(GuraInput) + parseFloat(GomerInput) + parseFloat(KhorInput);
+
+                                    var TotalOutputA = parseFloat(KhorerOutputA) + parseFloat(GomerOutputA) + parseFloat(GuraOutputA) + parseFloat(VutradanaOutputA) + parseFloat(KhesarisohoOutputA) +
+                                        parseFloat(MaskalaisohoOutputA) + parseFloat(SoyabinmillOutputA) + parseFloat(TelerKhoilOutputA) + parseFloat(CholaOutputA) +
+                                        parseFloat(LaliGurOutputA) + parseFloat(ChockPowderOutputA) + parseFloat(RockSoltOutputA) + parseFloat(DcpOutputA) +
+                                        parseFloat(LobonOutputA) + parseFloat(NapiarPakOutputA) + parseFloat(JarmanOutputA) + parseFloat(DesiGhasOutputA);
+
+                                    var TotalOutputB = parseFloat(KhorerOutputB) + parseFloat(GomerOutputB) + parseFloat(GuraOutputB) + parseFloat(VutradanaOutputB) + parseFloat(KhesarisohoOutputB) +
+                                        parseFloat(MaskalaisohoOutputB) + parseFloat(SoyabinmillOutputB) + parseFloat(TelerKhoilOutputB) + parseFloat(CholaOutputB) +
+                                        parseFloat(LaliGurOutputB) + parseFloat(ChockPowderOutputB) + parseFloat(RockSoltOutputB) + parseFloat(DcpOutputB) +
+                                        parseFloat(LobonOutputB) + parseFloat(NapiarPakOutputB) + parseFloat(JarmanOutputB) + parseFloat(DesiGhasOutputB);
+
+                                    var TotalOutputC = parseFloat(KhorerOutputC) + parseFloat(GomerOutputC) + parseFloat(GuraOutputC) + parseFloat(VutradanaOutputC) + parseFloat(KhesarisohoOutputC) +
+                                        parseFloat(MaskalaisohoOutputC) + parseFloat(SoyabinmillOutputC) + parseFloat(TelerKhoilOutputC) + parseFloat(CholaOutputC) +
+                                        parseFloat(LaliGurOutputC) + parseFloat(ChockPowderOutputC) + parseFloat(RockSoltOutputC) + parseFloat(DcpOutputC) +
+                                        parseFloat(LobonOutputC) + parseFloat(NapiarPakOutputC) + parseFloat(JarmanOutputC) + parseFloat(DesiGhasOutputC);
+
+
+                                    var KejiprotiA = parseFloat(TotalOutputA) / parseFloat(TotalOutputInput);
+                                    var KejiprotiB = parseFloat(TotalOutputB) / parseFloat(TotalOutputInput);
+                                    var KejiprotiC = parseFloat(TotalOutputC) / parseFloat(TotalOutputInput);
+
+                                    var GhashPlusDanadarA = GhashPlusDanadarInput * parseFloat(KejiprotiA);
+                                    var GhashPlusDanadarB = GhashPlusDanadarInput * parseFloat(KejiprotiB);
+                                    var GhashPlusDanadarC = GhashPlusDanadarInput * parseFloat(KejiprotiC);
+
+
+
+
+
+
+                                    document.getElementById("KhorerOutputA").innerText = KhorerOutputA;
+                                    document.getElementById("KhorerOutputB").innerText = KhorerOutputB;
+                                    document.getElementById("KhorerOutputC").innerText = KhorerOutputC;
+
+
+                                    document.getElementById("GomerOutputA").innerText = GomerOutputA;
+                                    document.getElementById("GomerOutputB").innerText = GomerOutputB;
+                                    document.getElementById("GomerOutputC").innerText = GomerOutputC;
+
+                                    document.getElementById("GuraOutputA").innerText = GuraOutputA;
+                                    document.getElementById("GuraOutputB").innerText = GuraOutputB;
+                                    document.getElementById("GuraOutputC").innerText = GuraOutputC;
+
+                                    document.getElementById("VutradanaOutputA").innerText = VutradanaOutputA;
+                                    document.getElementById("VutradanaOutputB").innerText = VutradanaOutputB;
+                                    document.getElementById("VutradanaOutputC").innerText = VutradanaOutputC;
+
+                                    document.getElementById("KhesarisohoOutputA").innerText = KhesarisohoOutputA;
+                                    document.getElementById("KhesarisohoOutputB").innerText = KhesarisohoOutputB;
+                                    document.getElementById("KhesarisohoOutputC").innerText = KhesarisohoOutputC;
+
+                                    document.getElementById("MaskalaisohoOutputA").innerText = MaskalaisohoOutputA;
+                                    document.getElementById("MaskalaisohoOutputB").innerText = MaskalaisohoOutputB;
+                                    document.getElementById("MaskalaisohoOutputC").innerText = MaskalaisohoOutputC;
+
+
+                                    document.getElementById("SoyabinmillOutputA").innerText = SoyabinmillOutputA;
+                                    document.getElementById("SoyabinmillOutputB").innerText = SoyabinmillOutputB;
+                                    document.getElementById("SoyabinmillOutputC").innerText = SoyabinmillOutputC;
+
+                                    document.getElementById("TelerKhoilOutputA").innerText = TelerKhoilOutputA;
+                                    document.getElementById("TelerKhoilOutputB").innerText = TelerKhoilOutputB;
+                                    document.getElementById("TelerKhoilOutputC").innerText = TelerKhoilOutputC;
+
+                                    document.getElementById("CholaOutputA").innerText = CholaOutputA;
+                                    document.getElementById("CholaOutputB").innerText = CholaOutputB;
+                                    document.getElementById("CholaOutputC").innerText = CholaOutputC;
+
+                                    document.getElementById("LaliGurOutputA").innerText = LaliGurOutputA;
+                                    document.getElementById("LaliGurOutputB").innerText = LaliGurOutputB;
+                                    document.getElementById("LaliGurOutputC").innerText = LaliGurOutputC;
+
+                                    document.getElementById("ChockPowderOutputA").innerText = ChockPowderOutputA;
+                                    document.getElementById("ChockPowderOutputB").innerText = ChockPowderOutputB;
+                                    document.getElementById("ChockPowderOutputC").innerText = ChockPowderOutputC;
+
+
+                                    document.getElementById("RockSoltOutputA").innerText = RockSoltOutputA;
+                                    document.getElementById("RockSoltOutputB").innerText = RockSoltOutputB;
+                                    document.getElementById("RockSoltOutputC").innerText = RockSoltOutputC;
+
+                                    document.getElementById("DcpOutputA").innerText = DcpOutputA;
+                                    document.getElementById("DcpOutputB").innerText = DcpOutputB;
+                                    document.getElementById("DcpOutputC").innerText = DcpOutputC;
+
+                                    document.getElementById("LobonOutputA").innerText = LobonOutputA;
+                                    document.getElementById("LobonOutputB").innerText = LobonOutputB;
+                                    document.getElementById("LobonOutputC").innerText = LobonOutputC;
+
+                                    document.getElementById("NapiarPakOutputA").innerText = NapiarPakOutputA;
+                                    document.getElementById("NapiarPakOutputB").innerText = NapiarPakOutputB;
+                                    document.getElementById("NapiarPakOutputC").innerText = NapiarPakOutputC;
+
+                                    document.getElementById("JarmanOutputA").innerText = JarmanOutputA;
+                                    document.getElementById("JarmanOutputB").innerText = JarmanOutputB;
+                                    document.getElementById("JarmanOutputC").innerText = JarmanOutputC;
+
+                                    document.getElementById("DesiGhasOutputA").innerText = DesiGhasOutputA;
+                                    document.getElementById("DesiGhasOutputB").innerText = DesiGhasOutputB;
+                                    document.getElementById("DesiGhasOutputC").innerText = DesiGhasOutputC;
+
+                                    document.getElementById("TotalOutputInput").innerText = TotalOutputInput.toFixed(2);
+                                    document.getElementById("TotalOutputA").innerText = TotalOutputA.toFixed(2);
+                                    document.getElementById("TotalOutputB").innerText = TotalOutputB.toFixed(2);
+                                    document.getElementById("TotalOutputC").innerText = TotalOutputC.toFixed(2);
+
+                                    document.getElementById("KejiprotiA").innerText = KejiprotiA.toFixed(2);
+                                    document.getElementById("KejiprotiB").innerText = KejiprotiB.toFixed(2);
+                                    document.getElementById("KejiprotiC").innerText = KejiprotiC.toFixed(2);
+
+                                    document.getElementById("GhashPlusDanadarA").innerText = GhashPlusDanadarA.toFixed(2);
+                                    document.getElementById("GhashPlusDanadarB").innerText = GhashPlusDanadarB.toFixed(2);
+                                    document.getElementById("GhashPlusDanadarC").innerText = GhashPlusDanadarC.toFixed(2);
+
+                                   
+
+                                   
+
+                                    // var KhorInput = document.getElementById("KhorInput");
+                                    // var inputValue = parseFloat(KhorInput.value);
+
+                                    // // Change background color based on the input value
+                                    // if (inputValue < 20 || inputValue > 25) {
+                                    //     KhorInput.classList.add("red-bg");
+                                    // }
+                                    // else {
+                                    //     KhorInput.classList.remove("red-bg");
+
+
+                                    // }
+
+                                
+
+                                }
+                                calculateValues()
+
+                                function printBigCal(username,date) {
+
+                                    document.getElementById('username').innerText = username + '\n' + date;
+
+                                    // Clone the print_are div
+                                    var printContents = document.getElementById("print_areBig").cloneNode(true);
+
+                                    // Create a new window and append the cloned content
+                                    var printWindow = window.open('', '_blank');
+                                    printWindow.document.body.appendChild(printContents);
+
+                                    // Print the new window
+                                    printWindow.print();
+
+                                }
+
+
+
+                            </script>
+
+
+
+                            <p style="font-size:20px; line-height:20px;" id="username"></p>
+
+
+                        </div>
+
+                        <div style=" text-align:center">
+                           
+                            <button onclick="printBigCal('@Username','@date')" class="btn btn-primary" id="print">ফর্মুলেশন করুন</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div> <!--Calculator Energery-->
+
+
+      
+
+    </div>
+</div>
+
+

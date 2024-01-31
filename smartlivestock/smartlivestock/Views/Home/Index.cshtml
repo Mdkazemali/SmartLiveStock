@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@{
+    DateTime d = DateTime.Now;
+    string kk = d.ToString("dd-MM-yyyy");
+
+    DateTime pp = DateTime.Now;
+
+    // Function to convert regular numbers to Bengali numerals
+    string ConvertToBengaliDigits(int number)
+    {
+        string[] bengaliDigits = { "০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯" };
+        string numberString = number.ToString();
+        string bengaliNumber = string.Join("", numberString.Select(c => bengaliDigits[Convert.ToInt32(c.ToString())]));
+        return bengaliNumber;
+    }
+
+    string mm = pp.ToString("dd-MM-yyyy", new System.Globalization.CultureInfo("bn-BD"));
+
+    // Extracting day, month, and year from the formatted date
+    string[] dateParts = kk.Split('-');
+    int day = int.Parse(dateParts[0]);
+    int month = int.Parse(dateParts[1]);
+    int year = int.Parse(dateParts[2]);
+
+    // Convert day, month, and year to Bengali digits
+    string bengaliDay = ConvertToBengaliDigits(day);
+    string bengaliMonth = ConvertToBengaliDigits(month);
+    string bengaliYear = ConvertToBengaliDigits(year);
+
+    // Form the date in the Bengali numeral format
+    string bengaliDate = $"{bengaliDay}-{bengaliMonth}-{bengaliYear}";
+
+    // Output the date
+}
+
+
+<marquee><c style="color:blue !important"> আজ @bengaliDate ইং তারিখ,  &nbsp;&nbsp;  স্মার্ট বাংলাদেশের পথে, স্মার্ট প্রানিসম্পদের সাথে। </c></marquee>
+
+
+
+
+
+<body>
+    <div class="container">
+        <h6 id="time" class="txt-size-wach"></h6>
+        <h6 id="dateAndDay" class="txt-size-day"></h6>
+
+    </div>
+
+    <script>
+        function updateDateTime() {
+            var currentDate = new Date();
+
+            var timeElement = document.getElementById("time");
+            timeElement.innerHTML = currentDate.toLocaleTimeString();
+
+        }
+
+        // Update date and time every second
+        setInterval(updateDateTime, 1000);
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            updateDateAndDay();
+        });
+        function updateDateAndDay() {
+            const dateAndDayElement = document.getElementById("dateAndDay");
+            const currentDate = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+            dateAndDayElement.innerHTML = `<p>${formattedDate}</p>`;
+        }
+    </script>
+
+</body>
+
+<style>
+    .txt-size-wach {
+        text-align: center;
+        font-size: 100px;
+        object-position: center;
+        color: blue;
+        font-display: block;
+        font-palette: light;
+        margin-top: 5%;
+    }
+
+    .txt-size-day {
+        text-align: center;
+        font-size: 70px;
+        object-position: center;
+        color: blue;
+        font-display: block;
+        font-palette: light;
+    }
+
+</style>
+

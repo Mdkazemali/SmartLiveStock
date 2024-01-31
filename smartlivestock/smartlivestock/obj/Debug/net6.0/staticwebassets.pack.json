@@ -1,0 +1,349 @@
+{
+  "Files": [
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\smartlivestock.bundle.scp.css",
+      "PackagePath": "staticwebassets\\smartlivestock.bundle.scp.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\calculatorimg\\calculate.png",
+      "PackagePath": "staticwebassets\\calculatorimg\\calculate.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\calculatorimg\\goru.png",
+      "PackagePath": "staticwebassets\\calculatorimg\\goru.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\headerimages\\broilerfinisher.png",
+      "PackagePath": "staticwebassets\\headerimages\\broilerfinisher.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\headerimages\\broilergrower.png",
+      "PackagePath": "staticwebassets\\headerimages\\broilergrower.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\headerimages\\broilerstarter.png",
+      "PackagePath": "staticwebassets\\headerimages\\broilerstarter.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\headerimages\\khaddocalculation.png",
+      "PackagePath": "staticwebassets\\headerimages\\khaddocalculation.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\headerimages\\layerfinishers.png",
+      "PackagePath": "staticwebassets\\headerimages\\layerfinishers.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\headerimages\\layergrower.png",
+      "PackagePath": "staticwebassets\\headerimages\\layergrower.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\headerimages\\layerstarter.png",
+      "PackagePath": "staticwebassets\\headerimages\\layerstarter.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\headerimages\\lgdana.png",
+      "PackagePath": "staticwebassets\\headerimages\\lgdana.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\22e867df-2819-4692-9c53-6a1b508dc96f_Screenshot 2024-01-18 114022.png",
+      "PackagePath": "staticwebassets\\images\\22e867df-2819-4692-9c53-6a1b508dc96f_Screenshot 2024-01-18 114022.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\527a85f5-850a-4aae-8d1a-9a40eb37b096_Screenshot 2024-01-23 051307.png",
+      "PackagePath": "staticwebassets\\images\\527a85f5-850a-4aae-8d1a-9a40eb37b096_Screenshot 2024-01-23 051307.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\5ac33342-c2de-4d48-8f7b-a180cad3dcb0_Screenshot 2024-01-18 200700.png",
+      "PackagePath": "staticwebassets\\images\\5ac33342-c2de-4d48-8f7b-a180cad3dcb0_Screenshot 2024-01-18 200700.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\b1cb1f0a-4c69-4d0f-97f7-157737d151c3_Screenshot 2024-01-18 200700.png",
+      "PackagePath": "staticwebassets\\images\\b1cb1f0a-4c69-4d0f-97f7-157737d151c3_Screenshot 2024-01-18 200700.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\noimage.png",
+      "PackagePath": "staticwebassets\\images\\noimage.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\imageslogo\\bwback.png",
+      "PackagePath": "staticwebassets\\imageslogo\\bwback.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\imageslogo\\ismartlogo.png",
+      "PackagePath": "staticwebassets\\imageslogo\\ismartlogo.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\qr.js",
+      "PackagePath": "staticwebassets\\js\\qr.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\qrcode.js",
+      "PackagePath": "staticwebassets\\lib\\qrcode.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\qrcode.min.js",
+      "PackagePath": "staticwebassets\\lib\\qrcode.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\wwwroot\\pronoimages\\noimage.png",
+      "PackagePath": "staticwebassets\\pronoimages\\noimage.png"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.smartlivestock.props",
+      "PackagePath": "build\\smartlivestock.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.smartlivestock.props",
+      "PackagePath": "buildMultiTargeting\\smartlivestock.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.smartlivestock.props",
+      "PackagePath": "buildTransitive\\smartlivestock.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.smartlivestock.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

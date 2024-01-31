@@ -1,0 +1,48 @@
+﻿@model smartlivestock.Models.Trainingvideo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>আপনি কি ভিডিওটি মুছে ফেলতে চান ?</h3> 
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+
+            ভিডিও নাম
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VideoName)
+        </dd>
+        <dt class = "col-sm-2">
+            ভিডিও আইডি
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.videoLink)
+        </dd>
+        <dt class = "col-sm-2">
+            তারিখ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+        <dt class = "col-sm-2">
+            ইউজার
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dd class="col-sm-10">
+            <iframe width="400" height="350" src="https://www.youtube.com/embed/@Model.videoLink" title=" "
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+                                                     picture-in-picture; web-share" allowfullscreen></iframe>
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="vdoId" />
+        <input type="submit" value="Delete" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-primary">Back</a>
+    </form>
+</div>

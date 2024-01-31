@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "User Index";
+}
+
+
+<style>
+ .table{
+     border:black;
+ }
+   
+</style>
+
+<a asp-area="Identity"  asp-page="/Account/Register" class="btn btn-primary">Create New User</a>
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+             
+            <th style="width:15px;">ফটো</th>
+            <th>নাম</th>
+            <th>মোবাইল</th>
+            <th>ঠিকানা</th>
+            <th>ইউজার আইডি</th>
+            <th> মোট রোল</th>
+            <th>
+                ডিলিট/রোল
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    @if (user.PhotoUrl != null)
+                    {
+                        <img src="~/images/@user.PhotoUrl" class="pr-pic" />
+                    }
+                    else
+                    {
+                        <img src="~/images/noimage.png" class="pr-pic"/>
+                    }
+
+                   
+                </td>
+                <td>@user.UserFullName</td>               
+                <td>@user.PhoneNumber</td>
+                <td>@user.Address</td>
+                <td>@user.UserName</td>
+                
+                <td>@user.RoleCount</td>
+                <td>
+                   
+                        <a asp-action="Delete" class="btn btn-primary" asp-route-id="@user.UserId">ডিলিট</a>
+
+                        <a asp-action="AssignRoles" class="btn btn-primary" asp-route-id="@user.UserId">রোল</a>
+                   
+                
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<style>
+    .pr-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        border: 2px solid blue;
+    }
+</style>

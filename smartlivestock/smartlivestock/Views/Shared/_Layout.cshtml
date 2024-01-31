@@ -1,0 +1,388 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+@{
+    string activeClass = "text-dark active"; // CSS class for active menu item
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - i-smartlivestock</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/All_Authonitications.styles.css" asp-append-version="true" />
+
+    <style>
+         .navbar-nav .nav-link {
+            /* Default styles for navigation links */
+            color: white !important;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+            .navbar-nav .nav-link:hover {
+                /* Styles for hover effect */
+                color: floralwhite !important;
+                background-color: #0a2efd;
+            }
+ 
+            .navbar-nav .nav-link.active {
+                /* Styles for active link */
+
+                text-decoration: overline;
+                color: white;
+                font-weight: bold; /* Add this line to make the active link bold */
+            }
+
+        /* Additional styles for rounded corners */
+        .rounded {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: wheat;
+        }
+
+        .navbar-nav {
+            background-color: #0d6efd;
+         
+        }
+
+       .menu-bar {
+            background-color: #0d6efd;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+           
+        }
+
+
+        .footer {
+            position: fixed;
+            color:white;
+            bottom: 0;
+            width: 100%;
+            background-color: #0d6efd; /* Adjust the background color as needed */
+            padding: 8px 0; /* Adjust the padding as needed */
+        }
+
+        /*For Sub Menu*/
+
+       
+        /* Style the dropdown button and container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background-color: #0d6efd;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .dropdown-button:hover{
+                background-color: #0a2efd;
+                color:white;
+
+            }
+
+
+
+        /* Style the dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #cee7f2;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            /* Style the dropdown links */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                /* Change color on hover */
+                .dropdown-content a:hover {
+                    background-color: #0d6efd;
+                    color:white;
+                    
+                    
+                }
+
+        /* Show the dropdown content on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        body{
+            background: linear-gradient( to left,#eef7c1,#8df7f2 );
+        }
+
+
+    </style>
+
+</head>
+
+
+
+
+
+
+<body>
+    <header class="menu-bar">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 fixed-menu">
+      
+            <div class="container-fluid">
+               
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>            
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i></a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                           
+                           @* <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i></a> *@
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="dropdown-button">Setup</button>
+                                    <div class="dropdown-content">
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Trainingvideos" asp-action="Index">Videos</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Index">User</a>
+                                    </div>
+                                </div>
+                            </li>
+                        
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Videos" asp-action="Videos">Videos</a>
+                            </li>
+
+                           
+
+
+                            <li class="nav-item"> 
+                                <div class="dropdown">
+                                    <button class="dropdown-button">Calculator</button>
+                                    <div class="dropdown-content">
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="ghaseranalysis">দানাদার ও ঘাসের পুষ্টি উপাদান (Analysis)</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="OjonOKhaddo">পশুর ওজন ও খাদ্য ক্যালকুলেটর</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Layer">লেয়ার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+                                       
+                                    </div>
+                                </div>
+                            </li>
+                          
+
+                        }
+                        @if (User.IsInRole("User"))
+                        {
+                           @*  <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i></a> *@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Videos" asp-action="Videos">Videos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="dropdown-button">Calculator</button>
+                                    <div class="dropdown-content">
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="ghaseranalysis">দানাদার ও ঘাসের পুষ্টি উপাদান (Analysis)</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="OjonOKhaddo">পশুর ওজন ও খাদ্য ক্যালকুলেটর</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Layer">লেয়ার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        }   
+
+                        @if (User.IsInRole("DVM"))
+                        {
+                           @*  <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i></a> *@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Videos" asp-action="Videos">Videos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="dropdown-button">Calculator</button>
+                                    <div class="dropdown-content">
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="ghaseranalysis">দানাদার ও ঘাসের পুষ্টি উপাদান (Analysis)</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="OjonOKhaddo">পশুর ওজন ও খাদ্য ক্যালকুলেটর</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Layer">লেয়ার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        }
+
+                        @if (User.IsInRole("Doctor"))
+                        {
+                           @*  <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i></a> *@
+                            
+
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="dropdown-button">Calculator</button>
+                                    <div class="dropdown-content">
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="ghaseranalysis">দানাদার ও ঘাসের পুষ্টি উপাদান (Analysis)</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="OjonOKhaddo">পশুর ওজন ও খাদ্য ক্যালকুলেটর</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Layer">লেয়ার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+                                       
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+
+
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        }
+
+                        @if (User.IsInRole("System"))
+                        {
+                         
+                            @* <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i></a> *@
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="dropdown-button">Setup</button>
+                                    <div class="dropdown-content">
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Trainingvideos" asp-action="Index">Videos</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Index">User</a>
+                                    </div>
+                                </div>
+                            </li>
+                          
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Videos" asp-action="Videos">Videos</a>
+                            </li>
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="dropdown-button">Calculator</button>
+                                    <div class="dropdown-content">
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="ghaseranalysis">দানাদার ও ঘাসের পুষ্টি উপাদান (Analysis)</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="OjonOKhaddo">পশুর ওজন ও খাদ্য ক্যালকুলেটর</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Layer">লেয়ার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+
+                                    </div>
+                                </div>
+                            </li>
+
+                        }
+
+
+
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+
+               
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer">
+        <div class="container">
+            I-Smart Livestock Services &copy; 2023 All rights reserved.
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+   
+
+    <script>
+        // Add the 'active' class to the active menu item
+        $(function () {
+            var url = window.location.pathname;
+            $('a.nav-link').each(function () {
+                var href = $(this).attr('href');
+                if (url.startsWith(href)) {
+                    $(this).addClass('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+<script>
+    function toggleNav() {
+        var sidebar = document.getElementById("mySidebar");
+        var main = document.getElementById("main");
+
+        if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+            main.classList.remove("sidebar-opened");
+        } else {
+            sidebar.style.width = "250px";
+            main.classList.add("sidebar-opened");
+        }
+    }
+</script>
+
+@* <li class="nav-item">
+    <div class="dropdown">
+        <button class="dropdown-button">Setup</button>
+        <div class="dropdown-content">
+
+            <a class="dropdown-item" asp-area="" asp-controller="Trainingvideos" asp-action="Index">Videos</a>
+
+            <a class="dropdown-item" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
+
+            <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Index">User</a>
+        </div>
+    </div>
+</li> *@

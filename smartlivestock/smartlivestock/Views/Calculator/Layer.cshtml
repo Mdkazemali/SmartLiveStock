@@ -1,0 +1,2165 @@
+﻿ @{
+    ViewData["Title"] = "Layer Feed";
+}
+@{
+    var Username = User.Identity.Name.Split('@')[0];
+    var d = DateTime.Now;
+    var date = d.ToString("dd-MM-yyyy hh:mm tt");
+}
+  <!--this is a card-->
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+        transition: box-shadow 0.2s ease; /* Add transition for smooth hover effect */
+    }
+
+        .card:hover {
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.9); /* Change shadow on hover */
+        }
+
+    .card-body {
+        background-color: #f8f9fa; /* Set background color */
+        border-radius: 8px; /* Add border radius for rounded corners */
+        padding: 5px; /* Add padding for content */
+    }
+</style>
+
+<!-- 1 No -->
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card bg-info text-black">
+                <div class="card-body">
+
+                    <div style="background-color:powderblue;">
+
+                        <div id="print_areS">
+
+                            <style>
+                                body {
+                                    font-family: Arial, sans-serif;
+                                    background-color: powderblue;
+                                }
+
+                                h1 {
+                                    color: #333;
+                                }
+
+                                table {
+                                    border-collapse: collapse;
+                                    width: 98%;
+                                    margin-top: 110px;
+                                    margin-left: 1%;
+                                    margin-right: 1%;
+                                    background-color: #ddd;
+                                    border: black;
+                                }
+
+                                .hedr {
+                                    position: absolute;
+                                    top: 6px;
+                                    left: 0px;
+                                    margin: 2%;
+                                    height: 90px;
+                                    width: 96%;
+                                    margin-top: 6px;
+                                    background-color: powderblue;
+                                    pointer-events: none;
+                                }
+
+                                th,
+                                td {
+                                    text-align: left;
+                                    line-height: 10px;
+                                    padding-left: 5px;
+                                    background-color: #ddd;
+                                    border: 1px solid black;
+                                }
+
+
+
+                                input {
+                                    width: 99%;
+                                    border: 1px solid #ddd;
+                                    border-radius: 2px;
+                                    line-height: 10px;
+                                   
+                                    text-align: center;
+                                    border: none;
+                                    z-index: 2;
+                                }
+
+
+
+                                #output {
+                                    margin: 2px auto;
+                                    max-width: 95%;
+                                    background-color: #ddd;
+                                }
+
+                                input::-webkit-input-placeholder {
+                                    color: black; /*Change the placeholder color*/
+                                    opacity: .5; /*Change the opacity between 0 and 1*/
+                                }
+
+                                .watermark {
+                                    position: fixed;
+                                    top: 40%;
+                                    left: 50%;
+                                    width: 63vw;
+                                    height: 42vh;
+                                    transform: translate(-50%, -50%);
+                                    opacity: 0.2;
+                                    z-index: 1; /* Lower z-index than the input field */
+                                    pointer-events: none;
+                                }
+
+                                #usernameS {
+                                    position: absolute;
+                                    top: 80%;
+                                    left: 70%;
+                                    transform: translate(-50 %, -50 %);
+                                }
+
+                            </style>
+                            @* <h5 style="text-align:center"> উপজেলা প্রাণিসম্পদ দপ্তর ও ভেটেরিনারি হাসপাতাল</h5>
+                            <h5 style="text-align:center"> Layer Feed(Starter)</h5> *@
+
+                            <img src="~/headerimages/layerstarter.png" class="hedr" />
+
+                            <div>
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style=" font-size:15px; line-height:15px;">Raw material</th>
+                                            <th style="text-align:center;font-size:15px;">Quantity</th>
+                                            <th style=" font-size:15px;">CP</th>
+                                            <th style=" font-size:15px;">Energy</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Maize</td>
+                                            <td><input type="number" id="Maize_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'Soyabinmeal_in')" oninput="calculateValues()"></td>
+                                            <td id="Maize_O_A"></td>
+                                            <td id="Maize_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Soyabin meal</td>
+                                            <td><input type="number" id="Soyabinmeal_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MBMWAFI_in')" oninput="calculateValues()"></td>
+                                            <td id="Soyabinmeal_O_A"></td>
+                                            <td id="Soyabinmeal_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">MBM/WAFI</td>
+                                            <td><input type="number" id="MBMWAFI_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RicePolish_in')" oninput="calculateValues()"></td>
+                                            <td id="MBMWAFI_O_A"></td>
+                                            <td id="MBMWAFI_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Rice Polish</td>
+                                            <td><input type="number" id="RicePolish_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'Rapeseed_in')" oninput="calculateValues()"></td>
+                                            <td id="RicePolish_O_A"></td>
+                                            <td id="RicePolish_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Rape seed</td>
+                                            <td><input type="number" id="Rapeseed_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DORB_in')" oninput="calculateValues()"></td>
+                                            <td id="Rapeseed_O_A"></td>
+                                            <td id="Rapeseed_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">DORB</td>
+                                            <td><input type="number" id="DORB_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'FullFatsoyabin_in')" oninput="calculateValues()"></td>
+                                            <td id="DORB_O_A"></td>
+                                            <td id="DORB_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Full Fat soyabin</td>
+                                            <td><input type="number" id="FullFatsoyabin_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DCPMCP_in')" oninput="calculateValues()"></td>
+                                            <td id="FullFatsoyabin_O_A"></td>
+                                            <td id="FullFatsoyabin_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">DCP/MCP</td>
+                                            <td><input type="number" id="DCPMCP_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'Limestone_in')" oninput="calculateValues()"></td>
+                                            <td id="DCPMCP_O_A"></td>
+                                            <td id="DCPMCP_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Limestone</td>
+                                            <td><input type="number" id="Limestone_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'Mithionine_in')" oninput="calculateValues()"></td>
+                                            <td id="Limestone_O_A"></td>
+                                            <td id="Limestone_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Mithionine</td>
+                                            <td><input type="number" id="Mithionine_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'Lysine_in')" oninput="calculateValues()"></td>
+                                            <td id="Mithionine_O_A"></td>
+                                            <td id="Mithionine_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Lysine</td>
+                                            <td><input type="number" id="Lysine_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'ColineCloride_in')" oninput="calculateValues()"></td>
+                                            <td id="Lysine_O_A"></td>
+                                            <td id="Lysine_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Coline Cloride</td>
+                                            <td><input type="number" id="ColineCloride_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'Toxinbinder_in')" oninput="calculateValues()"></td>
+                                            <td id="ColineCloride_O_A"></td>
+                                            <td id="ColineCloride_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Toxinbinder</td>
+                                            <td><input type="number" id="Toxinbinder_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LayerPremix_in')" oninput="calculateValues()"></td>
+                                            <td id="Toxinbinder_O_A"></td>
+                                            <td id="Toxinbinder_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Layer Premix</td>
+                                            <td><input type="number" id="LayerPremix_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SulmonelakillerSGS_in')" oninput="calculateValues()"></td>
+                                            <td id="LayerPremix_O_A"></td>
+                                            <td id="LayerPremix_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">SulmonelakillerSGS</td>
+                                            <td><input type="number" id="SulmonelakillerSGS_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'Enzyme_in')" oninput="calculateValues()"></td>
+                                            <td id="SulmonelakillerSGS_O_A"></td>
+                                            <td id="SulmonelakillerSGS_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Enzyme</td>
+                                            <td><input type="number" id="Enzyme_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DiclazurilSalinomycin_in')" oninput="calculateValues()"></td>
+                                            <td id="Enzyme_O_A"></td>
+                                            <td id="Enzyme_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Diclazuril/Salinomycin</td>
+                                            <td><input type="number" id="DiclazurilSalinomycin_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'Grothpromoter_in')" oninput="calculateValues()"></td>
+                                            <td id="DiclazurilSalinomycin_O_A"></td>
+                                            <td id="DiclazurilSalinomycin_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Grothpromoter</td>
+                                            <td><input type="number" id="Grothpromoter_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SoyabinOil_in')" oninput="calculateValues()"></td>
+                                            <td id="Grothpromoter_O_A"></td>
+                                            <td id="Grothpromoter_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Soyabin Oil</td>
+                                            <td><input type="number" id="SoyabinOil_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'BiscutCake_in')" oninput="calculateValues()"></td>
+                                            <td id="SoyabinOil_O_A"></td>
+                                            <td id="SoyabinOil_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Biscut Cake</td>
+                                            <td><input type="number" id="BiscutCake_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'IodineSolt_in')" oninput="calculateValues()"></td>
+                                            <td id="BiscutCake_O_A"></td>
+                                            <td id="BiscutCake_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Iodine/Solt</td>
+                                            <td><input type="number" id="IodineSolt_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'Sodiumbycurb_in')" oninput="calculateValues()"></td>
+                                            <td id="IodineSolt_O_A"></td>
+                                            <td id="IodineSolt_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Sodium by curb</td>
+                                            <td><input type="number" id="Sodiumbycurb_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RenaPhytaze_in')" oninput="calculateValues()"></td>
+                                            <td id="Sodiumbycurb_O_A"></td>
+                                            <td id="Sodiumbycurb_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Rena-Phytaze</td>
+                                            <td><input type="number" id="RenaPhytaze_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LiposorbEmulsifier_in')" oninput="calculateValues()"></td>
+                                            <td id="RenaPhytaze_O_A"></td>
+                                            <td id="RenaPhytaze_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Liposorb(Emulsifier)</td>
+                                            <td><input type="number" id="LiposorbEmulsifier_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'EselPremix_in')" oninput="calculateValues()"></td>
+                                            <td id="LiposorbEmulsifier_O_A"></td>
+                                            <td id="LiposorbEmulsifier_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Esel Premix</td>
+                                            <td><input type="number" id="EselPremix_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MilkPowder_in')" oninput="calculateValues()"></td>
+                                            <td id="EselPremix_O_A"></td>
+                                            <td id="EselPremix_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Milk Powder</td>
+                                            <td><input type="number" id="MilkPowder_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MixingCharge_in')" oninput="calculateValues()"></td>
+                                            <td id="MilkPowder_O_A"></td>
+                                            <td id="MilkPowder_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Mixing Charge</td>
+                                            <td><input type="number" id="MixingCharge_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'BagPack50kg_in')" oninput="calculateValues()"></td>
+                                            <td id="MixingCharge_O_A"></td>
+                                            <td id="MixingCharge_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">Bag/Pack 50kg</td>
+                                            <td><input type="number" id="BagPack50kg_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'TPSMarketing_in')" oninput="calculateValues()"></td>
+                                            <td id="BagPack50kg_O_A"></td>
+                                            <td id="BagPack50kg_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; padding-left:3px;">TPS & Marketing</td>
+                                            <td><input type="number" id="TPSMarketing_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="PrintLayer(event, 'print')" oninput="calculateValues()"></td>
+                                            <td id="TPSMarketing_O_A"></td>
+                                            <td id="TPSMarketing_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold; ">Total</td>
+                                            <td style="text-align:center;font-weight:bold; line-height:15px;" id="Total_inS"></td>
+                                            <td style="font-weight:bold; " id="Total_CPS"></td>
+                                            <td style="font-weight:bold; " id="Total_EergS"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+
+
+
+                            </div>
+
+
+                            <img src="~/imageslogo/ismartlogo.png" class="watermark" />
+
+                            <script>
+
+                                function moveToNextInput(event, nextInputId) {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        const nextInput = document.getElementById(nextInputId);
+
+                                        if (nextInput) {
+                                            nextInput.select();
+                                        }
+                                    }
+                                }
+                                function PrintLayer(event, nextInputId) {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        const nextInput = document.getElementById(nextInputId);
+
+                                        if (nextInput) {
+                                            nextInput.focus();
+                                        }
+                                    }
+                                }
+
+                                // Function to calculate values
+                                function calculateValues() {
+
+                                    // Get the user input
+                                    var Maize_in = document.getElementById("Maize_in").value;
+
+                                    // If user doesn't input, set default value
+                                    if (Maize_in === "") {
+                                        Maize_in = 55;
+                                        document.getElementById("Maize_in").value = Maize_in;
+                                    }
+
+                                    var Soyabinmeal_in = document.getElementById("Soyabinmeal_in").value;
+                                    if (Soyabinmeal_in === "") {
+                                        Soyabinmeal_in = 20;
+                                        document.getElementById("Soyabinmeal_in").value = Soyabinmeal_in;
+                                    }
+
+
+                                    var MBMWAFI_in = document.getElementById("MBMWAFI_in").value;
+                                    if (MBMWAFI_in === "") {
+                                        MBMWAFI_in = 5;
+                                        document.getElementById("MBMWAFI_in").value = MBMWAFI_in;
+                                    }
+                                    var RicePolish_in = document.getElementById("RicePolish_in").value;
+
+                                    if (RicePolish_in === "") {
+                                        RicePolish_in = 7;
+                                        document.getElementById("RicePolish_in").value = RicePolish_in;
+                                    }
+
+
+                                    var Rapeseed_in = document.getElementById("Rapeseed_in").value;
+                                    if (Rapeseed_in === "") {
+                                        Rapeseed_in = 2.5;
+                                        document.getElementById("Rapeseed_in").value = Rapeseed_in;
+                                    }
+
+                                    var DORB_in = document.getElementById("DORB_in").value;
+                                    if (DORB_in === "") {
+                                        DORB_in = 0;
+                                        document.getElementById("DORB_in").value = DORB_in;
+                                    }
+
+                                    var FullFatsoyabin_in = document.getElementById("FullFatsoyabin_in").value;
+                                    if (FullFatsoyabin_in === "") {
+                                        FullFatsoyabin_in = 6;
+                                        document.getElementById("FullFatsoyabin_in").value = FullFatsoyabin_in;
+                                    }
+
+                                    var DCPMCP_in = document.getElementById("DCPMCP_in").value;
+
+                                    if (DCPMCP_in === "") {
+                                        DCPMCP_in = 0.4;
+                                        document.getElementById("DCPMCP_in").value = DCPMCP_in;
+                                    }
+                                    var Limestone_in = document.getElementById("Limestone_in").value;
+                                    if (Limestone_in === "") {
+                                        Limestone_in = 1;
+                                        document.getElementById("Limestone_in").value = Limestone_in;
+                                    }
+
+                                    var Mithionine_in = document.getElementById("Mithionine_in").value;
+                                    if (Mithionine_in === "") {
+                                        Mithionine_in = 0.1;
+                                        document.getElementById("Mithionine_in").value = Mithionine_in;
+                                    }
+                                    var Lysine_in = document.getElementById("Lysine_in").value;
+                                    if (Lysine_in === "") {
+                                        Lysine_in = 0.1;
+                                        document.getElementById("Lysine_in").value = Lysine_in;
+                                    }
+                                    var ColineCloride_in = document.getElementById("ColineCloride_in").value;
+                                    if (ColineCloride_in === "") {
+                                        ColineCloride_in = 0;
+                                        document.getElementById("ColineCloride_in").value = ColineCloride_in;
+                                    }
+                                    var Toxinbinder_in = document.getElementById("Toxinbinder_in").value;
+                                    if (Toxinbinder_in === "") {
+                                        Toxinbinder_in = 0.15;
+                                        document.getElementById("Toxinbinder_in").value = Toxinbinder_in;
+                                    }
+                                    var LayerPremix_in = document.getElementById("LayerPremix_in").value;
+                                    if (LayerPremix_in === "") {
+                                        LayerPremix_in = 0.25;
+                                        document.getElementById("LayerPremix_in").value = LayerPremix_in;
+                                    }
+                                    var SulmonelakillerSGS_in = document.getElementById("SulmonelakillerSGS_in").value;
+                                    if (SulmonelakillerSGS_in === "") {
+                                        SulmonelakillerSGS_in = 0.02;
+                                        document.getElementById("SulmonelakillerSGS_in").value = SulmonelakillerSGS_in;
+                                    }
+                                    var Enzyme_in = document.getElementById("Enzyme_in").value;
+                                    if (Enzyme_in === "") {
+                                        Enzyme_in = 0.02;
+                                        document.getElementById("Enzyme_in").value = Enzyme_in;
+                                    }
+                                    var DiclazurilSalinomycin_in = document.getElementById("DiclazurilSalinomycin_in").value;
+                                    if (DiclazurilSalinomycin_in === "") {
+                                        DiclazurilSalinomycin_in = 0.02;
+                                        document.getElementById("DiclazurilSalinomycin_in").value = DiclazurilSalinomycin_in;
+                                    }
+
+                                    var Grothpromoter_in = document.getElementById("Grothpromoter_in").value;
+                                    if (Grothpromoter_in === "") {
+                                        Grothpromoter_in = 0.05;
+                                        document.getElementById("Grothpromoter_in").value = Grothpromoter_in;
+                                    }
+                                    var SoyabinOil_in = document.getElementById("SoyabinOil_in").value;
+                                    if (SoyabinOil_in === "") {
+                                        SoyabinOil_in = 1.5;
+                                        document.getElementById("SoyabinOil_in").value = SoyabinOil_in;
+                                    }
+                                    var BiscutCake_in = document.getElementById("BiscutCake_in").value;
+                                    if (BiscutCake_in === "") {
+                                        BiscutCake_in = 2;
+                                        document.getElementById("BiscutCake_in").value = BiscutCake_in;
+                                    }
+                                    var IodineSolt_in = document.getElementById("IodineSolt_in").value;
+                                    if (IodineSolt_in === "") {
+                                        IodineSolt_in = 0.2;
+                                        document.getElementById("IodineSolt_in").value = IodineSolt_in;
+                                    }
+                                    var Sodiumbycurb_in = document.getElementById("Sodiumbycurb_in").value;
+                                    if (Sodiumbycurb_in === "") {
+                                        Sodiumbycurb_in = 0.05;
+                                        document.getElementById("Sodiumbycurb_in").value = Sodiumbycurb_in;
+                                    }
+                                    var RenaPhytaze_in = document.getElementById("RenaPhytaze_in").value;
+                                    if (RenaPhytaze_in === "") {
+                                        RenaPhytaze_in = 0.1;
+                                        document.getElementById("RenaPhytaze_in").value = RenaPhytaze_in;
+                                    }
+                                    var LiposorbEmulsifier_in = document.getElementById("LiposorbEmulsifier_in").value;
+                                    if (LiposorbEmulsifier_in === "") {
+                                        LiposorbEmulsifier_in = 0.05;
+                                        document.getElementById("LiposorbEmulsifier_in").value = LiposorbEmulsifier_in;
+                                    }
+                                    var EselPremix_in = document.getElementById("EselPremix_in").value;
+                                    if (EselPremix_in === "") {
+                                        EselPremix_in = 0;
+                                        document.getElementById("EselPremix_in").value = EselPremix_in;
+                                    }
+                                    var MilkPowder_in = document.getElementById("MilkPowder_in").value;
+                                    if (MilkPowder_in === "") {
+                                        MilkPowder_in = 0;
+                                        document.getElementById("MilkPowder_in").value = MilkPowder_in;
+                                    }
+                                    var MixingCharge_in = document.getElementById("MixingCharge_in").value;
+                                    if (MixingCharge_in === "") {
+                                        MixingCharge_in = 0;
+                                        document.getElementById("MixingCharge_in").value = MixingCharge_in;
+                                    }
+                                    var BagPack50kg_in = document.getElementById("BagPack50kg_in").value;
+                                    if (BagPack50kg_in === "") {
+                                        BagPack50kg_in = 0;
+                                        document.getElementById("BagPack50kg_in").value = BagPack50kg_in;
+                                    }
+                                    var TPSMarketing_in = document.getElementById("TPSMarketing_in").value;
+                                    if (TPSMarketing_in === "") {
+                                        TPSMarketing_in = 0;
+                                        document.getElementById("TPSMarketing_in").value = TPSMarketing_in;
+                                    }
+
+
+
+                                    // Constants for calculation
+
+                                    var Maize_A = 0.09;
+
+                                    var Soyabinmeal_A = 0.44;
+
+                                    var MBMWAFI_A = 0.6;
+
+                                    var RicePolish_A = 0.13;
+
+                                    var Rapeseed_A = 0.38;
+
+                                    var DORB_A = 0.17;
+
+                                    var FullFatsoyabin_A = 0.37;
+
+                                    var Mithionine_A = 0.59;
+
+                                    var Lysine_A = 0.58;
+
+
+
+                                    var Maize_B = 32;
+
+                                    var Soyabinmeal_B = 27;
+
+                                    var MBMWAFI_B = 28.5;
+
+                                    var RicePolish_B = 28;
+
+                                    var Rapeseed_B = 28;
+
+                                    var DORB_B = 15;
+
+                                    var FullFatsoyabin_B = 38;
+
+                                    var Mithionine_B = 50;
+
+                                    var Lysine_B = 36;
+
+
+
+                                    var SoyabinOil_B = 80;
+
+                                    var MixingCharge_B = 100;
+
+                                    var BagPack50kg_B = 100;
+
+                                    var TPSMarketing_B = 1.7;
+
+
+
+
+                                    // Calculate output values
+                                    var Maize_O_A = parseFloat(Maize_A * Maize_in).toFixed(2);
+                                    var Maize_O_B = parseFloat(Maize_B * Maize_in).toFixed(2);
+
+                                    var Soyabinmeal_O_A = parseFloat(Soyabinmeal_A * Soyabinmeal_in).toFixed(2);
+                                    var Soyabinmeal_O_B = parseFloat(Soyabinmeal_B * Soyabinmeal_in).toFixed(2);
+
+                                    var MBMWAFI_O_A = parseFloat(MBMWAFI_A * MBMWAFI_in).toFixed(2);
+                                    var MBMWAFI_O_B = parseFloat(MBMWAFI_B * MBMWAFI_in).toFixed(2);
+
+                                    var RicePolish_O_A = parseFloat(RicePolish_A * RicePolish_in).toFixed(2);
+                                    var RicePolish_O_B = parseFloat(RicePolish_B * RicePolish_in).toFixed(2);
+
+                                    var Rapeseed_O_A = parseFloat(Rapeseed_A * Rapeseed_in).toFixed(2);
+                                    var Rapeseed_O_B = parseFloat(Rapeseed_B * Rapeseed_in).toFixed(2);
+
+
+                                    var DORB_O_A = parseFloat(DORB_A * DORB_in).toFixed(2);
+                                    var DORB_O_B = parseFloat(DORB_B * DORB_in).toFixed(2);
+
+                                    var FullFatsoyabin_O_A = parseFloat(FullFatsoyabin_A * FullFatsoyabin_in).toFixed(2);
+                                    var FullFatsoyabin_O_B = parseFloat(FullFatsoyabin_B * FullFatsoyabin_in).toFixed(2);
+
+                                    var Mithionine_O_A = parseFloat(Mithionine_A * Mithionine_in).toFixed(2);
+                                    var Mithionine_O_B = parseFloat(Mithionine_B * Mithionine_in).toFixed(2);
+
+                                    var Lysine_O_A = parseFloat(Lysine_A * Lysine_in).toFixed(2);
+                                    var Lysine_O_B = parseFloat(Lysine_B * Lysine_in).toFixed(2);
+
+
+
+                                    var SoyabinOil_O_B = parseFloat(SoyabinOil_B * SoyabinOil_in).toFixed(2);
+
+                                    var MixingCharge_O_B = parseFloat(MixingCharge_B * MixingCharge_in).toFixed(2);
+
+                                    var BagPack50kg_O_B = parseFloat(BagPack50kg_B * BagPack50kg_in).toFixed(2);
+
+                                    var TPSMarketing_O_B = parseFloat(TPSMarketing_B * TPSMarketing_in).toFixed(2);
+
+                                    var ttlinS = parseFloat(Maize_in) + parseFloat(Soyabinmeal_in) + parseFloat(MBMWAFI_in)
+                                        + parseFloat(RicePolish_in) + parseFloat(Rapeseed_in) + parseFloat(DORB_in) + parseFloat(FullFatsoyabin_in) + parseFloat(DCPMCP_in)
+                                        + parseFloat(Limestone_in) + parseFloat(Mithionine_in) + parseFloat(Lysine_in) + parseFloat(ColineCloride_in) + parseFloat(Toxinbinder_in)
+                                        + parseFloat(LayerPremix_in) + parseFloat(SulmonelakillerSGS_in) + parseFloat(Enzyme_in) + parseFloat(DiclazurilSalinomycin_in) + parseFloat(Grothpromoter_in)
+                                        + parseFloat(SoyabinOil_in) + parseFloat(BiscutCake_in) + parseFloat(IodineSolt_in) + parseFloat(Sodiumbycurb_in) + parseFloat(RenaPhytaze_in)
+                                        + parseFloat(LiposorbEmulsifier_in) + parseFloat(EselPremix_in) + parseFloat(MilkPowder_in) + parseFloat(MixingCharge_in) + parseFloat(BagPack50kg_in)
+                                        + parseFloat(TPSMarketing_in);
+                                    var Total_inS = ttlinS.toFixed(2);
+
+                                    var ttlcpinS = parseFloat(Maize_O_A) + parseFloat(Soyabinmeal_O_A) + parseFloat(MBMWAFI_O_A)
+                                        + parseFloat(RicePolish_O_A) + parseFloat(Rapeseed_O_A) + parseFloat(DORB_O_A) + parseFloat(FullFatsoyabin_O_A)
+                                        + parseFloat(Mithionine_O_A) + parseFloat(Lysine_O_A);
+                                    var Total_CPS = ttlcpinS.toFixed(2);
+
+
+                                    var ttlengS = parseFloat(Maize_O_B) + parseFloat(Soyabinmeal_O_B) + parseFloat(MBMWAFI_O_B)
+                                        + parseFloat(RicePolish_O_B) + parseFloat(Rapeseed_O_B) + parseFloat(DORB_O_B) + parseFloat(FullFatsoyabin_O_B)
+                                        + parseFloat(Mithionine_O_B) + parseFloat(Lysine_O_B)
+                                        + parseFloat(SoyabinOil_O_B) + parseFloat(MixingCharge_O_B) + parseFloat(BagPack50kg_O_B) + parseFloat(TPSMarketing_O_B);
+                                    var Total_EergS = ttlengS.toFixed(2);
+
+
+
+                                    // Update the output values on the page
+                                    document.getElementById("Maize_O_A").innerText = Maize_O_A;
+                                    document.getElementById("Maize_O_B").innerText = Maize_O_B;
+
+                                    document.getElementById("Soyabinmeal_O_A").innerText = Soyabinmeal_O_A;
+                                    document.getElementById("Soyabinmeal_O_B").innerText = Soyabinmeal_O_B;
+
+                                    document.getElementById("MBMWAFI_O_A").innerText = MBMWAFI_O_A;
+                                    document.getElementById("MBMWAFI_O_B").innerText = MBMWAFI_O_B;
+
+                                    document.getElementById("RicePolish_O_A").innerText = RicePolish_O_A;
+                                    document.getElementById("RicePolish_O_B").innerText = RicePolish_O_B;
+
+                                    document.getElementById("Rapeseed_O_A").innerText = Rapeseed_O_A;
+                                    document.getElementById("Rapeseed_O_B").innerText = Rapeseed_O_B;
+
+                                    document.getElementById("DORB_O_A").innerText = DORB_O_A;
+                                    document.getElementById("DORB_O_B").innerText = DORB_O_B;
+
+                                    document.getElementById("FullFatsoyabin_O_A").innerText = FullFatsoyabin_O_A;
+                                    document.getElementById("FullFatsoyabin_O_B").innerText = FullFatsoyabin_O_B;
+
+
+                                    document.getElementById("Mithionine_O_A").innerText = Mithionine_O_A;
+                                    document.getElementById("Mithionine_O_B").innerText = Mithionine_O_B;
+
+                                    document.getElementById("Lysine_O_A").innerText = Lysine_O_A;
+                                    document.getElementById("Lysine_O_B").innerText = Lysine_O_B;
+
+
+                                    document.getElementById("SoyabinOil_O_B").innerText = SoyabinOil_O_B;
+
+
+                                    document.getElementById("MixingCharge_O_B").innerText = MixingCharge_O_B;
+                                    document.getElementById("BagPack50kg_O_B").innerText = BagPack50kg_O_B;
+                                    document.getElementById("TPSMarketing_O_B").innerText = TPSMarketing_O_B;
+
+
+                                    document.getElementById("Total_inS").innerText = Total_inS;
+
+                                    document.getElementById("Total_CPS").innerText = Total_CPS;
+
+                                    document.getElementById("Total_EergS").innerText = Total_EergS;
+
+
+
+
+
+
+                                }
+
+                                // Calculate initial values on page load
+                                calculateValues();
+
+
+
+                                function printDivS(usernameS, dateS) {
+                                    document.getElementById('usernameS').innerText = usernameS + '\n' + dateS;
+                                    // Clone the print_are div
+                                    var printContents = document.getElementById("print_areS").cloneNode(true);
+
+                                    // Create a new window and append the cloned content
+                                    var printWindow = window.open('', '_blank');
+                                    printWindow.document.body.appendChild(printContents);
+
+                                    // Print the new window
+                                    printWindow.print();
+
+                                }
+
+
+
+
+                            </script>
+
+                            <p style="font-size:20px; line-height:20px;" id="usernameS"></p>
+                        </div>
+
+                        <div style="padding-top:2px; text-align:center;">
+                            @* <button onclick="calculate()">ক্যালকুলেট</button> *@
+                            <button onclick="printDivS('@Username','@date')" class="btn btn-primary" style="object-position:center;" id="print">ফর্মুলেশন করুন</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>   <!--Calculator Layer Starter Compleated -->
+
+
+
+        </div>  <!--Starter-->
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card bg-info text-black">
+                <div class="card-body">
+
+                    <div style="background-color:powderblue;">
+
+                        <div id="print_areG">
+
+                            <style>
+                                body {
+                                    font-family: Arial, sans-serif;
+                                    background-color: powderblue;
+                                }
+
+                                h1 {
+                                    color: #333;
+                                }
+
+                                table {
+                                    border-collapse: collapse;
+                                    width: 98%;
+                                    margin-top: 110px;
+                                    margin-left: 1%;
+                                    margin-right: 1%;
+                                    background-color: #ddd;
+                                    border: black;
+                                }
+
+                                .hedr {
+                                    position: absolute;
+                                    top: 6px;
+                                    left: 0px;
+                                    margin: 2%;
+                                    height: 90px;
+                                    width: 96%;
+                                    margin-top: 6px;
+                                    background-color: powderblue;
+                                    pointer-events: none;
+                                }
+
+                                th,
+                                td {
+                                    text-align: left;
+                                    line-height: 10px;
+                                    padding-left: 5px;
+                                    background-color: #ddd;
+                                    border: 1px solid black;
+                                }
+
+
+
+                                input {
+                                    width: 99%;
+                                    border: 1px solid #ddd;
+                                    border-radius: 2px;
+                                    line-height: 10px;
+                                    text-align: center;
+                                    border: none;
+                                    z-index: 2;
+                                }
+
+
+
+                                #output {
+                                    margin: 2px auto;
+                                    max-width: 95%;
+                                    background-color: #ddd;
+                                }
+
+                                input::-webkit-input-placeholder {
+                                    color: black; /*Change the placeholder color*/
+                                    opacity: .5; /*Change the opacity between 0 and 1*/
+                                }
+
+                                .watermark {
+                                    position: fixed;
+                                    top: 40%;
+                                    left: 50%;
+                                    width: 63vw;
+                                    height: 42vh;
+                                    transform: translate(-50%, -50%);
+                                    opacity: 0.2;
+                                    z-index: 1; /* Lower z-index than the input field */
+                                    pointer-events: none;
+                                }
+
+                                #usernameG {
+                                    position: absolute;
+                                    top: 80%;
+                                    left: 70%;
+                                    transform: translate(-50 %, -50 %);
+                                }
+
+                            </style>
+                           @*  <h5 style="text-align:center"> উপজেলা প্রাণিসম্পদ দপ্তর ও ভেটেরিনারি হাসপাতাল</h5>
+                            <h5 style="text-align:center"> Layer Feed(Grower)</h5> *@
+
+                            <img src="~/headerimages/layergrower.png" class="hedr" />
+                            <div>
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style="font-size:15px;line-height:15px;">Raw material</th>
+                                            <th style="text-align:center;font-size:15px;">Quantity</th>
+                                            <th style="font-size:15px;">CP</th>
+                                            <th style="font-size:15px;">Energy</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Maize</td>
+                                            <td><input type="number" id="MaizeG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SoyabinmealG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="MaizeG_O_A"></td>
+                                            <td id="MaizeG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Soyabin meal</td>
+                                            <td><input type="number" id="SoyabinmealG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MBMWAFIG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="SoyabinmealG_O_A"></td>
+                                            <td id="SoyabinmealG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>MBM/WAFI</td>
+                                            <td><input type="number" id="MBMWAFIG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RicePolishG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="MBMWAFIG_O_A"></td>
+                                            <td id="MBMWAFIG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rice Polish</td>
+                                            <td><input type="number" id="RicePolishG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RapeseedG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="RicePolishG_O_A"></td>
+                                            <td id="RicePolishG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rape seed</td>
+                                            <td><input type="number" id="RapeseedG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DORBG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="RapeseedG_O_A"></td>
+                                            <td id="RapeseedG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>DORB</td>
+                                            <td><input type="number" id="DORBG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'FullFatsoyabinG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="DORBG_O_A"></td>
+                                            <td id="DORBG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Full Fat soyabin</td>
+                                            <td><input type="number" id="FullFatsoyabinG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DCPMCPG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="FullFatsoyabinG_O_A"></td>
+                                            <td id="FullFatsoyabinG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>DCP/MCP</td>
+                                            <td><input type="number" id="DCPMCPG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LimestoneG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="DCPMCPG_O_A"></td>
+                                            <td id="DCPMCPG_O_B"></td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>Limestone</td>
+                                            <td><input type="number" id="LimestoneG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MithionineG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="LimestoneG_O_A"></td>
+                                            <td id="LimestoneG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mithionine</td>
+                                            <td><input type="number" id="MithionineG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LysineG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="MithionineG_O_A"></td>
+                                            <td id="MithionineG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lysine</td>
+                                            <td><input type="number" id="LysineG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'ColineClorideG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="LysineG_O_A"></td>
+                                            <td id="LysineG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coline Cloride</td>
+                                            <td><input type="number" id="ColineClorideG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'ToxinbinderG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="ColineClorideG_O_A"></td>
+                                            <td id="ColineClorideG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Toxinbinder</td>
+                                            <td><input type="number" id="ToxinbinderG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LayerPremixG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="ToxinbinderG_O_A"></td>
+                                            <td id="ToxinbinderG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Layer Premix</td>
+                                            <td><input type="number" id="LayerPremixG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SulmonelakillerSGSG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="LayerPremixG_O_A"></td>
+                                            <td id="LayerPremixG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>SulmonelakillerSGS</td>
+                                            <td><input type="number" id="SulmonelakillerSGSG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'EnzymeG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="SulmonelakillerSGSG_O_A"></td>
+                                            <td id="SulmonelakillerSGSG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Enzyme</td>
+                                            <td><input type="number" id="EnzymeG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DiclazurilSalinomycinG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="EnzymeG_O_A"></td>
+                                            <td id="EnzymeG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Diclazuril/Salinomycin</td>
+                                            <td><input type="number" id="DiclazurilSalinomycinG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'GrothpromoterG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="DiclazurilSalinomycinG_O_A"></td>
+                                            <td id="DiclazurilSalinomycinG_O_B"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Grothpromoter</td>
+                                            <td><input type="number" id="GrothpromoterG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SoyabinOilG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="GrothpromoterG_O_A"></td>
+                                            <td id="GrothpromoterG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Soyabin Oil</td>
+                                            <td><input type="number" id="SoyabinOilG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'BiscutCakeG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="SoyabinOilG_O_A"></td>
+                                            <td id="SoyabinOilG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Biscut Cake</td>
+                                            <td><input type="number" id="BiscutCakeG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'IodineSoltG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="BiscutCakeG_O_A"></td>
+                                            <td id="BiscutCakeG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Iodine/Solt</td>
+                                            <td><input type="number" id="IodineSoltG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SodiumbycurbG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="IodineSoltG_O_A"></td>
+                                            <td id="IodineSoltG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sodium by curb</td>
+                                            <td><input type="number" id="SodiumbycurbG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RenaPhytazeG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="SodiumbycurbG_O_A"></td>
+                                            <td id="SodiumbycurbG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rena-Phytaze</td>
+                                            <td><input type="number" id="RenaPhytazeG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LiposorbEmulsifierG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="RenaPhytazeG_O_A"></td>
+                                            <td id="RenaPhytazeG_O_B"></td>
+                                        </tr>
+
+
+
+                                        <tr>
+                                            <td>Liposorb(Emulsifier)</td>
+                                            <td><input type="number" id="LiposorbEmulsifierG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'EselPremixG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="LiposorbEmulsifierG_O_A"></td>
+                                            <td id="LiposorbEmulsifierG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Esel Premix</td>
+                                            <td><input type="number" id="EselPremixG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MilkPowderG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="EselPremixG_O_A"></td>
+                                            <td id="EselPremixG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Milk Powder</td>
+                                            <td><input type="number" id="MilkPowderG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MixingChargeG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="MilkPowderG_O_A"></td>
+                                            <td id="MilkPowderG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mixing Charge</td>
+                                            <td><input type="number" id="MixingChargeG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'BagPack50kgG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="MixingChargeG_O_A"></td>
+                                            <td id="MixingChargeG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bag/Pack 50kg</td>
+                                            <td><input type="number" id="BagPack50kgG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'TPSMarketingG_in')" oninput="calculateValuesG()"></td>
+                                            <td id="BagPack50kgG_O_A"></td>
+                                            <td id="BagPack50kgG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>TPS & Marketing</td>
+                                            <td><input type="number" id="TPSMarketingG_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="PrintLayerG(event, 'printG')" oninput="calculateValuesG()"></td>
+                                            <td id="TPSMarketingG_O_A"></td>
+                                            <td id="TPSMarketingG_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">Total</td>
+                                            <td style="text-align:center; font-weight:bold; line-height:15px;" id="Total_inG"></td>
+                                            <td style="font-weight:bold;" id="Total_CPG"></td>
+                                            <td style="font-weight:bold;" id="Total_EergG"></td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+
+
+
+
+
+                            </div>
+
+
+                            <img src="~/imageslogo/ismartlogo.png" class="watermark" />
+
+                            <script>
+
+                                function moveToNextInput(event, nextInputId) {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        const nextInput = document.getElementById(nextInputId);
+
+                                        if (nextInput) {
+                                            nextInput.select();
+                                        }
+                                    }
+                                }
+
+                                function PrintLayerG(event, nextInputId) {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        const nextInput = document.getElementById(nextInputId);
+
+                                        if (nextInput) {
+                                            nextInput.focus();
+                                        }
+                                    }
+                                }
+
+
+                                // Function to calculate values
+                                function calculateValuesG() {
+
+                                    // Get the user input
+                                    var MaizeG_in = document.getElementById("MaizeG_in").value;
+
+                                    // If user doesn't input, set default value
+                                    if (MaizeG_in === "") {
+                                        MaizeG_in = 57;
+                                        document.getElementById("MaizeG_in").value = MaizeG_in;
+                                    }
+
+                                    var SoyabinmealG_in = document.getElementById("SoyabinmealG_in").value;
+                                    if (SoyabinmealG_in === "") {
+                                        SoyabinmealG_in = 16;
+                                        document.getElementById("SoyabinmealG_in").value = SoyabinmealG_in;
+                                    }
+
+
+                                    var MBMWAFIG_in = document.getElementById("MBMWAFIG_in").value;
+                                    if (MBMWAFIG_in === "") {
+                                        MBMWAFIG_in = 5;
+                                        document.getElementById("MBMWAFIG_in").value = MBMWAFIG_in;
+                                    }
+                                    var RicePolishG_in = document.getElementById("RicePolishG_in").value;
+
+                                    if (RicePolishG_in === "") {
+                                        RicePolishG_in = 10;
+                                        document.getElementById("RicePolishG_in").value = RicePolishG_in;
+                                    }
+
+
+                                    var RapeseedG_in = document.getElementById("RapeseedG_in").value;
+                                    if (RapeseedG_in === "") {
+                                        RapeseedG_in = 2;
+                                        document.getElementById("RapeseedG_in").value = RapeseedG_in;
+                                    }
+
+                                    var DORBG_in = document.getElementById("DORBG_in").value;
+                                    if (DORBG_in === "") {
+                                        DORBG_in = 0;
+                                        document.getElementById("DORBG_in").value = DORBG_in;
+                                    }
+
+                                    var FullFatsoyabinG_in = document.getElementById("FullFatsoyabinG_in").value;
+                                    if (FullFatsoyabinG_in === "") {
+                                        FullFatsoyabinG_in = 0;
+                                        document.getElementById("FullFatsoyabinG_in").value = FullFatsoyabinG_in;
+                                    }
+
+                                    var DCPMCPG_in = document.getElementById("DCPMCPG_in").value;
+
+                                    if (DCPMCPG_in === "") {
+                                        DCPMCPG_in = 0.6;
+                                        document.getElementById("DCPMCPG_in").value = DCPMCPG_in;
+                                    }
+                                    var LimestoneG_in = document.getElementById("LimestoneG_in").value;
+                                    if (LimestoneG_in === "") {
+                                        LimestoneG_in = 8;
+                                        document.getElementById("LimestoneG_in").value = LimestoneG_in;
+                                    }
+
+                                    var MithionineG_in = document.getElementById("MithionineG_in").value;
+                                    if (MithionineG_in === "") {
+                                        MithionineG_in = 0.15;
+                                        document.getElementById("MithionineG_in").value = MithionineG_in;
+                                    }
+                                    var LysineG_in = document.getElementById("LysineG_in").value;
+                                    if (LysineG_in === "") {
+                                        LysineG_in = 0.1;
+                                        document.getElementById("LysineG_in").value = LysineG_in;
+                                    }
+                                    var ColineClorideG_in = document.getElementById("ColineClorideG_in").value;
+                                    if (ColineClorideG_in === "") {
+                                        ColineClorideG_in = 0.03;
+                                        document.getElementById("ColineClorideG_in").value = ColineClorideG_in;
+                                    }
+                                    var ToxinbinderG_in = document.getElementById("ToxinbinderG_in").value;
+                                    if (ToxinbinderG_in === "") {
+                                        ToxinbinderG_in = 0.1;
+                                        document.getElementById("ToxinbinderG_in").value = ToxinbinderG_in;
+                                    }
+                                    var LayerPremixG_in = document.getElementById("LayerPremixG_in").value;
+                                    if (LayerPremixG_in === "") {
+                                        LayerPremixG_in = 0.25;
+                                        document.getElementById("LayerPremixG_in").value = LayerPremixG_in;
+                                    }
+                                    var SulmonelakillerSGSG_in = document.getElementById("SulmonelakillerSGSG_in").value;
+                                    if (SulmonelakillerSGSG_in === "") {
+                                        SulmonelakillerSGSG_in = 0.2;
+                                        document.getElementById("SulmonelakillerSGSG_in").value = SulmonelakillerSGSG_in;
+                                    }
+                                    var EnzymeG_in = document.getElementById("EnzymeG_in").value;
+                                    if (EnzymeG_in === "") {
+                                        EnzymeG_in = 0.02;
+                                        document.getElementById("EnzymeG_in").value = EnzymeG_in;
+                                    }
+                                    var DiclazurilSalinomycinG_in = document.getElementById("DiclazurilSalinomycinG_in").value;
+                                    if (DiclazurilSalinomycinG_in === "") {
+                                        DiclazurilSalinomycinG_in = 0.05;
+                                        document.getElementById("DiclazurilSalinomycinG_in").value = DiclazurilSalinomycinG_in;
+                                    }
+
+                                    var GrothpromoterG_in = document.getElementById("GrothpromoterG_in").value;
+                                    if (GrothpromoterG_in === "") {
+                                        GrothpromoterG_in = 0.05;
+                                        document.getElementById("GrothpromoterG_in").value = GrothpromoterG_in;
+                                    }
+                                    var SoyabinOilG_in = document.getElementById("SoyabinOilG_in").value;
+                                    if (SoyabinOilG_in === "") {
+                                        SoyabinOilG_in = 0;
+                                        document.getElementById("SoyabinOilG_in").value = SoyabinOilG_in;
+                                    }
+                                    var BiscutCakeG_in = document.getElementById("BiscutCakeG_in").value;
+                                    if (BiscutCakeG_in === "") {
+                                        BiscutCakeG_in = 0;
+                                        document.getElementById("BiscutCakeG_in").value = BiscutCakeG_in;
+                                    }
+                                    var IodineSoltG_in = document.getElementById("IodineSoltG_in").value;
+                                    if (IodineSoltG_in === "") {
+                                        IodineSoltG_in = 0.2;
+                                        document.getElementById("IodineSoltG_in").value = IodineSoltG_in;
+                                    }
+                                    var SodiumbycurbG_in = document.getElementById("SodiumbycurbG_in").value;
+                                    if (SodiumbycurbG_in === "") {
+                                        SodiumbycurbG_in = 0.1;
+                                        document.getElementById("SodiumbycurbG_in").value = SodiumbycurbG_in;
+                                    }
+                                    var RenaPhytazeG_in = document.getElementById("RenaPhytazeG_in").value;
+                                    if (RenaPhytazeG_in === "") {
+                                        RenaPhytazeG_in = 0.1;
+                                        document.getElementById("RenaPhytazeG_in").value = RenaPhytazeG_in;
+                                    }
+                                    var LiposorbEmulsifierG_in = document.getElementById("LiposorbEmulsifierG_in").value;
+                                    if (LiposorbEmulsifierG_in === "") {
+                                        LiposorbEmulsifierG_in = 0.05;
+                                        document.getElementById("LiposorbEmulsifierG_in").value = LiposorbEmulsifierG_in;
+                                    }
+                                    var EselPremixG_in = document.getElementById("EselPremixG_in").value;
+                                    if (EselPremixG_in === "") {
+                                        EselPremixG_in = 0;
+                                        document.getElementById("EselPremixG_in").value = EselPremixG_in;
+                                    }
+                                    var MilkPowderG_in = document.getElementById("MilkPowderG_in").value;
+                                    if (MilkPowderG_in === "") {
+                                        MilkPowderG_in = 0;
+                                        document.getElementById("MilkPowderG_in").value = MilkPowderG_in;
+                                    }
+                                    var MixingChargeG_in = document.getElementById("MixingChargeG_in").value;
+                                    if (MixingChargeG_in === "") {
+                                        MixingChargeG_in = 0;
+                                        document.getElementById("MixingChargeG_in").value = MixingChargeG_in;
+                                    }
+                                    var BagPack50kgG_in = document.getElementById("BagPack50kgG_in").value;
+                                    if (BagPack50kgG_in === "") {
+                                        BagPack50kgG_in = 0;
+                                        document.getElementById("BagPack50kgG_in").value = BagPack50kgG_in;
+                                    }
+                                    var TPSMarketingG_in = document.getElementById("TPSMarketingG_in").value;
+                                    if (TPSMarketingG_in === "") {
+                                        TPSMarketingG_in = 0;
+                                        document.getElementById("TPSMarketingG_in").value = TPSMarketingG_in;
+                                    }
+
+
+                                    // Constants for calculation
+
+                                    var MaizeF_A = 0.09;
+
+                                    var SoyabinmealF_A = 0.44;
+
+                                    var MBMWAFIF_A = 0.6;
+
+                                    var RicePolishF_A = 0.13;
+
+                                    var RapeseedF_A = 0.38;
+
+                                    var DORBF_A = 0.17;
+
+                                    var FullFatsoyabinF_A = 0.37;
+
+                                    var MithionineF_A = 0.59;
+
+                                    var LysineF_A = 0.58;
+
+
+
+                                    var MaizeF_B = 32;
+
+                                    var SoyabinmealF_B = 27;
+
+                                    var MBMWAFIF_B = 28.5;
+
+                                    var RicePolishF_B = 28;
+
+                                    var RapeseedF_B = 28;
+
+                                    var DORBF_B = 15;
+
+                                    var FullFatsoyabinF_B = 38;
+
+                                    var MithionineF_B = 50;
+
+                                    var LysineF_B = 36;
+
+
+
+                                    var SoyabinOilF_B = 80;
+
+                                    var MixingChargeF_B = 100;
+
+                                    var BagPack50kgF_B = 100;
+
+                                    var TPSMarketingF_B = 1.7;
+
+
+
+
+                                    // Calculate output values
+                                    var MaizeG_O_A = parseFloat(MaizeF_A * MaizeG_in).toFixed(2);
+                                    var MaizeG_O_B = parseFloat(MaizeF_B * MaizeG_in).toFixed(2);
+
+                                    var SoyabinmealG_O_A = parseFloat(SoyabinmealF_A * SoyabinmealG_in).toFixed(2);
+                                    var SoyabinmealG_O_B = parseFloat(SoyabinmealF_B * SoyabinmealG_in).toFixed(2);
+
+                                    var MBMWAFIG_O_A = parseFloat(MBMWAFIF_A * MBMWAFIG_in).toFixed(2);
+                                    var MBMWAFIG_O_B = parseFloat(MBMWAFIF_B * MBMWAFIG_in).toFixed(2);
+
+                                    var RicePolishG_O_A = parseFloat(RicePolishF_A * RicePolishG_in).toFixed(2);
+                                    var RicePolishG_O_B = parseFloat(RicePolishF_B * RicePolishG_in).toFixed(2);
+
+                                    var RapeseedG_O_A = parseFloat(RapeseedF_A * RapeseedG_in).toFixed(2);
+                                    var RapeseedG_O_B = parseFloat(RapeseedF_B * RapeseedG_in).toFixed(2);
+
+
+                                    var DORBG_O_A = parseFloat(DORBF_A * DORBG_in).toFixed(2);
+                                    var DORBG_O_B = parseFloat(DORBF_B * DORBG_in).toFixed(2);
+
+                                    var FullFatsoyabinG_O_A = parseFloat(FullFatsoyabinF_A * FullFatsoyabinG_in).toFixed(2);
+                                    var FullFatsoyabinG_O_B = parseFloat(FullFatsoyabinF_B * FullFatsoyabinG_in).toFixed(2);
+
+                                    var MithionineG_O_A = parseFloat(MithionineF_A * MithionineG_in).toFixed(2);
+                                    var MithionineG_O_B = parseFloat(MithionineF_B * MithionineG_in).toFixed(2);
+
+                                    var LysineG_O_A = parseFloat(LysineF_A * LysineG_in).toFixed(2);
+                                    var LysineG_O_B = parseFloat(LysineF_B * LysineG_in).toFixed(2);
+
+
+
+                                    var SoyabinOilG_O_B = parseFloat(SoyabinOilF_B * SoyabinOilG_in).toFixed(2);
+
+                                    var MixingChargeG_O_B = parseFloat(MixingChargeF_B * MixingChargeG_in).toFixed(2);
+
+                                    var BagPack50kgG_O_B = parseFloat(BagPack50kgF_B * BagPack50kgG_in).toFixed(2);
+
+                                    var TPSMarketingG_O_B = parseFloat(TPSMarketingF_B * TPSMarketingG_in).toFixed(2);
+
+                                    var ttlinG = parseFloat(MaizeG_in) + parseFloat(SoyabinmealG_in) + parseFloat(MBMWAFIG_in)
+                                        + parseFloat(RicePolishG_in) + parseFloat(RapeseedG_in) + parseFloat(DORBG_in) + parseFloat(FullFatsoyabinG_in) + parseFloat(DCPMCPG_in)
+                                        + parseFloat(LimestoneG_in) + parseFloat(MithionineG_in) + parseFloat(LysineG_in) + parseFloat(ColineClorideG_in) + parseFloat(ToxinbinderG_in)
+                                        + parseFloat(LayerPremixG_in) + parseFloat(SulmonelakillerSGSG_in) + parseFloat(EnzymeG_in) + parseFloat(DiclazurilSalinomycinG_in) + parseFloat(GrothpromoterG_in)
+                                        + parseFloat(SoyabinOilG_in) + parseFloat(BiscutCakeG_in) + parseFloat(IodineSoltG_in) + parseFloat(SodiumbycurbG_in) + parseFloat(RenaPhytazeG_in)
+                                        + parseFloat(LiposorbEmulsifierG_in) + parseFloat(EselPremixG_in) + parseFloat(MilkPowderG_in) + parseFloat(MixingChargeG_in) + parseFloat(BagPack50kgG_in)
+                                        + parseFloat(TPSMarketingG_in);
+                                    var Total_inG = ttlinG.toFixed(2);
+
+                                    var ttlcpinG = parseFloat(MaizeG_O_A) + parseFloat(SoyabinmealG_O_A) + parseFloat(MBMWAFIG_O_A)
+                                        + parseFloat(RicePolishG_O_A) + parseFloat(RapeseedG_O_A) + parseFloat(DORBG_O_A) + parseFloat(FullFatsoyabinG_O_A)
+                                        + parseFloat(MithionineG_O_A) + parseFloat(LysineG_O_A);
+                                    var Total_CPG = ttlcpinG.toFixed(2);
+
+
+                                    var ttlengG = parseFloat(MaizeG_O_B) + parseFloat(SoyabinmealG_O_B) + parseFloat(MBMWAFIG_O_B)
+                                        + parseFloat(RicePolishG_O_B) + parseFloat(RapeseedG_O_B) + parseFloat(DORBG_O_B) + parseFloat(FullFatsoyabinG_O_B)
+                                        + parseFloat(MithionineG_O_B) + parseFloat(LysineG_O_B)
+                                        + parseFloat(SoyabinOilG_O_B) + parseFloat(MixingChargeG_O_B) + parseFloat(BagPack50kgG_O_B) + parseFloat(TPSMarketingG_O_B);
+                                    var Total_EergG = ttlengG.toFixed(2);
+
+                                    // Update the output values on the page
+                                    document.getElementById("MaizeG_O_A").innerText = MaizeG_O_A;
+                                    document.getElementById("MaizeG_O_B").innerText = MaizeG_O_B;
+
+                                    document.getElementById("SoyabinmealG_O_A").innerText = SoyabinmealG_O_A;
+                                    document.getElementById("SoyabinmealG_O_B").innerText = SoyabinmealG_O_B;
+
+                                    document.getElementById("MBMWAFIG_O_A").innerText = MBMWAFIG_O_A;
+                                    document.getElementById("MBMWAFIG_O_B").innerText = MBMWAFIG_O_B;
+
+                                    document.getElementById("RicePolishG_O_A").innerText = RicePolishG_O_A;
+                                    document.getElementById("RicePolishG_O_B").innerText = RicePolishG_O_B;
+
+                                    document.getElementById("RapeseedG_O_A").innerText = RapeseedG_O_A;
+                                    document.getElementById("RapeseedG_O_B").innerText = RapeseedG_O_B;
+
+                                    document.getElementById("DORBG_O_A").innerText = DORBG_O_A;
+                                    document.getElementById("DORBG_O_B").innerText = DORBG_O_B;
+
+                                    document.getElementById("FullFatsoyabinG_O_A").innerText = FullFatsoyabinG_O_A;
+                                    document.getElementById("FullFatsoyabinG_O_B").innerText = FullFatsoyabinG_O_B;
+
+
+                                    document.getElementById("MithionineG_O_A").innerText = MithionineG_O_A;
+                                    document.getElementById("MithionineG_O_B").innerText = MithionineG_O_B;
+
+                                    document.getElementById("LysineG_O_A").innerText = LysineG_O_A;
+                                    document.getElementById("LysineG_O_B").innerText = LysineG_O_B;
+
+
+                                    document.getElementById("SoyabinOilG_O_B").innerText = SoyabinOilG_O_B;
+
+                                    document.getElementById("MixingChargeG_O_B").innerText = MixingChargeG_O_B;
+
+                                    document.getElementById("BagPack50kgG_O_B").innerText = BagPack50kgG_O_B;
+
+                                    document.getElementById("TPSMarketingG_O_B").innerText = TPSMarketingG_O_B;
+
+
+
+                                    document.getElementById("Total_inG").innerText = Total_inG;
+
+                                    document.getElementById("Total_CPG").innerText = Total_CPG;
+
+                                    document.getElementById("Total_EergG").innerText = Total_EergG;
+
+
+
+                                }
+
+                                // Calculate initial values on page load
+                                calculateValuesG();
+
+
+
+                                function printDivG(usernameG, dateG) {
+
+                                    document.getElementById('usernameG').innerText = usernameG + '\n' + dateG;
+                                    // Clone the print_are div
+                                    var printContents = document.getElementById("print_areG").cloneNode(true);
+
+                                    // Create a new window and append the cloned content
+                                    var printWindow = window.open('', '_blank');
+                                    printWindow.document.body.appendChild(printContents);
+
+                                    // Print the new window
+                                    printWindow.print();
+
+                                }
+
+
+
+
+                            </script>
+
+                            <p style="font-size:20px; line-height:20px;" id="usernameG"></p>
+                        </div>
+
+                        <div style="padding-top:2px; text-align:center;">
+                            @* <button onclick="calculate()">ক্যালকুলেট</button> *@
+                            <button onclick="printDivG('@Username','@date')" class="btn btn-primary" style="object-position:center;" id="printG">ফর্মুলেশন করুন</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>  
+
+
+
+        </div>     <!--grower-->
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card bg-info text-black">
+                <div class="card-body">
+
+                    <div style="background-color:powderblue;">
+
+                        <div id="print_areF">
+
+                            <style>
+                                body {
+                                    font-family: Arial, sans-serif;
+                                    background-color: powderblue;
+                                }
+
+                                h1 {
+                                    color: #333;
+                                }
+
+                                table {
+                                    border-collapse: collapse;
+                                    width: 98%;
+                                    margin-top: 110px;
+                                    margin-left: 1%;
+                                    margin-right: 1%;
+                                    background-color: #ddd;
+                                    border: black;
+                                }
+
+                                .hedr {
+                                    position: absolute;
+                                    top: 6px;
+                                    left: 0px;
+                                    margin: 2%;
+                                    height: 90px;
+                                    width: 96%;
+                                    margin-top: 6px;
+                                    background-color: powderblue;
+                                    pointer-events: none;
+                                }
+
+                                th,
+                                td {
+                                    text-align: left;
+                                    line-height: 10px;
+                                    padding-left: 5px;
+                                    background-color: #ddd;
+                                    border: 1px solid black;
+                                }
+
+
+
+                                input {
+                                    width: 99%;
+                                    border: 1px solid #ddd;
+                                    border-radius: 2px;
+                                    line-height: 10px;
+                                    text-align: center;
+                                    border: none;
+                                    z-index: 2;
+                                }
+
+
+
+                                #output {
+                                    margin: 2px auto;
+                                    max-width: 95%;
+                                    background-color: #ddd;
+                                }
+
+                                input::-webkit-input-placeholder {
+                                    color: black; /*Change the placeholder color*/
+                                    opacity: .5; /*Change the opacity between 0 and 1*/
+                                }
+
+                                .watermark {
+                                    position: fixed;
+                                    top: 40%;
+                                    left: 50%;
+                                    width: 63vw;
+                                    height: 42vh;
+                                    transform: translate(-50%, -50%);
+                                    opacity: 0.2;
+                                    z-index: 1; /* Lower z-index than the input field */
+                                    pointer-events: none;
+                                }
+
+                                #usernameF {
+                                    position: absolute;
+                                    top: 80%;
+                                    left: 70%;
+                                    transform: translate(-50 %, -50 %);
+                                }
+
+                            </style>
+                            @* <h5 style="text-align:center"> উপজেলা প্রাণিসম্পদ দপ্তর ও ভেটেরিনারি হাসপাতাল</h5>
+                            <h5 style="text-align:center"> Layer Feed(Finisher)</h5> *@
+
+                            <img src="~/headerimages/layerfinishers.png" class="hedr" />
+                            <div>
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style=" font-size:15px;">Raw material</th>
+                                            <th style="text-align:center;font-size:15px; line-height:15px;">Quantity</th>
+                                            <th style="font-size:15px;">CP</th>
+                                            <th style="font-size:15px;">Energy</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Maize</td>
+                                            <td><input type="number" id="MaizeF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SoyabinmealF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="MaizeF_O_A"></td>
+                                            <td id="MaizeF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Soyabin meal</td>
+                                            <td><input type="number" id="SoyabinmealF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MBMWAFIF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="SoyabinmealF_O_A"></td>
+                                            <td id="SoyabinmealF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>MBM/WAFI</td>
+                                            <td><input type="number" id="MBMWAFIF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RicePolishF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="MBMWAFIF_O_A"></td>
+                                            <td id="MBMWAFIF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rice Polish</td>
+                                            <td><input type="number" id="RicePolishF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RapeseedF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="RicePolishF_O_A"></td>
+                                            <td id="RicePolishF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rape seed</td>
+                                            <td><input type="number" id="RapeseedF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DORBF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="RapeseedF_O_A"></td>
+                                            <td id="RapeseedF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>DORB</td>
+                                            <td><input type="number" id="DORBF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'FullFatsoyabinF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="DORBF_O_A"></td>
+                                            <td id="DORBF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Full Fat soyabin</td>
+                                            <td><input type="number" id="FullFatsoyabinF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DCPMCPF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="FullFatsoyabinF_O_A"></td>
+                                            <td id="FullFatsoyabinF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>DCP/MCP</td>
+                                            <td><input type="number" id="DCPMCPF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LimestoneF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="DCPMCPF_O_A"></td>
+                                            <td id="DCPMCPF_O_B"></td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>Limestone</td>
+                                            <td><input type="number" id="LimestoneF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MithionineF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="LimestoneF_O_A"></td>
+                                            <td id="LimestoneF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mithionine</td>
+                                            <td><input type="number" id="MithionineF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LysineF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="MithionineF_O_A"></td>
+                                            <td id="MithionineF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lysine</td>
+                                            <td><input type="number" id="LysineF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'ColineClorideF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="LysineF_O_A"></td>
+                                            <td id="LysineF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coline Cloride</td>
+                                            <td><input type="number" id="ColineClorideF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'ToxinbinderF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="ColineClorideF_O_A"></td>
+                                            <td id="ColineClorideF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Toxinbinder</td>
+                                            <td><input type="number" id="ToxinbinderF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LayerPremixF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="ToxinbinderF_O_A"></td>
+                                            <td id="ToxinbinderF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Layer Premix</td>
+                                            <td><input type="number" id="LayerPremixF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SulmonelakillerSGSF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="LayerPremixF_O_A"></td>
+                                            <td id="LayerPremixF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>SulmonelakillerSGS</td>
+                                            <td><input type="number" id="SulmonelakillerSGSF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'EnzymeF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="SulmonelakillerSGSF_O_A"></td>
+                                            <td id="SulmonelakillerSGSF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Enzyme</td>
+                                            <td><input type="number" id="EnzymeF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DiclazurilSalinomycinF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="EnzymeF_O_A"></td>
+                                            <td id="EnzymeF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Diclazuril/Salinomycin</td>
+                                            <td><input type="number" id="DiclazurilSalinomycinF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'GrothpromoterF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="DiclazurilSalinomycinF_O_A"></td>
+                                            <td id="DiclazurilSalinomycinF_O_B"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Grothpromoter</td>
+                                            <td><input type="number" id="GrothpromoterF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SoyabinOilF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="GrothpromoterF_O_A"></td>
+                                            <td id="GrothpromoterF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Soyabin Oil</td>
+                                            <td><input type="number" id="SoyabinOilF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'BiscutCakeF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="SoyabinOilF_O_A"></td>
+                                            <td id="SoyabinOilF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Biscut Cake</td>
+                                            <td><input type="number" id="BiscutCakeF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'IodineSoltF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="BiscutCakeF_O_A"></td>
+                                            <td id="BiscutCakeF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Iodine/Solt</td>
+                                            <td><input type="number" id="IodineSoltF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SodiumbycurbF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="IodineSoltF_O_A"></td>
+                                            <td id="IodineSoltF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sodium by curb</td>
+                                            <td><input type="number" id="SodiumbycurbF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RenaPhytazeF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="SodiumbycurbF_O_A"></td>
+                                            <td id="SodiumbycurbF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rena-Phytaze</td>
+                                            <td><input type="number" id="RenaPhytazeF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LiposorbEmulsifierF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="RenaPhytazeF_O_A"></td>
+                                            <td id="RenaPhytazeF_O_B"></td>
+                                        </tr>
+
+
+
+                                        <tr>
+                                            <td>Liposorb(Emulsifier)</td>
+                                            <td><input type="number" id="LiposorbEmulsifierF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'EselPremixF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="LiposorbEmulsifierF_O_A"></td>
+                                            <td id="LiposorbEmulsifierF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Esel Premix</td>
+                                            <td><input type="number" id="EselPremixF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MilkPowderF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="EselPremixF_O_A"></td>
+                                            <td id="EselPremixF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Milk Powder</td>
+                                            <td><input type="number" id="MilkPowderF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'MixingChargeF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="MilkPowderF_O_A"></td>
+                                            <td id="MilkPowderF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mixing Charge</td>
+                                            <td><input type="number" id="MixingChargeF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'BagPack50kgF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="MixingChargeF_O_A"></td>
+                                            <td id="MixingChargeF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bag/Pack 50kg</td>
+                                            <td><input type="number" id="BagPack50kgF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'TPSMarketingF_in')" oninput="calculateValuesF()"></td>
+                                            <td id="BagPack50kgF_O_A"></td>
+                                            <td id="BagPack50kgF_O_B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>TPS & Marketing</td>
+                                            <td><input type="number" id="TPSMarketingF_in" style="text-align:center; border:none; background-color:#ddd" onkeydown="PrintLayerF(event, 'printF')" oninput="calculateValuesF()"></td>
+                                            <td id="TPSMarketingF_O_A"></td>
+                                            <td id="TPSMarketingF_O_B"></td>
+                                        </tr>
+                                     
+                                        <tr>
+                                            <td style="font-weight:bold;">Total</td>
+                                            <td style="text-align:center; font-weight:bold; line-height:15px;" id="Total_inF"></td>
+                                            <td style="font-weight:bold;" id="Total_CPF"></td>
+                                            <td style="font-weight:bold;" id="Total_EergF"></td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+
+
+
+
+
+                            </div>
+
+
+                            <img src="~/imageslogo/ismartlogo.png" class="watermark" />
+
+                            <script>
+
+                                function moveToNextInput(event, nextInputId) {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        const nextInput = document.getElementById(nextInputId);
+
+                                        if (nextInput) {
+                                            nextInput.select();
+                                        }
+                                    }
+                                }
+                                function PrintLayerF(event, nextInputId) {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        const nextInput = document.getElementById(nextInputId);
+
+                                        if (nextInput) {
+                                            nextInput.focus();
+                                        }
+                                    }
+                                }
+
+                                // Function to calculate values
+                                function calculateValuesF() {
+
+                                    // Get the user input
+                                    var MaizeF_in = document.getElementById("MaizeF_in").value;
+
+                                    // If user doesn't input, set default value
+                                    if (MaizeF_in === "") {
+                                        MaizeF_in = 52;
+                                        document.getElementById("MaizeF_in").value = MaizeF_in;
+                                    }
+
+                                    var SoyabinmealF_in = document.getElementById("SoyabinmealF_in").value;
+                                    if (SoyabinmealF_in === "") {
+                                        SoyabinmealF_in = 18;
+                                        document.getElementById("SoyabinmealF_in").value = SoyabinmealF_in;
+                                    }
+
+
+                                    var MBMWAFIF_in = document.getElementById("MBMWAFIF_in").value;
+                                    if (MBMWAFIF_in === "") {
+                                        MBMWAFIF_in = 5;
+                                        document.getElementById("MBMWAFIF_in").value = MBMWAFIF_in;
+                                    }
+
+                                    var RicePolishF_in = document.getElementById("RicePolishF_in").value;
+
+                                    if (RicePolishF_in === "") {
+                                        RicePolishF_in = 10;
+                                        document.getElementById("RicePolishF_in").value = RicePolishF_in;
+                                    }
+
+
+                                    var RapeseedF_in = document.getElementById("RapeseedF_in").value;
+                                    if (RapeseedF_in === "") {
+                                        RapeseedF_in = 0;
+                                        document.getElementById("RapeseedF_in").value = RapeseedF_in;
+                                    }
+
+                                    var DORBF_in = document.getElementById("DORBF_in").value;
+                                    if (DORBF_in === "") {
+                                        DORBF_in = 0;
+                                        document.getElementById("DORBF_in").value = DORBF_in;
+                                    }
+
+                                    var FullFatsoyabinF_in = document.getElementById("FullFatsoyabinF_in").value;
+                                    if (FullFatsoyabinF_in === "") {
+                                        FullFatsoyabinF_in = 0;
+                                        document.getElementById("FullFatsoyabinF_in").value = FullFatsoyabinF_in;
+                                    }
+
+                                    var DCPMCPF_in = document.getElementById("DCPMCPF_in").value;
+
+                                    if (DCPMCPF_in === "") {
+                                        DCPMCPF_in = 0.3;
+                                        document.getElementById("DCPMCPF_in").value = DCPMCPF_in;
+                                    }
+
+
+                                    var LimestoneF_in = document.getElementById("LimestoneF_in").value;
+                                    if (LimestoneF_in === "") {
+                                        LimestoneF_in = 12;
+                                        document.getElementById("LimestoneF_in").value = LimestoneF_in;
+                                    }
+
+                                    var MithionineF_in = document.getElementById("MithionineF_in").value;
+                                    if (MithionineF_in === "") {
+                                        MithionineF_in = 0.08;
+                                        document.getElementById("MithionineF_in").value = MithionineF_in;
+                                    }
+                                    var LysineF_in = document.getElementById("LysineF_in").value;
+                                    if (LysineF_in === "") {
+                                        LysineF_in = 0.04;
+                                        document.getElementById("LysineF_in").value = LysineF_in;
+                                    }
+                                    var ColineClorideF_in = document.getElementById("ColineClorideF_in").value;
+                                    if (ColineClorideF_in === "") {
+                                        ColineClorideF_in = 0.04;
+                                        document.getElementById("ColineClorideF_in").value = ColineClorideF_in;
+                                    }
+                                    var ToxinbinderF_in = document.getElementById("ToxinbinderF_in").value;
+                                    if (ToxinbinderF_in === "") {
+                                        ToxinbinderF_in = 0.25;
+                                        document.getElementById("ToxinbinderF_in").value = ToxinbinderF_in;
+                                    }
+                                    var LayerPremixF_in = document.getElementById("LayerPremixF_in").value;
+                                    if (LayerPremixF_in === "") {
+                                        LayerPremixF_in = 0.25;
+                                        document.getElementById("LayerPremixF_in").value = LayerPremixF_in;
+                                    }
+                                    var SulmonelakillerSGSF_in = document.getElementById("SulmonelakillerSGSF_in").value;
+                                    if (SulmonelakillerSGSF_in === "") {
+                                        SulmonelakillerSGSF_in = 0.2;
+                                        document.getElementById("SulmonelakillerSGSF_in").value = SulmonelakillerSGSF_in;
+                                    }
+                                    var EnzymeF_in = document.getElementById("EnzymeF_in").value;
+                                    if (EnzymeF_in === "") {
+                                        EnzymeF_in = 0.05;
+                                        document.getElementById("EnzymeF_in").value = EnzymeF_in;
+                                    }
+                                    var DiclazurilSalinomycinF_in = document.getElementById("DiclazurilSalinomycinF_in").value;
+                                    if (DiclazurilSalinomycinF_in === "") {
+                                        DiclazurilSalinomycinF_in = 0;
+                                        document.getElementById("DiclazurilSalinomycinF_in").value = DiclazurilSalinomycinF_in;
+                                    }
+
+                                    var GrothpromoterF_in = document.getElementById("GrothpromoterF_in").value;
+                                    if (GrothpromoterF_in === "") {
+                                        GrothpromoterF_in = 0;
+                                        document.getElementById("GrothpromoterF_in").value = GrothpromoterF_in;
+                                    }
+                                    var SoyabinOilF_in = document.getElementById("SoyabinOilF_in").value;
+                                    if (SoyabinOilF_in === "") {
+                                        SoyabinOilF_in = 1.5;
+                                        document.getElementById("SoyabinOilF_in").value = SoyabinOilF_in;
+                                    }
+                                    var BiscutCakeF_in = document.getElementById("BiscutCakeF_in").value;
+                                    if (BiscutCakeF_in === "") {
+                                        BiscutCakeF_in = 0;
+                                        document.getElementById("BiscutCakeF_in").value = BiscutCakeF_in;
+                                    }
+                                    var IodineSoltF_in = document.getElementById("IodineSoltF_in").value;
+                                    if (IodineSoltF_in === "") {
+                                        IodineSoltF_in = 0.25;
+                                        document.getElementById("IodineSoltF_in").value = IodineSoltF_in;
+                                    }
+                                    var SodiumbycurbF_in = document.getElementById("SodiumbycurbF_in").value;
+                                    if (SodiumbycurbF_in === "") {
+                                        SodiumbycurbF_in = 0.15;
+                                        document.getElementById("SodiumbycurbF_in").value = SodiumbycurbF_in;
+                                    }
+                                    var RenaPhytazeF_in = document.getElementById("RenaPhytazeF_in").value;
+                                    if (RenaPhytazeF_in === "") {
+                                        RenaPhytazeF_in = 0.1;
+                                        document.getElementById("RenaPhytazeF_in").value = RenaPhytazeF_in;
+                                    }
+                                    var LiposorbEmulsifierF_in = document.getElementById("LiposorbEmulsifierF_in").value;
+                                    if (LiposorbEmulsifierF_in === "") {
+                                        LiposorbEmulsifierF_in = 0.05;
+                                        document.getElementById("LiposorbEmulsifierF_in").value = LiposorbEmulsifierF_in;
+                                    }
+                                    var EselPremixF_in = document.getElementById("EselPremixF_in").value;
+                                    if (EselPremixF_in === "") {
+                                        EselPremixF_in = 0.02;
+                                        document.getElementById("EselPremixF_in").value = EselPremixF_in;
+                                    }
+                                    var MilkPowderF_in = document.getElementById("MilkPowderF_in").value;
+                                    if (MilkPowderF_in === "") {
+                                        MilkPowderF_in = 0;
+                                        document.getElementById("MilkPowderF_in").value = MilkPowderF_in;
+                                    }
+                                    var MixingChargeF_in = document.getElementById("MixingChargeF_in").value;
+                                    if (MixingChargeF_in === "") {
+                                        MixingChargeF_in = 0;
+                                        document.getElementById("MixingChargeF_in").value = MixingChargeF_in;
+                                    }
+                                    var BagPack50kgF_in = document.getElementById("BagPack50kgF_in").value;
+                                    if (BagPack50kgF_in === "") {
+                                        BagPack50kgF_in = 0;
+                                        document.getElementById("BagPack50kgF_in").value = BagPack50kgF_in;
+                                    }
+                                    var TPSMarketingF_in = document.getElementById("TPSMarketingF_in").value;
+                                    if (TPSMarketingF_in === "") {
+                                        TPSMarketingF_in = 0;
+                                        document.getElementById("TPSMarketingF_in").value = TPSMarketingF_in;
+                                    }
+
+
+
+                                    // Constants for calculation
+
+                                    var MaizeF_A = 0.09;
+
+                                    var SoyabinmealF_A = 0.44;
+
+                                    var MBMWAFIF_A = 0.6;
+
+                                    var RicePolishF_A = 0.13;
+
+                                    var RapeseedF_A = 0.38;
+
+                                    var DORBF_A = 0.17;
+
+                                    var FullFatsoyabinF_A = 0.37;
+
+                                    var MithionineF_A = 0.59;
+
+                                    var LysineF_A = 0.58;
+
+
+
+                                    var MaizeF_B = 32;
+
+                                    var SoyabinmealF_B = 27;
+
+                                    var MBMWAFIF_B = 28.5;
+
+                                    var RicePolishF_B = 28;
+
+                                    var RapeseedF_B = 28;
+
+                                    var DORBF_B = 15;
+
+                                    var FullFatsoyabinF_B = 38;
+
+                                    var MithionineF_B = 50;
+
+                                    var LysineF_B = 36;
+
+
+
+                                    var SoyabinOilF_B = 80;
+
+                                    var MixingChargeF_B = 100;
+
+                                    var BagPack50kgF_B = 100;
+
+                                    var TPSMarketingF_B = 1.7;
+
+
+
+
+                                    // Calculate output values
+                                    var MaizeF_O_A = parseFloat(MaizeF_A * MaizeF_in).toFixed(2);
+                                    var MaizeF_O_B = parseFloat(MaizeF_B * MaizeF_in).toFixed(2);
+
+                                    var SoyabinmealF_O_A = parseFloat(SoyabinmealF_A * SoyabinmealF_in).toFixed(2);
+                                    var SoyabinmealF_O_B = parseFloat(SoyabinmealF_B * SoyabinmealF_in).toFixed(2);
+
+                                    var MBMWAFIF_O_A = parseFloat(MBMWAFIF_A * MBMWAFIF_in).toFixed(2);
+                                    var MBMWAFIF_O_B = parseFloat(MBMWAFIF_B * MBMWAFIF_in).toFixed(2);
+
+                                    var RicePolishF_O_A = parseFloat(RicePolishF_A * RicePolishF_in).toFixed(2);
+                                    var RicePolishF_O_B = parseFloat(RicePolishF_B * RicePolishF_in).toFixed(2);
+
+                                    var RapeseedF_O_A = parseFloat(RapeseedF_A * RapeseedF_in).toFixed(2);
+                                    var RapeseedF_O_B = parseFloat(RapeseedF_B * RapeseedF_in).toFixed(2);
+
+
+                                    var DORBF_O_A = parseFloat(DORBF_A * DORBF_in).toFixed(2);
+                                    var DORBF_O_B = parseFloat(DORBF_B * DORBF_in).toFixed(2);
+
+                                    var FullFatsoyabinF_O_A = parseFloat(FullFatsoyabinF_A * FullFatsoyabinF_in).toFixed(2);
+                                    var FullFatsoyabinF_O_B = parseFloat(FullFatsoyabinF_B * FullFatsoyabinF_in).toFixed(2);
+
+                                    var MithionineF_O_A = parseFloat(MithionineF_A * MithionineF_in).toFixed(2);
+                                    var MithionineF_O_B = parseFloat(MithionineF_B * MithionineF_in).toFixed(2);
+
+                                    var LysineF_O_A = parseFloat(LysineF_A * LysineF_in).toFixed(2);
+                                    var LysineF_O_B = parseFloat(LysineF_B * LysineF_in).toFixed(2);
+
+
+
+                                    var SoyabinOilF_O_B = parseFloat(SoyabinOilF_B * SoyabinOilF_in).toFixed(2);
+
+                                    var MixingChargeF_O_B = parseFloat(MixingChargeF_B * MixingChargeF_in).toFixed(2);
+
+                                    var BagPack50kgF_O_B = parseFloat(BagPack50kgF_B * BagPack50kgF_in).toFixed(2);
+
+                                    var TPSMarketingF_O_B = parseFloat(TPSMarketingF_B * TPSMarketingF_in).toFixed(2);
+
+                                    var ttlinF = parseFloat(MaizeF_in) + parseFloat(SoyabinmealF_in) + parseFloat(MBMWAFIF_in)
+                                        + parseFloat(RicePolishF_in) + parseFloat(RapeseedF_in) + parseFloat(DORBF_in) + parseFloat(FullFatsoyabinF_in) + parseFloat(DCPMCPF_in)
+                                        + parseFloat(LimestoneF_in) + parseFloat(MithionineF_in) + parseFloat(LysineF_in) + parseFloat(ColineClorideF_in) + parseFloat(ToxinbinderF_in)
+                                        + parseFloat(LayerPremixF_in) + parseFloat(SulmonelakillerSGSF_in) + parseFloat(EnzymeF_in) + parseFloat(DiclazurilSalinomycinF_in) + parseFloat(GrothpromoterF_in)
+                                        + parseFloat(SoyabinOilF_in) + parseFloat(BiscutCakeF_in) + parseFloat(IodineSoltF_in) + parseFloat(SodiumbycurbF_in) + parseFloat(RenaPhytazeF_in)
+                                        + parseFloat(LiposorbEmulsifierF_in) + parseFloat(EselPremixF_in) + parseFloat(MilkPowderF_in) + parseFloat(MixingChargeF_in) + parseFloat(BagPack50kgF_in)
+                                        + parseFloat(TPSMarketingF_in);
+                                    var Total_inF = ttlinF.toFixed(2);
+
+                                    var ttlcpinF = parseFloat(MaizeF_O_A) + parseFloat(SoyabinmealF_O_A) + parseFloat(MBMWAFIF_O_A)
+                                        + parseFloat(RicePolishF_O_A) + parseFloat(RapeseedF_O_A) + parseFloat(DORBF_O_A) + parseFloat(FullFatsoyabinF_O_A)
+                                        + parseFloat(MithionineF_O_A) + parseFloat(LysineF_O_A);
+                                    var Total_CPF = ttlcpinF.toFixed(2);
+
+
+
+                         
+                                    var ttlengF = parseFloat(MaizeF_O_B) + parseFloat(SoyabinmealF_O_B) + parseFloat(MBMWAFIF_O_B)
+                                        + parseFloat(RicePolishF_O_B) + parseFloat(RapeseedF_O_B) + parseFloat(DORBF_O_B) + parseFloat(FullFatsoyabinF_O_B)
+                                        + parseFloat(MithionineF_O_B) + parseFloat(LysineF_O_B)
+                                        + parseFloat(SoyabinOilF_O_B) + parseFloat(MixingChargeF_O_B) + parseFloat(BagPack50kgF_O_B) + parseFloat(TPSMarketingF_O_B);
+                                    var Total_EergF = ttlengF.toFixed(2);
+
+                                    // Update the output values on the page
+                                    document.getElementById("MaizeF_O_A").innerText = MaizeF_O_A;
+                                    document.getElementById("MaizeF_O_B").innerText = MaizeF_O_B;
+
+                                    document.getElementById("SoyabinmealF_O_A").innerText = SoyabinmealF_O_A;
+                                    document.getElementById("SoyabinmealF_O_B").innerText = SoyabinmealF_O_B;
+
+                                    document.getElementById("MBMWAFIF_O_A").innerText = MBMWAFIF_O_A;
+                                    document.getElementById("MBMWAFIF_O_B").innerText = MBMWAFIF_O_B;
+
+                                    document.getElementById("RicePolishF_O_A").innerText = RicePolishF_O_A;
+                                    document.getElementById("RicePolishF_O_B").innerText = RicePolishF_O_B;
+
+                                    document.getElementById("RapeseedF_O_A").innerText = RapeseedF_O_A;
+                                    document.getElementById("RapeseedF_O_B").innerText = RapeseedF_O_B;
+
+                                    document.getElementById("DORBF_O_A").innerText = DORBF_O_A;
+                                    document.getElementById("DORBF_O_B").innerText = DORBF_O_B;
+
+                                    document.getElementById("FullFatsoyabinF_O_A").innerText = FullFatsoyabinF_O_A;
+                                    document.getElementById("FullFatsoyabinF_O_B").innerText = FullFatsoyabinF_O_B;
+
+
+                                    document.getElementById("MithionineF_O_A").innerText = MithionineF_O_A;
+                                    document.getElementById("MithionineF_O_B").innerText = MithionineF_O_B;
+
+                                    document.getElementById("LysineF_O_A").innerText = LysineF_O_A;
+                                    document.getElementById("LysineF_O_B").innerText = LysineF_O_B;
+
+
+                                    document.getElementById("SoyabinOilF_O_B").innerText = SoyabinOilF_O_B;
+
+                                    document.getElementById("MixingChargeF_O_B").innerText = MixingChargeF_O_B;
+
+                                    document.getElementById("BagPack50kgF_O_B").innerText = BagPack50kgF_O_B;
+
+                                    document.getElementById("TPSMarketingF_O_B").innerText = TPSMarketingF_O_B;
+
+
+
+                                    document.getElementById("Total_inF").innerText = Total_inF;
+
+                                    document.getElementById("Total_CPF").innerText = Total_CPF;
+
+                                    document.getElementById("Total_EergF").innerText = Total_EergF;
+
+
+
+                                }
+
+                                // Calculate initial values on page load
+                                calculateValuesF();
+
+
+
+                                function printDivF(usernameF, dateF) {
+                                    document.getElementById('usernameF').innerText = usernameF + '\n' + dateF;
+                                    // Clone the print_are div
+                                    var printContents = document.getElementById("print_areF").cloneNode(true);
+
+                                    // Create a new window and append the cloned content
+                                    var printWindow = window.open('', '_blank');
+                                    printWindow.document.body.appendChild(printContents);
+
+                                    // Print the new window
+                                    printWindow.print();
+
+                                }
+
+
+
+
+                            </script>
+
+                            <p style="font-size:20px; line-height:20px;" id="usernameF"></p>
+                        </div>
+
+                        <div style="padding-top:2px; text-align:center;">
+                            @* <button onclick="calculate()">ক্যালকুলেট</button> *@
+                            <button onclick="printDivF('@Username','@date')" class="btn btn-primary" style="object-position:center;" id="printF">ফর্মুলেশন করুন</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>   <!--Calculator Khaddo Compleated -->
+
+
+
+        </div>     <!--Finisher-->
+
+    </div>
+           
+
+</div>
+
+

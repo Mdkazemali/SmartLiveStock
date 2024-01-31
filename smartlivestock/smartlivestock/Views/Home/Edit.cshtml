@@ -1,0 +1,188 @@
+﻿ @model smartlivestock.Models.UserInformation
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<style>
+
+    .custom-file-button input[type=file] {
+        margin-left: -2px !important; 
+    }
+
+        .custom-file-button input[type=file]::-webkit-file-upload-button {
+            display: none;
+        }
+
+        .custom-file-button input[type=file]::file-selector-button {
+            display: none;
+        }
+
+    .custom-file-button:hover label {
+        background-color: #dde0e3;
+        cursor: pointer;
+    }
+
+</style>
+
+<h4 class="text-center text-primary"> ইউজার ইনফরমেশন আপডেট করুন</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit" class="row g-3 m-0 bg-light bg-gradient container border" enctype="multipart/form-data">
+       
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserinfoId" />
+            <input type="hidden" asp-for="LoginId" />
+         
+             
+            <div class="form-group col-md-2">
+                <label class="control-label">  নাম</label>
+                <input asp-for="UserFullName" class="form-control" placeholder="নাম লিখুন" autocomplete="off" />
+                <span asp-validation-for="UserFullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="PhoneNumber" class="control-label">  মোবাইল নং</label>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="মোবাইল নং লিখুন " autocomplete="off" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+          
+            <div class="form-group col-md-3">
+                <label asp-for="NID" class="control-label">  এন আই ডি</label>
+                <input asp-for="NID" class="form-control" placeholder="এন আই ডি নাম্বার দিন " autocomplete="off" />
+                <span asp-validation-for="NID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="Address" class="control-label">  ঠিকানা</label>
+                <input asp-for="Address" class="form-control" placeholder="গ্রাম,থানা,জেলা" autocomplete="off" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+           
+
+
+            <div class="form-group col-md-2">
+                <label asp-for="Gender" class="control-label">  লিঙ্গ</label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">-সিলেক্ট-</option>
+                    <option value="পুরুষ">পুরুষ</option>
+                    <option value="মহিলা">মহিলা</option>
+                    <option value="অনন্য">অনন্য</option>
+
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="TranjectionId" class="control-label">  ট্রানজেকশন নং</label>
+                <input asp-for="TranjectionId" class="form-control" placeholder="ট্রানজেকশন নং" autocomplete="off" />
+                <span asp-validation-for="TranjectionId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="Designation" class="control-label">  ডেজিগনেশন</label>
+                <input asp-for="Designation" class="form-control" placeholder=" ডেজিগনেশন" autocomplete="off" />
+                <span asp-validation-for="Designation" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group col-md-3">
+                <label asp-for="Degree" class="control-label">  ডিগ্রী </label>
+                <input asp-for="Degree" class="form-control" placeholder="ডিগ্রী" />
+                <span asp-validation-for="Degree" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3"> 
+                <label asp-for="DVMRegiNo" class="control-label">  ডিভিএম রেজি.নং</label>
+                <input asp-for="DVMRegiNo" class="form-control" placeholder="ডিভিএম রেজি.নং" />
+                <span asp-validation-for="DVMRegiNo" class="text-danger"></span>
+            </div>
+             
+
+            <div class="form-group col-md-2">
+                <label asp-for="KhamarType" class="control-label">  খামারের ধরণ</label>
+                <select asp-for="KhamarType" class="form-control">
+                    <option value="" selected="">নির্বাচন করুন</option>
+                    <option value="দুগ্ধ খামার">দুগ্ধ খামার</option>
+                    <option value="ছাগলের খামার">ছাগলের খামার</option>
+                    <option value="মুরগির খামার">মুরগির খামার</option>
+                    <option value="মোটাতাজাকরণ খামার">মোটাতাজাকরণ খামার</option>
+
+                </select>
+                <span asp-validation-for="KhamarType" class="text-danger"></span>
+            </div>
+
+
+                    <br />
+         
+
+                    <!--ছবির জন্য এখান থেকে রেখে দিন -->
+            <div class="col-md-12 btn-group pb-1">
+
+                <div class="form-group col-md-2">
+
+
+                    @if(Model.PhotoUrl !=null)
+                    {
+                        <img id="PreviewPhoto" src="~/images/@Model.PhotoUrl" alt="Logo Image"
+                        width="125" height="125" />
+                    }
+                    else
+                    {
+
+
+                        <img id="PreviewPhoto" src="~/images/noimage.png" alt="Logo Image"
+                             width="125" height="125" />
+                    }
+
+                    <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+
+                </div>
+
+
+                <div class="form-group col-md-2">
+                    <div class="input-group custom-file-button mt-5">
+                        <input asp-for="ProfilePhoto" class="form-control custom-file-input" id="customFile">
+                        <label class="input-group-text" for="customFile">Browse</label>
+                    </div>
+                </div>
+
+            </div>
+
+            
+          
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />&nbsp;
+                <a asp-action="Index" class="btn btn-primary">Back</a>
+            </div>
+
+
+            <div class="form-group pt-0 mt-0">
+                <div ID="HiddenDiv" style="visibility: hidden;">
+                    <input asp-for="PhotoUrl" id="PhotoUrl" />
+                </div>
+            </div>
+      
+
+       </form>
+    </div>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+
+
+
+    </script>
+
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+

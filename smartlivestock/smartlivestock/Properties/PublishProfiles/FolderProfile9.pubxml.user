@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>F:\ActivePUblishedReport\I_Smart_09-01-2024</_PublishTargetUrl>
+    <History>True|2024-01-09T15:36:39.5436473Z;True|2024-01-09T21:36:20.4949232+06:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=localhost%3bInitial Catalog=ismartlive_db%3bPersist Security Info=True%3bUser ID=ismartlive_db%3bPassword=ismartlive_db1</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="smartlivestock.Data.ApplicationDbContext">
+      <Value>Data Source=localhost%3bInitial Catalog=ismartlive_db%3bPersist Security Info=True%3bUser ID=ismartlive_db%3bPassword=ismartlive_db1</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
