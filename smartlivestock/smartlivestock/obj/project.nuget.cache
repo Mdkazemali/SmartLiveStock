@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZpA3/PNlavg9PK/1pJ05WGqoXxtPBxNTCMycCNMnS+g+l9p/JYFfy7L0RU66x91QGWcNur7edfJoX3KHcQGjlg==",
+  "dgSpecHash": "SMOO5DuaymUqpLY7vGh8YSb+JBX5c3kSvmWqUkbXLVxdy59sovZylqMi+X72hzYGCykPZpp+jm0CcOIxQoJIJg==",
   "success": true,
-  "projectFilePath": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj",
+  "projectFilePath": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mis\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\mis\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

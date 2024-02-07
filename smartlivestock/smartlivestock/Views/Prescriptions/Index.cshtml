@@ -1,0 +1,101 @@
+﻿@model IEnumerable<smartlivestock.Models.Prescription>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PresName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PresDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Registration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiefComplaint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GeneralExamination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnosis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invastigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Advice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlowUp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PresName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PresDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registration.RegiId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiefComplaint.ChiId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GeneralExamination.GenId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnosis.DiagId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Invastigation.InvId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medicine.MedId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doses.DosesId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Advice.AdvId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlowUp.FloId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PresId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PresId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PresId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

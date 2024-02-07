@@ -1,0 +1,36 @@
+﻿@model smartlivestock.Models.FlowUp
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>FlowUp</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FloName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FloName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FloDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FloDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UrName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UrName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.FloId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

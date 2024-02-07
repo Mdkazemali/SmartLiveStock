@@ -1,0 +1,100 @@
+﻿@model IEnumerable<smartlivestock.Models.Advice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    var LeaveCount = Model.Count();
+}
+
+
+@{
+    var page = ViewData["Page"] != null ? (int)ViewData["Page"] : 1;
+    var pageSize = ViewData["PageSize"] != null ? (int)ViewData["PageSize"] : 50;
+    var totalPages = ViewData["TotalPages"] != null ? (int)ViewData["TotalPages"] : 1;
+    var totalRecords = ViewData["TotalRecords"] != null ? (int)ViewData["TotalRecords"] : 0;
+}
+
+<h5> &nbsp; <b>No.of Advices</b> :<b style="color :red"> @LeaveCount </b> </h5>
+@using (Html.BeginForm("Index", "Advices", FormMethod.Get))
+{
+
+    <div class="form-group">
+
+
+        <input type="search" placeholder="Advices" value="@ViewData["category"]" name="category" style="width: 350px; " />
+
+
+        <input type="submit" value="Filter" class="btn btn-primary" />
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+        <label>Page : </label>@((page - 1) * pageSize + 1)-
+        <input type="search" name="pp" value="@ViewData["pp"]" placeholder="PageSize" style="width: 65px;" /> of @totalRecords
+
+        
+    </div>
+
+
+
+}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // get a reference to the search input field
+    const searchBox = $('#searchBox');
+
+    // listen for changes in the search input field
+    searchBox.on('input', function () {
+        const query = searchBox.val();
+        // make an asynchronous HTTP GET request to the server
+        $.ajax({
+            url: `/search?query=${query}`,
+            type: 'GET',
+            success: function (data) {
+                // update the page with the search results
+                $('#searchResults').html(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+</script>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AdvName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdvDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdvName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdvDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AdvId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AdvId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AdvId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

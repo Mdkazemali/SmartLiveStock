@@ -1,0 +1,221 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using smartlivestock.Data;
+using smartlivestock.Models;
+
+namespace smartlivestock.Controllers
+{
+    public class ChiefComplaintsController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ChiefComplaintsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: ChiefComplaints
+        //public async Task<IActionResult> Index()
+        //{
+        //      return View(await _context.ChiefComplaint.ToListAsync());
+        //}
+
+
+        // GET: Benificiaries
+        public async Task<IActionResult> Index(string category, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
+        {
+            ViewData["category"] = category;
+            var custquery = from x in _context.ChiefComplaint select x;
+            if (!String.IsNullOrEmpty(category))
+            {
+                custquery = custquery.Where(x => x.ChiName.Contains(category));
+            }
+
+            // for page setups
+
+            int p;
+            if (pp == 0)
+            {
+                p = 8;
+
+            }
+            else
+            {
+                p = pp;
+            }
+
+            ViewData["pp"] = p;
+            pageSize = p;
+
+
+
+            // Count the total number of records
+            var totalRecords = await custquery.CountAsync();
+
+            // Calculate the number of pages
+            var totalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
+
+            // Validate the current page value
+            page = Math.Max(1, Math.Min(totalPages, page));
+
+            // Calculate the number of records to skip
+            var skip = (page - 1) * pageSize;
+
+            // Apply pagination and ordering
+            var pagedQuery = custquery.OrderByDescending(x => x.ChiId).Skip(skip).Take(pageSize).AsNoTracking();
+
+            // Pass the pagination information to the view
+            ViewData["Page"] = page;
+            ViewData["PageSize"] = pageSize;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["TotalRecords"] = totalRecords;
+
+            return View(await pagedQuery.ToListAsync());
+        }
+
+
+
+
+
+
+
+
+        // GET: ChiefComplaints/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.ChiefComplaint == null)
+            {
+                return NotFound();
+            }
+
+            var chiefComplaint = await _context.ChiefComplaint
+                .FirstOrDefaultAsync(m => m.ChiId == id);
+            if (chiefComplaint == null)
+            {
+                return NotFound();
+            }
+
+            return View(chiefComplaint);
+        }
+
+        // GET: ChiefComplaints/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: ChiefComplaints/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ChiId,ChiName,CreateDt,UsrName")] ChiefComplaint chiefComplaint)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(chiefComplaint);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(chiefComplaint);
+        }
+
+        // GET: ChiefComplaints/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.ChiefComplaint == null)
+            {
+                return NotFound();
+            }
+
+            var chiefComplaint = await _context.ChiefComplaint.FindAsync(id);
+            if (chiefComplaint == null)
+            {
+                return NotFound();
+            }
+            return View(chiefComplaint);
+        }
+
+        // POST: ChiefComplaints/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ChiId,ChiName,CreateDt,UsrName")] ChiefComplaint chiefComplaint)
+        {
+            if (id != chiefComplaint.ChiId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(chiefComplaint);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ChiefComplaintExists(chiefComplaint.ChiId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(chiefComplaint);
+        }
+
+        // GET: ChiefComplaints/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null || _context.ChiefComplaint == null)
+            {
+                return NotFound();
+            }
+
+            var chiefComplaint = await _context.ChiefComplaint
+                .FirstOrDefaultAsync(m => m.ChiId == id);
+            if (chiefComplaint == null)
+            {
+                return NotFound();
+            }
+
+            return View(chiefComplaint);
+        }
+
+        // POST: ChiefComplaints/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if (_context.ChiefComplaint == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.ChiefComplaint'  is null.");
+            }
+            var chiefComplaint = await _context.ChiefComplaint.FindAsync(id);
+            if (chiefComplaint != null)
+            {
+                _context.ChiefComplaint.Remove(chiefComplaint);
+            }
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool ChiefComplaintExists(int id)
+        {
+          return _context.ChiefComplaint.Any(e => e.ChiId == id);
+        }
+    }
+}

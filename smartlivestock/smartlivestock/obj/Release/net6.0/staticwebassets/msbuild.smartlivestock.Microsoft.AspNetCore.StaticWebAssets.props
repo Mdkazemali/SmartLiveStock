@@ -192,12 +192,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\headerimages\lgdana.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\069b0b6f-de90-484d-8ee0-fa21d604cb39_Screenshot 2024-01-18 114022.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\headerimages\PoshaPakhirKhaddo.png))">
       <SourceType>Package</SourceType>
       <SourceId>smartlivestock</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/smartlivestock</BasePath>
-      <RelativePath>images/069b0b6f-de90-484d-8ee0-fa21d604cb39_Screenshot 2024-01-18 114022.png</RelativePath>
+      <RelativePath>headerimages/PoshaPakhirKhaddo.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -206,39 +206,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\069b0b6f-de90-484d-8ee0-fa21d604cb39_Screenshot 2024-01-18 114022.png))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\0d65f7d9-71c2-412e-9ede-2e4c62a4fd9c_Screenshot 2024-01-18 114022.png))">
-      <SourceType>Package</SourceType>
-      <SourceId>smartlivestock</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/smartlivestock</BasePath>
-      <RelativePath>images/0d65f7d9-71c2-412e-9ede-2e4c62a4fd9c_Screenshot 2024-01-18 114022.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\0d65f7d9-71c2-412e-9ede-2e4c62a4fd9c_Screenshot 2024-01-18 114022.png))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\68ae0c1b-ac70-4209-867f-6a24e579ff0f_Screenshot 2024-01-18 114022.png))">
-      <SourceType>Package</SourceType>
-      <SourceId>smartlivestock</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/smartlivestock</BasePath>
-      <RelativePath>images/68ae0c1b-ac70-4209-867f-6a24e579ff0f_Screenshot 2024-01-18 114022.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\68ae0c1b-ac70-4209-867f-6a24e579ff0f_Screenshot 2024-01-18 114022.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\headerimages\PoshaPakhirKhaddo.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\noimage.png))">
       <SourceType>Package</SourceType>

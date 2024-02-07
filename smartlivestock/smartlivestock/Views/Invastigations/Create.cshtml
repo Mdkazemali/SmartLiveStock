@@ -1,0 +1,43 @@
+﻿@model smartlivestock.Models.Invastigation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Invastigation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="InvName" class="control-label"></label>
+                <input asp-for="InvName" class="form-control" />
+                <span asp-validation-for="InvName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvDate" class="control-label"></label>
+                <input asp-for="InvDate" class="form-control" />
+                <span asp-validation-for="InvDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UrName" class="control-label"></label>
+                <input asp-for="UrName" class="form-control" />
+                <span asp-validation-for="UrName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

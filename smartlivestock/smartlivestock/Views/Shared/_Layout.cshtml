@@ -156,6 +156,8 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i></a>
+                      
+                        
                         @if (User.IsInRole("Admin"))
                         {
                            
@@ -168,6 +170,19 @@
                                         <a class="dropdown-item" asp-area="" asp-controller="Trainingvideos" asp-action="Index">Videos</a>
 
                                         <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Index">User</a>
+
+                                 
+                                                <a class="dropdown-item" asp-area="" asp-controller="Advices" asp-action="Index">Advice</a>
+                                                <a class="dropdown-item" asp-area="" asp-controller="ChiefComplaints" asp-action="Index">Cief Complaints</a>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Doses" asp-action="Index">Doses</a>
+                                                <a class="dropdown-item" asp-area="" asp-controller="FlowUps" asp-action="Index">FlowUps</a>
+                                                <a class="dropdown-item" asp-area="" asp-controller="GeneralExaminations" asp-action="Index">General Examinations</a>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Invastigations" asp-action="Index">Invastigations</a>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Registrations</a>
+
+
                                     </div>
                                 </div>
                             </li>
@@ -175,10 +190,8 @@
 
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Videos" asp-action="Videos">Videos</a>
-                            </li>
-
-                           
-
+                            </li> 
+     
 
                             <li class="nav-item"> 
                                 <div class="dropdown">
@@ -190,9 +203,13 @@
                                         <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="OjonOKhaddo">পশুর ওজন ও খাদ্য ক্যালকুলেটর</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Layer">লেয়ার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="PoshaPakhirKhaddo">পোষা পাখির খাদ্য তালিকা</a>
                                        
                                     </div>
                                 </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Prescriptions" asp-action="Index">Prescription</a>
                             </li>
                           
 
@@ -216,6 +233,10 @@
                                         <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Layer">লেয়ার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
 
                                         <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+                                       
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="PoshaPakhirKhaddo">পোষা পাখির খাদ্য তালিকা</a>
+
+
                                     </div>
                                 </div>
                             </li>
@@ -226,7 +247,30 @@
                         @if (User.IsInRole("DVM"))
                         {
                            @*  <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i></a> *@
+
                             <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="dropdown-button">Setup</button>
+                                    <div class="dropdown-content">
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Advices" asp-action="Index">Advice</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="ChiefComplaints" asp-action="Index">Cief Complaints</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Doses" asp-action="Index">Doses</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="FlowUps" asp-action="Index">FlowUps</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="GeneralExaminations" asp-action="Index">General Examinations</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Invastigations" asp-action="Index">Invastigations</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Registrations</a>
+
+
+
+                                    </div>
+                                </div>
+                            </li>
+                           
+                           
+                           <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Videos" asp-action="Videos">Videos</a>
                             </li>
 
@@ -242,8 +286,17 @@
                                         <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Layer">লেয়ার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
 
                                         <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="PoshaPakhirKhaddo">পোষা পাখির খাদ্য তালিকা</a>
+
+
                                     </div>
                                 </div>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Prescriptions" asp-action="Index">Prescription</a>
                             </li>
 
 
@@ -252,7 +305,29 @@
                         @if (User.IsInRole("Doctor"))
                         {
                            @*  <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i></a> *@
-                            
+
+
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="dropdown-button">Setup</button>
+                                    <div class="dropdown-content">
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Advices" asp-action="Index">Advice</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="ChiefComplaints" asp-action="Index">Cief Complaints</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Doses" asp-action="Index">Doses</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="FlowUps" asp-action="Index">FlowUps</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="GeneralExaminations" asp-action="Index">General Examinations</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Invastigations" asp-action="Index">Invastigations</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Registrations</a>
+
+
+                                               
+
+                                    </div>
+                                </div>
+                            </li>
 
                             <li class="nav-item">
                                 <div class="dropdown">
@@ -267,9 +342,15 @@
                                        
                                         <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
 
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="PoshaPakhirKhaddo">পোষা পাখির খাদ্য তালিকা</a>
+
 
                                     </div>
                                 </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Prescriptions" asp-action="Index">Prescription</a>
                             </li>
 
 
@@ -289,6 +370,18 @@
                                         <a class="dropdown-item" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
 
                                         <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Index">User</a>
+
+
+                                        <a class="dropdown-item" asp-area="" asp-controller="Advices" asp-action="Index">Advice</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="ChiefComplaints" asp-action="Index">Cief Complaints</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Doses" asp-action="Index">Doses</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="FlowUps" asp-action="Index">FlowUps</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="GeneralExaminations" asp-action="Index">General Examinations</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Invastigations" asp-action="Index">Invastigations</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Registrations</a>
+
                                     </div>
                                 </div>
                             </li>
@@ -310,8 +403,15 @@
 
                                         <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="Broiler">ব্রয়লার ফিড(স্টার্টার,গ্রোয়ার,ফিনিশার)</a>
 
+                                        <a class="dropdown-item" asp-area="" asp-controller="Calculator" asp-action="PoshaPakhirKhaddo">পোষা পাখির খাদ্য তালিকা</a>
+
+
                                     </div>
                                 </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Prescriptions" asp-action="Index">Prescription</a>
                             </li>
 
                         }

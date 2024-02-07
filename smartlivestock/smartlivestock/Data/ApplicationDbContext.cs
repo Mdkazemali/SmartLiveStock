@@ -14,5 +14,15 @@ namespace smartlivestock.Data
         public virtual DbSet<Trainingvideo> Trainingvideo { get; set; }
         public virtual DbSet<UserInformation> UserInformation { get; set; }
         public object UserInformations { get; internal set; }
+        public virtual DbSet<Advice> Advices { get;  set; }
+        public virtual DbSet<ChiefComplaint> ChiefComplaint { get; set; }
+        public virtual DbSet<Diagnosis> Diagnosis { get; set; }
+        public virtual DbSet<Doses> Doses { get; set; }
+        public virtual DbSet<FlowUp> FlowUp { get; set; }
+        public virtual DbSet<GeneralExamination> GeneralExamination { get; set;}
+        public virtual DbSet<Invastigation> Invastigations { get; set; }
+        public virtual DbSet<Medicine> Medicines { get; set; }
+        public virtual DbSet<Prescription> Prescription { get; set; }
+        public virtual DbSet<Registration> Registration { get; set; }
     }
 }

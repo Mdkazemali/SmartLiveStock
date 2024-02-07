@@ -220,6 +220,295 @@ namespace smartlivestock.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("smartlivestock.Models.Advice", b =>
+                {
+                    b.Property<int>("AdvId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdvId"), 1L, 1);
+
+                    b.Property<DateTime>("AdvDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("AdvName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AdvId");
+
+                    b.ToTable("Advices");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.ChiefComplaint", b =>
+                {
+                    b.Property<int>("ChiId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChiId"), 1L, 1);
+
+                    b.Property<string>("ChiName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UsrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ChiId");
+
+                    b.ToTable("ChiefComplaint");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.Diagnosis", b =>
+                {
+                    b.Property<int>("DiagId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DiagId"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DiagName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UsrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DiagId");
+
+                    b.ToTable("Diagnosis");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.Doses", b =>
+                {
+                    b.Property<int>("DosesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DosesId"), 1L, 1);
+
+                    b.Property<bool>("Afternoon")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DosesDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DosesName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Evening")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Morning")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DosesId");
+
+                    b.ToTable("Doses");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.FlowUp", b =>
+                {
+                    b.Property<int>("FloId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FloId"), 1L, 1);
+
+                    b.Property<DateTime>("FloDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FloName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FloId");
+
+                    b.ToTable("FlowUp");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.GeneralExamination", b =>
+                {
+                    b.Property<int>("GenId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenId"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ExamName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UsrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenId");
+
+                    b.ToTable("GeneralExamination");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.Invastigation", b =>
+                {
+                    b.Property<int>("InvId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InvId"), 1L, 1);
+
+                    b.Property<DateTime>("InvDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InvName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("InvId");
+
+                    b.ToTable("Invastigations");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.Medicine", b =>
+                {
+                    b.Property<int>("MedId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MedId"), 1L, 1);
+
+                    b.Property<DateTime>("MedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MedName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MedId");
+
+                    b.ToTable("Medicines");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.Prescription", b =>
+                {
+                    b.Property<int>("PresId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PresId"), 1L, 1);
+
+                    b.Property<int>("AdviceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ChiefComplaintId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DiagnosisId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DosesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FlowUpId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GeneralExaminationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InvastigationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MedicineId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PresDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PresName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RegistrationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PresId");
+
+                    b.HasIndex("AdviceId");
+
+                    b.HasIndex("ChiefComplaintId");
+
+                    b.HasIndex("DiagnosisId");
+
+                    b.HasIndex("DosesId");
+
+                    b.HasIndex("FlowUpId");
+
+                    b.HasIndex("GeneralExaminationId");
+
+                    b.HasIndex("InvastigationId");
+
+                    b.HasIndex("MedicineId");
+
+                    b.HasIndex("RegistrationId");
+
+                    b.ToTable("Prescription");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.Registration", b =>
+                {
+                    b.Property<int>("RegiId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RegiId"), 1L, 1);
+
+                    b.Property<string>("Ages")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDAte")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PtnId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UsrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RegiId");
+
+                    b.ToTable("Registration");
+                });
+
             modelBuilder.Entity("smartlivestock.Models.Trainingvideo", b =>
                 {
                     b.Property<int>("vdoId")
@@ -352,6 +641,81 @@ namespace smartlivestock.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.Prescription", b =>
+                {
+                    b.HasOne("smartlivestock.Models.Advice", "Advice")
+                        .WithMany()
+                        .HasForeignKey("AdviceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("smartlivestock.Models.ChiefComplaint", "ChiefComplaint")
+                        .WithMany()
+                        .HasForeignKey("ChiefComplaintId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("smartlivestock.Models.Diagnosis", "Diagnosis")
+                        .WithMany()
+                        .HasForeignKey("DiagnosisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("smartlivestock.Models.Doses", "Doses")
+                        .WithMany()
+                        .HasForeignKey("DosesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("smartlivestock.Models.FlowUp", "FlowUp")
+                        .WithMany()
+                        .HasForeignKey("FlowUpId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("smartlivestock.Models.GeneralExamination", "GeneralExamination")
+                        .WithMany()
+                        .HasForeignKey("GeneralExaminationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("smartlivestock.Models.Invastigation", "Invastigation")
+                        .WithMany()
+                        .HasForeignKey("InvastigationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("smartlivestock.Models.Medicine", "Medicine")
+                        .WithMany()
+                        .HasForeignKey("MedicineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("smartlivestock.Models.Registration", "Registration")
+                        .WithMany()
+                        .HasForeignKey("RegistrationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advice");
+
+                    b.Navigation("ChiefComplaint");
+
+                    b.Navigation("Diagnosis");
+
+                    b.Navigation("Doses");
+
+                    b.Navigation("FlowUp");
+
+                    b.Navigation("GeneralExamination");
+
+                    b.Navigation("Invastigation");
+
+                    b.Navigation("Medicine");
+
+                    b.Navigation("Registration");
                 });
 #pragma warning restore 612, 618
         }

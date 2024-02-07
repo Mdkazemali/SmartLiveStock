@@ -1,0 +1,60 @@
+﻿@model smartlivestock.Models.Doses
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Doses</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Morning)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Morning)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Afternoon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Afternoon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Evening)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Evening)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Days)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Days)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DosesName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DosesName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DosesDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DosesDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UrName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UrName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.DosesId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

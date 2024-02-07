@@ -40,7 +40,7 @@ namespace smartlivestock.Controllers
             return View();
         }
 
-        public IActionResult PeatBird()
+        public IActionResult PoshaPakhirKhaddo()
         {
             return View();
         }

@@ -1,0 +1,799 @@
+﻿ @{
+    ViewData["Title"] = "দানাদার ও ঘাসের পুষ্টি উপাদান (Analysis)";
+}
+@{
+
+    var header = "উপজেলা প্রাণিসম্পদ দপ্তর ও ভেটেরিনারি হাসপাতাস";
+
+    var Username = User.Identity.Name.Split('@')[0];
+    var d = DateTime.Now;
+    var date = d.ToString("dd-MM-yyyy hh:mm tt");
+
+}
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+        transition: box-shadow 0.2s ease; /* Add transition for smooth hover effect */
+    }
+
+         .card:hover {
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.9); /* Change shadow on hover */
+        }
+
+    .card-body {
+        background-color: #f8f9fa; /* Set background color */
+        border-radius: 8px; /* Add border radius for rounded corners */
+        padding: 05px; /* Add padding for content */
+    }
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+       
+
+
+        <div class="col-md-12 mb-4">
+            <div class="card bg-info text-black">
+                <div class="card-body">
+
+                    <div style="background-color:powderblue;">
+
+                        <div style="padding-bottom:3px;" id="print_areBig">
+
+
+
+                            <style>
+                                body {
+                                    font-family: Arial, sans-serif;                                  
+                                   background-color: powderblue;
+                                }
+
+                                h1 {
+                                    color: #333;
+                                }
+
+                                table {
+                                    border-collapse: collapse;  
+                                    object-position: center;
+                                    margin:1%;
+                                    width: 98%;
+                                    margin-top:110px;
+                                    background-color: #ddd;
+                                    border: 2px solid black;
+                                }
+
+                                .hedr {
+                                    position: absolute;
+                                    top: 6px;
+                                    left:0px;
+                                    margin: 2%;
+                                    height: 90px;
+                                    width: 96%;
+                                    margin-top: 6px;
+                                    background-color:powderblue;
+                                    pointer-events: none;
+                                }
+
+                           
+                                
+                                th,td {
+                                    border: 1px solid #ddd;
+                                    text-align: center;
+                                    line-height: 16px;
+                                    font-size:12px;
+                                    padding-left: 10px;
+                                    border: 1px solid black;
+                                }
+
+                                th {
+                                   
+                                    text-align: center;
+                                    font-size:12px;
+                                    border: 1px solid black;
+                                
+                                }                             
+
+                                input {
+                                    width: 98%;
+                                    border: 1px solid #ddd;
+                                    border-radius: 2px;
+                                    line-height: 16px;
+                                    text-align:center;                                
+                                    border: none;
+                                    z-index: 2;
+                                }
+
+                          
+
+                                #output {
+                                    margin: 2px auto;
+                                    max-width: 98%;
+                                    background-color: #ddd;
+                                    
+                                }
+
+
+                                .watermark {
+                                    position: fixed;
+                                    top: 35%;
+                                    left: 50%;
+                                    width: 63vw;
+                                    height: 42vh;
+                                    transform: translate(-50%, -50%);
+                                    opacity: 0.1;
+                                    z-index: 1; /* Lower z-index than the input field */
+                                    pointer-events: none;
+                                }
+
+                                input::-webkit-input-placeholder {
+                                    color: black; /*Change the placeholder color*/
+                                    opacity: .5; /*Change the opacity between 0 and 1*/
+                                    text-align:center;
+                                }
+
+                                .red-bg {
+                                    background-color: red;
+                                    color:yellow;
+                                }
+                                #username {
+                                    position: absolute;
+                                    top: 70%;
+                                    left: 70%;
+                                    transform: translate(-50%, -50%);
+                                }
+
+                          
+
+
+                            </style>
+
+
+                            <img src="~/imageslogo/ismartlogo.png" class="watermark" />
+
+                            <img src="~/headerimages/PoshaPakhirKhaddo.png" class="hedr" />
+
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left; padding-left:4px;"> খাদ্য </th>
+                                        <th>প্রয়োজনীয় পরিমাণ (কেজি)</th>
+                                        <th>প্রাপ্ত শুস্ক পদার্থ (কেজি)</th>
+                                        <th>প্রাপ্ত শক্তি (এম.জে)</th>
+                                        <th>প্রাপ্ত ক্রুড প্রোটিন (কেজি)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">ধান</td>
+                                        <td><input id="DhanInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'GomerInput')"></td>
+                                        <td id="DhanOutputA"></td>
+                                        <td id="DhanOutputB"></td>
+                                        <td id="DhanOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">গম </td>
+                                        <td><input id="GomerInput" oninput="calculateValues()" style="border:none;  background-color:#ddd" onkeydown="moveToNextInput(event, 'GuraInput')"></td>
+                                        <td id="GomerOutputA"></td>
+                                        <td id="GomerOutputB"></td>
+                                        <td id="GomerOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">গুড়া </td>
+                                        <td><input id="GuraInput" oninput="calculateValues()" style="border:none;  background-color:#ddd" onkeydown="moveToNextInput(event, 'VutradanaInput')"></td>
+                                        <td id="GuraOutputA"></td>
+                                        <td id="GuraOutputB"></td>
+                                        <td id="GuraOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">ভূট্টা</td>
+                                        <td><input id="VutradanaInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'BazraInput')"></td>
+                                        <td id="VutradanaOutputA"></td>
+                                        <td id="VutradanaOutputB"></td>
+                                        <td id="VutradanaOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">বাজরা</td>
+                                        <td><input id="BazraInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'JoyanInput')"></td>
+                                        <td id="BazraOutputA"></td>
+                                        <td id="BazraOutputB"></td>
+                                        <td id="BazraOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">জোয়ার(গম জাতীয়)</td>
+                                        <td><input id="JoyanInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'SoyabinmillInput')"></td>
+                                        <td id="JoyanOutputA"></td>
+                                        <td id="JoyanOutputB"></td>
+                                        <td id="JoyanOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">সয়াবিন/সরিষা</td>
+                                        <td><input id="SoyabinmillInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DalInput')"></td>
+                                        <td id="SoyabinmillOutputA"></td>
+                                        <td id="SoyabinmillOutputB"></td>
+                                        <td id="SoyabinmillOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;"> ডাল </td>
+                                        <td><input id="DalInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'CholaInput')"></td>
+                                        <td id="DalOutputA"></td>
+                                        <td id="DalOutputB"></td>
+                                        <td id="DalOutputC"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">ছোলা  </td>
+                                        <td><input id="CholaInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'BinDalJatioInput')"></td>
+                                        <td id="CholaOutputA"></td>
+                                        <td id="CholaOutputB"></td>
+                                        <td id="CholaOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">বিন(ডাল জাতীয়)</td>
+                                        <td><input id="BinDalJatioInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'CalInput')"></td>
+                                        <td id="BinDalJatioOutputA"></td>
+                                        <td id="BinDalJatioOutputB"></td>
+                                        <td id="BinDalJatioOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">চাল </td>
+                                        <td><input id="CalInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'RockSoltInput')"></td>
+                                        <td id="CalOutputA"></td>
+                                        <td id="CalOutputB"></td>
+                                        <td id="CalOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">রকস্/ব্রিকস্</td>
+                                        <td><input id="RockSoltInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DcpInput')"></td>
+                                        <td id="RockSoltOutputA"></td>
+                                        <td id="RockSoltOutputB"></td>
+                                        <td id="RockSoltOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">ডিসিপি </td>
+                                        <td><input id="DcpInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'LobonInput')"></td>
+                                        <td id="DcpOutputA"></td>
+                                        <td id="DcpOutputB"></td>
+                                        <td id="DcpOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">লবণ</td>
+                                        <td><input id="LobonInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'ShakSobjiInput')"></td>
+                                        <td id="LobonOutputA"></td>
+                                        <td id="LobonOutputB"></td>
+                                        <td id="LobonOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">শাক সবজি </td>
+                                        <td><input id="ShakSobjiInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'VitaminsInput')"></td>
+                                        <td id="ShakSobjiOutputA"></td>
+                                        <td id="ShakSobjiOutputB"></td>
+                                        <td id="ShakSobjiOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">ভিটামিনস্ </td>
+                                        <td><input id="VitaminsInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'DeshiFolInput')"></td>
+                                        <td id="VitaminsOutputA"></td>
+                                        <td id="VitaminsOutputB"></td>
+                                        <td id="VitaminsOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">দেশি ফল</td>
+                                        <td><input id="DeshiFolInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'ProkritoKhaddoTalikaInput')"></td>
+                                        <td id="DeshiFolOutputA"></td>
+                                        <td id="DeshiFolOutputB"></td>
+                                        <td id="DeshiFolOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px; font-weight:bold;">মোট </td>
+                                        <td style="font-weight:bold;" id="TotalOutputInput"></td>
+                                        <td style="font-weight:bold;" id="TotalOutputA"></td>
+                                        <td style="font-weight:bold;" id="TotalOutputB"></td>
+                                        <td style="font-weight:bold;" id="TotalOutputC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">কেজি প্রতি  </td>
+                                        <td></td>
+                                        <td id="KejiprotiA"></td>
+                                        <td id="KejiprotiB"></td>
+                                        <td id="KejiprotiC"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;padding-left:4px;">প্রকৃত খাদ্য তালিকা  </td>
+                                        <td><input id="ProkritoKhaddoTalikaInput" oninput="calculateValues()" style="border:none; background-color:#ddd" onkeydown="moveToNextInput(event, 'print')"></td>
+                                        <td id="ProkritoKhaddoTalikaA"></td>
+                                        <td id="ProkritoKhaddoTalikaB"></td>
+                                        <td id="ProkritoKhaddoTalikaC"></td>
+
+                                    </tr>
+
+                                </tbody>
+
+
+
+                            </table>
+
+                            <script>
+
+
+
+                                function moveToNextInput(event, nextInputId) {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+
+                                        const currentInput = event.target;
+                                        const allInputs = document.querySelectorAll('input'); // Get all input fields
+                                        const printElement = document.getElementById('print');
+
+                                        let nextIndex = -1;
+
+                                        // Find the index of the current input
+                                        for (let i = 0; i < allInputs.length; i++) {
+                                            if (allInputs[i] === currentInput) {
+                                                nextIndex = i + 1;
+                                                break;
+                                            }
+                                        }
+
+                                        if (nextIndex < allInputs.length) {
+                                            // If there is a next input, select it
+                                            allInputs[nextIndex].select();
+                                        } else if (printElement) {
+                                            // If it's the last input, focus on the print button
+                                            printElement.focus();
+                                        }
+                                    }
+                                }
+
+
+
+
+
+                                function calculateValues() {
+                                    var DhanInput = document.getElementById("DhanInput").value;
+                                    if (DhanInput === "") {
+                                        DhanInput = 10;
+                                        document.getElementById("DhanInput").value = DhanInput;
+                                    }
+                                    var GomerInput = document.getElementById("GomerInput").value;
+                                    if (GomerInput === "") {
+                                        GomerInput = 25;
+                                        document.getElementById("GomerInput").value = GomerInput;
+                                    }
+
+                                    var GuraInput = document.getElementById("GuraInput").value;
+                                    if (GuraInput === "") {
+                                        GuraInput = 0;
+                                        document.getElementById("GuraInput").value = GuraInput;
+                                    }
+
+                                    var VutradanaInput = document.getElementById("VutradanaInput").value;
+                                    if (VutradanaInput === "") {
+                                        VutradanaInput = 15;
+                                        document.getElementById("VutradanaInput").value = VutradanaInput;
+                                    }
+
+                                    var BazraInput = document.getElementById("BazraInput").value;
+                                    if (BazraInput === "") {
+                                        BazraInput = 5;
+                                        document.getElementById("BazraInput").value = BazraInput;
+                                    }
+
+                                    var JoyanInput = document.getElementById("JoyanInput").value;
+                                    if (JoyanInput === "") {
+                                        JoyanInput = 5;
+                                        document.getElementById("JoyanInput").value = JoyanInput;
+                                    }
+
+                                    var SoyabinmillInput = document.getElementById("SoyabinmillInput").value;
+                                    if (SoyabinmillInput === "") {
+                                        SoyabinmillInput = 10;
+                                        document.getElementById("SoyabinmillInput").value = SoyabinmillInput;
+                                    }
+
+                                    var DalInput = document.getElementById("DalInput").value;
+                                    if (DalInput === "") {
+                                        DalInput = 10;
+                                        document.getElementById("DalInput").value = DalInput;
+                                    }
+
+                                    var CholaInput = document.getElementById("CholaInput").value;
+                                    if (CholaInput === "") {
+                                        CholaInput = 5;
+                                        document.getElementById("CholaInput").value = CholaInput;
+                                    }
+
+                                    var BinDalJatioInput = document.getElementById("BinDalJatioInput").value;
+                                    if (BinDalJatioInput === "") {
+                                        BinDalJatioInput = 5;
+                                        document.getElementById("BinDalJatioInput").value = BinDalJatioInput;
+                                    }
+
+                                    var CalInput = document.getElementById("CalInput").value;
+                                    if (CalInput === "") {
+                                        CalInput = 5;
+                                        document.getElementById("CalInput").value = CalInput;
+                                    }
+
+                                    var RockSoltInput = document.getElementById("RockSoltInput").value;
+                                    if (RockSoltInput === "") {
+                                        RockSoltInput = 2;
+                                        document.getElementById("RockSoltInput").value = RockSoltInput;
+                                    }
+
+                                    var DcpInput = document.getElementById("DcpInput").value;
+                                    if (DcpInput === "") {
+                                        DcpInput = 1;
+                                        document.getElementById("DcpInput").value = DcpInput;
+                                    }
+
+                                    var LobonInput = document.getElementById("LobonInput").value;
+                                    if (LobonInput === "") {
+                                        LobonInput = 1;
+                                        document.getElementById("LobonInput").value = LobonInput;
+                                    }
+
+                                    var ShakSobjiInput = document.getElementById("ShakSobjiInput").value;
+                                    if (ShakSobjiInput === "") {
+                                        ShakSobjiInput = 0.5;
+                                        document.getElementById("ShakSobjiInput").value = ShakSobjiInput;
+                                    }
+
+                                    var VitaminsInput = document.getElementById("VitaminsInput").value;
+                                    if (VitaminsInput === "") {
+                                        VitaminsInput = 0.1;
+                                        document.getElementById("VitaminsInput").value = VitaminsInput;
+                                    }
+
+                                    var DeshiFolInput = document.getElementById("DeshiFolInput").value;
+                                    if (DeshiFolInput === "") {
+                                        DeshiFolInput = 0.4;
+                                        document.getElementById("DeshiFolInput").value = DeshiFolInput;
+                                    }
+
+                                    var ProkritoKhaddoTalikaInput = document.getElementById("ProkritoKhaddoTalikaInput").value;
+                                    if (ProkritoKhaddoTalikaInput === "") {
+                                        ProkritoKhaddoTalikaInput = 32;
+                                        document.getElementById("ProkritoKhaddoTalikaInput").value = ProkritoKhaddoTalikaInput;
+                                    }
+
+
+
+
+                                    var DhanA = 880;
+                                    var DhanB = 15.2;
+                                    var DhanC = 75;
+
+                                    var gomervusiA = 870;
+                                    var gomervusiB = 15.8;
+                                    var gomervusiC = 140;
+
+                                    var guraA = 876;
+                                    var guraB = 15.8;
+                                    var guraC = 81;
+
+                                    var VutradanaA = 860;
+                                    var VutradanaB = 14.2;
+                                    var VutradanaC = 98;
+
+                                    var BazraA = 925;
+                                    var BazraB = 15.06;
+                                    var BazraC = 136;
+
+                                    var JoyanA = 960;
+                                    var JoyanB = 11.2;
+                                    var JoyanC = 141;
+
+                                    var SoyabinmillA = 935;
+                                    var SoyabinmillB = 18.66;
+                                    var SoyabinmillC = 460;
+
+                                    var DalA = 900;
+                                    var DalB = 12;
+                                    var DalC = 350;
+
+                                    var CholaA = 860;
+                                    var CholaB = 12.4;
+                                    var CholaC = 175;
+
+                                    var BinDalJatioA = 700;
+                                    var BinDalJatioB = 12.9;
+                                    var BinDalJatioC = 55;
+
+                                    var CalA = 990;
+                                    var CalB = 0;
+                                    var CalC = 0;
+
+                                    var RockSoltA = 980;
+                                    var RockSoltB = 0;
+                                    var RockSoltC = 0;
+
+                                    var DcpA = 990;
+                                    var DcpB = 0;
+                                    var DcpC = 0;
+
+                                    var LobonA = 900;
+                                    var LobonB = 0;
+                                    var LobonC = 0;
+
+                                    var ShakSobjiA = 200;
+                                    var ShakSobjiB = 10;
+                                    var ShakSobjiC = 150;
+
+                                    var VitaminsA = 200;
+                                    var VitaminsB = 8;
+                                    var VitaminsC = 61;
+
+                                    var DeshiFolA = 200;
+                                    var DeshiFolB = 9;
+                                    var DeshiFolC = 210;
+
+
+                                    var DhanOutputA = ((DhanA * DhanInput) / 1000).toFixed(2);
+                                    var DhanOutputB = (DhanB * DhanInput).toFixed(2);
+                                    var DhanOutputC = ((DhanC * DhanInput) / 1000).toFixed(2);
+
+
+                                    var GomerOutputA = ((gomervusiA * GomerInput) / 1000).toFixed(2);
+                                    var GomerOutputB = (gomervusiB * GomerInput).toFixed(2);
+                                    var GomerOutputC = ((gomervusiC * GomerInput) / 1000).toFixed(2);
+
+                                    var GuraOutputA = ((guraA * GuraInput) / 1000).toFixed(2);
+                                    var GuraOutputB = (guraB * GuraInput).toFixed(2);
+                                    var GuraOutputC = ((guraC * GuraInput) / 1000).toFixed(2);
+
+                                    var VutradanaOutputA = ((VutradanaA * VutradanaInput) / 1000).toFixed(2);
+                                    var VutradanaOutputB = (VutradanaB * VutradanaInput).toFixed(2);
+                                    var VutradanaOutputC = ((VutradanaC * VutradanaInput) / 1000).toFixed(2);
+
+                                    var BazraOutputA = ((BazraA * BazraInput) / 1000).toFixed(2);
+                                    var BazraOutputB = (BazraB * BazraInput).toFixed(2);
+                                    var BazraOutputC = ((BazraC * BazraInput) / 1000).toFixed(2);
+
+
+                                    var JoyanOutputA = ((JoyanA * JoyanInput) / 1000).toFixed(2);
+                                    var JoyanOutputB = (JoyanB * JoyanInput).toFixed(2);
+                                    var JoyanOutputC = ((JoyanC * JoyanInput) / 1000).toFixed(2);
+
+
+                                    var SoyabinmillOutputA = ((SoyabinmillA * SoyabinmillInput) / 1000).toFixed(2);
+                                    var SoyabinmillOutputB = (SoyabinmillB * SoyabinmillInput).toFixed(2);
+                                    var SoyabinmillOutputC = ((SoyabinmillC * SoyabinmillInput) / 1000).toFixed(2);
+
+                                    var DalOutputA = ((DalA * DalInput) / 1000).toFixed(2);
+                                    var DalOutputB = (DalB * DalInput).toFixed(2);
+                                    var DalOutputC = ((DalC * DalInput) / 1000).toFixed(2);
+
+                                    var CholaOutputA = ((CholaA * CholaInput) / 1000).toFixed(2);
+                                    var CholaOutputB = (CholaB * CholaInput).toFixed(2);
+                                    var CholaOutputC = ((CholaC * CholaInput) / 1000).toFixed(2);
+
+                                    var BinDalJatioOutputA = ((BinDalJatioA * BinDalJatioInput) / 1000).toFixed(2);
+                                    var BinDalJatioOutputB = (BinDalJatioB * BinDalJatioInput).toFixed(2);
+                                    var BinDalJatioOutputC = ((BinDalJatioC * BinDalJatioInput) / 1000).toFixed(2);
+
+                                    var CalOutputA = ((CalA * CalInput) / 1000).toFixed(2);
+                                    var CalOutputB = (CalB * CalInput).toFixed(2);
+                                    var CalOutputC = ((CalC * CalInput) / 1000).toFixed(2);
+
+
+                                    var RockSoltOutputA = ((RockSoltA * RockSoltInput) / 1000).toFixed(2);
+                                    var RockSoltOutputB = (RockSoltB * RockSoltInput).toFixed(2);
+                                    var RockSoltOutputC = ((RockSoltC * RockSoltInput) / 1000).toFixed(2);
+
+                                    var DcpOutputA = ((DcpA * DcpInput) / 1000).toFixed(2);
+                                    var DcpOutputB = (DcpB * DcpInput).toFixed(2);
+                                    var DcpOutputC = ((DcpC * DcpInput) / 1000).toFixed(2);
+
+                                    var LobonOutputA = ((LobonA * LobonInput) / 1000).toFixed(2);
+                                    var LobonOutputB = (LobonB * LobonInput).toFixed(2);
+                                    var LobonOutputC = ((LobonC * LobonInput) / 1000).toFixed(2);
+
+                                    var ShakSobjiOutputA = ((ShakSobjiA * ShakSobjiInput) / 1000).toFixed(2);
+                                    var ShakSobjiOutputB = (ShakSobjiB * ShakSobjiInput).toFixed(2);
+                                    var ShakSobjiOutputC = ((ShakSobjiC * ShakSobjiInput) / 1000).toFixed(2);
+
+                                    var VitaminsOutputA = ((VitaminsA * VitaminsInput) / 1000).toFixed(2);
+                                    var VitaminsOutputB = (VitaminsB * VitaminsInput).toFixed(2);
+                                    var VitaminsOutputC = ((VitaminsC * VitaminsInput) / 1000).toFixed(2);
+
+                                    var DeshiFolOutputA = ((DeshiFolA * DeshiFolInput) / 1000).toFixed(2);
+                                    var DeshiFolOutputB = (DeshiFolB * DeshiFolInput).toFixed(2);
+                                    var DeshiFolOutputC = ((DeshiFolC * DeshiFolInput) / 1000).toFixed(2);
+
+                                    var TotalOutputInput = parseFloat(DeshiFolInput) + parseFloat(VitaminsInput) + parseFloat(ShakSobjiInput) + parseFloat(LobonInput)
+                                        + parseFloat(DcpInput) + parseFloat(RockSoltInput) + parseFloat(CalInput) + parseFloat(BinDalJatioInput) + parseFloat(CholaInput)
+                                        + parseFloat(DalInput) + parseFloat(SoyabinmillInput) + parseFloat(JoyanInput) + parseFloat(BazraInput)
+                                        + parseFloat(VutradanaInput) + parseFloat(GuraInput) + parseFloat(GomerInput) + parseFloat(DhanInput);
+
+                                    var TotalOutputA = parseFloat(DhanOutputA) + parseFloat(GomerOutputA) + parseFloat(GuraOutputA) + parseFloat(VutradanaOutputA) + parseFloat(BazraOutputA) +
+                                        parseFloat(JoyanOutputA) + parseFloat(SoyabinmillOutputA) + parseFloat(DalOutputA) + parseFloat(CholaOutputA) +
+                                        parseFloat(BinDalJatioOutputA) + parseFloat(CalOutputA) + parseFloat(RockSoltOutputA) + parseFloat(DcpOutputA) +
+                                        parseFloat(LobonOutputA) + parseFloat(ShakSobjiOutputA) + parseFloat(VitaminsOutputA) + parseFloat(DeshiFolOutputA);
+
+                                    var TotalOutputB = parseFloat(DhanOutputB) + parseFloat(GomerOutputB) + parseFloat(GuraOutputB) + parseFloat(VutradanaOutputB) + parseFloat(BazraOutputB) +
+                                        parseFloat(JoyanOutputB) + parseFloat(SoyabinmillOutputB) + parseFloat(DalOutputB) + parseFloat(CholaOutputB) +
+                                        parseFloat(BinDalJatioOutputB) + parseFloat(CalOutputB) + parseFloat(RockSoltOutputB) + parseFloat(DcpOutputB) +
+                                        parseFloat(LobonOutputB) + parseFloat(ShakSobjiOutputB) + parseFloat(VitaminsOutputB) + parseFloat(DeshiFolOutputB);
+
+                                    var TotalOutputC = parseFloat(DhanOutputC) + parseFloat(GomerOutputC) + parseFloat(GuraOutputC) + parseFloat(VutradanaOutputC) + parseFloat(BazraOutputC) +
+                                        parseFloat(JoyanOutputC) + parseFloat(SoyabinmillOutputC) + parseFloat(DalOutputC) + parseFloat(CholaOutputC) +
+                                        parseFloat(BinDalJatioOutputC) + parseFloat(CalOutputC) + parseFloat(RockSoltOutputC) + parseFloat(DcpOutputC) +
+                                        parseFloat(LobonOutputC) + parseFloat(ShakSobjiOutputC) + parseFloat(VitaminsOutputC) + parseFloat(DeshiFolOutputC);
+
+
+                                    var KejiprotiA = parseFloat(TotalOutputA) / parseFloat(TotalOutputInput);
+                                    var KejiprotiB = parseFloat(TotalOutputB) / parseFloat(TotalOutputInput);
+                                    var KejiprotiC = parseFloat(TotalOutputC) / parseFloat(TotalOutputInput);
+
+                                    var ProkritoKhaddoTalikaA = ProkritoKhaddoTalikaInput * parseFloat(KejiprotiA);
+                                    var ProkritoKhaddoTalikaB = ProkritoKhaddoTalikaInput * parseFloat(KejiprotiB);
+                                    var ProkritoKhaddoTalikaC = ProkritoKhaddoTalikaInput * parseFloat(KejiprotiC);
+
+
+
+
+
+
+                                    document.getElementById("DhanOutputA").innerText = DhanOutputA;
+                                    document.getElementById("DhanOutputB").innerText = DhanOutputB;
+                                    document.getElementById("DhanOutputC").innerText = DhanOutputC;
+
+
+                                    document.getElementById("GomerOutputA").innerText = GomerOutputA;
+                                    document.getElementById("GomerOutputB").innerText = GomerOutputB;
+                                    document.getElementById("GomerOutputC").innerText = GomerOutputC;
+
+                                    document.getElementById("GuraOutputA").innerText = GuraOutputA;
+                                    document.getElementById("GuraOutputB").innerText = GuraOutputB;
+                                    document.getElementById("GuraOutputC").innerText = GuraOutputC;
+
+                                    document.getElementById("VutradanaOutputA").innerText = VutradanaOutputA;
+                                    document.getElementById("VutradanaOutputB").innerText = VutradanaOutputB;
+                                    document.getElementById("VutradanaOutputC").innerText = VutradanaOutputC;
+
+                                    document.getElementById("BazraOutputA").innerText = BazraOutputA;
+                                    document.getElementById("BazraOutputB").innerText = BazraOutputB;
+                                    document.getElementById("BazraOutputC").innerText = BazraOutputC;
+
+                                    document.getElementById("JoyanOutputA").innerText = JoyanOutputA;
+                                    document.getElementById("JoyanOutputB").innerText = JoyanOutputB;
+                                    document.getElementById("JoyanOutputC").innerText = JoyanOutputC;
+
+
+                                    document.getElementById("SoyabinmillOutputA").innerText = SoyabinmillOutputA;
+                                    document.getElementById("SoyabinmillOutputB").innerText = SoyabinmillOutputB;
+                                    document.getElementById("SoyabinmillOutputC").innerText = SoyabinmillOutputC;
+
+                                    document.getElementById("DalOutputA").innerText = DalOutputA;
+                                    document.getElementById("DalOutputB").innerText = DalOutputB;
+                                    document.getElementById("DalOutputC").innerText = DalOutputC;
+
+                                    document.getElementById("CholaOutputA").innerText = CholaOutputA;
+                                    document.getElementById("CholaOutputB").innerText = CholaOutputB;
+                                    document.getElementById("CholaOutputC").innerText = CholaOutputC;
+
+                                    document.getElementById("BinDalJatioOutputA").innerText = BinDalJatioOutputA;
+                                    document.getElementById("BinDalJatioOutputB").innerText = BinDalJatioOutputB;
+                                    document.getElementById("BinDalJatioOutputC").innerText = BinDalJatioOutputC;
+
+                                    document.getElementById("CalOutputA").innerText = CalOutputA;
+                                    document.getElementById("CalOutputB").innerText = CalOutputB;
+                                    document.getElementById("CalOutputC").innerText = CalOutputC;
+
+
+                                    document.getElementById("RockSoltOutputA").innerText = RockSoltOutputA;
+                                    document.getElementById("RockSoltOutputB").innerText = RockSoltOutputB;
+                                    document.getElementById("RockSoltOutputC").innerText = RockSoltOutputC;
+
+                                    document.getElementById("DcpOutputA").innerText = DcpOutputA;
+                                    document.getElementById("DcpOutputB").innerText = DcpOutputB;
+                                    document.getElementById("DcpOutputC").innerText = DcpOutputC;
+
+                                    document.getElementById("LobonOutputA").innerText = LobonOutputA;
+                                    document.getElementById("LobonOutputB").innerText = LobonOutputB;
+                                    document.getElementById("LobonOutputC").innerText = LobonOutputC;
+
+                                    document.getElementById("ShakSobjiOutputA").innerText = ShakSobjiOutputA;
+                                    document.getElementById("ShakSobjiOutputB").innerText = ShakSobjiOutputB;
+                                    document.getElementById("ShakSobjiOutputC").innerText = ShakSobjiOutputC;
+
+                                    document.getElementById("VitaminsOutputA").innerText = VitaminsOutputA;
+                                    document.getElementById("VitaminsOutputB").innerText = VitaminsOutputB;
+                                    document.getElementById("VitaminsOutputC").innerText = VitaminsOutputC;
+
+                                    document.getElementById("DeshiFolOutputA").innerText = DeshiFolOutputA;
+                                    document.getElementById("DeshiFolOutputB").innerText = DeshiFolOutputB;
+                                    document.getElementById("DeshiFolOutputC").innerText = DeshiFolOutputC;
+
+                                    document.getElementById("TotalOutputInput").innerText = TotalOutputInput.toFixed(2);
+                                    document.getElementById("TotalOutputA").innerText = TotalOutputA.toFixed(2);
+                                    document.getElementById("TotalOutputB").innerText = TotalOutputB.toFixed(2);
+                                    document.getElementById("TotalOutputC").innerText = TotalOutputC.toFixed(2);
+
+                                    document.getElementById("KejiprotiA").innerText = KejiprotiA.toFixed(2);
+                                    document.getElementById("KejiprotiB").innerText = KejiprotiB.toFixed(2);
+                                    document.getElementById("KejiprotiC").innerText = KejiprotiC.toFixed(2);
+
+                                    document.getElementById("ProkritoKhaddoTalikaA").innerText = ProkritoKhaddoTalikaA.toFixed(2);
+                                    document.getElementById("ProkritoKhaddoTalikaB").innerText = ProkritoKhaddoTalikaB.toFixed(2);
+                                    document.getElementById("ProkritoKhaddoTalikaC").innerText = ProkritoKhaddoTalikaC.toFixed(2);
+
+
+
+
+
+                                    // var DhanInput = document.getElementById("DhanInput");
+                                    // var inputValue = parseFloat(DhanInput.value);
+
+                                    // // Change background color based on the input value
+                                    // if (inputValue < 20 || inputValue > 25) {
+                                    //     DhanInput.classList.add("red-bg");
+                                    // }
+                                    // else {
+                                    //     DhanInput.classList.remove("red-bg");
+
+
+                                    // }
+
+
+
+                                }
+                                calculateValues()
+
+                                function printBigCal(username, date) {
+
+                                    document.getElementById('username').innerText = username + '\n' + date;
+
+                                    // Clone the print_are div
+                                    var printContents = document.getElementById("print_areBig").cloneNode(true);
+
+                                    // Create a new window and append the cloned content
+                                    var printWindow = window.open('', '_blank');
+                                    printWindow.document.body.appendChild(printContents);
+
+                                    // Print the new window
+                                    printWindow.print();
+
+                                }
+
+
+
+                            </script>
+
+
+                            <p style="font-size:20px; line-height:20px;" id="username"></p>
+
+
+                        </div>
+
+                        <div style=" text-align:center">
+                           
+                            <button onclick="printBigCal('@Username','@date')" class="btn btn-primary" id="print">ফর্মুলেশন করুন</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div> <!--Calculator Energery-->
+
+
+      
+
+    </div>
+</div>
+
+

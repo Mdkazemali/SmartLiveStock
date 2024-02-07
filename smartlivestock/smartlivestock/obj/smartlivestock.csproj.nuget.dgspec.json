@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj": {}
+    "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj": {}
   },
   "projects": {
-    "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj": {
+    "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj",
+        "projectUniqueName": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj",
         "projectName": "smartlivestock",
-        "projectPath": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj",
+        "projectPath": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj",
         "packagesPath": "C:\\Users\\mis\\.nuget\\packages\\",
-        "outputPath": "F:\\DOT NET PROJECT\\LiveStock\\smartlivestock\\smartlivestock\\obj\\",
+        "outputPath": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mis\\AppData\\Roaming\\NuGet\\NuGet.Config",
