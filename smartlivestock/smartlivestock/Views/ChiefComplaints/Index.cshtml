@@ -7,7 +7,11 @@
 @{
     var LeaveCount = Model.Count();
 }
-
+<style>
+    .table{
+        border:black;
+    }
+</style>
 
 @{
     var page = ViewData["Page"] != null ? (int)ViewData["Page"] : 1;
@@ -23,7 +27,7 @@
     <div class="form-group">
 
 
-        <input type="search" placeholder="Chief Complaints" value="@ViewData["category"]" name="category" style="width: 350px; " />
+        <input type="search" id="searchInput" placeholder="Search your content.." value="@ViewData["category"]" name="category" style="width: 350px; " />
 
 
         <input type="submit" value="Filter" class="btn btn-primary" />
@@ -61,11 +65,43 @@
         });
     });
 </script>
+<script>
+    const message = "Search your content...";
+    const searchInput = document.getElementById("searchInput");
+    let index = 0;
+
+    function typeWriter() {
+        if (index < message.length) {
+            searchInput.value += message[index];
+            index++;
+            setTimeout(typeWriter, 50); // Adjust speed here (milliseconds)
+        } else {
+            // Clear characters one by one (using another function)
+            clearText();
+        }
+    }
+
+    function clearText() {
+        const intervalId = setInterval(() => {
+            if (searchInput.value) {
+                searchInput.value = searchInput.value.slice(0, -1);
+            } else {
+                clearInterval(intervalId);
+            }
+        }, 50); // Adjust speed here (milliseconds)
+    }
+
+    // Start the typing animation
+    typeWriter();
+
+
+
+</script>
 
 
 
 
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -93,9 +129,9 @@
                 @Html.DisplayFor(modelItem => item.UsrName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ChiId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ChiId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ChiId">Delete</a>
+                    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.ChiId">Edit</a>
+                    <a asp-action="Details" class="btn btn-primary"  asp-route-id="@item.ChiId">Details</a>
+     
             </td>
         </tr>
 }

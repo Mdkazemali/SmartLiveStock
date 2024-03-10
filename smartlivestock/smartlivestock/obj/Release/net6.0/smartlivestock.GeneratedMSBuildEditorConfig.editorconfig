@@ -74,6 +74,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Advices/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2aWNlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Advices/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2aWNlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Advices/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2aWNlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Advices/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2aWNlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Advices/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2aWNlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Calculator/Broiler.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsY3VsYXRvclxCcm9pbGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -98,6 +118,106 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsY3VsYXRvclxQb3NoYVBha2hpcktoYWRkby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/ChiefComplaints/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hpZWZDb21wbGFpbnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/ChiefComplaints/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hpZWZDb21wbGFpbnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/ChiefComplaints/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hpZWZDb21wbGFpbnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/ChiefComplaints/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hpZWZDb21wbGFpbnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/ChiefComplaints/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hpZWZDb21wbGFpbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Diagnoses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Diagnoses/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc2VzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Diagnoses/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc2VzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Diagnoses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Diagnoses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Doses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9zZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Doses/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9zZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Doses/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9zZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Doses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9zZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Doses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9zZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FlowUps/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxvd1Vwc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FlowUps/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxvd1Vwc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FlowUps/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxvd1Vwc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FlowUps/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxvd1Vwc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FlowUps/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxvd1Vwc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/GeneralExaminations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJhbEV4YW1pbmF0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/GeneralExaminations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJhbEV4YW1pbmF0aW9uc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/GeneralExaminations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJhbEV4YW1pbmF0aW9uc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/GeneralExaminations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJhbEV4YW1pbmF0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/GeneralExaminations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJhbEV4YW1pbmF0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Home/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -108,6 +228,86 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Invastigations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52YXN0aWdhdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Invastigations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52YXN0aWdhdGlvbnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Invastigations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52YXN0aWdhdGlvbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Invastigations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52YXN0aWdhdGlvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Invastigations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52YXN0aWdhdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Medicines/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNpbmVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Medicines/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNpbmVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Medicines/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNpbmVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Medicines/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNpbmVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Medicines/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNpbmVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Prescriptions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Prescriptions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Prescriptions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Prescriptions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Prescriptions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Registrations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Registrations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Registrations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Registrations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Registrations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Role/Create.cshtml]

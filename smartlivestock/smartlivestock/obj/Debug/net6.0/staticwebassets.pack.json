@@ -13,12 +13,64 @@
       "PackagePath": "staticwebassets\\calculatorimg\\goru.png"
     },
     {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\css\\fontawesome_all.min.css",
+      "PackagePath": "staticwebassets\\css\\fontawesome_all.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\css\\ma5-menu.min.css",
+      "PackagePath": "staticwebassets\\css\\ma5-menu.min.css"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\css\\responsive.css",
+      "PackagePath": "staticwebassets\\css\\responsive.css"
+    },
+    {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\fonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\fonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\fonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\fonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\fonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\fonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\fonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\fonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\fonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\fonts\\fa-v4compatibility.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fa-v4compatibility.ttf"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\fonts\\fa-v4compatibility.woff2",
+      "PackagePath": "staticwebassets\\fonts\\fa-v4compatibility.woff2"
     },
     {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\headerimages\\PoshaPakhirKhaddo.png",
@@ -69,12 +121,348 @@
       "PackagePath": "staticwebassets\\imageslogo\\ismartlogo.png"
     },
     {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\1.jpg",
+      "PackagePath": "staticwebassets\\img\\1.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\2.jpg",
+      "PackagePath": "staticwebassets\\img\\2.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\3.jpg",
+      "PackagePath": "staticwebassets\\img\\3.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\4.jpg",
+      "PackagePath": "staticwebassets\\img\\4.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\5.jpg",
+      "PackagePath": "staticwebassets\\img\\5.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\6.jpg",
+      "PackagePath": "staticwebassets\\img\\6.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\BKash_Logo_icon.png",
+      "PackagePath": "staticwebassets\\img\\BKash_Logo_icon.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\Nagad-Logo.wine.png",
+      "PackagePath": "staticwebassets\\img\\Nagad-Logo.wine.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\Screenshot_1-removebg-preview.png",
+      "PackagePath": "staticwebassets\\img\\Screenshot_1-removebg-preview.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\Screenshot_1.jpg",
+      "PackagePath": "staticwebassets\\img\\Screenshot_1.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\Screenshot_2.jpg",
+      "PackagePath": "staticwebassets\\img\\Screenshot_2.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\advice.png",
+      "PackagePath": "staticwebassets\\img\\advice.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\analysis.png",
+      "PackagePath": "staticwebassets\\img\\analysis.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\bg_main.gif",
+      "PackagePath": "staticwebassets\\img\\bg_main.gif"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\bird.png",
+      "PackagePath": "staticwebassets\\img\\bird.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\bkash-logo-835789094A-seeklogo.com.png",
+      "PackagePath": "staticwebassets\\img\\bkash-logo-835789094A-seeklogo.com.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\bread.jpg",
+      "PackagePath": "staticwebassets\\img\\bread.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\ca.png",
+      "PackagePath": "staticwebassets\\img\\ca.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\cat.png",
+      "PackagePath": "staticwebassets\\img\\cat.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\check.png",
+      "PackagePath": "staticwebassets\\img\\check.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\corn.png",
+      "PackagePath": "staticwebassets\\img\\corn.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\cow.png",
+      "PackagePath": "staticwebassets\\img\\cow.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\customer-service.png",
+      "PackagePath": "staticwebassets\\img\\customer-service.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\dog.png",
+      "PackagePath": "staticwebassets\\img\\dog.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\dose.jpg",
+      "PackagePath": "staticwebassets\\img\\dose.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\download.png",
+      "PackagePath": "staticwebassets\\img\\download.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\duck.png",
+      "PackagePath": "staticwebassets\\img\\duck.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\farmer.jpeg",
+      "PackagePath": "staticwebassets\\img\\farmer.jpeg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\farmer1.jpg",
+      "PackagePath": "staticwebassets\\img\\farmer1.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\farmer3.jpg",
+      "PackagePath": "staticwebassets\\img\\farmer3.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\favicon.ico",
+      "PackagePath": "staticwebassets\\img\\favicon.ico"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\feed.jpg",
+      "PackagePath": "staticwebassets\\img\\feed.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\flask.png",
+      "PackagePath": "staticwebassets\\img\\flask.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\footer_top_bg.png",
+      "PackagePath": "staticwebassets\\img\\footer_top_bg.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\goat.png",
+      "PackagePath": "staticwebassets\\img\\goat.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\hen.png",
+      "PackagePath": "staticwebassets\\img\\hen.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\home.png",
+      "PackagePath": "staticwebassets\\img\\home.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\icon.png",
+      "PackagePath": "staticwebassets\\img\\icon.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\images.jpeg",
+      "PackagePath": "staticwebassets\\img\\images.jpeg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\info.png",
+      "PackagePath": "staticwebassets\\img\\info.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\khesari.png",
+      "PackagePath": "staticwebassets\\img\\khesari.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\lentil.png",
+      "PackagePath": "staticwebassets\\img\\lentil.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\logo-removebg-preview.png",
+      "PackagePath": "staticwebassets\\img\\logo-removebg-preview.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\logo.jpg",
+      "PackagePath": "staticwebassets\\img\\logo.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\medical-record.png",
+      "PackagePath": "staticwebassets\\img\\medical-record.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\mem.png",
+      "PackagePath": "staticwebassets\\img\\mem.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\online-presentation.png",
+      "PackagePath": "staticwebassets\\img\\online-presentation.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\online-registration.png",
+      "PackagePath": "staticwebassets\\img\\online-registration.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\p1.jpg",
+      "PackagePath": "staticwebassets\\img\\p1.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\p2.jpg",
+      "PackagePath": "staticwebassets\\img\\p2.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\people.png",
+      "PackagePath": "staticwebassets\\img\\people.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\pigeon.png",
+      "PackagePath": "staticwebassets\\img\\pigeon.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\pregnancy-test.png",
+      "PackagePath": "staticwebassets\\img\\pregnancy-test.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\rabbit.png",
+      "PackagePath": "staticwebassets\\img\\rabbit.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\ration.png",
+      "PackagePath": "staticwebassets\\img\\ration.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\regi_bg.jpg",
+      "PackagePath": "staticwebassets\\img\\regi_bg.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\registration.png",
+      "PackagePath": "staticwebassets\\img\\registration.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\rice.png",
+      "PackagePath": "staticwebassets\\img\\rice.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\right-arrow.png",
+      "PackagePath": "staticwebassets\\img\\right-arrow.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\rocket.png",
+      "PackagePath": "staticwebassets\\img\\rocket.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\sesame.png",
+      "PackagePath": "staticwebassets\\img\\sesame.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\sperm.png",
+      "PackagePath": "staticwebassets\\img\\sperm.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\stethoscope.png",
+      "PackagePath": "staticwebassets\\img\\stethoscope.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\subs_bg.jpg",
+      "PackagePath": "staticwebassets\\img\\subs_bg.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\symptom.jpg",
+      "PackagePath": "staticwebassets\\img\\symptom.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\symptom.png",
+      "PackagePath": "staticwebassets\\img\\symptom.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\treatment.png",
+      "PackagePath": "staticwebassets\\img\\treatment.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\vaccine.png",
+      "PackagePath": "staticwebassets\\img\\vaccine.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\weight-loss.png",
+      "PackagePath": "staticwebassets\\img\\weight-loss.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\weight.jpg",
+      "PackagePath": "staticwebassets\\img\\weight.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\img\\wheat.png",
+      "PackagePath": "staticwebassets\\img\\wheat.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\Chart.js_4.3.1_chart.min.js",
+      "PackagePath": "staticwebassets\\js\\Chart.js_4.3.1_chart.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\chart.js",
+      "PackagePath": "staticwebassets\\js\\chart.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\jquery-3.6.1.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery-3.6.1.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\jquery.countTo.js",
+      "PackagePath": "staticwebassets\\js\\jquery.countTo.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\ma5-menu.min.js",
+      "PackagePath": "staticwebassets\\js\\ma5-menu.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\modernizr-3.11.2.min.js",
+      "PackagePath": "staticwebassets\\js\\modernizr-3.11.2.min.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\plugins.js",
+      "PackagePath": "staticwebassets\\js\\plugins.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
+    },
+    {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\qr.js",
       "PackagePath": "staticwebassets\\js\\qr.js"
     },
     {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\ration.js",
+      "PackagePath": "staticwebassets\\js\\ration.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\rationMy.js",
+      "PackagePath": "staticwebassets\\js\\rationMy.js"
+    },
+    {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\js\\sweetalert2.min.js",
+      "PackagePath": "staticwebassets\\js\\sweetalert2.min.js"
     },
     {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\lib\\bootstrap\\LICENSE",

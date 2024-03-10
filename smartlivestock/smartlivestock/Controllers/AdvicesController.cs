@@ -116,6 +116,9 @@ namespace smartlivestock.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                advice.AdvDate = DateTime.Now;
+                advice.UrName = User.Identity.Name.Split('@')[0];
                 _context.Add(advice);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -155,6 +158,7 @@ namespace smartlivestock.Controllers
             {
                 try
                 {
+                    advice.UrName = User.Identity.Name.Split('@')[0];
                     _context.Update(advice);
                     await _context.SaveChangesAsync();
                 }

@@ -19,13 +19,7 @@ namespace smartlivestock.Controllers
             _context = context;
         }
 
-        // GET: ChiefComplaints
-        //public async Task<IActionResult> Index()
-        //{
-        //      return View(await _context.ChiefComplaint.ToListAsync());
-        //}
-
-
+       
         // GET: Benificiaries
         public async Task<IActionResult> Index(string category, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
         {
@@ -118,6 +112,8 @@ namespace smartlivestock.Controllers
         {
             if (ModelState.IsValid)
             {
+                chiefComplaint.CreateDt = DateTime.Now;
+                chiefComplaint.UsrName = User.Identity.Name.Split('@')[0];
                 _context.Add(chiefComplaint);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -157,6 +153,8 @@ namespace smartlivestock.Controllers
             {
                 try
                 {
+                    chiefComplaint.CreateDt = DateTime.Now;
+                    chiefComplaint.UsrName = User.Identity.Name.Split('@')[0];
                     _context.Update(chiefComplaint);
                     await _context.SaveChangesAsync();
                 }

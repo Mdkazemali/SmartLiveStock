@@ -4,13 +4,11 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="container mt-4">
+    <h2 class="text-center text-primary">EDIT DIAGNOSES</h2>
 
-<h4>Diagnosis</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+    <div class="row justify-content-center">
+        <form asp-action="Edit" class="col-12 col-md-8 col-lg-6 bg-light bg-gradient p-4 border" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="DiagId" />
             <div class="form-group">
@@ -18,25 +16,15 @@
                 <input asp-for="DiagName" class="form-control" />
                 <span asp-validation-for="DiagName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CreateDt" class="control-label"></label>
-                <input asp-for="CreateDt" class="form-control" />
-                <span asp-validation-for="CreateDt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UsrName" class="control-label"></label>
-                <input asp-for="UsrName" class="form-control" />
-                <span asp-validation-for="UsrName" class="text-danger"></span>
-            </div>
+            <br />
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Back</a>
             </div>
+
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

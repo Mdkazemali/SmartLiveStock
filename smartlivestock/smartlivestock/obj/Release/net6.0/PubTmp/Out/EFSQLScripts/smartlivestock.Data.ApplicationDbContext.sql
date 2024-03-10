@@ -334,3 +334,216 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [Advices] (
+        [AdvId] int NOT NULL IDENTITY,
+        [AdvName] nvarchar(max) NULL,
+        [AdvDate] datetime2 NOT NULL,
+        [UrName] nvarchar(max) NULL,
+        CONSTRAINT [PK_Advices] PRIMARY KEY ([AdvId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [ChiefComplaint] (
+        [ChiId] int NOT NULL IDENTITY,
+        [ChiName] nvarchar(max) NULL,
+        [CreateDt] datetime2 NOT NULL,
+        [UsrName] nvarchar(max) NULL,
+        CONSTRAINT [PK_ChiefComplaint] PRIMARY KEY ([ChiId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [Diagnosis] (
+        [DiagId] int NOT NULL IDENTITY,
+        [DiagName] nvarchar(max) NULL,
+        [CreateDt] datetime2 NOT NULL,
+        [UsrName] nvarchar(max) NULL,
+        CONSTRAINT [PK_Diagnosis] PRIMARY KEY ([DiagId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [Doses] (
+        [DosesId] int NOT NULL IDENTITY,
+        [Morning] bit NOT NULL,
+        [Afternoon] bit NOT NULL,
+        [Evening] bit NOT NULL,
+        [Days] int NOT NULL,
+        [DosesName] nvarchar(max) NULL,
+        [DosesDate] datetime2 NOT NULL,
+        [UrName] nvarchar(max) NULL,
+        CONSTRAINT [PK_Doses] PRIMARY KEY ([DosesId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [FlowUp] (
+        [FloId] int NOT NULL IDENTITY,
+        [FloName] nvarchar(max) NULL,
+        [FloDate] datetime2 NOT NULL,
+        [UrName] nvarchar(max) NULL,
+        CONSTRAINT [PK_FlowUp] PRIMARY KEY ([FloId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [GeneralExamination] (
+        [GenId] int NOT NULL IDENTITY,
+        [ExamName] nvarchar(max) NULL,
+        [CreateDt] datetime2 NOT NULL,
+        [UsrName] nvarchar(max) NULL,
+        CONSTRAINT [PK_GeneralExamination] PRIMARY KEY ([GenId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [Invastigations] (
+        [InvId] int NOT NULL IDENTITY,
+        [InvName] nvarchar(max) NULL,
+        [InvDate] datetime2 NOT NULL,
+        [UrName] nvarchar(max) NULL,
+        CONSTRAINT [PK_Invastigations] PRIMARY KEY ([InvId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [Medicines] (
+        [MedId] int NOT NULL IDENTITY,
+        [MedName] nvarchar(max) NULL,
+        [MedDate] datetime2 NOT NULL,
+        [UrName] nvarchar(max) NULL,
+        CONSTRAINT [PK_Medicines] PRIMARY KEY ([MedId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [Registration] (
+        [RegiId] int NOT NULL IDENTITY,
+        [Name] nvarchar(max) NULL,
+        [PtnId] nvarchar(max) NULL,
+        [Phone] nvarchar(max) NULL,
+        [Gender] nvarchar(max) NULL,
+        [Ages] nvarchar(max) NULL,
+        [CreateDAte] datetime2 NOT NULL,
+        [UsrName] nvarchar(max) NULL,
+        CONSTRAINT [PK_Registration] PRIMARY KEY ([RegiId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE TABLE [Prescription] (
+        [PresId] int NOT NULL IDENTITY,
+        [PresName] nvarchar(max) NULL,
+        [PresDate] datetime2 NOT NULL,
+        [UrName] nvarchar(max) NULL,
+        [RegistrationId] int NOT NULL,
+        [ChiefComplaintId] int NOT NULL,
+        [GeneralExaminationId] int NOT NULL,
+        [DiagnosisId] int NOT NULL,
+        [InvastigationId] int NOT NULL,
+        [MedicineId] int NOT NULL,
+        [DosesId] int NOT NULL,
+        [AdviceId] int NOT NULL,
+        [FlowUpId] int NOT NULL,
+        CONSTRAINT [PK_Prescription] PRIMARY KEY ([PresId]),
+        CONSTRAINT [FK_Prescription_Advices_AdviceId] FOREIGN KEY ([AdviceId]) REFERENCES [Advices] ([AdvId]) ON DELETE CASCADE,
+        CONSTRAINT [FK_Prescription_ChiefComplaint_ChiefComplaintId] FOREIGN KEY ([ChiefComplaintId]) REFERENCES [ChiefComplaint] ([ChiId]) ON DELETE CASCADE,
+        CONSTRAINT [FK_Prescription_Diagnosis_DiagnosisId] FOREIGN KEY ([DiagnosisId]) REFERENCES [Diagnosis] ([DiagId]) ON DELETE CASCADE,
+        CONSTRAINT [FK_Prescription_Doses_DosesId] FOREIGN KEY ([DosesId]) REFERENCES [Doses] ([DosesId]) ON DELETE CASCADE,
+        CONSTRAINT [FK_Prescription_FlowUp_FlowUpId] FOREIGN KEY ([FlowUpId]) REFERENCES [FlowUp] ([FloId]) ON DELETE CASCADE,
+        CONSTRAINT [FK_Prescription_GeneralExamination_GeneralExaminationId] FOREIGN KEY ([GeneralExaminationId]) REFERENCES [GeneralExamination] ([GenId]) ON DELETE CASCADE,
+        CONSTRAINT [FK_Prescription_Invastigations_InvastigationId] FOREIGN KEY ([InvastigationId]) REFERENCES [Invastigations] ([InvId]) ON DELETE CASCADE,
+        CONSTRAINT [FK_Prescription_Medicines_MedicineId] FOREIGN KEY ([MedicineId]) REFERENCES [Medicines] ([MedId]) ON DELETE CASCADE,
+        CONSTRAINT [FK_Prescription_Registration_RegistrationId] FOREIGN KEY ([RegistrationId]) REFERENCES [Registration] ([RegiId]) ON DELETE CASCADE
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE INDEX [IX_Prescription_AdviceId] ON [Prescription] ([AdviceId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE INDEX [IX_Prescription_ChiefComplaintId] ON [Prescription] ([ChiefComplaintId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE INDEX [IX_Prescription_DiagnosisId] ON [Prescription] ([DiagnosisId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE INDEX [IX_Prescription_DosesId] ON [Prescription] ([DosesId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE INDEX [IX_Prescription_FlowUpId] ON [Prescription] ([FlowUpId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE INDEX [IX_Prescription_GeneralExaminationId] ON [Prescription] ([GeneralExaminationId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE INDEX [IX_Prescription_InvastigationId] ON [Prescription] ([InvastigationId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE INDEX [IX_Prescription_MedicineId] ON [Prescription] ([MedicineId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    CREATE INDEX [IX_Prescription_RegistrationId] ON [Prescription] ([RegistrationId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240203171024_Prescriptions', N'6.0.26');
+END;
+GO
+
+COMMIT;
+GO
+

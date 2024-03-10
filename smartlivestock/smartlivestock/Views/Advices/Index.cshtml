@@ -7,6 +7,12 @@
 @{
     var LeaveCount = Model.Count();
 }
+<style>
+    .table{
+        border:black;
+    }
+  
+</style>
 
 
 @{
@@ -23,7 +29,7 @@
     <div class="form-group">
 
 
-        <input type="search" placeholder="Advices" value="@ViewData["category"]" name="category" style="width: 350px; " />
+        <input type="search" id="searchInput" placeholder="Search your content.." value="@ViewData["category"]" name="category" style="width: 350px; " />
 
 
         <input type="submit" value="Filter" class="btn btn-primary" />
@@ -61,20 +67,52 @@
         });
     });
 </script>
+<script>
+    const message = "Search your content...";
+    const searchInput = document.getElementById("searchInput");
+    let index = 0;
 
-<table class="table">
+    function typeWriter() {
+        if (index < message.length) {
+            searchInput.value += message[index];
+            index++;
+            setTimeout(typeWriter, 50); // Adjust speed here (milliseconds)
+        } else {
+            // Clear characters one by one (using another function)
+            clearText();
+        }
+    }
+
+    function clearText() {
+        const intervalId = setInterval(() => {
+            if (searchInput.value) {
+                searchInput.value = searchInput.value.slice(0, -1);
+            } else {
+                clearInterval(intervalId);
+            }
+        }, 50); // Adjust speed here (milliseconds)
+    }
+
+    // Start the typing animation
+    typeWriter();
+
+
+
+</script>
+
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.AdvName)
+               Advices
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AdvDate)
+                Create Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UrName)
+                User Name
             </th>
-            <th></th>
+            <th>Edit/View</th>
         </tr>
     </thead>
     <tbody>
@@ -90,9 +128,9 @@
                 @Html.DisplayFor(modelItem => item.UrName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AdvId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AdvId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AdvId">Delete</a>
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.AdvId">Edit</a>
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.AdvId">View</a>
+
             </td>
         </tr>
 }

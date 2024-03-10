@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using smartlivestock.Data;
 using smartlivestock.Models;
@@ -21,7 +22,18 @@ namespace smartlivestock.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<Trainingvideo> trainingvideodata = GetVideoData();
+
+            var model = new UserRoleViewModel
+            {
+                VideoDataList = trainingvideodata
+            };
+
+            // Calculate and set the time difference
+            //model.TimeCalculations();
+
+            return View(model);
+          
            
         }
 
@@ -117,6 +129,31 @@ namespace smartlivestock.Controllers
 
 
 
+
+       
+
+        public IActionResult Home()
+        {
+            List<Trainingvideo> trainingvideodata = GetVideoData();
+
+            var model = new UserRoleViewModel
+            {
+                VideoDataList = trainingvideodata
+            };
+
+            // Calculate and set the time difference
+            //model.TimeCalculations();
+
+            return View(model);
+        }
+
+        private List<Trainingvideo> GetVideoData()
+        {
+            List<Trainingvideo> videwdata = _context.Trainingvideo.ToList();
+
+
+            return videwdata;
+        }
 
 
 

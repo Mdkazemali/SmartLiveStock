@@ -19,11 +19,62 @@ namespace smartlivestock.Controllers
             _context = context;
         }
 
-        // GET: FlowUps
-        public async Task<IActionResult> Index()
+        //// GET: FlowUps
+        //public async Task<IActionResult> Index()
+        //{
+        //      return View(await _context.FlowUp.ToListAsync());
+        //}
+        public async Task<IActionResult> Index(string category, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
         {
-              return View(await _context.FlowUp.ToListAsync());
+            ViewData["category"] = category;
+            var custquery = from x in _context.FlowUp select x;
+            if (!String.IsNullOrEmpty(category))
+            {
+                custquery = custquery.Where(x => x.FloName.Contains(category));
+            }
+
+            // for page setups
+
+            int p;
+            if (pp == 0)
+            {
+                p = 8;
+
+            }
+            else
+            {
+                p = pp;
+            }
+
+            ViewData["pp"] = p;
+            pageSize = p;
+
+
+
+            // Count the total number of records
+            var totalRecords = await custquery.CountAsync();
+
+            // Calculate the number of pages
+            var totalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
+
+            // Validate the current page value
+            page = Math.Max(1, Math.Min(totalPages, page));
+
+            // Calculate the number of records to skip
+            var skip = (page - 1) * pageSize;
+
+            // Apply pagination and ordering
+            var pagedQuery = custquery.OrderByDescending(x => x.FloId).Skip(skip).Take(pageSize).AsNoTracking();
+
+            // Pass the pagination information to the view
+            ViewData["Page"] = page;
+            ViewData["PageSize"] = pageSize;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["TotalRecords"] = totalRecords;
+
+            return View(await pagedQuery.ToListAsync());
         }
+
 
         // GET: FlowUps/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -58,6 +109,8 @@ namespace smartlivestock.Controllers
         {
             if (ModelState.IsValid)
             {
+                flowUp.FloDate = DateTime.Now;
+                flowUp.UrName = User.Identity.Name.Split('@')[0];
                 _context.Add(flowUp);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +150,8 @@ namespace smartlivestock.Controllers
             {
                 try
                 {
+                    flowUp.FloDate = DateTime.Now;
+                    flowUp.UrName = User.Identity.Name.Split('@')[0];
                     _context.Update(flowUp);
                     await _context.SaveChangesAsync();
                 }
