@@ -19,11 +19,7 @@ namespace smartlivestock.Controllers
             _context = context;
         }
 
-        //// GET: FlowUps
-        //public async Task<IActionResult> Index()
-        //{
-        //      return View(await _context.FlowUp.ToListAsync());
-        //}
+     
         public async Task<IActionResult> Index(string category, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
         {
             ViewData["category"] = category;
