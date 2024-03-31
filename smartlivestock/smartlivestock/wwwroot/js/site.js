@@ -51,36 +51,3 @@ window.setTimeout(function () {
         $(this).remove();
     });
 }, 2000);
-
-<script>
-    const message = "Search your content...";
-    const searchInput = document.getElementById("searchInput");
-    let index = 0;
-
-    function typeWriter() {
-        if (index < message.length) {
-        searchInput.value += message[index];
-    index++;
-    setTimeout(typeWriter, 50); // Adjust speed here (milliseconds)
-        } else {
-        // Clear characters one by one (using another function)
-        clearText();
-        }
-    }
-
-    function clearText() {
-        const intervalId = setInterval(() => {
-            if (searchInput.value) {
-        searchInput.value = searchInput.value.slice(0, -1);
-            } else {
-        clearInterval(intervalId);
-            }
-        }, 50); // Adjust speed here (milliseconds)
-    }
-
-    // Start the typing animation
-    typeWriter();
-
-
-
-</script>

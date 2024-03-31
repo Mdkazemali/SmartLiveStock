@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using NuGet.Versioning;
 using smartlivestock.Data;
 using smartlivestock.Models;
+using smartlivestock.UserInfoModelView;
 using System.Data;
 using System.Linq;
 using System.Net;

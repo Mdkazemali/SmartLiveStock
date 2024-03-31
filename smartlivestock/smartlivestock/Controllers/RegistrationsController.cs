@@ -23,7 +23,7 @@ namespace smartlivestock.Controllers
       
 
 
-        public async Task<IActionResult> Index(string category, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
+        public async Task<IActionResult> Index(string category,string ptid, string phn, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
         {
             ViewData["category"] = category;
             var custquery = from x in _context.Registration select x;
@@ -31,6 +31,18 @@ namespace smartlivestock.Controllers
             {
                 custquery = custquery.Where(x => x.Name.Contains(category));
             }
+            ViewData["ptid"] = ptid;
+            if (!String.IsNullOrEmpty(ptid))
+            {
+                custquery = custquery.Where(x => x.PtnId.Contains(ptid));
+            }
+             
+            ViewData["phn"] = phn;
+            if (!String.IsNullOrEmpty(phn))
+            {
+                custquery = custquery.Where(x => x.Phone.Contains(phn));
+            }
+
 
             // for page setups
 

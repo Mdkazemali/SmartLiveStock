@@ -416,28 +416,28 @@ namespace smartlivestock.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PresId"), 1L, 1);
 
-                    b.Property<int>("AdviceId")
+                    b.Property<int?>("AdviceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ChiefComplaintId")
+                    b.Property<int?>("ChiefComplaintId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DiagnosisId")
+                    b.Property<int?>("DiagnosisId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DosesId")
+                    b.Property<int?>("DosesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FlowUpId")
+                    b.Property<int?>("FlowUpId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GeneralExaminationId")
+                    b.Property<int?>("GeneralExaminationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("InvastigationId")
+                    b.Property<int?>("InvastigationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MedicineId")
+                    b.Property<int?>("MedicineId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("PresDate")
@@ -446,7 +446,7 @@ namespace smartlivestock.Data.Migrations
                     b.Property<string>("PresName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RegistrationId")
+                    b.Property<int?>("RegistrationId")
                         .HasColumnType("int");
 
                     b.Property<string>("UrName")
@@ -647,57 +647,39 @@ namespace smartlivestock.Data.Migrations
                 {
                     b.HasOne("smartlivestock.Models.Advice", "Advice")
                         .WithMany()
-                        .HasForeignKey("AdviceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AdviceId");
 
                     b.HasOne("smartlivestock.Models.ChiefComplaint", "ChiefComplaint")
                         .WithMany()
-                        .HasForeignKey("ChiefComplaintId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ChiefComplaintId");
 
                     b.HasOne("smartlivestock.Models.Diagnosis", "Diagnosis")
                         .WithMany()
-                        .HasForeignKey("DiagnosisId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DiagnosisId");
 
                     b.HasOne("smartlivestock.Models.Doses", "Doses")
                         .WithMany()
-                        .HasForeignKey("DosesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DosesId");
 
                     b.HasOne("smartlivestock.Models.FlowUp", "FlowUp")
                         .WithMany()
-                        .HasForeignKey("FlowUpId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FlowUpId");
 
                     b.HasOne("smartlivestock.Models.GeneralExamination", "GeneralExamination")
                         .WithMany()
-                        .HasForeignKey("GeneralExaminationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GeneralExaminationId");
 
                     b.HasOne("smartlivestock.Models.Invastigation", "Invastigation")
                         .WithMany()
-                        .HasForeignKey("InvastigationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InvastigationId");
 
                     b.HasOne("smartlivestock.Models.Medicine", "Medicine")
                         .WithMany()
-                        .HasForeignKey("MedicineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MedicineId");
 
                     b.HasOne("smartlivestock.Models.Registration", "Registration")
                         .WithMany()
-                        .HasForeignKey("RegistrationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RegistrationId");
 
                     b.Navigation("Advice");
 
