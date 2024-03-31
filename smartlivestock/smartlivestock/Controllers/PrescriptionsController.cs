@@ -68,7 +68,17 @@ namespace smartlivestock.Controllers
                 Prescriptions = new List<Prescription> { new Prescription() },
                 SinglePrescrip = new Prescription()
             };
-            ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiId");
+            ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiName");
+            ViewData["AdviceId"] = new SelectList(_context.Advices, "AdvId", "AdvName");
+            ViewData["DiagnosisId"] = new SelectList(_context.Diagnosis, "DiagId", "DiagName");
+            ViewData["DosesId"] = new SelectList(_context.Doses, "DosesId", "DosesName");
+            ViewData["FlowUpId"] = new SelectList(_context.FlowUp, "FloId", "FloName");
+            ViewData["GeneralExaminationId"] = new SelectList(_context.GeneralExamination, "GenId", "ExamName");
+            ViewData["InvastigationId"] = new SelectList(_context.Invastigations, "InvId", "InvName");
+            ViewData["MedicineId"] = new SelectList(_context.Medicines, "MedId", "MedName");
+         
+
+
             ViewData["RegistraId"] = new SelectList(_context.Registration.Select(c => new
             {
                 RegiId = c.RegiId,
@@ -122,7 +132,14 @@ namespace smartlivestock.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiId");
+            ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiName");
+            ViewData["AdviceId"] = new SelectList(_context.Advices, "AdvId", "AdvName");
+            ViewData["DiagnosisId"] = new SelectList(_context.Diagnosis, "DiagId", "DiagName");
+            ViewData["DosesId"] = new SelectList(_context.Doses, "DosesId", "DosesName");
+            ViewData["FlowUpId"] = new SelectList(_context.FlowUp, "FloId", "FloName");
+            ViewData["GeneralExaminationId"] = new SelectList(_context.GeneralExamination, "GenId", "ExamName");
+            ViewData["InvastigationId"] = new SelectList(_context.Invastigations, "InvId", "InvName");
+            ViewData["MedicineId"] = new SelectList(_context.Medicines, "MedId", "MedName");
 
             ViewData["RegistraId"] = new SelectList(_context.Registration.Select(c => new
             {
@@ -149,50 +166,6 @@ namespace smartlivestock.Controllers
             return _context.Prescription.Any(x => x.RegistrationId == idd);
         }
 
-
-
-
-
-
-
-        //// GET: Prescriptions/Create
-        //public IActionResult Create()
-        //{
-        //    ViewData["AdviceId"] = new SelectList(_context.Advices, "AdvId", "AdvId");
-        //    ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiId");
-        //    ViewData["DiagnosisId"] = new SelectList(_context.Diagnosis, "DiagId", "DiagId");
-        //    ViewData["DosesId"] = new SelectList(_context.Doses, "DosesId", "DosesId");
-        //    ViewData["FlowUpId"] = new SelectList(_context.FlowUp, "FloId", "FloId");
-        //    ViewData["GeneralExaminationId"] = new SelectList(_context.GeneralExamination, "GenId", "GenId");
-        //    ViewData["InvastigationId"] = new SelectList(_context.Invastigations, "InvId", "InvId");
-        //    ViewData["MedicineId"] = new SelectList(_context.Medicines, "MedId", "MedId");
-        //    ViewData["RegistrationId"] = new SelectList(_context.Registration, "RegiId", "RegiId");
-        //    return View();
-        //}
-
-        ////POST: Prescriptions/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("PresId,PresName,PresDate,UrName,RegistrationId,ChiefComplaintId,GeneralExaminationId,DiagnosisId,InvastigationId,MedicineId,DosesId,AdviceId,FlowUpId")] Prescription prescription)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.AddRange(prescription);
-
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["AdviceId"] = new SelectList(_context.Advices, "AdvId", "AdvId", prescription.AdviceId);
-        //    ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiId", prescription.ChiefComplaintId);
-        //    ViewData["DiagnosisId"] = new SelectList(_context.Diagnosis, "DiagId", "DiagId", prescription.DiagnosisId);
-        //    ViewData["DosesId"] = new SelectList(_context.Doses, "DosesId", "DosesId", prescription.DosesId);
-        //    ViewData["FlowUpId"] = new SelectList(_context.FlowUp, "FloId", "FloId", prescription.FlowUpId);
-        //    ViewData["GeneralExaminationId"] = new SelectList(_context.GeneralExamination, "GenId", "GenId", prescription.GeneralExaminationId);
-        //    ViewData["InvastigationId"] = new SelectList(_context.Invastigations, "InvId", "InvId", prescription.InvastigationId);
-        //    ViewData["MedicineId"] = new SelectList(_context.Medicines, "MedId", "MedId", prescription.MedicineId);
-        //    ViewData["RegistrationId"] = new SelectList(_context.Registration, "RegiId", "RegiId", prescription.RegistrationId);
-        //    return View(prescription);
-        //}
 
 
 
