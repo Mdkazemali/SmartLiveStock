@@ -643,9 +643,9 @@ F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\scopedcss\bundle\smartlivestock.styles.css
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\scopedcss\projectbundle\smartlivestock.bundle.scp.css
-F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\smartlivestock.csproj.CopyComplete
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\smartlivestock.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\refint\smartlivestock.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\smartlivestock.pdb
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\smartlivestock.genruntimeconfig.cache
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\ref\smartlivestock.dll
+F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\smartliv.06D9357A.Up2Date

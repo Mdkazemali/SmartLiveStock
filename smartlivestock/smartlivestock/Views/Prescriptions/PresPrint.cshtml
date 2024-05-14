@@ -4,6 +4,7 @@
     ViewData["Title"] = "PresPrint";
 }
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +71,14 @@
                         <div class="card md-6">
                             <table id="dataTableChif" class="table table-bordered mt-3">
                                 Chief Complain
+                            @foreach (var i in Model)
+                            {
+                                <li>
+                                   @i.ChiName
+                                    
+                                </li>
 
+                            }
                                 
                             </table>
                         </div>
@@ -82,9 +90,9 @@
                                 General Examinations
                             @foreach( var i in Model)
                             {
-                               <li>
-                                    @i.Name
-                               </li>
+
+                                   @i.ExamName
+                           
                                
                             }
 
@@ -98,7 +106,13 @@
 
                             <table id="dataTableDiag" class="table table-bordered mt-3">
                                 Diagnosis
-                               
+                            @foreach (var i in Model)
+                            {
+                                <li>
+                                    @i.DiagName
+                                </li>
+
+                            }
                             </table>
 
                         </div>
@@ -106,6 +120,13 @@
                             <!-- Content for 7 card -->
                             <table id="dataTableInv" class="table table-bordered mt-3">
                                 Investigations
+                            @foreach (var i in Model)
+                            {
+                                <li>
+                                    @i.InvName
+                                </li>
+
+                            }
                                
                             </table>
 
@@ -116,6 +137,13 @@
 
                             <table id="dataTableMed" class="table table-bordered mt-3">
                                 Rx
+                            @foreach (var i in Model)
+                            {
+                                <li>
+                                    @i.MedName
+                                </li>
+
+                            }
 
                             </table>
 
@@ -128,6 +156,13 @@
 
                             <table id="dataTableAdv" class="table table-bordered mt-3">
                                 Advices
+                            @foreach (var i in Model)
+                            {
+                                <li>
+                                    @i.AdvName
+                                </li>
+
+                            }
 
                             </table>
 
@@ -138,6 +173,13 @@
 
                             <table id="dataTableFoll" class="table table-bordered mt-3">
                                 Referred to
+                            @foreach (var i in Model)
+                            {
+                                <li>
+                                    @i.FloName
+                                </li>
+
+                            }
 
                             </table>
 
@@ -148,6 +190,13 @@
 
                             <table id="dataTableRef" class="table table-bordered mt-3">
                                 Referred to
+                            @foreach (var i in Model)
+                            {
+                                <li>
+                                    @i.ReferredName
+                                </li>
+
+                            }
                                 
 
                             </table>
@@ -163,3 +212,4 @@
     </div>
 </body>
 </html>
+ 

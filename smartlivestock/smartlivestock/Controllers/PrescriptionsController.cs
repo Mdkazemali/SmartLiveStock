@@ -390,6 +390,7 @@ namespace smartlivestock.Controllers
                 .Include(p => p.Invastigation)
                 .Include(p => p.Medicine)
                 .Include(p => p.Registration)
+                .Include(p => p.ReferredTo)
                 .Where(c => c.PresName == Id)
                 .ToList();
 
@@ -401,17 +402,18 @@ namespace smartlivestock.Controllers
 
 
                 // for  
-                ChiName = p.ChiefComplaint.ChiName,
-                ExamName = p.GeneralExamination.ExamName,
-                DiagName = p.Diagnosis.DiagName,
-                InvName = p.Invastigation.InvName,
 
-                MedName = p.Medicine.MedName,
-                AdvName= p.Advice.AdvName,
-                FloName = p.FlowUp.FloName,
-                ReferredName = p.ReferredTo.ReferredName,
+                ChiName = p.ChiefComplaint?.ChiName,
+                ExamName = p.GeneralExamination?.ExamName,
+                DiagName = p.Diagnosis?.DiagName,
+                InvName = p.Invastigation?.InvName,
 
-                
+                MedName = p.Medicine?.MedName,
+                AdvName = p.Advice?.AdvName,
+                FloName = p.FlowUp?.FloName,
+                ReferredName = p.ReferredTo?.ReferredName,
+
+
             }).ToList();
 
             return View(model);
