@@ -53,6 +53,14 @@ namespace smartlivestock.Models
         public int? FlowUpId { get; set; }
         public virtual FlowUp FlowUp { get; set; }
 
+        [ForeignKey("ReferredTo")]
+        public int? ReferredId { get; set; }
+        public virtual ReferredTo ReferredTo { get; set; }
+
+        public int? Sokal {  get; set; }
+        public int? Duput { get; set; }
+        public int? Rat {  get; set; }
+
 
 
     }

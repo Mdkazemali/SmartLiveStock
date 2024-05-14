@@ -83,14 +83,21 @@ namespace smartlivestock.Models
         public int FlowUpId { get; set; }
         public virtual FlowUp FlowUp { get; set; }
 
+       
+
+        public int? Sokal { get; set; }
+        public int? Duput { get; set; }
+        public int? Rat { get; set; }
+
+        public int ReferredId { get; set; }
+        public string ReferredName { get; set; }
         public List<Prescription> Prescriptions { get; set; }
+
+        public List<Prescription> PrescriptionsList { get; set; }
 
         public Prescription SinglePrescrip { get; set; }
 
-
-
-
-
+        public List<PrescriptionViewModel> TotalPrescriptionview { get; set;}
 
 
 

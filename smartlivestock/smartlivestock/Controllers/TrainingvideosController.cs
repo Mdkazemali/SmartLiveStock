@@ -19,11 +19,60 @@ namespace smartlivestock.Controllers
             _context = context;
         }
 
-        // GET: Trainingvideos
-        public async Task<IActionResult> Index()
+        // GET: Benificiaries
+        public async Task<IActionResult> Index(string videoname, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
         {
-              return View(await _context.Trainingvideo.ToListAsync());
+            ViewData["videoname"] = videoname;
+            var custquery = from x in _context.Trainingvideo select x;
+            if (!String.IsNullOrEmpty(videoname))
+            {
+                custquery = custquery.Where(x => x.VideoName.Contains(videoname));
+            }
+
+            // for page setups
+
+            int p;
+            if (pp == 0)
+            {
+                p = 8;
+
+            }
+            else
+            {
+                p = pp;
+            }
+
+            ViewData["pp"] = p;
+            pageSize = p;
+
+
+
+            // Count the total number of records
+            var totalRecords = await custquery.CountAsync();
+
+            // Calculate the number of pages
+            var totalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
+
+            // Validate the current page value
+            page = Math.Max(1, Math.Min(totalPages, page));
+
+            // Calculate the number of records to skip
+            var skip = (page - 1) * pageSize;
+
+            // Apply pagination and ordering
+            var pagedQuery = custquery.OrderByDescending(x => x.vdoId).Skip(skip).Take(pageSize).AsNoTracking();
+
+            // Pass the pagination information to the view
+            ViewData["Page"] = page;
+            ViewData["PageSize"] = pageSize;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["TotalRecords"] = totalRecords;
+
+            return View(await pagedQuery.ToListAsync());
         }
+
+
+
 
         // GET: Trainingvideos/Details/5
         public async Task<IActionResult> Details(int? id)

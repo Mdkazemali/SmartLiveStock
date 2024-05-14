@@ -1,140 +1,242 @@
-﻿
-@model smartlivestock.Models.PrescriptionViewModel
+﻿@model smartlivestock.Models.PrescriptionViewModel
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<style>
-    table {
-        width: 100%;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescriptions Pages</title>
+    <style>
 
-    td {
-        padding: 8px;
-    }
 
-    th {
-        padding: 8px;
-    }
-</style>
+        .page {
+            display: flex;
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
 
-<div class="container mt-4">
-    <h4 class="text-center text-primary">প্রেসক্রিপশন তৈরি করুন</h4>
+        .column {
+            flex: 1;
+            padding: 1px;
+        }
 
-    <div class="row justify-content-center">
-        <form asp-action="Create" class="col-12 bg-light bg-gradient p-4 border" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        .card {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgb(0,0,0,0);
+            padding: 10px;
+            margin-bottom: 2px;
+            border-color:green;
+        }
 
-            <div class="form-group">
-                <label asp-for="SinglePrescrip.RegistrationId" class="control-label">রেজি নং---নাম-----মোবাইল</label>
-                <select id="selectedCustOriId" asp-for="SinglePrescrip.RegistrationId" class="form-control select2" asp-items="ViewBag.RegistraId"></select>
-                <span asp-validation-for="SinglePrescrip" class="text-danger"></span>
+        .remove-btn {
+            float: right; /* Align the button to the right */
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form asp-action="Create" class="bg-light bg-gradient p-4 border" enctype="multipart/form-data">
+            <div class="row">
+                <div class="page">
+                    <div class="column">
+                        <div class="card md-12">
+                            <label asp-for="SinglePrescrip.RegistrationId" class="control-label">Patient Informations</label>
+                            <label asp-for="SinglePrescrip.RegistrationId" class="control-label">রেজি নং---নাম-----মোবাইল</label>
+                            <select id="selectedCustOriId" asp-for="SinglePrescrip.RegistrationId" class="form-control select2" asp-items="ViewBag.RegistraId" style="width:100%;">
+                             
+                                <option value="">-- Select --</option>
+                            </select>
 
-                <table id="dataTable" class="table table-bordered mt-3">
-                    <thead>
-                        <tr>
-                            <th>চিপ কমপ্লেইন</th>
-                            <th>জেনারেল</th>
-                            <th>ডায়াগ</th>
-                            <th>ইনভেস্ট</th>
-                            <th>মেডি</th>
-                            <th>ডোজেস</th>
-                            <th>এডভাইস</th>
-                            <th>ফ্লো</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <select name="Prescriptions[0].ChiefComplaintId" class="form-control select2">
-                                    <option value="">-- Select --</option>
-                                    @foreach (var item in ViewData["ChiefComplaintId"] as SelectList)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <select name="Prescriptions[0].GeneralExaminationId" class="form-control select2">
-                                    <option value="">-- Select --</option>
-                                    @foreach (var item in ViewData["GeneralExaminationId"] as SelectList)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
-                                </select>
-                            </td>
-
-                            <td>
-                                <select name="Prescriptions[0].DiagnosisId" class="form-control select2">
-                                    <option value="">-- Select --</option>
-                                    @foreach (var item in ViewData["DiagnosisId"] as SelectList)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <select name="Prescriptions[0].InvastigationId" class="form-control select2">
-                                    <option value="">-- Select --</option>
-                                    @foreach (var item in ViewData["InvastigationId"] as SelectList)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <select name="Prescriptions[0].MedicineId" class="form-control select2">
-                                    <option value="">-- Select --</option>
-                                    @foreach (var item in ViewData["MedicineId"] as SelectList)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <select name="Prescriptions[0].DosesId" class="form-control select2">
-                                    <option value="">-- Select --</option>
-                                    @foreach (var item in ViewData["DosesId"] as SelectList)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
-                                </select>
-                            </td>
-                            
-                            <td>
-                                <select name="Prescriptions[0].AdviceId" class="form-control select2">
-                                    <option value="">-- Select --</option>
-                                    @foreach (var item in ViewData["AdviceId"] as SelectList)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <select name="Prescriptions[0].FlowUpId" class="form-control select2">
-                                    <option value="">-- Select --</option>
-                                    @foreach (var item in ViewData["FlowUpId"] as SelectList)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
-                                </select>
-                            </td>
-
-                   
-                            <td><input type="button" id="addNew" value="+" class="btn btn-primary" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="mt-4">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                            <span asp-validation-for="SinglePrescrip" class="text-danger"></span>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="page">
+                    <div class="column">
+
+                        <div class="card md-6">
+                            <table id="dataTableChif" class="table table-bordered mt-3">
+                                Chief Complain
+
+                                <td>
+                                    <select name="Prescriptions[0].ChiefComplaintId" class="form-control select2" style="width:100%;">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewData["ChiefComplaintId"] as SelectList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td><input type="button" id="addNewChif" value="+" class="btn btn-primary" /></td>
+                            </table>
+                        </div>
+
+                        <div class="card mb-6">
+                            <!-- Content for third card -->
+
+                            <table id="dataTableGen" class="table table-bordered mt-3">
+                                General Examinations
+
+                                <td>
+                                    <select name="Prescriptions[0].GeneralExaminationId" class="form-control select2" style="width:100%;">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewData["GeneralExaminationId"] as SelectList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td><input type="button" id="addNewGen" value="+" class="btn btn-primary" /></td>
+                            </table>
+
+                        </div>
+                        <div class="card md-6">
+
+                            <!-- Content for 5 card -->
+
+
+                            <table id="dataTableDiag" class="table table-bordered mt-3">
+                                Diagnosis
+                                <td>
+                                    <select name="Prescriptions[0].DiagnosisId" class="form-control select2" style="width:100%;">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td><input type="button" id="addNewDiag" value="+" class="btn btn-primary" /></td>
+                            </table>
+
+                        </div>
+                        <div class="card mb-6">
+                            <!-- Content for 7 card -->
+                            <table id="dataTableInv" class="table table-bordered mt-3">
+                                Investigations
+                                <td>
+                                    <select name="Prescriptions[0].InvastigationId" class="form-control select2" style="width:100%;">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewData["InvastigationId"] as SelectList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td><input type="button" id="addNewInv" value="+" class="btn btn-primary" /></td>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card md-6">
+
+                            <table id="dataTableMed" class="table table-bordered mt-3">
+                                Rx
+                                <tr>
+                                    <td>
+                                        <select name="Prescriptions[0].MedicineId" class="form-control select2" style="width:100%;">
+                                            <option value="">-- Select --</option>
+                                            @foreach (var item in ViewData["MedicineId"] as SelectList)
+                                            {
+                                                <option value="@item.Value">@item.Text</option>
+                                            }
+                                        </select>
+                                    </td>                                 
+                                   
+                                    <td>
+                                                                             
+                                        <input name="Prescriptions[0].Sokal" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                        <input name="Prescriptions[0].Duput" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                        <input name="Prescriptions[0].Rat" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                    </td>
+
+                                    <td><input type="button" id="addNewMed" value="+" class="btn btn-primary" /></td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                        <div class="card md-6">
+
+                            <!-- Content for fourth card -->
+
+
+                            <table id="dataTableAdv" class="table table-bordered mt-3">
+                                Advices
+                                <td>
+                                    <select name="Prescriptions[0].AdviceId" class="form-control select2" style="width:100%;">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewData["AdviceId"] as SelectList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td><input type="button" id="addNewAdv" value="+" class="btn btn-primary" /></td>
+                            </table>
+
+                        </div>
+                        <div class="card mb-6">
+                            <!-- Content for 6 card -->
+
+
+                            <table id="dataTableFoll" class="table table-bordered mt-3">
+                                Follow Up
+                                <td>
+                                    <select name="Prescriptions[0].FlowUpId" class="form-control select2" style="width:100%;">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewData["FlowUpId"] as SelectList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td><input type="button" id="addNewFoll" value="+" class="btn btn-primary" /></td>
+                            </table>
+
+                        </div>
+                        <div class="card mb-6">
+                            <!-- Content for 8 card -->
+
+
+                            <table id="dataTableRef" class="table table-bordered mt-3">
+                                Referred to
+                                <td>
+                                    <select name="Prescriptions[0].ReferredId" class="form-control select2" style="width:100%;">
+                                        <option value="">-- Select --</option>
+                                        @foreach (var item in ViewData["ReferredId"] as SelectList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </td>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+               
+
+            <div class="mt-4">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
+</body>
+</html>
 
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -143,103 +245,226 @@
     <script>
         $(document).ready(function () {
             $('.select2').select2();
-            $('#addNew').click(function () {
-                var index = $('#dataTable tbody tr').length;
+
+            // Chif Complain
+
+            $('#addNewChif').click(function () {
+                var index = $('#dataTableChif tbody tr').length;
                 var newRow = `
-                            <tr>
-                                <td>
-                                    <select name="Prescriptions[${index}].ChiefComplaintId" class="form-control select2">
-                                        <option value="">-- Select --</option>
-                                        @foreach (var item in ViewData["ChiefComplaintId"] as SelectList)
-                                        {
-                                                <option value="@item.Value">@item.Text</option>
-                                        }
-                                    </select>
-                                </td>
+                                            <tr>
+                                                <td>
+                                                            <select name="Prescriptions[${index}].ChiefComplaintId" class="form-control select2" style="width:100%;">
+                                                        <option value="">-- Select --</option>
+                                                          @foreach (var item in ViewData["ChiefComplaintId"] as SelectList)
+        {
+                                                                        <option value="@item.Value">@item.Text</option>
+        }
+                                                    </select>
+                                                </td>
 
-                                  <td>
-                                    <select name="Prescriptions[${index}].GeneralExaminationId" class="form-control select2">
-                                                <option value="">-- Select --</option>
-                                               @foreach (var item in ViewData["GeneralExaminationId"] as SelectList)
-                                                {
-                                                    <option value="@item.Value">@item.Text</option>
-                                                }
-                                            </select>
-                                  </td>
-                                  
-                                  <td>
-                                       <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2">
-                                        <option value="">-- Select --</option>
-                                        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
-                                        {
-                                                <option value="@item.Value">@item.Text</option>
-                                        }
-                                    </select>
-                                </td>
-
-                                  <td>
-                                       <select name="Prescriptions[${index}].InvastigationId" class="form-control select2">
-                                                <option value="">-- Select --</option>
-                                               @foreach (var item in ViewData["InvastigationId"] as SelectList)
-                                                {
-                                                    <option value="@item.Value">@item.Text</option>
-                                                }
-                                            </select>
-                                  </td>
-                                   <td>
-                                            <select name="Prescriptions[${index}].MedicineId" class="form-control select2">
-                                        <option value="">-- Select --</option>
-                                        @foreach (var item in ViewData["MedicineId"] as SelectList)
-                                        {
-                                                <option value="@item.Value">@item.Text</option>
-                                        }
-                                    </select>
-                                </td>
-
-                                  <td>
-                                  <select name="Prescriptions[${index}].DosesId" class="form-control select2">
-                                                <option value="">-- Select --</option>
-                                           @foreach (var item in ViewData["DosesId"] as SelectList)
-                                                                         {
-                                                                             <option value="@item.Value">@item.Text</option>
-                                                                         }
-                                                                     </select>
-                                     </td>
-                                                           
-                                        <td>
-                                       <select name="Prescriptions[${index}].AdviceId" class="form-control select2">
-                                                    <option value="">-- Select --</option>
-                                              @foreach (var item in ViewData["AdviceId"] as SelectList)
-                                               {
-                                                    <option value="@item.Value">@item.Text</option>
-                                              }
-                                         </select>
-                                       </td>
-                                
-                                       <td>
-                                            <select name="Prescriptions[${index}].FlowUpId" class="form-control select2">
-                                                  <option value="">-- Select --</option>
-                                              @foreach (var item in ViewData["FlowUpId"] as SelectList)
-                                                {
-                                                    <option value="@item.Value">@item.Text</option>
-                                                }
-                                            </select>
-                                         </td>
-
-
-
-
-                                <!-- Similar dropdowns for other fields -->
-
-                                <td><input type="button" class="btn btn-danger remove" value="-" /></td>
-                            </tr>`;
-                $('#dataTable tbody').append(newRow);
+                                            <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                            </tr>`;
+                $('#dataTableChif tbody').append(newRow);
                 $('.select2').select2();
+
             });
 
-            $('#dataTable').on('click', '.remove', function () {
+            $('#dataTableChif').on('click', '.remove', function () {
                 $(this).closest('tr').remove();
             });
+
+
+            //General Examination
+
+            $('#addNewGen').click(function () {
+                var index = $('#dataTableGen tbody tr').length;
+                var newRow = `
+                                                    <tr>
+                                                        
+
+                                                          <td>
+                                                                    <select name="Prescriptions[${index}].GeneralExaminationId" class="form-control select2" style="width:100%;">
+                                                                        <option value="">-- Select --</option>
+                                                                  @foreach (var item in ViewData["GeneralExaminationId"] as SelectList)
+        {
+                                                                                        <option value="@item.Value">@item.Text</option>
+        }
+                                                                    </select>
+                                                          </td>                                                          
+
+                                                          <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                    </tr>`;
+                $('#dataTableGen tbody').append(newRow);
+                $('.select2').select2();
+
+            });
+
+            $('#dataTableGen').on('click', '.remove', function () {
+                $(this).closest('tr').remove();
+            });
+
+
+            //Medivations
+
+            $('#addNewMed').click(function () {
+                var index = $('#dataTableMed tbody tr').length;
+                var newRow = `
+                                                            <tr>
+
+
+                                                                  <td>
+                                                                            <select name="Prescriptions[${index}].MedicineId" class="form-control select2" style="width:100%;">
+                                                                               <option value="">-- Select --</option>
+                                                                  @foreach (var item in ViewData["MedicineId"] as SelectList)
+        {
+                                                                               <option value="@item.Value">@item.Text</option>
+        }
+                                                                            </select>
+
+                                                                    
+                                                                        
+                                                           </td>
+                                                           <td>
+
+                                                                           <input name="Prescriptions[${index}].Sokal" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                                                           <input name="Prescriptions[${index}].Duput" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                                                           <input name="Prescriptions[${index}].Rat" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                                           </td>
+
+                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                            </tr>`;
+                $('#dataTableMed tbody').append(newRow);
+                $('.select2').select2();
+
+            });
+
+            $('#dataTableMed').on('click', '.remove', function () {
+                $(this).closest('tr').remove();
+            });
+
+
+
+            //Diagnosis
+
+            $('#addNewDiag').click(function () {
+                var index = $('#dataTableDiag tbody tr').length;
+                var newRow = `
+                                                            <tr>
+
+
+                                                                  <td>
+                                                                                    <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                <option value="">-- Select --</option>
+                                                                      @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+        {
+                                                                                                    <option value="@item.Value">@item.Text</option>
+        }
+                                                                            </select>
+                                                                  </td>
+
+                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                            </tr>`;
+                $('#dataTableDiag tbody').append(newRow);
+                $('.select2').select2();
+
+            });
+
+            $('#dataTableDiag').on('click', '.remove', function () {
+                $(this).closest('tr').remove();
+            });
+
+
+            //Investigation
+
+            $('#addNewInv').click(function () {
+                var index = $('#dataTableInv tbody tr').length;
+                var newRow = `
+                                                                    <tr>
+
+
+                                                                          <td>
+                                                                                            <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                        <option value="">-- Select --</option>
+                                                                                         @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+        {
+                                                                                                                <option value="@item.Value">@item.Text</option>
+        }
+                                                                                    </select>
+                                                                          </td>
+
+                                                                          <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                                    </tr>`;
+                $('#dataTableInv tbody').append(newRow);
+                $('.select2').select2();
+
+            });
+
+            $('#dataTableInv').on('click', '.remove', function () {
+                $(this).closest('tr').remove();
+            });
+
+            //Advices
+
+            $('#addNewAdv').click(function () {
+                var index = $('#dataTableAdv tbody tr').length;
+                var newRow = `
+                                                                            <tr>
+
+
+                                                                                  <td>
+                                                                                                    <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                                <option value="">-- Select --</option>
+                                                                                                  @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+        {
+                                                                                                                            <option value="@item.Value">@item.Text</option>
+        }
+                                                                                            </select>
+                                                                                  </td>
+
+                                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                                            </tr>`;
+                $('#dataTableAdv tbody').append(newRow);
+                $('.select2').select2();
+
+            });
+
+            $('#dataTableAdv').on('click', '.remove', function () {
+                $(this).closest('tr').remove();
+            });
+
+
+            //Followup
+
+            $('#addNewFoll').click(function () {
+                var index = $('#dataTableFoll tbody tr').length;
+                var newRow = `
+                                                                            <tr>
+
+
+                                                                                  <td>
+                                                                                                    <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                                <option value="">-- Select --</option>
+                                                                                                      @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+        {
+                                                                                                                            <option value="@item.Value">@item.Text</option>
+        }
+                                                                                            </select>
+                                                                                  </td>
+
+                                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                                            </tr>`;
+                $('#dataTableFoll tbody').append(newRow);
+                $('.select2').select2();
+
+            });
+
+            $('#dataTableFoll').on('click', '.remove', function () {
+                $(this).closest('tr').remove();
+            });
+
+
+
         });
     </script>
 }
+

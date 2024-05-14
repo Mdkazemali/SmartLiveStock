@@ -40,7 +40,7 @@ namespace smartlivestock.Controllers
 
         private List<Trainingvideo> GetVideoData()
         {
-            List<Trainingvideo> videwdata = _context.Trainingvideo.ToList();
+            List<Trainingvideo> videwdata = _context.Trainingvideo.OrderByDescending(x=>x.vdoId).ToList();
 
 
             return videwdata;

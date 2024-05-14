@@ -1,0 +1,165 @@
+﻿ @model List<PrescriptionViewModel>
+
+@{
+    ViewData["Title"] = "PresPrint";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescriptions Pages</title>
+    <style>
+
+
+        .page {
+            display: flex;
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+
+        .column {
+            flex: 1;
+            padding: 1px;
+        }
+
+        .card {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgb(0,0,0,0);
+            padding: 10px;
+            margin-bottom: 2px;
+            border-color: green;
+        }
+
+        .remove-btn {
+            float: right; /* Align the button to the right */
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+            <div class="row">
+                <div class="page">
+                    <div class="column">
+                        <div class="card md-12">
+                           This is Dr Descriptions
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="page">
+                <div class="column">
+                    <div class="card md-12">
+                        Patients Informations
+             
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="page">
+                    <div class="column">
+
+                        <div class="card md-6">
+                            <table id="dataTableChif" class="table table-bordered mt-3">
+                                Chief Complain
+
+                                
+                            </table>
+                        </div>
+
+                        <div class="card mb-6">
+                            <!-- Content for third card -->
+
+                            <table id="dataTableGen" class="table table-bordered mt-3">
+                                General Examinations
+                            @foreach( var i in Model)
+                            {
+                               <li>
+                                    @i.Name
+                               </li>
+                               
+                            }
+
+                            </table>
+
+                        </div>
+                        <div class="card md-6">
+
+                            <!-- Content for 5 card -->
+
+
+                            <table id="dataTableDiag" class="table table-bordered mt-3">
+                                Diagnosis
+                               
+                            </table>
+
+                        </div>
+                        <div class="card mb-6">
+                            <!-- Content for 7 card -->
+                            <table id="dataTableInv" class="table table-bordered mt-3">
+                                Investigations
+                               
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card md-6">
+
+                            <table id="dataTableMed" class="table table-bordered mt-3">
+                                Rx
+
+                            </table>
+
+
+                        </div>
+                        <div class="card md-6">
+
+                            <!-- Content for fourth card -->
+
+
+                            <table id="dataTableAdv" class="table table-bordered mt-3">
+                                Advices
+
+                            </table>
+
+                        </div>
+                        <div class="card mb-6">
+                            <!-- Content for 6 card -->
+
+
+                            <table id="dataTableFoll" class="table table-bordered mt-3">
+                                Referred to
+
+                            </table>
+
+                        </div>
+                        <div class="card mb-6">
+                           
+
+
+                            <table id="dataTableRef" class="table table-bordered mt-3">
+                                Referred to
+                                
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+    
+    </div>
+</body>
+</html>

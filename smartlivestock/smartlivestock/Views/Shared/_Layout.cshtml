@@ -64,10 +64,11 @@
 
 
         .footer {
-            position: fixed;
+            position: absolute;
             color:white;
+            text-align:justify-all;
             bottom: 0;
-            width: 100%;
+            width: 100%;         
             background-color: #0d6efd; /* Adjust the background color as needed */
             padding: 8px 0; /* Adjust the padding as needed */
         }
@@ -170,18 +171,16 @@
                                         <a class="dropdown-item" asp-area="" asp-controller="Trainingvideos" asp-action="Index">Videos</a>
 
                                         <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Index">User</a>
-
-                                 
+                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Patients</a>
                                                 <a class="dropdown-item" asp-area="" asp-controller="Advices" asp-action="Index">Advice</a>
                                                 <a class="dropdown-item" asp-area="" asp-controller="ChiefComplaints" asp-action="Index">Cief Complaints</a>
                                                 <a class="dropdown-item" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>
-                                            @*     <a class="dropdown-item" asp-area="" asp-controller="Doses" asp-action="Index">Doses</a> *@
                                                 <a class="dropdown-item" asp-area="" asp-controller="FlowUps" asp-action="Index">FlowUps</a>
                                                 <a class="dropdown-item" asp-area="" asp-controller="GeneralExaminations" asp-action="Index">General Examinations</a>
                                                 <a class="dropdown-item" asp-area="" asp-controller="Invastigations" asp-action="Index">Invastigations</a>
                                                 <a class="dropdown-item" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
-                                                <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Registrations</a>
-
+                                                
+                                                <a class="dropdown-item" asp-area="" asp-controller="ReferredToes" asp-action="Index">ReferredTo</a>
 
                                     </div>
                                 </div>
@@ -252,16 +251,16 @@
                                 <div class="dropdown">
                                     <button class="dropdown-button">Setup</button>
                                     <div class="dropdown-content">
-
+                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Patients</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Advices" asp-action="Index">Advice</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="ChiefComplaints" asp-action="Index">Cief Complaints</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>
-                                       @*  <a class="dropdown-item" asp-area="" asp-controller="Doses" asp-action="Index">Doses</a> *@
+                                     
                                         <a class="dropdown-item" asp-area="" asp-controller="FlowUps" asp-action="Index">FlowUps</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="GeneralExaminations" asp-action="Index">General Examinations</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Invastigations" asp-action="Index">Invastigations</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Registrations</a>
+                                    
 
 
 
@@ -311,16 +310,15 @@
                                 <div class="dropdown">
                                     <button class="dropdown-button">Setup</button>
                                     <div class="dropdown-content">
-
+                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Patients</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Advices" asp-action="Index">Advice</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="ChiefComplaints" asp-action="Index">Cief Complaints</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>
-                                       @* <a class="dropdown-item" asp-area="" asp-controller="Doses" asp-action="Index">Doses</a> *@
                                         <a class="dropdown-item" asp-area="" asp-controller="FlowUps" asp-action="Index">FlowUps</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="GeneralExaminations" asp-action="Index">General Examinations</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Invastigations" asp-action="Index">Invastigations</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Registrations</a>
+                                    
 
 
                                                
@@ -371,16 +369,15 @@
 
                                         <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Index">User</a>
 
-
+                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Patients</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Advices" asp-action="Index">Advice</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="ChiefComplaints" asp-action="Index">Cief Complaints</a>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>
-                                       @*  <a class="dropdown-item" asp-area="" asp-controller="Doses" asp-action="Index">Doses</a> *@
+                                        <a class="dropdown-item" asp-area="" asp-controller="Diagnoses" asp-action="Index">Diagnoses</a>                           
                                         <a class="dropdown-item" asp-area="" asp-controller="FlowUps" asp-action="Index">FlowUps</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="GeneralExaminations" asp-action="Index">General Examinations</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Invastigations" asp-action="Index">Invastigations</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Registrations" asp-action="Index">Registrations</a>
+                                
 
                                     </div>
                                 </div>

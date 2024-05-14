@@ -3,15 +3,103 @@
 @{
     ViewData["Title"] = "Index";
 }
+@{
+    var LeaveCount = Model.Count();
+}
 <style>
     .table {
         border: black;
     }
 </style>
 
+@{
+    var page = ViewData["Page"] != null ? (int)ViewData["Page"] : 1;
+    var pageSize = ViewData["PageSize"] != null ? (int)ViewData["PageSize"] : 50;
+    var totalPages = ViewData["TotalPages"] != null ? (int)ViewData["TotalPages"] : 1;
+    var totalRecords = ViewData["TotalRecords"] != null ? (int)ViewData["TotalRecords"] : 0;
+}
 
-<a asp-action="Create" class="btn btn-primary ">Create New Video</a>
-<br />
+<h5> &nbsp; <b>No.of Training Videw</b> :<b style="color :red"> @LeaveCount </b> </h5>
+@using (Html.BeginForm("Index", "Trainingvideos", FormMethod.Get))
+{
+
+    <div class="form-group">
+
+
+        <input type="search" placeholder="Search your content.." value="@ViewData["videoname"]" name="videoname" style="width: 350px; " />
+
+
+        <input type="submit" value="Filter" class="btn btn-primary" />
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+        <label>Page : </label>@((page - 1) * pageSize + 1)-
+        <input type="search" name="pp" value="@ViewData["pp"]" placeholder="PageSize" style="width: 65px;" /> of @totalRecords
+
+
+    </div>
+
+
+
+}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // get a reference to the search input field
+    const searchBox = $('#searchBox');
+
+    // listen for changes in the search input field
+    searchBox.on('input', function () {
+        const query = searchBox.val();
+        // make an asynchronous HTTP GET request to the server
+        $.ajax({
+            url: `/search?query=${query}`,
+            type: 'GET',
+            success: function (data) {
+                // update the page with the search results
+                $('#searchResults').html(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+</script>
+<script>
+    const message = "Search your content...";
+    const searchInput = document.getElementById("searchInput");
+    let index = 0;
+
+    function typeWriter() {
+        if (index < message.length) {
+            searchInput.value += message[index];
+            index++;
+            setTimeout(typeWriter, 50); // Adjust speed here (milliseconds)
+        } else {
+            // Clear characters one by one (using another function)
+            clearText();
+        }
+    }
+
+    function clearText() {
+        const intervalId = setInterval(() => {
+            if (searchInput.value) {
+                searchInput.value = searchInput.value.slice(0, -1);
+            } else {
+                clearInterval(intervalId);
+            }
+        }, 50); // Adjust speed here (milliseconds)
+    }
+
+    // Start the typing animation
+    typeWriter();
+
+
+
+</script>
+
+
+
+
 <br />
 <table class="table table-bordered">
     <thead>

@@ -1,99 +1,127 @@
-﻿@model IEnumerable<smartlivestock.Models.Prescription>
+﻿
 
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    .table {
+        border: black;
+    }
+</style>
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+@{
+    var page = ViewData["Page"] != null ? (int)ViewData["Page"] : 1;
+    var pageSize = ViewData["PageSize"] != null ? (int)ViewData["PageSize"] : 50;
+    var totalPages = ViewData["TotalPages"] != null ? (int)ViewData["TotalPages"] : 1;
+    var totalRecords = ViewData["TotalRecords"] != null ? (int)ViewData["TotalRecords"] : 0;
+}
+
+<h5> &nbsp; <b>  Prescriptions </b> </h5>
+@using (Html.BeginForm("Index", "Prescriptions", FormMethod.Get))
+{
+
+    <div class="form-group">
+        <input type="search" placeholder="Pres. Name" value="@ViewData["frName"]" name="frName" style="width: 140px;" />
+        <input type="search" placeholder="Name" value="@ViewData["name"]" name="name" style="width: 120px;" />        
+        <input type="search" placeholder="Phone" value="@ViewData["Regino"]" name="Regino" style="width: 120px;" />
+      
+       
+      <input type="date" name="frmDatesearch" value="@((ViewData["frmDatesearch"] != null) ? ((DateTime)ViewData["frmDatesearch"]).ToString("yyyy-MM-dd") : "")" style="width: 115px;" />
+        <input type="date" name="ToDatesearch" value="@((ViewData["ToDatesearch"] != null) ? ((DateTime)ViewData["ToDatesearch"]).ToString("yyyy-MM-dd") : "")" style="width: 115px; " />
+
+        <input type="submit" value="Filter" class="btn btn-primary" />
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+        <label>Page : </label>@((page - 1) * pageSize + 1)-
+        <input type="search" name="pp" value="@ViewData["pp"]" placeholder="PageSize" style="width: 60px;" /> of @totalRecords
+
+
+    </div>
+
+
+
+}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // get a reference to the search input field
+    const searchBox = $('#searchBox');
+
+    // listen for changes in the search input field
+    searchBox.on('input', function () {
+        const query = searchBox.val();
+        // make an asynchronous HTTP GET request to the server
+        $.ajax({
+            url: `/search?query=${query}`,
+            type: 'GET',
+            success: function (data) {
+                // update the page with the search results
+                $('#searchResults').html(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+</script>
+
+<table class="table table-bordered">
     <thead>
         <tr>
+            
             <th>
-                @Html.DisplayNameFor(model => model.PresName)
+                Prescription
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PresDate)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UrName)
+                Phone
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Registration)
+                Gender
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ChiefComplaint)
+                Age
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GeneralExamination)
+                Date
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Diagnosis)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Invastigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Medicine)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Doses)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Advice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FlowUp)
-            </th>
-            <th></th>
+         
+
+            <th>Print</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model.TotalPrescriptionview)
+        {
         <tr>
+           
             <td>
-                @Html.DisplayFor(modelItem => item.PresName)
+                @item.PresName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PresDate)
+               @item.Name
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UrName)
+              @item.Phone
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Registration.RegiId)
+              @item.Gender
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ChiefComplaint.ChiId)
+                @item.Ages
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GeneralExamination.GenId)
+                @item.PresDate.ToString("dd/MM/yyyy")
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diagnosis.DiagId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Invastigation.InvId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Medicine.MedId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Doses.DosesId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Advice.AdvId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FlowUp.FloId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PresId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PresId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PresId">Delete</a>
+           
+            
+            <td style="width:30px;">
+
+                    <a asp-action="PresPrint" class="btn btn-primary" asp-route-id="@item.PresName">Print</a>
+               
             </td>
         </tr>
 }

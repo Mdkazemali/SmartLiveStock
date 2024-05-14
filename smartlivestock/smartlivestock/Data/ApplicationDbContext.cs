@@ -24,5 +24,7 @@ namespace smartlivestock.Data
         public virtual DbSet<Medicine> Medicines { get; set; }
         public virtual DbSet<Prescription> Prescription { get; set; }
         public virtual DbSet<Registration> Registration { get; set; }
+
+        public virtual DbSet<ReferredTo> ReferredTo { get; set; }
     }
 }

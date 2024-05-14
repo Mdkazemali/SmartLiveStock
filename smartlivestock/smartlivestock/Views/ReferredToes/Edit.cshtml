@@ -1,0 +1,36 @@
+﻿
+
+@model smartlivestock.Models.ReferredTo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">CREATE REFERRED TO</h2>
+
+    <div class="row justify-content-center">
+        <form asp-action="Edit" class="col-12 col-md-8 col-lg-6 bg-light bg-gradient p-4 border" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReferredId" />
+            <div class="form-group">
+                <label asp-for="ReferredName" class="control-label"></label>
+                <input asp-for="ReferredName" class="form-control" />
+                <span asp-validation-for="ReferredName" class="text-danger"></span>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Back</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

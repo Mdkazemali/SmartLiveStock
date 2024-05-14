@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using smartlivestock.Data;
+using smartlivestock.Data.Migrations;
 using smartlivestock.Models;
 
 namespace smartlivestock.Controllers
@@ -14,7 +15,7 @@ namespace smartlivestock.Controllers
     [Authorize]
     public class PrescriptionsController : Controller
     {
-       
+
         private readonly ApplicationDbContext _context;
 
         public PrescriptionsController(ApplicationDbContext context)
@@ -22,46 +23,128 @@ namespace smartlivestock.Controllers
             _context = context;
         }
 
-        // GET: Prescriptions
-        public async Task<IActionResult> Index()
+
+
+        [Authorize]
+        public IActionResult Index(string name, string nidsearch, string frname, string Regino, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
         {
-            var applicationDbContext = _context.Prescription.Include(p => p.Advice).Include(p => p.ChiefComplaint).Include(p => p.Diagnosis).Include(p => p.Doses).Include(p => p.FlowUp).Include(p => p.GeneralExamination).Include(p => p.Invastigation).Include(p => p.Medicine).Include(p => p.Registration);
-            return View(await applicationDbContext.ToListAsync());
+            List<PrescriptionViewModel> totalprescriptionlist = GetTotalPrescriptionlist(name, nidsearch, frname, Regino, frmDatesearch, ToDatesearch, pp, page, pageSize);
+
+            var model = new PrescriptionViewModel
+            {
+                TotalPrescriptionview = totalprescriptionlist,
+            };
+
+            return View(model);
         }
 
-        // GET: Prescriptions/Details/5
-        public async Task<IActionResult> Details(int? id)
+        private List<PrescriptionViewModel> GetTotalPrescriptionlist(string name, string nidsearch, string frname, string Regino, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
         {
-            if (id == null || _context.Prescription == null)
+            var query = from A in _context.Prescription
+                        join D in _context.Registration on A.RegistrationId equals D.RegiId
+
+                        group A by new { D.Name, D.Phone, D.Gender, D.Ages, A.PresName, A.PresDate.Date, } into grouped
+                        select new PrescriptionViewModel
+                        {
+
+
+                            PresName = grouped.Key.PresName,
+                            Name = grouped.Key.Name,
+                            Phone = grouped.Key.Phone,
+                            Gender = grouped.Key.Gender,
+                            Ages = grouped.Key.Ages,
+                            PresDate = grouped.Key.Date,
+
+
+
+                        };
+
+            // Apply filters
+
+            ViewData["name"] = name;
+            if (!string.IsNullOrEmpty(name))
             {
-                return NotFound();
+                query = query.Where(x => x.Name.Contains(name));
+            }
+            ViewData["frname"] = frname;
+            if (!string.IsNullOrEmpty(frname))
+            {
+                query = query.Where(x => x.PresName.Contains(frname));
+            }
+            ViewData["Regino"] = Regino;
+            if (!string.IsNullOrEmpty(Regino))
+            {
+                query = query.Where(x => x.Phone.Contains(Regino));
             }
 
-            var prescription = await _context.Prescription
-                .Include(p => p.Advice)
-                .Include(p => p.ChiefComplaint)
-                .Include(p => p.Diagnosis)
-                .Include(p => p.Doses)
-                .Include(p => p.FlowUp)
-                .Include(p => p.GeneralExamination)
-                .Include(p => p.Invastigation)
-                .Include(p => p.Medicine)
-                .Include(p => p.Registration)
-                .FirstOrDefaultAsync(m => m.PresId == id);
-            if (prescription == null)
+            ViewData["frmDatesearch"] = frmDatesearch;
+            if (frmDatesearch.HasValue)
             {
-                return NotFound();
+                query = query.Where(x =>
+                    x.PresDate.Date >= frmDatesearch.Value.Date);
+            }
+            ViewData["ToDatesearch"] = ToDatesearch;
+            if (ToDatesearch.HasValue)
+            {
+                query = query.Where(x =>
+                    x.PresDate.Date <= ToDatesearch.Value.Date);
             }
 
-            return View(prescription);
+
+
+
+            // for page setups
+
+            int p;
+            if (pp == 0)
+            {
+                p = 8;
+
+            }
+            else
+            {
+                p = pp;
+            }
+
+            ViewData["pp"] = p;
+            pageSize = p;
+
+
+
+            // Count the total number of records
+            var totalRecords = query.Count();
+
+            // Calculate the number of pages
+            var totalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
+
+            // Validate the current page value
+            page = Math.Max(1, Math.Min(totalPages, page));
+
+            // Calculate the number of records to skip
+            var skip = (page - 1) * pageSize;
+
+            // Apply pagination and ordering
+            var pagedQuery = query.OrderByDescending(x => x.PresName).Skip(skip).Take(pageSize).AsNoTracking();
+
+            // Pass the pagination information to the view
+            ViewData["Page"] = page;
+            ViewData["PageSize"] = pageSize;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["TotalRecords"] = totalRecords;
+
+            return pagedQuery.ToList();
+
+
         }
 
 
-        //Orision/Create/Get
+
+        //Prescription/Create/Get
         [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
+
 
             var viewModel = new PrescriptionViewModel
             {
@@ -76,7 +159,9 @@ namespace smartlivestock.Controllers
             ViewData["GeneralExaminationId"] = new SelectList(_context.GeneralExamination, "GenId", "ExamName");
             ViewData["InvastigationId"] = new SelectList(_context.Invastigations, "InvId", "InvName");
             ViewData["MedicineId"] = new SelectList(_context.Medicines, "MedId", "MedName");
-         
+            ViewData["ReferredId"] = new SelectList(_context.ReferredTo, "ReferredId", "ReferredName");
+
+
 
 
             ViewData["RegistraId"] = new SelectList(_context.Registration.Select(c => new
@@ -85,7 +170,7 @@ namespace smartlivestock.Controllers
                 PtnId = c.PtnId,
                 Name = c.Name,
                 Phone = c.Phone,
-       
+
                 ConcatenatedNames = $"{c.PtnId}-{c.Name} - {c.Phone}"
             })
               .OrderByDescending(c => c.RegiId), "RegiId", "ConcatenatedNames", viewModel.SinglePrescrip.RegistrationId);
@@ -95,7 +180,7 @@ namespace smartlivestock.Controllers
         }
 
 
-   
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(PrescriptionViewModel viewModel)
@@ -123,8 +208,8 @@ namespace smartlivestock.Controllers
                     presc.RegistrationId = viewModel.SinglePrescrip.RegistrationId;
                     presc.UrName = User.Identity.Name.Split('@')[0];
                     presc.PresDate = DateTime.Now;
-                
-                   
+
+
                 }
 
                 _context.Prescription.AddRange(viewModel.Prescriptions);
@@ -140,7 +225,6 @@ namespace smartlivestock.Controllers
             ViewData["GeneralExaminationId"] = new SelectList(_context.GeneralExamination, "GenId", "ExamName");
             ViewData["InvastigationId"] = new SelectList(_context.Invastigations, "InvId", "InvName");
             ViewData["MedicineId"] = new SelectList(_context.Medicines, "MedId", "MedName");
-
             ViewData["RegistraId"] = new SelectList(_context.Registration.Select(c => new
             {
                 RegiId = c.RegiId,
@@ -281,18 +365,57 @@ namespace smartlivestock.Controllers
             {
                 _context.Prescription.Remove(prescription);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PrescriptionExists(int id)
         {
-          return _context.Prescription.Any(e => e.PresId == id);
+            return _context.Prescription.Any(e => e.PresId == id);
         }
 
 
-        // Prescription for 
+
+        [Authorize]
+        public IActionResult PresPrint(string Id)
+        {
+            List<Prescription> prescriptions = _context.Prescription
+                .Include(p => p.Advice)
+                .Include(p => p.ChiefComplaint)
+                .Include(p => p.Diagnosis)
+                .Include(p => p.Doses)
+                .Include(p => p.FlowUp)
+                .Include(p => p.GeneralExamination)
+                .Include(p => p.Invastigation)
+                .Include(p => p.Medicine)
+                .Include(p => p.Registration)
+                .Where(c => c.PresName == Id)
+                .ToList();
+
+            var model = prescriptions.Select(p => new PrescriptionViewModel
+            {
+                // for Dor Information 
+
+                // for Patient Information
+
+
+                // for  
+                ChiName = p.ChiefComplaint.ChiName,
+                ExamName = p.GeneralExamination.ExamName,
+                DiagName = p.Diagnosis.DiagName,
+                InvName = p.Invastigation.InvName,
+
+                MedName = p.Medicine.MedName,
+                AdvName= p.Advice.AdvName,
+                FloName = p.FlowUp.FloName,
+                ReferredName = p.ReferredTo.ReferredName,
+
+                
+            }).ToList();
+
+            return View(model);
+        }
 
 
 

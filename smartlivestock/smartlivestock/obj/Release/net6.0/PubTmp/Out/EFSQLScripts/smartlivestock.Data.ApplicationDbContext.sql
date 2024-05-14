@@ -547,3 +547,232 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] DROP CONSTRAINT [FK_Prescription_Advices_AdviceId];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] DROP CONSTRAINT [FK_Prescription_ChiefComplaint_ChiefComplaintId];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] DROP CONSTRAINT [FK_Prescription_Diagnosis_DiagnosisId];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] DROP CONSTRAINT [FK_Prescription_Doses_DosesId];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] DROP CONSTRAINT [FK_Prescription_FlowUp_FlowUpId];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] DROP CONSTRAINT [FK_Prescription_GeneralExamination_GeneralExaminationId];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] DROP CONSTRAINT [FK_Prescription_Invastigations_InvastigationId];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] DROP CONSTRAINT [FK_Prescription_Medicines_MedicineId];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] DROP CONSTRAINT [FK_Prescription_Registration_RegistrationId];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    DECLARE @var8 sysname;
+    SELECT @var8 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'RegistrationId');
+    IF @var8 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var8 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [RegistrationId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    DECLARE @var9 sysname;
+    SELECT @var9 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'MedicineId');
+    IF @var9 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var9 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [MedicineId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    DECLARE @var10 sysname;
+    SELECT @var10 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'InvastigationId');
+    IF @var10 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var10 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [InvastigationId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    DECLARE @var11 sysname;
+    SELECT @var11 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'GeneralExaminationId');
+    IF @var11 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var11 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [GeneralExaminationId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    DECLARE @var12 sysname;
+    SELECT @var12 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'FlowUpId');
+    IF @var12 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var12 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [FlowUpId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    DECLARE @var13 sysname;
+    SELECT @var13 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'DosesId');
+    IF @var13 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var13 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [DosesId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    DECLARE @var14 sysname;
+    SELECT @var14 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'DiagnosisId');
+    IF @var14 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var14 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [DiagnosisId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    DECLARE @var15 sysname;
+    SELECT @var15 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'ChiefComplaintId');
+    IF @var15 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var15 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [ChiefComplaintId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    DECLARE @var16 sysname;
+    SELECT @var16 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'AdviceId');
+    IF @var16 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var16 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [AdviceId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_Advices_AdviceId] FOREIGN KEY ([AdviceId]) REFERENCES [Advices] ([AdvId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_ChiefComplaint_ChiefComplaintId] FOREIGN KEY ([ChiefComplaintId]) REFERENCES [ChiefComplaint] ([ChiId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_Diagnosis_DiagnosisId] FOREIGN KEY ([DiagnosisId]) REFERENCES [Diagnosis] ([DiagId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_Doses_DosesId] FOREIGN KEY ([DosesId]) REFERENCES [Doses] ([DosesId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_FlowUp_FlowUpId] FOREIGN KEY ([FlowUpId]) REFERENCES [FlowUp] ([FloId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_GeneralExamination_GeneralExaminationId] FOREIGN KEY ([GeneralExaminationId]) REFERENCES [GeneralExamination] ([GenId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_Invastigations_InvastigationId] FOREIGN KEY ([InvastigationId]) REFERENCES [Invastigations] ([InvId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_Medicines_MedicineId] FOREIGN KEY ([MedicineId]) REFERENCES [Medicines] ([MedId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_Registration_RegistrationId] FOREIGN KEY ([RegistrationId]) REFERENCES [Registration] ([RegiId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240330222439_addnullablePrectioption', N'6.0.26');
+END;
+GO
+
+COMMIT;
+GO
+

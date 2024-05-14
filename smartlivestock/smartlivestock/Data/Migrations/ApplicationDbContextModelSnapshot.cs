@@ -17,7 +17,7 @@ namespace smartlivestock.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.26")
+                .HasAnnotation("ProductVersion", "6.0.29")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -428,6 +428,9 @@ namespace smartlivestock.Data.Migrations
                     b.Property<int?>("DosesId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Duput")
+                        .HasColumnType("int");
+
                     b.Property<int?>("FlowUpId")
                         .HasColumnType("int");
 
@@ -446,7 +449,16 @@ namespace smartlivestock.Data.Migrations
                     b.Property<string>("PresName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("Rat")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReferredId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("RegistrationId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Sokal")
                         .HasColumnType("int");
 
                     b.Property<string>("UrName")
@@ -470,9 +482,33 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasIndex("MedicineId");
 
+                    b.HasIndex("ReferredId");
+
                     b.HasIndex("RegistrationId");
 
                     b.ToTable("Prescription");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.ReferredTo", b =>
+                {
+                    b.Property<int>("ReferredId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReferredId"), 1L, 1);
+
+                    b.Property<string>("ReferredName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("createDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ReferredId");
+
+                    b.ToTable("ReferredTo");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Registration", b =>
@@ -677,6 +713,10 @@ namespace smartlivestock.Data.Migrations
                         .WithMany()
                         .HasForeignKey("MedicineId");
 
+                    b.HasOne("smartlivestock.Models.ReferredTo", "ReferredTo")
+                        .WithMany()
+                        .HasForeignKey("ReferredId");
+
                     b.HasOne("smartlivestock.Models.Registration", "Registration")
                         .WithMany()
                         .HasForeignKey("RegistrationId");
@@ -696,6 +736,8 @@ namespace smartlivestock.Data.Migrations
                     b.Navigation("Invastigation");
 
                     b.Navigation("Medicine");
+
+                    b.Navigation("ReferredTo");
 
                     b.Navigation("Registration");
                 });

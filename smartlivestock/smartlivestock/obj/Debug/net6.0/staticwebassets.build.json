@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LHWWsBskvxs7Wsp6JKO6AcGlsk+VWUGwy2UH5pNQTdc=",
+  "Hash": "vGVx+IYLRaLa0HPzNbYry7gYqVusnQKcaheUFQljjWI=",
   "Source": "smartlivestock",
   "BasePath": "_content/smartlivestock",
   "Mode": "Default",
@@ -1687,6 +1687,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\headerimages\\PoshaPakhirKhaddo.png"
+    },
+    {
+      "Identity": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\df5169ac-477f-48ee-8ff5-9635cf24daf7_kazem.jpg",
+      "SourceId": "smartlivestock",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\",
+      "BasePath": "_content/smartlivestock",
+      "RelativePath": "images/df5169ac-477f-48ee-8ff5-9635cf24daf7_kazem.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\df5169ac-477f-48ee-8ff5-9635cf24daf7_kazem.jpg"
     },
     {
       "Identity": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\noimage.png",
