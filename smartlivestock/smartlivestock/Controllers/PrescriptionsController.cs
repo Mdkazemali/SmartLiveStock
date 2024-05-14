@@ -176,7 +176,9 @@ namespace smartlivestock.Controllers
               .OrderByDescending(c => c.RegiId), "RegiId", "ConcatenatedNames", viewModel.SinglePrescrip.RegistrationId);
 
 
+
             return View(viewModel);
+           
         }
 
 
@@ -214,7 +216,9 @@ namespace smartlivestock.Controllers
 
                 _context.Prescription.AddRange(viewModel.Prescriptions);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("PresPrint", new { id = prsname });
+
+              
             }
 
             ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiName");
@@ -380,6 +384,8 @@ namespace smartlivestock.Controllers
         [Authorize]
         public IActionResult PresPrint(string Id)
         {
+            var DrInformation = _context.UserInformation.Where(x=>x.LoginId == User.Identity.Name).FirstOrDefault();
+
             List<Prescription> prescriptions = _context.Prescription
                 .Include(p => p.Advice)
                 .Include(p => p.ChiefComplaint)
@@ -397,6 +403,11 @@ namespace smartlivestock.Controllers
             var model = prescriptions.Select(p => new PrescriptionViewModel
             {
                 // for Dor Information 
+                Name=DrInformation.UserFullName,
+                Gender=DrInformation.Gender,           
+                Address =DrInformation.Address,
+                PhoneNumber =DrInformation.PhoneNumber,
+
 
                 // for Patient Information
 
@@ -412,6 +423,9 @@ namespace smartlivestock.Controllers
                 AdvName = p.Advice?.AdvName,
                 FloName = p.FlowUp?.FloName,
                 ReferredName = p.ReferredTo?.ReferredName,
+                Sokal = p.Sokal,
+                Duput = p.Duput,
+                Rat = p.Rat,
 
 
             }).ToList();
