@@ -30,7 +30,7 @@
             box-shadow: 0 4px 6px rgb(0,0,0,0);
             padding: 10px;
             margin-bottom: 2px;
-            border-color:green;
+            border-color: green;
         }
 
         .remove-btn {
@@ -50,7 +50,7 @@
                             <label asp-for="SinglePrescrip.RegistrationId" class="control-label">Patient Informations</label>
                             <label asp-for="SinglePrescrip.RegistrationId" class="control-label">রেজি নং---নাম-----মোবাইল</label>
                             <select id="selectedCustOriId" asp-for="SinglePrescrip.RegistrationId" class="form-control select2" asp-items="ViewBag.RegistraId" style="width:100%;">
-                             
+
                                 <option value="">-- Select --</option>
                             </select>
 
@@ -151,10 +151,10 @@
                                                 <option value="@item.Value">@item.Text</option>
                                             }
                                         </select>
-                                    </td>                                 
-                                   
+                                    </td>
+
                                     <td>
-                                                                             
+
                                         <input name="Prescriptions[0].Sokal" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
                                         <input name="Prescriptions[0].Duput" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
                                         <input name="Prescriptions[0].Rat" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
@@ -228,7 +228,7 @@
                 </div>
 
             </div>
-               
+
 
             <div class="mt-4">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -251,19 +251,19 @@
             $('#addNewChif').click(function () {
                 var index = $('#dataTableChif tbody tr').length;
                 var newRow = `
-                                            <tr>
-                                                <td>
-                                                            <select name="Prescriptions[${index}].ChiefComplaintId" class="form-control select2" style="width:100%;">
-                                                        <option value="">-- Select --</option>
-                                                          @foreach (var item in ViewData["ChiefComplaintId"] as SelectList)
+                                                    <tr>
+                                                        <td>
+                                                                    <select name="Prescriptions[${index}].ChiefComplaintId" class="form-control select2" style="width:100%;">
+                                                                <option value="">-- Select --</option>
+        @foreach (var item in ViewData["ChiefComplaintId"] as SelectList)
         {
-                                                                        <option value="@item.Value">@item.Text</option>
+                                                                                    <option value="@item.Value">@item.Text</option>
         }
-                                                    </select>
-                                                </td>
+                                                            </select>
+                                                        </td>
 
-                                            <td><input type="button" class="btn btn-danger remove" value="×" /></td>
-                                            </tr>`;
+                                                    <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                    </tr>`;
                 $('#dataTableChif tbody').append(newRow);
                 $('.select2').select2();
 
@@ -279,21 +279,21 @@
             $('#addNewGen').click(function () {
                 var index = $('#dataTableGen tbody tr').length;
                 var newRow = `
-                                                    <tr>
-                                                        
+                                                            <tr>
 
-                                                          <td>
-                                                                    <select name="Prescriptions[${index}].GeneralExaminationId" class="form-control select2" style="width:100%;">
-                                                                        <option value="">-- Select --</option>
-                                                                  @foreach (var item in ViewData["GeneralExaminationId"] as SelectList)
+
+                                                                  <td>
+                                                                            <select name="Prescriptions[${index}].GeneralExaminationId" class="form-control select2" style="width:100%;">
+                                                                                <option value="">-- Select --</option>
+        @foreach (var item in ViewData["GeneralExaminationId"] as SelectList)
         {
-                                                                                        <option value="@item.Value">@item.Text</option>
+                                                                                                    <option value="@item.Value">@item.Text</option>
         }
-                                                                    </select>
-                                                          </td>                                                          
+                                                                            </select>
+                                                                  </td>
 
-                                                          <td><input type="button" class="btn btn-danger remove" value="×" /></td>
-                                                    </tr>`;
+                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                            </tr>`;
                 $('#dataTableGen tbody').append(newRow);
                 $('.select2').select2();
 
@@ -309,30 +309,30 @@
             $('#addNewMed').click(function () {
                 var index = $('#dataTableMed tbody tr').length;
                 var newRow = `
-                                                            <tr>
+                                                                    <tr>
 
 
-                                                                  <td>
-                                                                            <select name="Prescriptions[${index}].MedicineId" class="form-control select2" style="width:100%;">
-                                                                               <option value="">-- Select --</option>
-                                                                  @foreach (var item in ViewData["MedicineId"] as SelectList)
+                                                                          <td>
+                                                                                    <select name="Prescriptions[${index}].MedicineId" class="form-control select2" style="width:100%;">
+                                                                                       <option value="">-- Select --</option>
+        @foreach (var item in ViewData["MedicineId"] as SelectList)
         {
-                                                                               <option value="@item.Value">@item.Text</option>
+                                                                                           <option value="@item.Value">@item.Text</option>
         }
-                                                                            </select>
+                                                                                    </select>
 
-                                                                    
-                                                                        
-                                                           </td>
-                                                           <td>
 
-                                                                           <input name="Prescriptions[${index}].Sokal" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
-                                                                           <input name="Prescriptions[${index}].Duput" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
-                                                                           <input name="Prescriptions[${index}].Rat" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
-                                                           </td>
 
-                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
-                                                            </tr>`;
+                                                                   </td>
+                                                                   <td>
+
+                                                                                   <input name="Prescriptions[${index}].Sokal" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                                                                   <input name="Prescriptions[${index}].Duput" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                                                                   <input name="Prescriptions[${index}].Rat" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                                                   </td>
+
+                                                                          <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                                    </tr>`;
                 $('#dataTableMed tbody').append(newRow);
                 $('.select2').select2();
 
@@ -349,21 +349,21 @@
             $('#addNewDiag').click(function () {
                 var index = $('#dataTableDiag tbody tr').length;
                 var newRow = `
-                                                            <tr>
+                                                                    <tr>
 
 
-                                                                  <td>
-                                                                                    <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
-                                                                                <option value="">-- Select --</option>
-                                                                      @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+                                                                          <td>
+                                                                                            <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                        <option value="">-- Select --</option>
+        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
         {
-                                                                                                    <option value="@item.Value">@item.Text</option>
+                                                                                                                <option value="@item.Value">@item.Text</option>
         }
-                                                                            </select>
-                                                                  </td>
+                                                                                    </select>
+                                                                          </td>
 
-                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
-                                                            </tr>`;
+                                                                          <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                                    </tr>`;
                 $('#dataTableDiag tbody').append(newRow);
                 $('.select2').select2();
 
@@ -379,21 +379,21 @@
             $('#addNewInv').click(function () {
                 var index = $('#dataTableInv tbody tr').length;
                 var newRow = `
-                                                                    <tr>
+                                                                            <tr>
 
 
-                                                                          <td>
-                                                                                            <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
-                                                                                        <option value="">-- Select --</option>
-                                                                                         @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+                                                                                  <td>
+                                                                                                    <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                                <option value="">-- Select --</option>
+        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
         {
-                                                                                                                <option value="@item.Value">@item.Text</option>
+                                                                                                                            <option value="@item.Value">@item.Text</option>
         }
-                                                                                    </select>
-                                                                          </td>
+                                                                                            </select>
+                                                                                  </td>
 
-                                                                          <td><input type="button" class="btn btn-danger remove" value="×" /></td>
-                                                                    </tr>`;
+                                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                                            </tr>`;
                 $('#dataTableInv tbody').append(newRow);
                 $('.select2').select2();
 
@@ -408,21 +408,21 @@
             $('#addNewAdv').click(function () {
                 var index = $('#dataTableAdv tbody tr').length;
                 var newRow = `
-                                                                            <tr>
+                                                                                    <tr>
 
 
-                                                                                  <td>
-                                                                                                    <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
-                                                                                                <option value="">-- Select --</option>
-                                                                                                  @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+                                                                                          <td>
+                                                                                                            <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                                        <option value="">-- Select --</option>
+        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
         {
-                                                                                                                            <option value="@item.Value">@item.Text</option>
+                                                                                                                                        <option value="@item.Value">@item.Text</option>
         }
-                                                                                            </select>
-                                                                                  </td>
+                                                                                                    </select>
+                                                                                          </td>
 
-                                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
-                                                                            </tr>`;
+                                                                                          <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                                                    </tr>`;
                 $('#dataTableAdv tbody').append(newRow);
                 $('.select2').select2();
 
@@ -438,21 +438,21 @@
             $('#addNewFoll').click(function () {
                 var index = $('#dataTableFoll tbody tr').length;
                 var newRow = `
-                                                                            <tr>
+                                                                                    <tr>
 
 
-                                                                                  <td>
-                                                                                                    <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
-                                                                                                <option value="">-- Select --</option>
-                                                                                                      @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+                                                                                          <td>
+                                                                                                            <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                                        <option value="">-- Select --</option>
+        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
         {
-                                                                                                                            <option value="@item.Value">@item.Text</option>
+                                                                                                                                        <option value="@item.Value">@item.Text</option>
         }
-                                                                                            </select>
-                                                                                  </td>
+                                                                                                    </select>
+                                                                                          </td>
 
-                                                                                  <td><input type="button" class="btn btn-danger remove" value="×" /></td>
-                                                                            </tr>`;
+                                                                                          <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                                                                    </tr>`;
                 $('#dataTableFoll tbody').append(newRow);
                 $('.select2').select2();
 

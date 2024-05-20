@@ -52,8 +52,8 @@ namespace smartlivestock.Controllers
         // for user informatio update
 
 
-        [HttpGet]
-        public IActionResult Edit(string loginId)
+        [HttpGet]  
+        public IActionResult UserInformationsUpdated(string loginId)
         {
             var info = _context.UserInformation.FirstOrDefault(x => x.LoginId == loginId);
 
@@ -67,7 +67,7 @@ namespace smartlivestock.Controllers
 
 
         [HttpPost]
-        public IActionResult Edit(string loginId, UserInformation userInformation)
+        public IActionResult UserInformationsUpdated(string loginId, UserInformation userInformation)
         {
             if (userInformation.ProfilePhoto != null)
             {

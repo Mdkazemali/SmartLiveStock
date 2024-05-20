@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DinkToPdf.Contracts;
+using DinkToPdf;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using smartlivestock.Data;
 using smartlivestock.Data.Migrations;
 using smartlivestock.Models;
+using System.IO;
 
 namespace smartlivestock.Controllers
 {
@@ -43,13 +46,13 @@ namespace smartlivestock.Controllers
             var query = from A in _context.Prescription
                         join D in _context.Registration on A.RegistrationId equals D.RegiId
 
-                        group A by new { D.Name, D.Phone, D.Gender, D.Ages, A.PresName, A.PresDate.Date, } into grouped
+                        group A by new { D.ReName, D.Phone, D.Gender, D.Ages, A.PresName, A.PresDate.Date, } into grouped
                         select new PrescriptionViewModel
                         {
 
 
                             PresName = grouped.Key.PresName,
-                            Name = grouped.Key.Name,
+                            ReName = grouped.Key.ReName,
                             Phone = grouped.Key.Phone,
                             Gender = grouped.Key.Gender,
                             Ages = grouped.Key.Ages,
@@ -64,7 +67,7 @@ namespace smartlivestock.Controllers
             ViewData["name"] = name;
             if (!string.IsNullOrEmpty(name))
             {
-                query = query.Where(x => x.Name.Contains(name));
+                query = query.Where(x => x.ReName.Contains(name));
             }
             ViewData["frname"] = frname;
             if (!string.IsNullOrEmpty(frname))
@@ -168,10 +171,10 @@ namespace smartlivestock.Controllers
             {
                 RegiId = c.RegiId,
                 PtnId = c.PtnId,
-                Name = c.Name,
+                Name = c.ReName,
                 Phone = c.Phone,
 
-                ConcatenatedNames = $"{c.PtnId}-{c.Name} - {c.Phone}"
+                ConcatenatedNames = $"{c.PtnId}-{c.ReName} - {c.Phone}"
             })
               .OrderByDescending(c => c.RegiId), "RegiId", "ConcatenatedNames", viewModel.SinglePrescrip.RegistrationId);
 
@@ -233,10 +236,10 @@ namespace smartlivestock.Controllers
             {
                 RegiId = c.RegiId,
                 PtnId = c.PtnId,
-                Name = c.Name,
+                Name = c.ReName,
                 Phone = c.Phone,
 
-                ConcatenatedNames = $"{c.PtnId}-{c.Name} - {c.Phone}"
+                ConcatenatedNames = $"{c.PtnId}-{c.ReName} - {c.Phone}"
             })
               .OrderByDescending(c => c.RegiId), "RegiId", "ConcatenatedNames", viewModel.SinglePrescrip.RegistrationId);
 
@@ -284,9 +287,7 @@ namespace smartlivestock.Controllers
             return View(prescription);
         }
 
-        // POST: Prescriptions/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("PresId,PresName,PresDate,UrName,RegistrationId,ChiefComplaintId,GeneralExaminationId,DiagnosisId,InvastigationId,MedicineId,DosesId,AdviceId,FlowUpId")] Prescription prescription)
@@ -381,10 +382,86 @@ namespace smartlivestock.Controllers
 
 
 
-        [Authorize]
+        //[Authorize]
+        //public IActionResult PresPrint(string Id)
+        //{
+        //    var DrInformation = _context.UserInformation.Where(x=>x.LoginId == User.Identity.Name).FirstOrDefault();
+
+        //    List<Prescription> prescriptions = _context.Prescription
+        //        .Include(p => p.Advice)
+        //        .Include(p => p.ChiefComplaint)
+        //        .Include(p => p.Diagnosis)
+        //        .Include(p => p.Doses)
+        //        .Include(p => p.FlowUp)
+        //        .Include(p => p.GeneralExamination)
+        //        .Include(p => p.Invastigation)
+        //        .Include(p => p.Medicine)
+        //        .Include(p => p.Registration)
+        //        .Include(p => p.ReferredTo)
+        //        .Where(c => c.PresName == Id)
+        //        .ToList();
+
+        //    var model = prescriptions.Select(p => new PrescriptionViewModel
+        //    {
+        //        // for Dor Information 
+        //        UserFullName = DrInformation.UserFullName,
+        //        Gender=DrInformation.Gender,           
+        //        Address =DrInformation.Address,
+        //        PhoneNumber =DrInformation.PhoneNumber,
+
+
+
+
+        //        // for Patient Information
+
+
+        //        // for  
+
+        //        ChiName = p.ChiefComplaint?.ChiName,
+        //        ExamName = p.GeneralExamination?.ExamName,
+        //        DiagName = p.Diagnosis?.DiagName,
+        //        InvName = p.Invastigation?.InvName,
+
+        //        MedName = p.Medicine?.MedName,
+        //        AdvName = p.Advice?.AdvName,
+        //        FloName = p.FlowUp?.FloName,
+        //        ReferredName = p.ReferredTo?.ReferredName,
+        //        Sokal = p.Sokal,
+        //        Duput = p.Duput,
+        //        Rat = p.Rat,
+
+
+        //    }).ToList();
+
+        //    return View(model);
+        //}
+
+
+
         public IActionResult PresPrint(string Id)
         {
-            var DrInformation = _context.UserInformation.Where(x=>x.LoginId == User.Identity.Name).FirstOrDefault();
+            var userInformation = _context.UserInformation
+                .Where(x => x.LoginId == User.Identity.Name)
+                .GroupBy(x => new
+                {
+                    x.UserFullName,
+                    x.Gender,
+                    x.Address,
+                    x.PhoneNumber
+                })
+                .Select(g => new
+                {
+                    UserFullName = g.Key.UserFullName,
+                    Gender = g.Key.Gender,
+                    Address = g.Key.Address,
+                    PhoneNumber = g.Key.PhoneNumber
+                })
+                .FirstOrDefault();
+
+            if (userInformation == null)
+            {
+                return NotFound(); // Or handle this scenario as needed
+            }
 
             List<Prescription> prescriptions = _context.Prescription
                 .Include(p => p.Advice)
@@ -402,23 +479,26 @@ namespace smartlivestock.Controllers
 
             var model = prescriptions.Select(p => new PrescriptionViewModel
             {
-                // for Dor Information 
-                Name=DrInformation.UserFullName,
-                Gender=DrInformation.Gender,           
-                Address =DrInformation.Address,
-                PhoneNumber =DrInformation.PhoneNumber,
+                // Dr. Information Information
+                UserFullName = userInformation.UserFullName,
+                Gender = userInformation.Gender,
+                Address = userInformation.Address,
+                PhoneNumber = userInformation.PhoneNumber,
 
+                // Patient Informations
+                ReName=p.Registration?.ReName,
+                PtnId=p.Registration?.PtnId,
+                GenderRe=p.Registration?.Gender,
+                Phone =p.Registration?.Phone,
+                Ages=p.Registration?.Ages,
 
-                // for Patient Information
+                
 
-
-                // for  
-
+                // Prescription Information
                 ChiName = p.ChiefComplaint?.ChiName,
                 ExamName = p.GeneralExamination?.ExamName,
                 DiagName = p.Diagnosis?.DiagName,
                 InvName = p.Invastigation?.InvName,
-
                 MedName = p.Medicine?.MedName,
                 AdvName = p.Advice?.AdvName,
                 FloName = p.FlowUp?.FloName,
@@ -426,8 +506,6 @@ namespace smartlivestock.Controllers
                 Sokal = p.Sokal,
                 Duput = p.Duput,
                 Rat = p.Rat,
-
-
             }).ToList();
 
             return View(model);
@@ -439,3 +517,5 @@ namespace smartlivestock.Controllers
 
     }
 }
+
+

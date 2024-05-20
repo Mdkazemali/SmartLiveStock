@@ -20,6 +20,19 @@ namespace smartlivestock.Models
         public string TranjectionId { get; set; }
         public string Designation { get; set; }
         public string Degree { get; set; }
+        public string PassingYear { get; set; }
+        public string Designations { get; set; }
+        public string Institute { get; set; }
+        public string PresentAddrss { get; set; }
+        public string EmailNo { get; set; }
+        public string Facebook { get; set; }
+        public string Website { get; set; }
+
+        public string NagadNo { get; set; }
+        public string Bkash { get; set; }
+        public string Roket { get; set; }
+
+
         public string DVMRegiNo { get; set; }
         public string KhamarType { get; set; }
 
@@ -35,5 +48,7 @@ namespace smartlivestock.Models
 
         [NotMapped]
         public string? BreifPhotoName { get; set; }
+
+
     }
 }

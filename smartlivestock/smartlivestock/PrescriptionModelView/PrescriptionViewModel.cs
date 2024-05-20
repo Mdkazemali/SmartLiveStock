@@ -51,16 +51,17 @@ namespace smartlivestock.Models
 
         //Registration
 
-        public string Name { get; set; }
+        public string ReName { get; set; }
         public string PtnId { get; set; }
         public string Phone { get; set; }
-        public string Gender { get; set; }
+        public string GenderRe { get; set; }
         public string Ages { get; set; }
         // for Dr informations
 
         public int UserinfoId { get; set; }
         public string UserFullName { get; set; }
-
+        public string Gender { get; set; }
+    
         public int? PhoneNumber { get; set; }
         public ulong? NID { get; set; }
         public string Address { get; set; }
@@ -71,6 +72,19 @@ namespace smartlivestock.Models
         public string TranjectionId { get; set; }
         public string Designation { get; set; }
         public string Degree { get; set; }
+        public string PassingYear { get; set; }
+        public string Designations { get; set; }
+        public string Institute { get; set; }
+        public string PresentAddrss { get; set; }
+        public string EmailNo { get; set; }
+        public string Facebook { get; set; }
+        public string Website { get; set; }
+
+        public string NagadNo { get; set; }
+        public string Bkash { get; set; }
+        public string Roket { get; set; }
+
+
         public string DVMRegiNo { get; set; }
         public string KhamarType { get; set; }
 

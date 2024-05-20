@@ -1,174 +1,262 @@
-﻿
- @model List<PrescriptionViewModel>
+﻿ @model List<PrescriptionViewModel>
 
 @{
-    ViewData["Title"] = "PresPrint";
+    ViewData["Title"] = "Prescriptions";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prescriptions Pages</title>
-    <style>
-        .page {
-            display: flex;
-            padding-top: 1%;
-            padding-bottom: 1%;
-        }
 
-        .column {
-            flex: 1;
-            padding: 1px;
-        }
+<div class="form-group" style="position: fixed;">
 
-        .card {
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgb(0,0,0,0);
-            padding: 10px;
-            margin-bottom: 2px;
-            border-color: green;
-        }
+    <a class="btn btn-primary" onclick="printDiv()">Print</a>
 
-        .remove-btn {
-            float: right; /* Align the button to the right */
-            cursor: pointer;
-            color: red;
+</div>
+
+<!--For Current Date Time Print -->
+@{
+    DateTime d = DateTime.Now;
+    string kk = d.ToString("dd-MM-yyyy");
+
+    DateTime pp = DateTime.Now;
+
+    // Function to convert regular numbers to Bengali numerals
+    string ConvertToBengaliDigits(int number)
+    {
+        string[] bengaliDigits = { "০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯" };
+        string numberString = number.ToString();
+        string bengaliNumber = string.Join("", numberString.Select(c => bengaliDigits[Convert.ToInt32(c.ToString())]));
+        return bengaliNumber;
+    }
+
+    string mm = pp.ToString("dd-MM-yyyy", new System.Globalization.CultureInfo("bn-BD"));
+
+    // Extracting day, month, and year from the formatted date
+    string[] dateParts = kk.Split('-');
+    int day = int.Parse(dateParts[0]);
+    int month = int.Parse(dateParts[1]);
+    int year = int.Parse(dateParts[2]);
+
+    // Convert day, month, and year to Bengali digits
+    string bengaliDay = ConvertToBengaliDigits(day);
+    string bengaliMonth = ConvertToBengaliDigits(month);
+    string bengaliYear = ConvertToBengaliDigits(year);
+
+    // Form the date in the Bengali numeral format
+    string bengaliDate = $"{bengaliDay}-{bengaliMonth}-{bengaliYear}";
+
+    // Output the date
+}
+
+}
+<style>
+   .pr-area {
+        width: 8.27in; /*A4 width in inches */
+        height: 11.98in; /*A4 height in inches */    
+        margin: 0 auto;
+        font-family: Arial,sans-serif;
+       /* cursor: pointer;*/
+    
+    }
+
+
+    .signature-table {
+        border-collapse: collapse;
+        width: 50%;
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+    }
+
+        .signature-table td {
+            border: none;
+            text-align: left;
+            vertical-align: top;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="page">
-                <div class="column">
-                    <div class="card md-12">
-                        This is Dr Descriptions
-                        @foreach(var i in Model)
+ 
+</style>
+
+<div class="col-sm-12 pr-area" id="print_are">
+
+  <div style="border: 5px solid #0a2efd; padding: 0.2in; width:8.27in; height:11.98in;">
+
+
+      <table style="border-collapse:collapse; width:100%; margin:auto;">
+            <tr>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Name: @Model.First().UserFullName
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Gender: @Model.First().Gender
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Address: @Model.First().Address
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Phone: @Model.First().PhoneNumber
+                </td>
+            </tr>
+            <tr>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Name: @Model.First().UserFullName
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Gender: @Model.First().Gender
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Address: @Model.First().Address
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Phone: @Model.First().PhoneNumber
+                </td>
+            </tr>
+            <tr>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Name: @Model.First().UserFullName
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Gender: @Model.First().Gender
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Address: @Model.First().Address
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Phone: @Model.First().PhoneNumber
+                </td>
+            </tr>
+
+
+      </table>
+      <br />
+      <br />
+        <table style="border-collapse:collapse; width:100%; margin:auto; ">
+            <tr>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Name: @Model.First().ReName
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Gender: @Model.First().GenderRe
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                  
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Age: @Model.First().Ages
+                </td>
+            </tr>
+
+        </table>
+
+     ------------------------------------------------------------------------------------------------------------------------------------<br />
+
+        <table style="border-collapse:collapse; width:100%; margin:auto; ">
+            <tr>             
+                <td style="border:none; text-align:left; width:50%; vertical-align:top;">
+                    
+                    <b>Chif compliment</b>
+                   
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ChiName)))
                         {
-                            @i.Name
-                            @i.PhoneNumber
-                            @i.Gender
-                            @i.Address
-                           
+                            <li>@i.ChiName</li>
                         }
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="page">
-                <div class="column">
-                    <div class="card md-12">
-                        Patients Informations
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="page">
-                <div class="column">
-                    <div class="card md-6">
-                        <table id="dataTableChif" class="table table-bordered mt-3">
-                            Chief Complaint
-                            <ul>
-                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ChiName)))
-                                {
-                                    <li>@i.ChiName</li>
-                                }
-                            </ul>
-                        </table>
-                    </div>
+                    </ul>
+                </td>
+                <td style="border:none; text-align: left; width:50%;  vertical-align:top;">
+                    <b>Rx</b> 
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.MedName)))
+                        {
+                            <li>@i.MedName &nbsp; @i.Sokal + @i.Duput + @i.Rat</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: none;  text-align: left; width:50%; vertical-align:top;">
+                    <b>General Examinations</b>
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ExamName)))
+                        {
+                            <li>@i.ExamName</li>
+                        }
+                    </ul>
+                </td>
+                <td style="border:none; text-align: left;width:50%; vertical-align:top;">
+                    <b>Advices</b>
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.AdvName)))
+                        {
+                            <li>@i.AdvName</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
 
-                    <div class="card mb-6">
-                        <table id="dataTableGen" class="table table-bordered mt-3">
-                            General Examinations
-                            <ul>
-                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ExamName)))
-                                {
-                                    <li>@i.ExamName</li>
-                                }
-                            </ul>
-                        </table>
-                    </div>
+            <tr>
+                <td style="border:none;  text-align: left;width:50%; vertical-align:top;">
+                    <b>Diagnosis</b>
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.DiagName)))
+                        {
+                            <li>@i.DiagName</li>
+                        }
+                    </ul>
+                </td>
+                <td style="border: none; text-align: left;width:50%; vertical-align:top;">
+                    <b>FlowUp</b>
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.FloName)))
+                        {
+                            <li>@i.FloName</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: none; text-align: left;width:50%; vertical-align:top;">
+                    <b>Investigations</b>
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.InvName)))
+                        {
+                            <li>@i.InvName</li>
+                        }
+                    </ul>
+                </td>
+                <td style="border:none; text-align: left;width:50%; vertical-align:top;">
+                    <b>Referred to</b>
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ReferredName)))
+                        {
+                            <li>@i.ReferredName</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
 
-                    <div class="card md-6">
-                        <table id="dataTableDiag" class="table table-bordered mt-3">
-                            Diagnosis
-                            <ul>
-                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.DiagName)))
-                                {
-                                    <li>@i.DiagName</li>
-                                }
-                            </ul>
-                        </table>
-                    </div>
 
-                    <div class="card mb-6">
-                        <table id="dataTableInv" class="table table-bordered mt-3">
-                            Investigations
-                            <ul>
-                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.InvName)))
-                                {
-                                    <li>@i.InvName</li>
-                                }
-                            </ul>
-                        </table>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="card md-6">
-                        <table id="dataTableMed" class="table table-bordered mt-3">
-                            Rx
-                            <ul>
-                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.MedName)))
-                                {
-                                    <li>@i.MedName &nbsp; @i.Sokal + @i.Duput + @i.Rat</li>
-                                }
-                            </ul>
-                        </table>
-                    </div>
 
-                    <div class="card md-6">
-                        <table id="dataTableAdv" class="table table-bordered mt-3">
-                            Advices
-                            <ul>
-                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.AdvName)))
-                                {
-                                    <li>@i.AdvName</li>
-                                }
-                            </ul>
-                        </table>
-                    </div>
 
-                    <div class="card mb-6">
-                        <table id="dataTableFoll" class="table table-bordered mt-3">
-                            Referred to
-                            <ul>
-                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.FloName)))
-                                {
-                                    <li>@i.FloName</li>
-                                }
-                            </ul>
-                        </table>
-                    </div>
+            
 
-                    <div class="card mb-6">
-                        <table id="dataTableRef" class="table table-bordered mt-3">
-                            Referred to
-                            <ul>
-                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ReferredName)))
-                                {
-                                    <li>@i.ReferredName</li>
-                                }
-                            </ul>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        </table>
+  
+
     </div>
-</body>
-</html>
+
+ 
+
+</div>
+
+
+<script>
+
+    function printDiv() {
+        var printContents = document.getElementById("print_are").innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+
+    }
+
+</script>

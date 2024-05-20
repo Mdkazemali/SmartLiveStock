@@ -29,7 +29,7 @@ namespace smartlivestock.Controllers
             var custquery = from x in _context.Registration select x;
             if (!String.IsNullOrEmpty(category))
             {
-                custquery = custquery.Where(x => x.Name.Contains(category));
+                custquery = custquery.Where(x => x.ReName.Contains(category));
             }
             ViewData["ptid"] = ptid;
             if (!String.IsNullOrEmpty(ptid))
@@ -117,7 +117,7 @@ namespace smartlivestock.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RegiId,Name,PtnId,Phone,Gender,Ages,CreateDAte,UsrName")] Registration registration)
+        public async Task<IActionResult> Create([Bind("RegiId,ReName,PtnId,Phone,Gender,Ages,CreateDAte,UsrName")] Registration registration)
         {
             if (ModelState.IsValid)
             {
@@ -162,7 +162,7 @@ namespace smartlivestock.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RegiId,Name,PtnId,Phone,Gender,Ages,CreateDAte,UsrName")] Registration registration)
+        public async Task<IActionResult> Edit(int id, [Bind("RegiId,ReName,PtnId,Phone,Gender,Ages,CreateDAte,UsrName")] Registration registration)
         {
             if (id != registration.RegiId)
             {
@@ -173,6 +173,8 @@ namespace smartlivestock.Controllers
             {
                 try
                 {
+                    registration.CreateDAte = DateTime.Now;
+                    registration.UsrName = User.Identity.Name.Split('@')[0];
                     _context.Update(registration);
                     await _context.SaveChangesAsync();
                 }
