@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8/taQtuSQv3JgvOpYeE8cY7RCSjhms3QAHx2hu9ccJo=",
+  "Hash": "HJI9siOit7DDtVmsdtrMzwGK7YB0pqSbGEv7cTeSMWg=",
   "Source": "smartlivestock",
   "BasePath": "_content/smartlivestock",
   "Mode": "Default",
@@ -1706,6 +1706,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\09dda5e1-ec78-443a-9344-4198a9505633_kazem.jpg"
+    },
+    {
+      "Identity": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\743255c2-fa7c-43dc-ae37-5160242af89f_images.jpg",
+      "SourceId": "smartlivestock",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\",
+      "BasePath": "_content/smartlivestock",
+      "RelativePath": "images/743255c2-fa7c-43dc-ae37-5160242af89f_images.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\743255c2-fa7c-43dc-ae37-5160242af89f_images.jpg"
     },
     {
       "Identity": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\c55a7f5c-d22c-4264-9a1b-5ba0af088996_ori.png",

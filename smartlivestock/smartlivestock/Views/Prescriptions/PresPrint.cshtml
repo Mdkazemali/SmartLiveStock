@@ -76,10 +76,30 @@
 
 <div class="col-sm-12 pr-area" id="print_are">
 
-  <div style="border: 5px solid #0a2efd; padding: 0.2in; width:8.27in; height:11.98in;">
-
+  <div style="border: 5px solid powderblue; padding: 0.2in; width:8.27in; height:11.98in;">
+      
+      <!--Dr informations-->
 
       <table style="border-collapse:collapse; width:100%; margin:auto;">
+           <tr>
+               
+                <td rowspan="5">
+                   
+
+                    @if (Model.First().PhotoUrl != null)
+                    {
+                        <img id="PreviewPhoto" src="~/images/@Model.First().PhotoUrl" alt="Logo Image"
+                             width="135" height="135" />
+                    }
+                    else
+                    {
+
+
+                        <img id="PreviewPhoto" src="~/images/noimage.png" alt="Logo Image"
+                             width="125" height="125" />
+                    }
+                </td>
+           </tr>
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
                     Name: @Model.First().UserFullName
@@ -96,31 +116,43 @@
             </tr>
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Name: @Model.First().UserFullName
+                    PassingYear: @Model.First().PassingYear
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Gender: @Model.First().Gender
+                    Educations: @Model.First().Degree
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Address: @Model.First().Address
+                    RegiNo: @Model.First().DVMRegiNo
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Phone: @Model.First().PhoneNumber
+                    ExpireDate: @Model.First().ExpireDate
                 </td>
             </tr>
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Name: @Model.First().UserFullName
+                    NagadNo: @Model.First().NagadNo
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Gender: @Model.First().Gender
+                    Roket: @Model.First().Roket
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Address: @Model.First().Address
+                    Bkash: @Model.First().Bkash
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Phone: @Model.First().PhoneNumber
+                    PresentAddrss: @Model.First().PresentAddrss
                 </td>
+            </tr>
+            <tr>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    EmailNo: @Model.First().EmailNo
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Facebook: @Model.First().Facebook
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    Website: @Model.First().Website
+                </td>
+                
             </tr>
 
 

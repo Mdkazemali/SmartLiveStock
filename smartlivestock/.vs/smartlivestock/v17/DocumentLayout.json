@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|f:\\dot net project\\smartlivestock\\smartlivestock\\smartlivestock\\views\\prescriptions\\presprint.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|solutionrelative:smartlivestock\\views\\prescriptions\\presprint.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|f:\\dot net project\\smartlivestock\\smartlivestock\\smartlivestock\\controllers\\prescriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|solutionrelative:smartlivestock\\controllers\\prescriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|f:\\dot net project\\smartlivestock\\smartlivestock\\smartlivestock\\prescriptionmodelview\\prescriptionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|solutionrelative:smartlivestock\\prescriptionmodelview\\prescriptionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|f:\\dot net project\\smartlivestock\\smartlivestock\\smartlivestock\\views\\home\\userinformationsupdated.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|solutionrelative:smartlivestock\\views\\home\\userinformationsupdated.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +26,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserInformationsUpdated.cshtml",
+              "DocumentMoniker": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\Views\\Home\\UserInformationsUpdated.cshtml",
+              "RelativeDocumentMoniker": "smartlivestock\\Views\\Home\\UserInformationsUpdated.cshtml",
+              "ToolTip": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\Views\\Home\\UserInformationsUpdated.cshtml",
+              "RelativeToolTip": "smartlivestock\\Views\\Home\\UserInformationsUpdated.cshtml",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAAAIoAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-20T05:59:38.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PrescriptionViewModel.cs",
+              "DocumentMoniker": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\PrescriptionModelView\\PrescriptionViewModel.cs",
+              "RelativeDocumentMoniker": "smartlivestock\\PrescriptionModelView\\PrescriptionViewModel.cs",
+              "ToolTip": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\PrescriptionModelView\\PrescriptionViewModel.cs",
+              "RelativeToolTip": "smartlivestock\\PrescriptionModelView\\PrescriptionViewModel.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAA4wEgAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-20T04:29:52.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PrescriptionsController.cs",
+              "DocumentMoniker": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\Controllers\\PrescriptionsController.cs",
+              "RelativeDocumentMoniker": "smartlivestock\\Controllers\\PrescriptionsController.cs",
+              "ToolTip": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\Controllers\\PrescriptionsController.cs",
+              "RelativeToolTip": "smartlivestock\\Controllers\\PrescriptionsController.cs",
+              "ViewState": "AQIAAMABAAAAAAAAAAAIwNYBAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-20T04:26:06.41Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,9 +75,9 @@
               "RelativeDocumentMoniker": "smartlivestock\\Views\\Prescriptions\\PresPrint.cshtml",
               "ToolTip": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\Views\\Prescriptions\\PresPrint.cshtml",
               "RelativeToolTip": "smartlivestock\\Views\\Prescriptions\\PresPrint.cshtml",
-              "ViewState": "AQIAAOIAAAAAAAAAAAAswPEAAAACAAAA",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAIwE4AAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-19T16:21:49.441Z",
+              "WhenOpened": "2024-05-20T04:23:44.556Z",
               "EditorCaption": ""
             }
           ]

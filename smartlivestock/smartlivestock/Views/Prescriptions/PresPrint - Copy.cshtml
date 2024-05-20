@@ -1,0 +1,167 @@
+﻿
+ @model List<PrescriptionViewModel>
+
+@{
+    ViewData["Title"] = "PresPrint";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescriptions Pages</title>
+    <style>
+        .page {
+            display: flex;
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+
+        .column {
+            flex: 1;
+            padding: 1px;
+        }
+
+    
+
+        .remove-btn {
+            float: right; /* Align the button to the right */
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="page">
+                <div class="column">
+                    <div class="card md-12">
+                        This is Dr Descriptions
+                        @foreach(var i in Model)
+                        {
+                            @i.ReName
+                            @i.PhoneNumber
+                            @i.Gender
+                            @i.Address
+                           
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="page">
+                <div class="column">
+                    <div class="card md-12">
+                        Patients Informations
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="page">
+                <div class="column">
+                    <div class="card md-6">
+                        <table id="dataTableChif" class="table table-bordered mt-3">
+                            Chief Complaint
+                            <ul>
+                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ChiName)))
+                                {
+                                    <li>@i.ChiName</li>
+                                }
+                            </ul>
+                        </table>
+                    </div>
+
+                    <div class="card mb-6">
+                        <table id="dataTableGen" class="table table-bordered mt-3">
+                            General Examinations
+                            <ul>
+                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ExamName)))
+                                {
+                                    <li>@i.ExamName</li>
+                                }
+                            </ul>
+                        </table>
+                    </div>
+
+                    <div class="card md-6">
+                        <table id="dataTableDiag" class="table table-bordered mt-3">
+                            Diagnosis
+                            <ul>
+                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.DiagName)))
+                                {
+                                    <li>@i.DiagName</li>
+                                }
+                            </ul>
+                        </table>
+                    </div>
+
+                    <div class="card mb-6">
+                        <table id="dataTableInv" class="table table-bordered mt-3">
+                            Investigations
+                            <ul>
+                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.InvName)))
+                                {
+                                    <li>@i.InvName</li>
+                                }
+                            </ul>
+                        </table>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card md-6">
+                        <table id="dataTableMed" class="table table-bordered mt-3">
+                            Rx
+                            <ul>
+                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.MedName)))
+                                {
+                                    <li>@i.MedName &nbsp; @i.Sokal + @i.Duput + @i.Rat</li>
+                                }
+                            </ul>
+                        </table>
+                    </div>
+
+                    <div class="card md-6">
+                        <table id="dataTableAdv" class="table table-bordered mt-3">
+                            Advices
+                            <ul>
+                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.AdvName)))
+                                {
+                                    <li>@i.AdvName</li>
+                                }
+                            </ul>
+                        </table>
+                    </div>
+
+                    <div class="card mb-6">
+                        <table id="dataTableFoll" class="table table-bordered mt-3">
+                            Referred to
+                            <ul>
+                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.FloName)))
+                                {
+                                    <li>@i.FloName</li>
+                                }
+                            </ul>
+                        </table>
+                    </div>
+
+                    <div class="card mb-6">
+                        <table id="dataTableRef" class="table table-bordered mt-3">
+                            Referred to
+                            <ul>
+                                @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ReferredName)))
+                                {
+                                    <li>@i.ReferredName</li>
+                                }
+                            </ul>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

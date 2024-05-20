@@ -57,11 +57,9 @@ namespace smartlivestock.Models
         public string GenderRe { get; set; }
         public string Ages { get; set; }
         // for Dr informations
-
         public int UserinfoId { get; set; }
         public string UserFullName { get; set; }
         public string Gender { get; set; }
-    
         public int? PhoneNumber { get; set; }
         public ulong? NID { get; set; }
         public string Address { get; set; }
