@@ -71,42 +71,64 @@
             text-align: left;
             vertical-align: top;
         }
+
+
+    .fpr-pic {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: auto;
+        height: 100px; 
+        width: 120px;
+    }
+
  
 </style>
 
 <div class="col-sm-12 pr-area" id="print_are">
 
-  <div style="border: 5px solid powderblue; padding: 0.2in; width:8.27in; height:11.98in;">
+  <div style="border: 4px solid blue; padding: 0.2in; width:8.27in; height:11.98in;">
       
-      <!--Dr informations-->
-
-      <table style="border-collapse:collapse; width:100%; margin:auto;">
-           <tr>
-               
-                <td rowspan="5">
-                   
-
-                    @if (Model.First().PhotoUrl != null)
+      <!--Header informations-->
+        <table style="border-collapse:collapse; width:100%; margin:auto; border-radius:20px; table-layout:fixed;">
+            <tr>
+                <td style="width:10%; text-align:center;">
+                    @if (Model.First().FalPhotoUrl != null)
                     {
-                        <img id="PreviewPhoto" src="~/images/@Model.First().PhotoUrl" alt="Logo Image"
-                             width="135" height="135" />
+                        <img src="~/FacilitiImages/@Model.First().FalPhotoUrl" class="fpr-pic" alt="Left Logo" />
                     }
                     else
                     {
-
-
-                        <img id="PreviewPhoto" src="~/images/noimage.png" alt="Logo Image"
-                             width="125" height="125" />
+                        <img src="~/images/noimage.png" class="fpr-pic" alt="No Image Available" />
                     }
                 </td>
-           </tr>
+                <td style="width:80%; text-align:center;">
+                    @Model.First().FacilityHeadInfomations
+                </td>
+                <td style="width:10%; text-align:center;">
+                    @if (Model.First().FarPhotoUrl != null)
+                    {
+                        <img src="~/FacilitiImages/@Model.First().FarPhotoUrl" class="fpr-pic" alt="Right Logo" />
+                    }
+                    else
+                    {
+                        <img src="~/images/noimage.png" class="fpr-pic" alt="No Image Available" />
+                    }
+                </td>
+            </tr>
+        </table>
+
+      <!--Dr informations-->
+
+        <table style="border-collapse:collapse; width:100%; margin:auto; border:1px solid black; border-radius:20px;">
+
+     
+      
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
                     Name: @Model.First().UserFullName
                 </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    Gender: @Model.First().Gender
-                </td>
+         
                 <td style="border:none; padding: 4px; text-align: left;">
                     Address: @Model.First().Address
                 </td>
@@ -116,69 +138,72 @@
             </tr>
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
+                    RegiNo: @Model.First().DVMRegiNo
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
                     PassingYear: @Model.First().PassingYear
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
                     Educations: @Model.First().Degree
                 </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    RegiNo: @Model.First().DVMRegiNo
-                </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    ExpireDate: @Model.First().ExpireDate
-                </td>
+              
+                
             </tr>
             <tr>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    NagadNo: @Model.First().NagadNo
-                </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    Roket: @Model.First().Roket
-                </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    Bkash: @Model.First().Bkash
-                </td>
+                
                 <td style="border:none; padding: 4px; text-align: left;">
                     PresentAddrss: @Model.First().PresentAddrss
                 </td>
-            </tr>
-            <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
                     EmailNo: @Model.First().EmailNo
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
                     Facebook: @Model.First().Facebook
                 </td>
+            </tr>
+            <tr>
+               
                 <td style="border:none; padding: 4px; text-align: left;">
                     Website: @Model.First().Website
                 </td>
                 
+                <td style="border:none; padding: 4px; text-align: left;">
+                    ExpireDate: @Model.First().ExpireDate
+                </td>
             </tr>
 
 
       </table>
+
+      <!--For pateint informations-->
       <br />
-      <br />
-        <table style="border-collapse:collapse; width:100%; margin:auto; ">
+        <table style="border-collapse:collapse; width:100%; margin:auto; border:1px solid black; border-radius:20px;">
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Name: @Model.First().ReName
+                    Woner Name: @Model.First().ReName
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
                     Gender: @Model.First().GenderRe
                 </td>
+                <td rowspan="2">
+                    <img src="@ViewBag.BarcodePath" alt="Generated Barcode" style="width: 300px; height:50px;" />
+                </td>
+
+            </tr>
+            <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
-                  
+                    Ages: @Model.First().Ages
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Age: @Model.First().Ages
+                    Phone: @Model.First().Phone
                 </td>
+
             </tr>
 
         </table>
 
-     ------------------------------------------------------------------------------------------------------------------------------------<br />
-
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------<br />
+        -->
         <table style="border-collapse:collapse; width:100%; margin:auto; ">
             <tr>             
                 <td style="border:none; text-align:left; width:50%; vertical-align:top;">
@@ -264,14 +289,17 @@
                 </td>
             </tr>
 
+            <tr>
 
+                <td style="position: absolute; bottom: 200px; right: 100px; font-size: 16pt;">
+                     _________________________ <br />
+                     @Model.First().UserFullName <br />
+                     @DateTime.Now
+                </td>
 
+            </tr>
 
-            
-
-
-        </table>
-  
+        </table>  
 
     </div>
 

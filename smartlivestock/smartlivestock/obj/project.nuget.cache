@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OSfZXCFAhpSJ1n56GGpqmMFOqGLu1qE/jmOOY7qCwl2uqIdZZ1TAWIlpTuJQj58uxYK1E5hSOAHaQ1e+p+95lQ==",
+  "dgSpecHash": "/4R7IFNnCIh7IKpo2M4Qeh6o6pZm+/a8+NYbEN1gDMmlRFsNlhCNU6DSSt9O1RbYbKLBf5N27Tbb1niMlMbvrg==",
   "success": true,
   "projectFilePath": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\smartlivestock.csproj",
   "expectedPackageFiles": [
@@ -239,6 +239,7 @@
     "C:\\Users\\MD KAZEM ALI\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\MD KAZEM ALI\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\MD KAZEM ALI\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\MD KAZEM ALI\\.nuget\\packages\\zxing.net\\0.16.9\\zxing.net.0.16.9.nupkg.sha512",
     "C:\\Users\\MD KAZEM ALI\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.29\\microsoft.windowsdesktop.app.ref.6.0.29.nupkg.sha512",
     "C:\\Users\\MD KAZEM ALI\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.29\\microsoft.netcore.app.ref.6.0.29.nupkg.sha512",
     "C:\\Users\\MD KAZEM ALI\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.29\\microsoft.aspnetcore.app.ref.6.0.29.nupkg.sha512",

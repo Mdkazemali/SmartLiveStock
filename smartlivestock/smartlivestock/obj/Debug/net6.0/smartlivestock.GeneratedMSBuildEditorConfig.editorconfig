@@ -178,6 +178,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9zZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FacilityRegistries/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlSZWdpc3RyaWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FacilityRegistries/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlSZWdpc3RyaWVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FacilityRegistries/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlSZWdpc3RyaWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FacilityRegistries/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlSZWdpc3RyaWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FacilityRegistries/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjaWxpdHlSZWdpc3RyaWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/FlowUps/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxvd1Vwc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -288,10 +308,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Prescriptions/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uc1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Prescriptions/PresPrint - Copy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uc1xQcmVzUHJpbnQgLSBDb3B5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/DOT NET PROJECT/SmartLiveStock/smartlivestock/smartlivestock/Views/Prescriptions/PresPrint.cshtml]

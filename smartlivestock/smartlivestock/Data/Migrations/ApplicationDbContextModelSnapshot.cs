@@ -239,7 +239,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("AdvId");
 
-                    b.ToTable("Advices", (string)null);
+                    b.ToTable("Advices");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.ChiefComplaint", b =>
@@ -261,7 +261,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("ChiId");
 
-                    b.ToTable("ChiefComplaint", (string)null);
+                    b.ToTable("ChiefComplaint");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Diagnosis", b =>
@@ -283,7 +283,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("DiagId");
 
-                    b.ToTable("Diagnosis", (string)null);
+                    b.ToTable("Diagnosis");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Doses", b =>
@@ -317,7 +317,62 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("DosesId");
 
-                    b.ToTable("Doses", (string)null);
+                    b.ToTable("Doses");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.FacilityRegistry", b =>
+                {
+                    b.Property<int>("FacilityId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FacilityId"), 1L, 1);
+
+                    b.Property<string>("CityCorporationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DistricName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DivisionName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FaUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FacilityEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FacilityHeadInfomations")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FacilityMobile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FalPhotoUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FarPhotoUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrganizationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrganizationType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UnionName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpozillaName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FacilityId");
+
+                    b.ToTable("FacilityRegistry");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.FlowUp", b =>
@@ -339,7 +394,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("FloId");
 
-                    b.ToTable("FlowUp", (string)null);
+                    b.ToTable("FlowUp");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.GeneralExamination", b =>
@@ -361,7 +416,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("GenId");
 
-                    b.ToTable("GeneralExamination", (string)null);
+                    b.ToTable("GeneralExamination");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Invastigation", b =>
@@ -383,7 +438,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("InvId");
 
-                    b.ToTable("Invastigations", (string)null);
+                    b.ToTable("Invastigations");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Medicine", b =>
@@ -405,7 +460,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("MedId");
 
-                    b.ToTable("Medicines", (string)null);
+                    b.ToTable("Medicines");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Prescription", b =>
@@ -486,7 +541,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasIndex("RegistrationId");
 
-                    b.ToTable("Prescription", (string)null);
+                    b.ToTable("Prescription");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.ReferredTo", b =>
@@ -508,7 +563,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("ReferredId");
 
-                    b.ToTable("ReferredTo", (string)null);
+                    b.ToTable("ReferredTo");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Registration", b =>
@@ -542,7 +597,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("RegiId");
 
-                    b.ToTable("Registration", (string)null);
+                    b.ToTable("Registration");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Trainingvideo", b =>
@@ -567,7 +622,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("vdoId");
 
-                    b.ToTable("Trainingvideo", (string)null);
+                    b.ToTable("Trainingvideo");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.UserInformation", b =>
@@ -607,6 +662,9 @@ namespace smartlivestock.Data.Migrations
 
                     b.Property<string>("Facebook")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("FacilityRegistryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
@@ -655,7 +713,9 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("UserinfoId");
 
-                    b.ToTable("UserInformation", (string)null);
+                    b.HasIndex("FacilityRegistryId");
+
+                    b.ToTable("UserInformation");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -770,6 +830,15 @@ namespace smartlivestock.Data.Migrations
                     b.Navigation("ReferredTo");
 
                     b.Navigation("Registration");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.UserInformation", b =>
+                {
+                    b.HasOne("smartlivestock.Models.FacilityRegistry", "FacilityRegistry")
+                        .WithMany()
+                        .HasForeignKey("FacilityRegistryId");
+
+                    b.Navigation("FacilityRegistry");
                 });
 #pragma warning restore 612, 618
         }

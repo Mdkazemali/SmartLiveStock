@@ -6,6 +6,28 @@ namespace smartlivestock.Models
 {
     public class PrescriptionViewModel
     {
+
+
+        //For Facility Register
+
+        public int FacilityId { get; set; }
+        public string OrganizationName { get; set; }
+        public string OrganizationType { get; set; }
+        public string FacilityEmail { get; set; }
+        public string FacilityMobile { get; set; }
+        public string FacilityHeadInfomations { get; set; }
+        public string DivisionName { get; set; }
+        public string DistricName { get; set; }
+        public string CityCorporationName { get; set; }
+        public string UpozillaName { get; set; }
+        public string UnionName { get; set; }
+        public DateTime LastUpdateDate { get; set; }
+        public string FaUserName { get; set; }
+        public string? FalPhotoUrl { get; set; }
+        public string? FarPhotoUrl { get; set; }
+
+
+
         //Advices
         public string AdvName { get; set; }
         public DateTime AdvDate { get; set; }
@@ -87,7 +109,7 @@ namespace smartlivestock.Models
         public string KhamarType { get; set; }
 
 
-
+        public string BarcodeBase64 { get; set; }
 
         public string? PhotoUrl { get; set; }
 

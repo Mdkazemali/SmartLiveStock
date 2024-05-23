@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("smartlivestock")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f70f7c127bf8189ee89693e69450784cb510ef6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a27cb62047afb4e5d28e294e26babdc4d17a38aa")]
 [assembly: System.Reflection.AssemblyProductAttribute("smartlivestock")]
 [assembly: System.Reflection.AssemblyTitleAttribute("smartlivestock")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

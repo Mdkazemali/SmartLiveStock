@@ -12,7 +12,10 @@ using smartlivestock.Data;
 using smartlivestock.Data.Migrations;
 using smartlivestock.Models;
 using System.IO;
-
+using ZXing;
+using ZXing.QrCode;
+using Microsoft.AspNetCore.Hosting;
+using ZXing.Common;
 namespace smartlivestock.Controllers
 {
     [Authorize]
@@ -20,10 +23,11 @@ namespace smartlivestock.Controllers
     {
 
         private readonly ApplicationDbContext _context;
-
-        public PrescriptionsController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public PrescriptionsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
 
@@ -49,8 +53,6 @@ namespace smartlivestock.Controllers
                         group A by new { D.ReName, D.Phone, D.Gender, D.Ages, A.PresName, A.PresDate.Date, } into grouped
                         select new PrescriptionViewModel
                         {
-
-
                             PresName = grouped.Key.PresName,
                             ReName = grouped.Key.ReName,
                             Phone = grouped.Key.Phone,
@@ -164,9 +166,6 @@ namespace smartlivestock.Controllers
             ViewData["MedicineId"] = new SelectList(_context.Medicines, "MedId", "MedName");
             ViewData["ReferredId"] = new SelectList(_context.ReferredTo, "ReferredId", "ReferredName");
 
-
-
-
             ViewData["RegistraId"] = new SelectList(_context.Registration.Select(c => new
             {
                 RegiId = c.RegiId,
@@ -176,8 +175,7 @@ namespace smartlivestock.Controllers
 
                 ConcatenatedNames = $"{c.PtnId}-{c.ReName} - {c.Phone}"
             })
-              .OrderByDescending(c => c.RegiId), "RegiId", "ConcatenatedNames", viewModel.SinglePrescrip.RegistrationId);
-
+            .OrderByDescending(c => c.RegiId), "RegiId", "ConcatenatedNames", viewModel.SinglePrescrip.RegistrationId);
 
 
             return View(viewModel);
@@ -384,6 +382,8 @@ namespace smartlivestock.Controllers
 
         public IActionResult PresPrint(string Id)
         {
+            var header = _context.UserInformation.Include(p => p.FacilityRegistry);
+
             var userInformation = _context.UserInformation
                 .Where(x => x.LoginId == User.Identity.Name)
                 .GroupBy(x => new
@@ -404,7 +404,10 @@ namespace smartlivestock.Controllers
                     x.Institute,
                     x.EmailNo,
                     x.Facebook,
-                    x.Website
+                    x.Website,
+                    x.FacilityRegistry.FacilityHeadInfomations,
+                    x.FacilityRegistry.FalPhotoUrl,
+                    x.FacilityRegistry.FarPhotoUrl,
                 })
                 .Select(g => new
                 {
@@ -420,11 +423,16 @@ namespace smartlivestock.Controllers
                     PhotoUrl=g.Key.PhotoUrl,
                     PresentAddrss=g.Key.PresentAddrss,
                     ExpireDate=g.Key.ExpireDate,
-                    DVMRegiNo=g.Key.Institute,
-                    Institute=g.Key.EmailNo,
+                    DVMRegiNo=g.Key.DVMRegiNo,
+                    Institute=g.Key.Institute,
                     EmailNo=g.Key.EmailNo,
                     Facebook=g.Key.Facebook,
-                    Website=g.Key.Website
+                    Website=g.Key.Website,
+                    FacilityHeadInfomations=g.Key.FacilityHeadInfomations,
+                    FalPhotoUrl=g.Key.FalPhotoUrl,
+                    FarPhotoUrl=g.Key.FarPhotoUrl,
+
+
 
                 })
                 .FirstOrDefault();
@@ -450,6 +458,12 @@ namespace smartlivestock.Controllers
 
             var model = prescriptions.Select(p => new PrescriptionViewModel
             {
+                // Header informations
+                FarPhotoUrl=userInformation.FarPhotoUrl,
+                FalPhotoUrl=userInformation.FalPhotoUrl,
+                FacilityHeadInfomations=userInformation.FacilityHeadInfomations,
+
+
                 // Dr. Information Information
           
                 UserFullName = userInformation.UserFullName,
@@ -464,8 +478,8 @@ namespace smartlivestock.Controllers
                 PhotoUrl = userInformation.PhotoUrl,
                 PresentAddrss = userInformation.PresentAddrss,
                 ExpireDate = userInformation.ExpireDate,
-                DVMRegiNo = userInformation.Institute,
-                Institute = userInformation.EmailNo,
+                DVMRegiNo = userInformation.DVMRegiNo,
+                Institute = userInformation.Institute,
                 EmailNo = userInformation.EmailNo,
                 Facebook = userInformation.Facebook,
                 Website = userInformation.Website,
@@ -475,6 +489,7 @@ namespace smartlivestock.Controllers
                 // Patient Informations
                 ReName =p.Registration?.ReName,
                 PtnId=p.Registration?.PtnId,
+                PresName=p.PresName,             
                 GenderRe=p.Registration?.Gender,
                 Phone =p.Registration?.Phone,
                 Ages=p.Registration?.Ages,
@@ -494,6 +509,46 @@ namespace smartlivestock.Controllers
                 Duput = p.Duput,
                 Rat = p.Rat,
             }).ToList();
+
+
+            var barcodeWriter = new BarcodeWriterPixelData
+            {
+                Format = BarcodeFormat.CODE_128,
+                Options = new EncodingOptions
+                {
+                    Width = 300,
+                    Height = 100
+                }
+            };
+
+            var pixelData = barcodeWriter.Write(Id);
+
+            using (var bitmap = new System.Drawing.Bitmap(pixelData.Width, pixelData.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb))
+            {
+                using (var ms = new MemoryStream())
+                {
+                    var bitmapData = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, pixelData.Width, pixelData.Height),
+                        System.Drawing.Imaging.ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
+                    try
+                    {
+                        System.Runtime.InteropServices.Marshal.Copy(pixelData.Pixels, 0, bitmapData.Scan0, pixelData.Pixels.Length);
+                    }
+                    finally
+                    {
+                        bitmap.UnlockBits(bitmapData);
+                    }
+
+                    bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+                    var barcodePath = Path.Combine(_webHostEnvironment.WebRootPath, "barcodes", "barcode.png");
+
+                    System.IO.File.WriteAllBytes(barcodePath, ms.ToArray());
+
+                    ViewBag.BarcodePath = "/barcodes/barcode.png";
+
+                }
+            }
+
 
             return View(model);
         }

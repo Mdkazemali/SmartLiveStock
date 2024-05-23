@@ -19,13 +19,6 @@ namespace smartlivestock.Controllers
             _context = context;
         }
 
-        //// GET: Advices
-        //public async Task<IActionResult> Index()
-        //{
-        //      return View(await _context.Advices.ToListAsync());
-        //}
-
-
         // GET: Benificiaries
         public async Task<IActionResult> Index(string category, DateTime? frmDatesearch, DateTime? ToDatesearch, int pp, int page = 1, int pageSize = 50)
         {

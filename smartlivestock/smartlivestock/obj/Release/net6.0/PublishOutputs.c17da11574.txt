@@ -4,6 +4,7 @@ F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\smartlivestock.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\smartlivestock.runtimeconfig.json
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\smartlivestock.pdb
+F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\DinkToPdf.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\Humanizer.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\MessagePack.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\MessagePack.Annotations.dll
@@ -83,6 +84,7 @@ F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\System.Security.Permissions.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\System.Windows.Extensions.dll
+F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\zxing.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\af\Humanizer.resources.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\ar\Humanizer.resources.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\az\Humanizer.resources.dll

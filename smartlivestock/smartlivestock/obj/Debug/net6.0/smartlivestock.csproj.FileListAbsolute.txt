@@ -650,3 +650,4 @@ F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\ref\smartlivestock.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Debug\net6.0\smartliv.06D9357A.Up2Date
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\bin\Debug\net6.0\DinkToPdf.dll
+F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\bin\Debug\net6.0\zxing.dll

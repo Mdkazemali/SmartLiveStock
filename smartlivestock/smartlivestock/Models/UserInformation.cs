@@ -50,5 +50,9 @@ namespace smartlivestock.Models
         public string? BreifPhotoName { get; set; }
 
 
+        [ForeignKey("FacilityRegistry")]
+        public int? FacilityRegistryId { get; set; }
+        public virtual FacilityRegistry FacilityRegistry { get; set; }
+
     }
 }

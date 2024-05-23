@@ -1,7 +1,7 @@
 ﻿ @model smartlivestock.Models.UserInformation
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "UserInformationsUpdated";
 }
 
 
@@ -38,85 +38,76 @@
          
              
             <div class="form-group col-md-2">
-                <label class="control-label">  নাম</label>
-                <input asp-for="UserFullName" class="form-control" placeholder="নাম লিখুন" autocomplete="off" />
+                <label class="control-label"> Name</label>
+                <input asp-for="UserFullName" class="form-control" placeholder="Name" autocomplete="off" />
                 <span asp-validation-for="UserFullName" class="text-danger"></span>
             </div>
 
             <div class="form-group col-md-2">
-                <label asp-for="PhoneNumber" class="control-label">  মোবাইল নং</label>
-                <input asp-for="PhoneNumber" class="form-control" placeholder="মোবাইল নং লিখুন " autocomplete="off" />
+                <label asp-for="PhoneNumber" class="control-label">Phone No.</label>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Phone No." autocomplete="off" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
 
-          
-            <div class="form-group col-md-3">
-                <label asp-for="NID" class="control-label">  এন আই ডি</label>
-                <input asp-for="NID" class="form-control" placeholder="এন আই ডি নাম্বার দিন " autocomplete="off" />
-                <span asp-validation-for="NID" class="text-danger"></span>
-            </div>
 
-            <div class="form-group col-md-3">
-                <label asp-for="Address" class="control-label">  ঠিকানা</label>
-                <input asp-for="Address" class="form-control" placeholder="গ্রাম,থানা,জেলা" autocomplete="off" />
+            <div class="form-group col-md-2">
+                <label asp-for="Address" class="control-label"> Address</label>
+                <input asp-for="Address" class="form-control" placeholder="Address" autocomplete="off" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
            
 
-
             <div class="form-group col-md-2">
-                <label asp-for="Gender" class="control-label">  লিঙ্গ</label>
-                <select asp-for="Gender" class="form-control">
-                    <option value="">-সিলেক্ট-</option>
-                    <option value="পুরুষ">পুরুষ</option>
-                    <option value="মহিলা">মহিলা</option>
-                    <option value="অনন্য">অনন্য</option>
-
-                </select>
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-
-            <div class="form-group col-md-2">
-                <label asp-for="TranjectionId" class="control-label">  ট্রানজেকশন নং</label>
-                <input asp-for="TranjectionId" class="form-control" placeholder="ট্রানজেকশন নং" autocomplete="off" />
-                <span asp-validation-for="TranjectionId" class="text-danger"></span>
-            </div>
-
-            <div class="form-group col-md-2">
-                <label asp-for="Designation" class="control-label">  ডেজিগনেশন</label>
-                <input asp-for="Designation" class="form-control" placeholder=" ডেজিগনেশন" autocomplete="off" />
+                <label asp-for="Designation" class="control-label">Designations</label>
+                <input asp-for="Designation" class="form-control" placeholder="Designations" autocomplete="off" />
                 <span asp-validation-for="Designation" class="text-danger"></span>
             </div>
 
 
-            <div class="form-group col-md-3">
-                <label asp-for="Degree" class="control-label">  ডিগ্রী </label>
-                <input asp-for="Degree" class="form-control" placeholder="ডিগ্রী" />
+            <div class="form-group col-md-2">
+                <label asp-for="Degree" class="control-label">Educational qualifications</label>
+                <input asp-for="Degree" class="form-control" placeholder="Educational qua.." />
                 <span asp-validation-for="Degree" class="text-danger"></span>
             </div>
 
-            <div class="form-group col-md-3"> 
-                <label asp-for="DVMRegiNo" class="control-label">  ডিভিএম রেজি.নং</label>
-                <input asp-for="DVMRegiNo" class="form-control" placeholder="ডিভিএম রেজি.নং" />
+            <div class="form-group col-md-2"> 
+                <label asp-for="DVMRegiNo" class="control-label">Registration No.</label>
+                <input asp-for="DVMRegiNo" class="form-control" placeholder="Registrations No." />
                 <span asp-validation-for="DVMRegiNo" class="text-danger"></span>
             </div>
-             
 
             <div class="form-group col-md-2">
-                <label asp-for="KhamarType" class="control-label">  খামারের ধরণ</label>
-                <select asp-for="KhamarType" class="form-control">
-                    <option value="" selected="">নির্বাচন করুন</option>
-                    <option value="দুগ্ধ খামার">দুগ্ধ খামার</option>
-                    <option value="ছাগলের খামার">ছাগলের খামার</option>
-                    <option value="মুরগির খামার">মুরগির খামার</option>
-                    <option value="মোটাতাজাকরণ খামার">মোটাতাজাকরণ খামার</option>
-
-                </select>
-                <span asp-validation-for="KhamarType" class="text-danger"></span>
+                <label asp-for="PassingYear" class="control-label">Passing Year</label>
+                <input asp-for="PassingYear" class="form-control" placeholder="Passing year" />
+                <span asp-validation-for="PassingYear" class="text-danger"></span>
             </div>
 
+            <div class="form-group col-md-2">
+                <label asp-for="EmailNo" class="control-label">Email address</label>
+                <input asp-for="EmailNo" class="form-control" placeholder="Email" />
+                <span asp-validation-for="EmailNo" class="text-danger"></span>
+            </div>
+             
+            <div class="form-group col-md-2">
+                <label asp-for="Facebook" class="control-label">Facebook</label>
+                <input asp-for="Facebook" class="form-control" placeholder="Facebook" />
+                <span asp-validation-for="Facebook" class="text-danger"></span>
+            </div> 
+            <div class="form-group col-md-2">
+                <label asp-for="Website" class="control-label">Website</label>
+                <input asp-for="Website" class="form-control" placeholder="Website" />
+                <span asp-validation-for="Website" class="text-danger"></span>
+            </div>
 
-                    <br />
+            <div class="form-group col-md-4">
+                <label asp-for="FacilityRegistryId" class="control-label">Select Header</label>
+                <select asp-for="FacilityRegistryId" class="form-control" asp-items="ViewBag.FacilityRegistryId"></select>
+                <span asp-validation-for="FacilityRegistryId" class="text-danger"></span>
+            </div>
+        
+
+
+             <br />
          
 
                     <!--ছবির জন্য এখান থেকে রেখে দিন -->

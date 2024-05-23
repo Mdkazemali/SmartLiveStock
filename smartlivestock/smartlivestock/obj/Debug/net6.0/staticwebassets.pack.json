@@ -5,6 +5,42 @@
       "PackagePath": "staticwebassets\\smartlivestock.bundle.scp.css"
     },
     {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\FacilitiImages\\2ad9d1a7-baa4-4f62-90a7-c8f3bba8f08e_Screenshot 2024-05-14 172132.png",
+      "PackagePath": "staticwebassets\\FacilitiImages\\2ad9d1a7-baa4-4f62-90a7-c8f3bba8f08e_Screenshot 2024-05-14 172132.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\FacilitiImages\\49c9b9a5-c2ba-422b-994d-b43e546dba17_Screenshot 2024-05-14 171956.png",
+      "PackagePath": "staticwebassets\\FacilitiImages\\49c9b9a5-c2ba-422b-994d-b43e546dba17_Screenshot 2024-05-14 171956.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\FacilitiImages\\592aa75d-a28c-4b9d-abf3-2cba5e972fba_Screenshot 2024-05-14 171956.png",
+      "PackagePath": "staticwebassets\\FacilitiImages\\592aa75d-a28c-4b9d-abf3-2cba5e972fba_Screenshot 2024-05-14 171956.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\FacilitiImages\\5bfe698c-50fa-4126-9a28-25a0354e2c03_Screenshot 2024-05-16 214647.png",
+      "PackagePath": "staticwebassets\\FacilitiImages\\5bfe698c-50fa-4126-9a28-25a0354e2c03_Screenshot 2024-05-16 214647.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\FacilitiImages\\7380c681-5367-4c58-91b9-2a8cf9d9263b_Screenshot (1).png",
+      "PackagePath": "staticwebassets\\FacilitiImages\\7380c681-5367-4c58-91b9-2a8cf9d9263b_Screenshot (1).png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\FacilitiImages\\94e39a36-2317-4044-b4f5-abd663f3f8e1_ismartlogo.png",
+      "PackagePath": "staticwebassets\\FacilitiImages\\94e39a36-2317-4044-b4f5-abd663f3f8e1_ismartlogo.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\FacilitiImages\\98d833c7-8b3b-4377-a127-5c1494fd517d_download.png",
+      "PackagePath": "staticwebassets\\FacilitiImages\\98d833c7-8b3b-4377-a127-5c1494fd517d_download.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\FacilitiImages\\cc8fba66-db86-49c7-937c-f9351032f5b8_Screenshot 2024-05-16 214647.png",
+      "PackagePath": "staticwebassets\\FacilitiImages\\cc8fba66-db86-49c7-937c-f9351032f5b8_Screenshot 2024-05-16 214647.png"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\barcodes\\barcode.png",
+      "PackagePath": "staticwebassets\\barcodes\\barcode.png"
+    },
+    {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\calculatorimg\\calculate.png",
       "PackagePath": "staticwebassets\\calculatorimg\\calculate.png"
     },
@@ -113,16 +149,24 @@
       "PackagePath": "staticwebassets\\images\\09dda5e1-ec78-443a-9344-4198a9505633_kazem.jpg"
     },
     {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\43978623-19d1-4b57-86d3-8fa1d5113077_Screenshot (1).png",
+      "PackagePath": "staticwebassets\\images\\43978623-19d1-4b57-86d3-8fa1d5113077_Screenshot (1).png"
+    },
+    {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\743255c2-fa7c-43dc-ae37-5160242af89f_images.jpg",
       "PackagePath": "staticwebassets\\images\\743255c2-fa7c-43dc-ae37-5160242af89f_images.jpg"
     },
     {
-      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\c55a7f5c-d22c-4264-9a1b-5ba0af088996_ori.png",
-      "PackagePath": "staticwebassets\\images\\c55a7f5c-d22c-4264-9a1b-5ba0af088996_ori.png"
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\78711fcf-6546-46c4-8783-321a16774278_Screenshot 2024-05-14 171956.png",
+      "PackagePath": "staticwebassets\\images\\78711fcf-6546-46c4-8783-321a16774278_Screenshot 2024-05-14 171956.png"
     },
     {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\df5169ac-477f-48ee-8ff5-9635cf24daf7_kazem.jpg",
       "PackagePath": "staticwebassets\\images\\df5169ac-477f-48ee-8ff5-9635cf24daf7_kazem.jpg"
+    },
+    {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\f8c37f93-0e14-460c-a577-0a62b773eefc_Screenshot (1).png",
+      "PackagePath": "staticwebassets\\images\\f8c37f93-0e14-460c-a577-0a62b773eefc_Screenshot (1).png"
     },
     {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\images\\noimage.png",

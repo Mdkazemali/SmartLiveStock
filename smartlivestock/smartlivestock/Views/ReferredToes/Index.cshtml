@@ -26,7 +26,7 @@
     <div class="form-group">
 
 
-        <input type="search" id="searchInput" placeholder="Search your content.." value="@ViewData["category"]" name="category" style="width: 350px; " />
+        <input type="search" placeholder="Search your content.." value="@ViewData["category"]" name="category" style="width: 350px; " />
 
 
         <input type="submit" value="Filter" class="btn btn-primary" />
@@ -64,40 +64,9 @@
         });
     });
 </script>
-<script>
-    const message = "Search your content...";
-    const searchInput = document.getElementById("searchInput");
-    let index = 0;
-
-    function typeWriter() {
-        if (index < message.length) {
-            searchInput.value += message[index];
-            index++;
-            setTimeout(typeWriter, 50); // Adjust speed here (milliseconds)
-        } else {
-            // Clear characters one by one (using another function)
-            clearText();
-        }
-    }
-
-    function clearText() {
-        const intervalId = setInterval(() => {
-            if (searchInput.value) {
-                searchInput.value = searchInput.value.slice(0, -1);
-            } else {
-                clearInterval(intervalId);
-            }
-        }, 50); // Adjust speed here (milliseconds)
-    }
-
-    // Start the typing animation
-    typeWriter();
 
 
-
-</script>
-
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -109,7 +78,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
-            <th></th>
+            <th style="width:30px;">Edit/Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -125,9 +94,9 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ReferredId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ReferredId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ReferredId">Delete</a>
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.ReferredId">Edit</a>
+              
+                    <a asp-action="Delete" class="btn btn-primary" asp-route-id="@item.ReferredId">Delete</a>
             </td>
         </tr>
 }

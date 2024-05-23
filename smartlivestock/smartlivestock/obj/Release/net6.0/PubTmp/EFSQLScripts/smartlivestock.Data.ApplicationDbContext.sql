@@ -155,7 +155,7 @@ GO
 IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'00000000000000_CreateIdentitySchema')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'00000000000000_CreateIdentitySchema', N'6.0.26');
+    VALUES (N'00000000000000_CreateIdentitySchema', N'6.0.29');
 END;
 GO
 
@@ -229,7 +229,7 @@ GO
 IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20231226181624_userrole')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20231226181624_userrole', N'6.0.26');
+    VALUES (N'20231226181624_userrole', N'6.0.29');
 END;
 GO
 
@@ -266,7 +266,7 @@ GO
 IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240118105355_UserInformations')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20240118105355_UserInformations', N'6.0.26');
+    VALUES (N'20240118105355_UserInformations', N'6.0.29');
 END;
 GO
 
@@ -327,7 +327,7 @@ GO
 IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240119032316_ADdNullable')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20240119032316_ADdNullable', N'6.0.26');
+    VALUES (N'20240119032316_ADdNullable', N'6.0.29');
 END;
 GO
 
@@ -540,7 +540,7 @@ GO
 IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240203171024_Prescriptions')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20240203171024_Prescriptions', N'6.0.26');
+    VALUES (N'20240203171024_Prescriptions', N'6.0.29');
 END;
 GO
 
@@ -769,7 +769,240 @@ GO
 IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240330222439_addnullablePrectioption')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20240330222439_addnullablePrectioption', N'6.0.26');
+    VALUES (N'20240330222439_addnullablePrectioption', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240509152809_ReferredTo')
+BEGIN
+    CREATE TABLE [ReferredTo] (
+        [ReferredId] int NOT NULL IDENTITY,
+        [ReferredName] nvarchar(max) NULL,
+        [createDate] datetime2 NOT NULL,
+        [UserName] nvarchar(max) NULL,
+        CONSTRAINT [PK_ReferredTo] PRIMARY KEY ([ReferredId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240509152809_ReferredTo')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240509152809_ReferredTo', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240509153306_Presc')
+BEGIN
+    ALTER TABLE [Prescription] ADD [ReferredId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240509153306_Presc')
+BEGIN
+    CREATE INDEX [IX_Prescription_ReferredId] ON [Prescription] ([ReferredId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240509153306_Presc')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_ReferredTo_ReferredId] FOREIGN KEY ([ReferredId]) REFERENCES [ReferredTo] ([ReferredId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240509153306_Presc')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240509153306_Presc', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240511055558_sdr')
+BEGIN
+    ALTER TABLE [Prescription] ADD [Duput] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240511055558_sdr')
+BEGIN
+    ALTER TABLE [Prescription] ADD [Rat] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240511055558_sdr')
+BEGIN
+    ALTER TABLE [Prescription] ADD [Sokal] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240511055558_sdr')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240511055558_sdr', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [Bkash] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [Designations] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [EmailNo] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [Facebook] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [Institute] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [NagadNo] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [PassingYear] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [PresentAddrss] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [Roket] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [Website] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517151456_NewHeading')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240517151456_NewHeading', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517153501_Rej')
+BEGIN
+    EXEC sp_rename N'[Registration].[Name]', N'ReName', N'COLUMN';
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240517153501_Rej')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240517153501_Rej', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240520164802_FacilityRegistri')
+BEGIN
+    ALTER TABLE [UserInformation] ADD [FacilityRegistryId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240520164802_FacilityRegistri')
+BEGIN
+    CREATE TABLE [FacilityRegistry] (
+        [FacilityId] int NOT NULL IDENTITY,
+        [OrganizationName] nvarchar(max) NULL,
+        [OrganizationType] nvarchar(max) NULL,
+        [FacilityEmail] nvarchar(max) NULL,
+        [FacilityMobile] nvarchar(max) NULL,
+        [FacilityHeadInfomations] nvarchar(max) NULL,
+        [DivisionName] nvarchar(max) NULL,
+        [DistricName] nvarchar(max) NULL,
+        [CityCorporationName] nvarchar(max) NULL,
+        [UpozillaName] nvarchar(max) NULL,
+        [UnionName] nvarchar(max) NULL,
+        [LastUpdateDate] datetime2 NOT NULL,
+        [FaUserName] nvarchar(max) NULL,
+        [FalPhotoUrl] nvarchar(max) NULL,
+        [FarPhotoUrl] nvarchar(max) NULL,
+        CONSTRAINT [PK_FacilityRegistry] PRIMARY KEY ([FacilityId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240520164802_FacilityRegistri')
+BEGIN
+    CREATE INDEX [IX_UserInformation_FacilityRegistryId] ON [UserInformation] ([FacilityRegistryId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240520164802_FacilityRegistri')
+BEGIN
+    ALTER TABLE [UserInformation] ADD CONSTRAINT [FK_UserInformation_FacilityRegistry_FacilityRegistryId] FOREIGN KEY ([FacilityRegistryId]) REFERENCES [FacilityRegistry] ([FacilityId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240520164802_FacilityRegistri')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240520164802_FacilityRegistri', N'6.0.29');
 END;
 GO
 

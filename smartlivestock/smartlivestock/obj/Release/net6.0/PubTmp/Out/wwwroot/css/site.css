@@ -68,3 +68,11 @@ body {
         margin: 0 auto; /* Center the image */
     }
 }
+
+
+.fpr-pic {
+    display: block;
+    height: 60px;
+    width: 60px;
+   
+}

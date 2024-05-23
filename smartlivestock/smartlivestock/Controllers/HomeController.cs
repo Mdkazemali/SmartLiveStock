@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using smartlivestock.Data;
 using smartlivestock.Models;
@@ -55,6 +56,11 @@ namespace smartlivestock.Controllers
         [HttpGet]  
         public IActionResult UserInformationsUpdated(string loginId)
         {
+            var facilityRegistryList = _context.FacilityRegistry
+                                      .Select(x => new { x.FacilityId, x.FacilityHeadInfomations })
+                                      .ToList();
+            ViewBag.FacilityRegistryId = new SelectList(facilityRegistryList, "FacilityId", "FacilityHeadInfomations");
+
             var info = _context.UserInformation.FirstOrDefault(x => x.LoginId == loginId);
 
             if (info == null)
@@ -69,6 +75,14 @@ namespace smartlivestock.Controllers
         [HttpPost]
         public IActionResult UserInformationsUpdated(string loginId, UserInformation userInformation)
         {
+            var facilityRegistryList = _context.FacilityRegistry
+                                     .Select(x => new { x.FacilityId, x.FacilityHeadInfomations })
+                                     .ToList();
+            ViewBag.FacilityRegistryId = new SelectList(facilityRegistryList, "FacilityId", "FacilityHeadInfomations");
+
+
+
+
             if (userInformation.ProfilePhoto != null)
             {
                 string uniqueFileName = GetProfilePhotoFileName(userInformation);
@@ -86,6 +100,8 @@ namespace smartlivestock.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
+           
+
             return View(userInformation);
         }
 
