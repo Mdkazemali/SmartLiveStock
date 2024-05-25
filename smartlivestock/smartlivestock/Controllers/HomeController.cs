@@ -57,9 +57,9 @@ namespace smartlivestock.Controllers
         public IActionResult UserInformationsUpdated(string loginId)
         {
             var facilityRegistryList = _context.FacilityRegistry
-                                      .Select(x => new { x.FacilityId, x.FacilityHeadInfomations })
+                                      .Select(x => new { x.FacilityId, x.OrganizationName })
                                       .ToList();
-            ViewBag.FacilityRegistryId = new SelectList(facilityRegistryList, "FacilityId", "FacilityHeadInfomations");
+            ViewBag.FacilityRegistryId = new SelectList(facilityRegistryList, "FacilityId", "OrganizationName");
 
             var info = _context.UserInformation.FirstOrDefault(x => x.LoginId == loginId);
 
@@ -76,9 +76,9 @@ namespace smartlivestock.Controllers
         public IActionResult UserInformationsUpdated(string loginId, UserInformation userInformation)
         {
             var facilityRegistryList = _context.FacilityRegistry
-                                     .Select(x => new { x.FacilityId, x.FacilityHeadInfomations })
+                                     .Select(x => new { x.FacilityId, x.OrganizationName })
                                      .ToList();
-            ViewBag.FacilityRegistryId = new SelectList(facilityRegistryList, "FacilityId", "FacilityHeadInfomations");
+            ViewBag.FacilityRegistryId = new SelectList(facilityRegistryList, "FacilityId", "OrganizationName");
 
 
 

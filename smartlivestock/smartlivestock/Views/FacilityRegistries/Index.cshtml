@@ -25,12 +25,10 @@
 
     <div class="form-group">
 
-
-        <input type="search" placeholder="Header" value="@ViewData["header"]" name="header" style="width: 120px; " />
         <input type="search" placeholder="Org.Name" value="@ViewData["org"]" name="org" style="width: 120px; " />
         <input type="search" placeholder="Phone" value="@ViewData["phone"]" name="phone" style="width: 120px; " />
         <input type="search" placeholder="District" value="@ViewData["district"]" name="district" style="width: 120px; " />
-        <input type="search" placeholder="Upojela" value="@ViewData["upojela"]" name="upojela" style="width: 120px; " />
+        <input type="search" placeholder="Thana" value="@ViewData["upojela"]" name="upojela" style="width: 120px; " />
         <input type="search" placeholder="Union" value="@ViewData["union"]" name="union" style="width: 120px; " />
 
 
@@ -114,9 +112,7 @@
             <th>
                 R.Logos
             </th>
-            <th>
-               Header
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.OrganizationName)
             </th>
@@ -169,9 +165,6 @@
                         <img src="~/images/noimage.png" class="fpr-pic" />
                     }
             </td>
-             <td>
-                @Html.DisplayFor(modelItem => item.FacilityHeadInfomations)
-             </td>
 
             <td>
                 @Html.DisplayFor(modelItem => item.OrganizationName)

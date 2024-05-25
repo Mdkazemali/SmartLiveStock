@@ -32,37 +32,37 @@ namespace smartlivestock.Controllers
             var custquery = from x in _context.FacilityRegistry select x;
 
             ViewData["header"] = header;
-            if (!String.IsNullOrEmpty(header))
+            if (!string.IsNullOrEmpty(header))
             {
                 custquery = custquery.Where(x => x.FacilityHeadInfomations.Contains(header));
             }
 
             ViewData["org"] = org;
-            if (!String.IsNullOrEmpty(org))
+            if (!string.IsNullOrEmpty(org))
             {
                 custquery = custquery.Where(x => x.OrganizationName.Contains(org));
             }
 
             ViewData["phone"] = phone;
-            if (!String.IsNullOrEmpty(phone))
+            if (!string.IsNullOrEmpty(phone))
             {
                 custquery = custquery.Where(x => x.FacilityMobile.Contains(phone));
             }
             
             ViewData["district"] = district;
-            if (!String.IsNullOrEmpty(district))
+            if (!string.IsNullOrEmpty(district))
             {
                 custquery = custquery.Where(x => x.DistricName.Contains(district));
             }
 
             ViewData["upojela"] = upojela;
-            if (!String.IsNullOrEmpty(upojela))
+            if (!string.IsNullOrEmpty(upojela))
             {
                 custquery = custquery.Where(x => x.UpozillaName.Contains(upojela));
             } 
             
             ViewData["union"] = union;
-            if (!String.IsNullOrEmpty(union))
+            if (!string.IsNullOrEmpty(union))
             {
                 custquery = custquery.Where(x => x.UnionName.Contains(union));
             }

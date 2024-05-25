@@ -160,6 +160,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\2ad9d1a7-baa4-4f62-90a7-c8f3bba8f08e_Screenshot 2024-05-14 172132.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\3bcfeb81-1553-4591-9ed2-e163825ed4ca_Screenshot 2024-05-14 172642.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>smartlivestock</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/smartlivestock</BasePath>
+      <RelativePath>FacilitiImages/3bcfeb81-1553-4591-9ed2-e163825ed4ca_Screenshot 2024-05-14 172642.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\3bcfeb81-1553-4591-9ed2-e163825ed4ca_Screenshot 2024-05-14 172642.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\49c9b9a5-c2ba-422b-994d-b43e546dba17_Screenshot 2024-05-14 171956.png))">
       <SourceType>Package</SourceType>
       <SourceId>smartlivestock</SourceId>
@@ -223,6 +239,54 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\7380c681-5367-4c58-91b9-2a8cf9d9263b_Screenshot (1).png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\94e39a36-2317-4044-b4f5-abd663f3f8e1_ismartlogo.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>smartlivestock</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/smartlivestock</BasePath>
+      <RelativePath>FacilitiImages/94e39a36-2317-4044-b4f5-abd663f3f8e1_ismartlogo.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\94e39a36-2317-4044-b4f5-abd663f3f8e1_ismartlogo.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\98d833c7-8b3b-4377-a127-5c1494fd517d_download.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>smartlivestock</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/smartlivestock</BasePath>
+      <RelativePath>FacilitiImages/98d833c7-8b3b-4377-a127-5c1494fd517d_download.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\98d833c7-8b3b-4377-a127-5c1494fd517d_download.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\a2b4441c-d43b-4663-b0d4-5fe224ba4eae_Screenshot (1).png))">
+      <SourceType>Package</SourceType>
+      <SourceId>smartlivestock</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/smartlivestock</BasePath>
+      <RelativePath>FacilitiImages/a2b4441c-d43b-4663-b0d4-5fe224ba4eae_Screenshot (1).png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\a2b4441c-d43b-4663-b0d4-5fe224ba4eae_Screenshot (1).png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\cc8fba66-db86-49c7-937c-f9351032f5b8_Screenshot 2024-05-16 214647.png))">
       <SourceType>Package</SourceType>
@@ -543,6 +607,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\09dda5e1-ec78-443a-9344-4198a9505633_kazem.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\43978623-19d1-4b57-86d3-8fa1d5113077_Screenshot (1).png))">
+      <SourceType>Package</SourceType>
+      <SourceId>smartlivestock</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/smartlivestock</BasePath>
+      <RelativePath>images/43978623-19d1-4b57-86d3-8fa1d5113077_Screenshot (1).png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\43978623-19d1-4b57-86d3-8fa1d5113077_Screenshot (1).png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\743255c2-fa7c-43dc-ae37-5160242af89f_images.jpg))">
       <SourceType>Package</SourceType>

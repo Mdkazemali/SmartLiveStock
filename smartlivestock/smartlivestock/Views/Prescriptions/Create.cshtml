@@ -49,7 +49,7 @@
                         <div class="card md-12">
                             
                             <label asp-for="SinglePrescrip.RegistrationId" class="control-label"> Regi. No. --- Name ----- Phone(Patient Informations)</label>
-                            <select id="selectedCustOriId" asp-for="SinglePrescrip.RegistrationId" class="form-control select2" asp-items="ViewBag.RegistraId" style="width:100%;">
+                            <select id="selectedCustOriId" asp-for="SinglePrescrip.RegistrationId" class="form-control select2" asp-items="ViewBag.RegistraId" required style="width:100%;">
 
                                 <option value="">-- Select --</option>
                             </select>
@@ -414,10 +414,10 @@
                                                                                           <td>
                                                                                                             <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
                                                                                                         <option value="">-- Select --</option>
-        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
-        {
+                                                                      @foreach (var item in ViewData["AdviceId"] as SelectList)
+                                                                        {
                                                                                                                                         <option value="@item.Value">@item.Text</option>
-        }
+                                                                        }
                                                                                                     </select>
                                                                                           </td>
 

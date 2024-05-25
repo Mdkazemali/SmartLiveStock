@@ -78,11 +78,11 @@ namespace smartlivestock.Models
         public string Phone { get; set; }
         public string GenderRe { get; set; }
         public string Ages { get; set; }
-        // for Dr informations
+        // for Dr informationss
         public int UserinfoId { get; set; }
         public string UserFullName { get; set; }
         public string Gender { get; set; }
-        public int? PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public ulong? NID { get; set; }
         public string Address { get; set; }
         public DateTime? CreateDate { get; set; }

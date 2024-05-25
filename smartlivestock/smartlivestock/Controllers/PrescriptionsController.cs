@@ -246,7 +246,7 @@ namespace smartlivestock.Controllers
         }
 
 
-        private bool IsOriNameTaken(String ornm)
+        private bool IsOriNameTaken(string ornm)
         {
             return _context.Prescription.Any(x => x.PresName == ornm);
         }
@@ -408,6 +408,13 @@ namespace smartlivestock.Controllers
                     x.FacilityRegistry.FacilityHeadInfomations,
                     x.FacilityRegistry.FalPhotoUrl,
                     x.FacilityRegistry.FarPhotoUrl,
+                    x.FacilityRegistry.OrganizationName,
+                    x.FacilityRegistry.DistricName,
+                    x.FacilityRegistry.UpozillaName,
+                    x.FacilityRegistry.UnionName,
+                    x.FacilityRegistry.FacilityEmail,
+                    x.FacilityRegistry.FacilityMobile,
+
                 })
                 .Select(g => new
                 {
@@ -431,7 +438,12 @@ namespace smartlivestock.Controllers
                     FacilityHeadInfomations=g.Key.FacilityHeadInfomations,
                     FalPhotoUrl=g.Key.FalPhotoUrl,
                     FarPhotoUrl=g.Key.FarPhotoUrl,
-
+                    OrganizationName=g.Key.OrganizationName,
+                    DistricName=g.Key.DistricName,
+                    UpozillaName = g.Key.UpozillaName,
+                    UnionName= g.Key.UnionName,
+                    FacilityEmail= g.Key.FacilityEmail,
+                    FacilityMobile = g.Key.FacilityMobile,
 
 
                 })
@@ -462,10 +474,17 @@ namespace smartlivestock.Controllers
                 FarPhotoUrl=userInformation.FarPhotoUrl,
                 FalPhotoUrl=userInformation.FalPhotoUrl,
                 FacilityHeadInfomations=userInformation.FacilityHeadInfomations,
+                OrganizationName=userInformation.OrganizationName,
+                DistricName=userInformation.DistricName,
+                UpozillaName=userInformation.UpozillaName,
+                UnionName=userInformation.UnionName,
+                FacilityMobile=userInformation.FacilityMobile,
+                FacilityEmail=userInformation.FacilityEmail,
+
 
 
                 // Dr. Information Information
-          
+
                 UserFullName = userInformation.UserFullName,
                 Gender = userInformation.Gender,
                 Address = userInformation.Address,

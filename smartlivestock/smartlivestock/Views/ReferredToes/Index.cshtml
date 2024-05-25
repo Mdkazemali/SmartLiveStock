@@ -19,8 +19,8 @@
     var totalRecords = ViewData["TotalRecords"] != null ? (int)ViewData["TotalRecords"] : 0;
 }
 
-<h5> &nbsp; <b>No.of Invastigations</b> :<b style="color :red"> @LeaveCount </b> </h5>
-@using (Html.BeginForm("Index", "Invastigations", FormMethod.Get))
+<h5> &nbsp; <b>Referred To </b> :<b style="color :red"> @LeaveCount </b> </h5>
+@using (Html.BeginForm("Index", "ReferredToes", FormMethod.Get))
 {
 
     <div class="form-group">
@@ -78,7 +78,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
-            <th style="width:30px;">Edit/Delete</th>
+            <th>Edit/Delete</th>
         </tr>
     </thead>
     <tbody>

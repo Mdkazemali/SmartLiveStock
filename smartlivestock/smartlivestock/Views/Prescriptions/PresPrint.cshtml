@@ -11,39 +11,9 @@
 
 </div>
 
-<!--For Current Date Time Print -->
+<!--For anythigs-->
 @{
-    DateTime d = DateTime.Now;
-    string kk = d.ToString("dd-MM-yyyy");
-
-    DateTime pp = DateTime.Now;
-
-    // Function to convert regular numbers to Bengali numerals
-    string ConvertToBengaliDigits(int number)
-    {
-        string[] bengaliDigits = { "০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯" };
-        string numberString = number.ToString();
-        string bengaliNumber = string.Join("", numberString.Select(c => bengaliDigits[Convert.ToInt32(c.ToString())]));
-        return bengaliNumber;
-    }
-
-    string mm = pp.ToString("dd-MM-yyyy", new System.Globalization.CultureInfo("bn-BD"));
-
-    // Extracting day, month, and year from the formatted date
-    string[] dateParts = kk.Split('-');
-    int day = int.Parse(dateParts[0]);
-    int month = int.Parse(dateParts[1]);
-    int year = int.Parse(dateParts[2]);
-
-    // Convert day, month, and year to Bengali digits
-    string bengaliDay = ConvertToBengaliDigits(day);
-    string bengaliMonth = ConvertToBengaliDigits(month);
-    string bengaliYear = ConvertToBengaliDigits(year);
-
-    // Form the date in the Bengali numeral format
-    string bengaliDate = $"{bengaliDay}-{bengaliMonth}-{bengaliYear}";
-
-    // Output the date
+   
 }
 
 }
@@ -80,6 +50,7 @@
         margin: auto;
         height: 100px; 
         width: 120px;
+        border-radius:50%;
     }
 
  
@@ -103,12 +74,14 @@
                     }
                 </td>
                 <td style="width:80%; text-align:center;">
-                    @Model.First().FacilityHeadInfomations
+                    <b style="color:blue; font-size:30px;">@Model.First().OrganizationName </b>
+                    <p style="font-size:25px;">@Model.First().UnionName,@Model.First().UpozillaName,@Model.First().DistricName</p>
+                    <p style="font-size:20px;">@Model.First().FacilityEmail,@Model.First().FacilityMobile</p>
                 </td>
                 <td style="width:10%; text-align:center;">
                     @if (Model.First().FarPhotoUrl != null)
                     {
-                        <img src="~/FacilitiImages/@Model.First().FarPhotoUrl" class="fpr-pic" alt="Right Logo" />
+                        <img src="~/FacilitiImages/@Model.First().FarPhotoUrl" class="fpr-pic" alt="Right Logo"/>
                     }
                     else
                     {
@@ -120,13 +93,13 @@
 
       <!--Dr informations-->
 
-        <table style="border-collapse:collapse; width:100%; margin:auto; border:1px solid black; border-radius:20px;">
+       @*  <table style="border-collapse:collapse; width:100%; margin:auto; border:1px solid black; border-radius:20px;">
 
      
       
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Name: @Model.First().UserFullName
+                   Dr.Name: @Model.First().UserFullName
                 </td>
          
                 <td style="border:none; padding: 4px; text-align: left;">
@@ -173,7 +146,7 @@
             </tr>
 
 
-      </table>
+      </table> *@
 
       <!--For pateint informations-->
       <br />
@@ -185,17 +158,14 @@
                 <td style="border:none; padding: 4px; text-align: left;">
                     Gender: @Model.First().GenderRe
                 </td>
-                <td rowspan="2">
-                    <img src="@ViewBag.BarcodePath" alt="Generated Barcode" style="width: 300px; height:50px;" />
-                </td>
-
-            </tr>
-            <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
                     Ages: @Model.First().Ages
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
                     Phone: @Model.First().Phone
+                </td>
+                <td>
+                    <img src="@ViewBag.BarcodePath" alt="Generated Barcode" style="width: 90px; height:30px;" />
                 </td>
 
             </tr>
@@ -290,11 +260,13 @@
             </tr>
 
             <tr>
+                <td style="position: absolute; bottom: 200px; right: 100px; font-size: 16pt; line-height:15px;">
+                    <p>@Model.First().UserFullName</p>
+                    <p> @Model.First().Degree</p>
+                    <p>@Model.First().PhoneNumber</p>
+                    <p>@Model.First().EmailNo</p>
+                    <p>@DateTime.Now </p>
 
-                <td style="position: absolute; bottom: 200px; right: 100px; font-size: 16pt;">
-                     _________________________ <br />
-                     @Model.First().UserFullName <br />
-                     @DateTime.Now
                 </td>
 
             </tr>
@@ -318,5 +290,7 @@
         document.body.innerHTML = originalContents;
 
     }
+
+
 
 </script>
