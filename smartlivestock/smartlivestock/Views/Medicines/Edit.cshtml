@@ -11,13 +11,23 @@
     <div class="row justify-content-center">
         <form asp-action="Edit" class="col-12 col-md-8 col-lg-6 bg-light bg-gradient p-4 border" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <input type="hidden" asp-for="MedId" />
             <div class="form-group">
                 <label asp-for="MedName" class="control-label"></label>
                 <input asp-for="MedName" class="form-control" />
                 <span asp-validation-for="MedName" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="MediType" class="control-label"></label>
+                <input asp-for="MediType" class="form-control" />
+                <span asp-validation-for="MediType" class="text-danger"></span>
+            </div>
             <br/>
+            <div class="form-group">
+                <label asp-for="GenName" class="control-label"></label>
+                <input asp-for="GenName" class="form-control" />
+                <span asp-validation-for="GenName" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-primary">Back</a>

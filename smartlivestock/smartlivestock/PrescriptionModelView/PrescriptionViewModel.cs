@@ -66,10 +66,13 @@ namespace smartlivestock.Models
         //Invastigation
 
         public string InvName { get; set; }
+        public string GenName { get; set; }
 
         //Medication
 
         public string MedName { get; set; }
+
+        public string? MediType { get; set; }
 
         //Registration
 
@@ -112,7 +115,11 @@ namespace smartlivestock.Models
         public string BarcodeBase64 { get; set; }
 
         public string? PhotoUrl { get; set; }
-
+        //Short Note
+        public int ShortId { get; set; }
+        public string? ShortNoteName { get; set; }
+        public string? SrUser { get; set; }
+        public DateTime ShortDt { get; set; }
 
         //Prescriptions
         public int PresId { get; set; }
@@ -148,6 +155,14 @@ namespace smartlivestock.Models
 
         public int ReferredId { get; set; }
         public string ReferredName { get; set; }
+
+        public int? ShortNotePresId { get; set; }
+        public string? DurationType { get; set; }
+        public int? Duration { get; set; }
+
+        public string? AditionalNotes { get; set; }
+
+
         public List<Prescription> Prescriptions { get; set; }
 
         public List<Prescription> PrescriptionsList { get; set; }

@@ -26,7 +26,7 @@
     <div class="form-group">
 
 
-        <input type="search" id="searchInput" placeholder="Search your content.." value="@ViewData["category"]" name="category" style="width: 350px; " />
+        <input type="search" placeholder="Search your content.." value="@ViewData["category"]" name="category" style="width: 350px; " />
 
 
         <input type="submit" value="Filter" class="btn btn-primary" />
@@ -64,44 +64,18 @@
         });
     });
 </script>
-<script>
-    const message = "Search your content...";
-    const searchInput = document.getElementById("searchInput");
-    let index = 0;
-
-    function typeWriter() {
-        if (index < message.length) {
-            searchInput.value += message[index];
-            index++;
-            setTimeout(typeWriter, 50); // Adjust speed here (milliseconds)
-        } else {
-            // Clear characters one by one (using another function)
-            clearText();
-        }
-    }
-
-    function clearText() {
-        const intervalId = setInterval(() => {
-            if (searchInput.value) {
-                searchInput.value = searchInput.value.slice(0, -1);
-            } else {
-                clearInterval(intervalId);
-            }
-        }, 50); // Adjust speed here (milliseconds)
-    }
-
-    // Start the typing animation
-    typeWriter();
-
-
-
-</script>
 
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.MedName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MediType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MedDate)
@@ -117,6 +91,13 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.MedName)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GenName)
+                </td>
+
+             <td>
+                @Html.DisplayFor(modelItem => item.MediType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MedDate)

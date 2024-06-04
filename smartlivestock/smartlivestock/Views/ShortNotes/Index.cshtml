@@ -1,0 +1,47 @@
+﻿@model IEnumerable<smartlivestock.Models.ShortNote>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortNoteName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SrUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortNoteName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SrUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDt)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ShortId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ShortId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ShortId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

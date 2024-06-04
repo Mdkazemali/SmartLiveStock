@@ -1,0 +1,33 @@
+.pr-area {
+    width: 8.27in; /*A4 width in inches */
+    height: 11.98in; /*A4 height in inches */
+    margin: 0 auto;
+    font-family: Arial,sans-serif;
+    /* cursor: pointer;*/
+}
+
+
+.signature-table {
+    border-collapse: collapse;
+    width: 50%;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+    .signature-table td {
+        border: none;
+        text-align: left;
+        vertical-align: top;
+    }
+
+
+.fpr-pic {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+    height: 100px;
+    width: 120px;
+    border-radius: 50%;
+}

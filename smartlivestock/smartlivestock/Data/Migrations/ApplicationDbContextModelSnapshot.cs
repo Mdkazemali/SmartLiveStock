@@ -449,10 +449,16 @@ namespace smartlivestock.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MedId"), 1L, 1);
 
+                    b.Property<string>("GenName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("MedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("MedName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MediType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UrName")
@@ -471,6 +477,9 @@ namespace smartlivestock.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PresId"), 1L, 1);
 
+                    b.Property<string>("AditionalNotes")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("AdviceId")
                         .HasColumnType("int");
 
@@ -485,6 +494,12 @@ namespace smartlivestock.Data.Migrations
 
                     b.Property<int?>("Duput")
                         .HasColumnType("int");
+
+                    b.Property<int?>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DurationType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("FlowUpId")
                         .HasColumnType("int");
@@ -511,6 +526,9 @@ namespace smartlivestock.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("RegistrationId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ShortNotePresId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Sokal")
@@ -540,6 +558,8 @@ namespace smartlivestock.Data.Migrations
                     b.HasIndex("ReferredId");
 
                     b.HasIndex("RegistrationId");
+
+                    b.HasIndex("ShortNotePresId");
 
                     b.ToTable("Prescription");
                 });
@@ -598,6 +618,28 @@ namespace smartlivestock.Data.Migrations
                     b.HasKey("RegiId");
 
                     b.ToTable("Registration");
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.ShortNote", b =>
+                {
+                    b.Property<int>("ShortId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShortId"), 1L, 1);
+
+                    b.Property<DateTime>("ShortDt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ShortNoteName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SrUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ShortId");
+
+                    b.ToTable("ShortNotes");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Trainingvideo", b =>
@@ -811,6 +853,10 @@ namespace smartlivestock.Data.Migrations
                         .WithMany()
                         .HasForeignKey("RegistrationId");
 
+                    b.HasOne("smartlivestock.Models.ShortNote", "ShortNote")
+                        .WithMany()
+                        .HasForeignKey("ShortNotePresId");
+
                     b.Navigation("Advice");
 
                     b.Navigation("ChiefComplaint");
@@ -830,6 +876,8 @@ namespace smartlivestock.Data.Migrations
                     b.Navigation("ReferredTo");
 
                     b.Navigation("Registration");
+
+                    b.Navigation("ShortNote");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.UserInformation", b =>

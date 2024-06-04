@@ -28,5 +28,7 @@ namespace smartlivestock.Data
         public virtual DbSet<ReferredTo> ReferredTo { get; set; }
 
         public virtual DbSet<FacilityRegistry> FacilityRegistry { get; set;}
+
+        public virtual DbSet<ShortNote> ShortNotes { get; set; }
     }
 }

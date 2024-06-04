@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>F:\ActivePUblishedReport\SmartLive28</_PublishTargetUrl>
+    <History>True|2024-05-27T19:10:31.3025263Z;True|2024-05-28T01:09:59.3494992+06:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=localhost%3bInitial Catalog=smartdb%3bPersist Security Info=True%3bUser ID=smartdb%3bPassword=smartdb1</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="smartlivestock.Data.ApplicationDbContext">
+      <Value>Data Source=localhost%3bInitial Catalog=smartdb%3bPersist Security Info=True%3bUser ID=smartdb%3bPassword=smartdb1</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

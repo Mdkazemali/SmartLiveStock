@@ -1,8 +1,85 @@
-﻿ @model List<PrescriptionViewModel>
+﻿
+ @model List<PrescriptionViewModel>
 
 @{
-    ViewData["Title"] = "Prescriptions";
+    ViewData["Title"] ="Phone:"+@Model.First().Phone+" Name:"+@Model.First().ReName;
 }
+
+<!-- for dependancy null-->
+
+@{
+    string thacomma = string.Empty;
+    string unioncomma = string.Empty;
+    string emailcomma = string.Empty;
+
+    string chif = string.Empty;
+    string rx = string.Empty;
+    string exm = string.Empty;
+    string adv = string.Empty;
+    string diag = string.Empty;
+    string flow = string.Empty;
+    string inv = string.Empty;
+    string rfto = string.Empty;
+
+
+    if (Model.First().ChiName != null)
+    {
+        chif = "Chif Complaint";
+    }
+    if (Model.First().MedName != null)
+    {
+        rx = "Rx";
+    }
+    if (Model.First().ExamName != null)
+    {
+        exm = "General Examinations";
+    }
+    if (Model.First().AdvName != null)
+    {
+        adv = "Advices";
+    }
+    if (Model.First().DiagName != null)
+    {
+        diag = "Diagnosis";
+    }
+    if (Model.First().FloName != null)
+    {
+        flow = "Fllow Up";
+    }
+    if (Model.First().InvName != null)
+    {
+        inv = "Investigation";
+    }
+    if (Model.First().ReferredName != null)
+    {
+        rfto = "Referred To";
+    }
+
+    // for header
+
+    if (Model.First().UpozillaName != null && Model.First().DistricName != null)
+    {
+        thacomma = ",";
+    }
+ 
+    if (Model.First().UnionName != null && Model.First().UpozillaName !=null)
+    {
+        unioncomma = ",";
+    }
+    
+    if (Model.First().UnionName != null && Model.First().DistricName !=null)
+    {
+        unioncomma = ",";
+    }
+
+    if (Model.First().FacilityEmail != null && Model.First().FacilityMobile != null)
+    {
+        emailcomma = ",";
+    }
+
+
+}
+
 
 
 <div class="form-group" style="position: fixed;">
@@ -11,56 +88,14 @@
 
 </div>
 
-<!--For anythigs-->
-@{
-   
-}
+<link href="~/css/prescrip.css" rel="stylesheet" />
 
-}
-<style>
-   .pr-area {
-        width: 8.27in; /*A4 width in inches */
-        height: 11.98in; /*A4 height in inches */    
-        margin: 0 auto;
-        font-family: Arial,sans-serif;
-       /* cursor: pointer;*/
-    
-    }
-
-
-    .signature-table {
-        border-collapse: collapse;
-        width: 50%;
-        position: absolute;
-        bottom: 5%;
-        right: 5%;
-    }
-
-        .signature-table td {
-            border: none;
-            text-align: left;
-            vertical-align: top;
-        }
-
-
-    .fpr-pic {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: auto;
-        height: 100px; 
-        width: 120px;
-        border-radius:50%;
-    }
-
- 
-</style>
 
 <div class="col-sm-12 pr-area" id="print_are">
 
-  <div style="border: 4px solid blue; padding: 0.2in; width:8.27in; height:11.98in;">
-      
-      <!--Header informations-->
+    <div style="border: 4px solid blue; padding: 0.2in; width:8.27in; height:11.98in;">
+
+        <!--Header informations-->
         <table style="border-collapse:collapse; width:100%; margin:auto; border-radius:20px; table-layout:fixed;">
             <tr>
                 <td style="width:10%; text-align:center;">
@@ -73,15 +108,15 @@
                         <img src="~/images/noimage.png" class="fpr-pic" alt="No Image Available" />
                     }
                 </td>
-                <td style="width:80%; text-align:center;">
+                <td style="width:80%; text-align:center; ">
                     <b style="color:blue; font-size:30px;">@Model.First().OrganizationName </b>
-                    <p style="font-size:25px;">@Model.First().UnionName,@Model.First().UpozillaName,@Model.First().DistricName</p>
-                    <p style="font-size:20px;">@Model.First().FacilityEmail,@Model.First().FacilityMobile</p>
+                    <p style="font-size:25px;line-height:16px;">@Model.First().UnionName@unioncomma @Model.First().UpozillaName@thacomma @Model.First().DistricName</p>
+                    <p style="font-size:20px;line-height:15px;">@Model.First().FacilityEmail@emailcomma@Model.First().FacilityMobile</p>
                 </td>
                 <td style="width:10%; text-align:center;">
                     @if (Model.First().FarPhotoUrl != null)
                     {
-                        <img src="~/FacilitiImages/@Model.First().FarPhotoUrl" class="fpr-pic" alt="Right Logo"/>
+                        <img src="~/FacilitiImages/@Model.First().FarPhotoUrl" class="fpr-pic" alt="Right Logo" />
                     }
                     else
                     {
@@ -91,65 +126,64 @@
             </tr>
         </table>
 
-      <!--Dr informations-->
-
-       @*  <table style="border-collapse:collapse; width:100%; margin:auto; border:1px solid black; border-radius:20px;">
-
-     
-      
-            <tr>
-                <td style="border:none; padding: 4px; text-align: left;">
-                   Dr.Name: @Model.First().UserFullName
-                </td>
-         
-                <td style="border:none; padding: 4px; text-align: left;">
-                    Address: @Model.First().Address
-                </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    Phone: @Model.First().PhoneNumber
-                </td>
-            </tr>
-            <tr>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    RegiNo: @Model.First().DVMRegiNo
-                </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    PassingYear: @Model.First().PassingYear
-                </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    Educations: @Model.First().Degree
-                </td>
-              
-                
-            </tr>
-            <tr>
-                
-                <td style="border:none; padding: 4px; text-align: left;">
-                    PresentAddrss: @Model.First().PresentAddrss
-                </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    EmailNo: @Model.First().EmailNo
-                </td>
-                <td style="border:none; padding: 4px; text-align: left;">
-                    Facebook: @Model.First().Facebook
-                </td>
-            </tr>
-            <tr>
-               
-                <td style="border:none; padding: 4px; text-align: left;">
-                    Website: @Model.First().Website
-                </td>
-                
-                <td style="border:none; padding: 4px; text-align: left;">
-                    ExpireDate: @Model.First().ExpireDate
-                </td>
-            </tr>
+        <!--Dr informations-->
+        @*  <table style="border-collapse:collapse; width:100%; margin:auto; border:1px solid black; border-radius:20px;">
 
 
-      </table> *@
 
-      <!--For pateint informations-->
-      <br />
+        <tr>
+        <td style="border:none; padding: 4px; text-align: left;">
+        Dr.Name: @Model.First().UserFullName
+        </td>
+
+        <td style="border:none; padding: 4px; text-align: left;">
+        Address: @Model.First().Address
+        </td>
+        <td style="border:none; padding: 4px; text-align: left;">
+        Phone: @Model.First().PhoneNumber
+        </td>
+        </tr>
+        <tr>
+        <td style="border:none; padding: 4px; text-align: left;">
+        RegiNo: @Model.First().DVMRegiNo
+        </td>
+        <td style="border:none; padding: 4px; text-align: left;">
+        PassingYear: @Model.First().PassingYear
+        </td>
+        <td style="border:none; padding: 4px; text-align: left;">
+        Educations: @Model.First().Degree
+        </td>
+
+
+        </tr>
+        <tr>
+
+        <td style="border:none; padding: 4px; text-align: left;">
+        PresentAddrss: @Model.First().PresentAddrss
+        </td>
+        <td style="border:none; padding: 4px; text-align: left;">
+        EmailNo: @Model.First().EmailNo
+        </td>
+        <td style="border:none; padding: 4px; text-align: left;">
+        Facebook: @Model.First().Facebook
+        </td>
+        </tr>
+        <tr>
+
+        <td style="border:none; padding: 4px; text-align: left;">
+        Website: @Model.First().Website
+        </td>
+
+        <td style="border:none; padding: 4px; text-align: left;">
+        ExpireDate: @Model.First().ExpireDate
+        </td>
+        </tr>
+
+
+        </table> *@
+
+        <!--For pateint informations-->
+        <br />
         <table style="border-collapse:collapse; width:100%; margin:auto; border:1px solid black; border-radius:20px;">
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
@@ -172,84 +206,83 @@
 
         </table>
 
-    <!-- ------------------------------------------------------------------------------------------------------------------------------------<br />
-        -->
+        <!-- ------------------------------------------------------------------------------------------------------------------------------------<br />
+            -->
+        <br />
         <table style="border-collapse:collapse; width:100%; margin:auto; ">
-            <tr>             
+            <tr>
                 <td style="border:none; text-align:left; width:50%; vertical-align:top;">
-                    
-                    <b>Chif compliment</b>
-                   
+
+                    <b style="font-size:18px;"> @chif</b>
+
                     <ul>
                         @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ChiName)))
                         {
+
                             <li>@i.ChiName</li>
                         }
                     </ul>
-                </td>
-                <td style="border:none; text-align: left; width:50%;  vertical-align:top;">
-                    <b>Rx</b> 
-                    <ul>
-                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.MedName)))
-                        {
-                            <li>@i.MedName &nbsp; @i.Sokal + @i.Duput + @i.Rat</li>
-                        }
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td style="border: none;  text-align: left; width:50%; vertical-align:top;">
-                    <b>General Examinations</b>
+
+                    <b style="font-size:18px;"> @exm</b>
                     <ul>
                         @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ExamName)))
                         {
                             <li>@i.ExamName</li>
                         }
                     </ul>
-                </td>
-                <td style="border:none; text-align: left;width:50%; vertical-align:top;">
-                    <b>Advices</b>
-                    <ul>
-                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.AdvName)))
-                        {
-                            <li>@i.AdvName</li>
-                        }
-                    </ul>
-                </td>
-            </tr>
 
-            <tr>
-                <td style="border:none;  text-align: left;width:50%; vertical-align:top;">
-                    <b>Diagnosis</b>
+
+
+                    <b style="font-size:18px;"> @diag</b>
                     <ul>
                         @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.DiagName)))
                         {
                             <li>@i.DiagName</li>
                         }
                     </ul>
-                </td>
-                <td style="border: none; text-align: left;width:50%; vertical-align:top;">
-                    <b>FlowUp</b>
-                    <ul>
-                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.FloName)))
-                        {
-                            <li>@i.FloName</li>
-                        }
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td style="border: none; text-align: left;width:50%; vertical-align:top;">
-                    <b>Investigations</b>
+                   
+                    <b style="font-size:18px;"> @inv</b>
                     <ul>
                         @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.InvName)))
                         {
                             <li>@i.InvName</li>
                         }
                     </ul>
+          
+               
+                   
+             
+                   
                 </td>
-                <td style="border:none; text-align: left;width:50%; vertical-align:top;">
-                    <b>Referred to</b>
+           
+                <td style="border:none;  text-align: left;width:50%; vertical-align:top;">
+
+                    <b style="font-size:18px;"> @rx</b>
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.MedName)))
+                        {
+                            <li><b>@i.MedName</b><i style="color:dimgrey;"> (@i.GenName)</i><br /> @i.Sokal + @i.Duput + @i.Rat (@i.MediType)(@i.ShortNoteName) - @i.Duration @i.DurationType</li>
+                        }
+                    </ul>
+                   
+                    <b style="font-size:18px;"> @adv</b>
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.AdvName)))
+                        {
+                            <li>@i.AdvName</li>
+                        }
+                    </ul>
+
+                    <b style="font-size:18px;"> @flow </b>
+                    <ul>
+                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.FloName)))
+                        {
+                            <li>@i.FloName</li>
+                        }
+                    </ul>
+                
+               
+                    <b style="font-size:18px;"> @rfto </b>
                     <ul>
                         @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.ReferredName)))
                         {
@@ -260,7 +293,7 @@
             </tr>
 
             <tr>
-                <td style="position: absolute; bottom: 200px; right: 100px; font-size: 16pt; line-height:15px;">
+                <td style="position: absolute; bottom: 150px; left: 500px; font-size: 16pt; line-height:14px;">
                     <p>@Model.First().UserFullName</p>
                     <p> @Model.First().Degree</p>
                     <p>@Model.First().PhoneNumber</p>
@@ -271,11 +304,16 @@
 
             </tr>
 
-        </table>  
+            
+
+        </table>
+
+       
+       
 
     </div>
 
- 
+
 
 </div>
 
@@ -290,7 +328,5 @@
         document.body.innerHTML = originalContents;
 
     }
-
-
 
 </script>

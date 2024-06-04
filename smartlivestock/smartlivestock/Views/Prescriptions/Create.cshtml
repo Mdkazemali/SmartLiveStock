@@ -144,7 +144,7 @@
                                 Rx
                                 <tr>
                                     <td>
-                                        <select name="Prescriptions[0].MedicineId" class="form-control select2" style="width:100%;">
+                                        <select name="Prescriptions[0].MedicineId" class="form-control select2" required style="width:100%;">
                                             <option value="">-- Select --</option>
                                             @foreach (var item in ViewData["MedicineId"] as SelectList)
                                             {
@@ -158,6 +158,20 @@
                                         <input name="Prescriptions[0].Sokal" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
                                         <input name="Prescriptions[0].Duput" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
                                         <input name="Prescriptions[0].Rat" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
+                                    </td>
+                                    <td>
+                                        <select name="Prescriptions[0].ShortNotePresId" class="form-control select2" style="width:8em;">
+                                            <option value="">-- Select --</option>
+                                            @foreach (var item in ViewData["ShortNotePresId"] as SelectList)
+                                            {
+                                                <option value="@item.Value">@item.Text</option>
+                                            }
+                                        </select>
+                                    </td>
+                                    <td>
+                                    
+                                        <input name="Prescriptions[0].DurationType" type="text" style="width: 3em;" />
+                                        <input name="Prescriptions[0].Duration" type="number"  value="1" style="width: 3em;" />
                                     </td>
 
                                     <td><input type="button" id="addNewMed" value="+" class="btn btn-primary" /></td>
@@ -253,9 +267,9 @@
                 var newRow = `
                                                     <tr>
                                                         <td>
-                                                                    <select name="Prescriptions[${index}].ChiefComplaintId" class="form-control select2" style="width:100%;">
+                                                            <select name="Prescriptions[${index}].ChiefComplaintId" class="form-control select2" style="width:100%;">
                                                                 <option value="">-- Select --</option>
-        @foreach (var item in ViewData["ChiefComplaintId"] as SelectList)
+                                                           @foreach (var item in ViewData["ChiefComplaintId"] as SelectList)
         {
                                                                                     <option value="@item.Value">@item.Text</option>
         }
@@ -285,7 +299,7 @@
                                                                   <td>
                                                                             <select name="Prescriptions[${index}].GeneralExaminationId" class="form-control select2" style="width:100%;">
                                                                                 <option value="">-- Select --</option>
-        @foreach (var item in ViewData["GeneralExaminationId"] as SelectList)
+                                                                               @foreach (var item in ViewData["GeneralExaminationId"] as SelectList)
         {
                                                                                                     <option value="@item.Value">@item.Text</option>
         }
@@ -315,10 +329,10 @@
                                                                           <td>
                                                                                     <select name="Prescriptions[${index}].MedicineId" class="form-control select2" style="width:100%;">
                                                                                        <option value="">-- Select --</option>
-        @foreach (var item in ViewData["MedicineId"] as SelectList)
-        {
-                                                                                           <option value="@item.Value">@item.Text</option>
-        }
+                                                                                        @foreach (var item in ViewData["MedicineId"] as SelectList)
+                       {
+                                                                                                         <option value="@item.Value">@item.Text</option>
+                      }
                                                                                     </select>
 
 
@@ -331,8 +345,24 @@
                                                                                    <input name="Prescriptions[${index}].Rat" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
                                                                    </td>
 
-                                                                          <td><input type="button" class="btn btn-danger remove" value="×" /></td>
-                                                                    </tr>`;
+                                                                            <td>
+                                                <select name="Prescriptions[${index}].ShortNotePresId" class="form-control select2" style="width:8em;">
+                                                    <option value="">-- Select --</option>
+                                                           @foreach (var item in ViewData["ShortNotePresId"] as SelectList)
+                                                           {
+                                                            <option value="@item.Value">@item.Text</option>
+                                                           }
+                                                </select>
+                                            </td>
+                                            <td>
+
+                                                        <input name="Prescriptions[${index}].DurationType" type="text" style="width: 3em;" />
+                                                        <input name="Prescriptions[${index}].Duration" type="number" min="1" max="31" step="1" value="1" style="width: 3em;" />
+                                            </td>
+
+
+                                                    <td><input type="button" class="btn btn-danger remove" value="×" /></td>
+                                            </tr>`;
                 $('#dataTableMed tbody').append(newRow);
                 $('.select2').select2();
 
@@ -353,9 +383,9 @@
 
 
                                                                           <td>
-                                                                                            <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                 <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
                                                                                         <option value="">-- Select --</option>
-        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+                                                                                 @foreach (var item in ViewData["DiagnosisId"] as SelectList)
         {
                                                                                                                 <option value="@item.Value">@item.Text</option>
         }
@@ -383,9 +413,9 @@
 
 
                                                                                   <td>
-                                                                                                    <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                           <select name="Prescriptions[${index}].InvastigationId" class="form-control select2" style="width:100%;">
                                                                                                 <option value="">-- Select --</option>
-        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+                                                                                         @foreach (var item in ViewData["InvastigationId"] as SelectList)
         {
                                                                                                                             <option value="@item.Value">@item.Text</option>
         }
@@ -412,11 +442,11 @@
 
 
                                                                                           <td>
-                                                                                                            <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
-                                                                                                        <option value="">-- Select --</option>
-                                                                      @foreach (var item in ViewData["AdviceId"] as SelectList)
+                                                                                                     <select name="Prescriptions[${index}].AdviceId" class="form-control select2" style="width:100%;">
+                                                                                                       <option value="">-- Select --</option>
+                                                                                                     @foreach (var item in ViewData["AdviceId"] as SelectList)
                                                                         {
-                                                                                                                                        <option value="@item.Value">@item.Text</option>
+                                                                                                     <option value="@item.Value">@item.Text</option>
                                                                         }
                                                                                                     </select>
                                                                                           </td>
@@ -442,9 +472,9 @@
 
 
                                                                                           <td>
-                                                                                                            <select name="Prescriptions[${index}].DiagnosisId" class="form-control select2" style="width:100%;">
+                                                                                                    <select name="Prescriptions[${index}].FlowUpId" class="form-control select2" style="width:100%;">
                                                                                                         <option value="">-- Select --</option>
-        @foreach (var item in ViewData["DiagnosisId"] as SelectList)
+                                                                                                 @foreach (var item in ViewData["FlowUpId"] as SelectList)
         {
                                                                                                                                         <option value="@item.Value">@item.Text</option>
         }

@@ -57,6 +57,17 @@ namespace smartlivestock.Models
         public int? ReferredId { get; set; }
         public virtual ReferredTo ReferredTo { get; set; }
 
+
+        [ForeignKey("ShortNote")]
+
+        public int? ShortNotePresId { get; set; }
+        public virtual ShortNote ShortNote {  get; set; }
+
+        public string? DurationType { get; set; }
+        public int? Duration { get; set; }
+
+        public string? AditionalNotes { get; set; }
+
         public int? Sokal {  get; set; }
         public int? Duput { get; set; }
         public int? Rat {  get; set; }

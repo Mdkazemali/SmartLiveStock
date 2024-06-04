@@ -104,7 +104,7 @@ namespace smartlivestock.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MedId,MedName,MedDate,UrName")] Medicine medicine)
+        public async Task<IActionResult> Create([Bind("MedId,MedName,MediType,GenName,MedDate,UrName")] Medicine medicine)
         {
             if (ModelState.IsValid)
             {
@@ -125,20 +125,17 @@ namespace smartlivestock.Controllers
                 return NotFound();
             }
 
-            var medicine = await _context.Medicines.FindAsync(id);
-            if (medicine == null)
+            var me = await _context.Medicines.FindAsync(id);
+            if (me == null)
             {
                 return NotFound();
             }
-            return View(medicine);
+            return View(me);
         }
 
-        // POST: Medicines/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MedId,MedName,MedDate,UrName")] Medicine medicine)
+        public async Task<IActionResult> Edit(int id, [Bind("MedId,MedName,MediType,GenName,MedDate,UrName")] Medicine medicine)
         {
             if (id != medicine.MedId)
             {

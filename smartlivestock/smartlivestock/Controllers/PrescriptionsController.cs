@@ -156,6 +156,7 @@ namespace smartlivestock.Controllers
                 Prescriptions = new List<Prescription> { new Prescription() },
                 SinglePrescrip = new Prescription()
             };
+            ViewData["ShortNotePresId"] = new SelectList(_context.ShortNotes, "ShortId", "ShortNoteName");
             ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiName");
             ViewData["AdviceId"] = new SelectList(_context.Advices, "AdvId", "AdvName");
             ViewData["DiagnosisId"] = new SelectList(_context.Diagnosis, "DiagId", "DiagName");
@@ -221,7 +222,7 @@ namespace smartlivestock.Controllers
 
               
             }
-
+            ViewData["ShortNotePresId"] = new SelectList(_context.ShortNotes, "ShortId", "ShortNoteName");
             ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiName");
             ViewData["AdviceId"] = new SelectList(_context.Advices, "AdvId", "AdvName");
             ViewData["DiagnosisId"] = new SelectList(_context.Diagnosis, "DiagId", "DiagName");
@@ -274,6 +275,7 @@ namespace smartlivestock.Controllers
                 return NotFound();
             }
             ViewData["AdviceId"] = new SelectList(_context.Advices, "AdvId", "AdvId", prescription.AdviceId);
+            ViewData["ShortNotePresId"] = new SelectList(_context.ShortNotes, "ShortId", "ShortId", prescription.ShortNotePresId);
             ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiId", prescription.ChiefComplaintId);
             ViewData["DiagnosisId"] = new SelectList(_context.Diagnosis, "DiagId", "DiagId", prescription.DiagnosisId);
             ViewData["DosesId"] = new SelectList(_context.Doses, "DosesId", "DosesId", prescription.DosesId);
@@ -288,7 +290,7 @@ namespace smartlivestock.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PresId,PresName,PresDate,UrName,RegistrationId,ChiefComplaintId,GeneralExaminationId,DiagnosisId,InvastigationId,MedicineId,DosesId,AdviceId,FlowUpId")] Prescription prescription)
+        public async Task<IActionResult> Edit(int id, [Bind("PresId,PresName,ShortNotePresId,PresDate,UrName,RegistrationId,ChiefComplaintId,GeneralExaminationId,DiagnosisId,InvastigationId,MedicineId,DosesId,AdviceId,FlowUpId")] Prescription prescription)
         {
             if (id != prescription.PresId)
             {
@@ -316,6 +318,7 @@ namespace smartlivestock.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AdviceId"] = new SelectList(_context.Advices, "AdvId", "AdvId", prescription.AdviceId);
+            ViewData["ShortNotePresId"] = new SelectList(_context.ShortNotes, "ShortId", "ShortId", prescription.ShortNotePresId);
             ViewData["ChiefComplaintId"] = new SelectList(_context.ChiefComplaint, "ChiId", "ChiId", prescription.ChiefComplaintId);
             ViewData["DiagnosisId"] = new SelectList(_context.Diagnosis, "DiagId", "DiagId", prescription.DiagnosisId);
             ViewData["DosesId"] = new SelectList(_context.Doses, "DosesId", "DosesId", prescription.DosesId);
@@ -345,6 +348,7 @@ namespace smartlivestock.Controllers
                 .Include(p => p.Invastigation)
                 .Include(p => p.Medicine)
                 .Include(p => p.Registration)
+                .Include(p => p.ShortNote)
                 .FirstOrDefaultAsync(m => m.PresId == id);
             if (prescription == null)
             {
@@ -414,6 +418,8 @@ namespace smartlivestock.Controllers
                     x.FacilityRegistry.UnionName,
                     x.FacilityRegistry.FacilityEmail,
                     x.FacilityRegistry.FacilityMobile,
+                    
+                    
 
                 })
                 .Select(g => new
@@ -465,6 +471,7 @@ namespace smartlivestock.Controllers
                 .Include(p => p.Medicine)
                 .Include(p => p.Registration)
                 .Include(p => p.ReferredTo)
+                .Include(P => P.ShortNote)
                 .Where(c => c.PresName == Id)
                 .ToList();
 
@@ -524,6 +531,13 @@ namespace smartlivestock.Controllers
                 AdvName = p.Advice?.AdvName,
                 FloName = p.FlowUp?.FloName,
                 ReferredName = p.ReferredTo?.ReferredName,
+                MediType=p.Medicine?.MediType,
+                DurationType=p.DurationType,
+                Duration=p.Duration,
+                GenName=p.Medicine.GenName,
+
+                ShortNoteName =p.ShortNote?.ShortNoteName,
+                AditionalNotes =p.AditionalNotes,
                 Sokal = p.Sokal,
                 Duput = p.Duput,
                 Rat = p.Rat,

@@ -1009,3 +1009,127 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240525174541_String')
+BEGIN
+    DECLARE @var17 sysname;
+    SELECT @var17 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[UserInformation]') AND [c].[name] = N'PhoneNumber');
+    IF @var17 IS NOT NULL EXEC(N'ALTER TABLE [UserInformation] DROP CONSTRAINT [' + @var17 + '];');
+    ALTER TABLE [UserInformation] ALTER COLUMN [PhoneNumber] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240525174541_String')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240525174541_String', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527211605_ShortNote')
+BEGIN
+    ALTER TABLE [Prescription] ADD [AditionalNotes] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527211605_ShortNote')
+BEGIN
+    ALTER TABLE [Prescription] ADD [Duration] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527211605_ShortNote')
+BEGIN
+    ALTER TABLE [Prescription] ADD [DurationType] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527211605_ShortNote')
+BEGIN
+    ALTER TABLE [Prescription] ADD [ShortNotePresId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527211605_ShortNote')
+BEGIN
+    ALTER TABLE [Medicines] ADD [MediType] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527211605_ShortNote')
+BEGIN
+    CREATE TABLE [ShortNotes] (
+        [ShortId] int NOT NULL IDENTITY,
+        [ShortNoteName] nvarchar(max) NULL,
+        [SrUser] nvarchar(max) NULL,
+        [ShortDt] datetime2 NOT NULL,
+        CONSTRAINT [PK_ShortNotes] PRIMARY KEY ([ShortId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527211605_ShortNote')
+BEGIN
+    CREATE INDEX [IX_Prescription_ShortNotePresId] ON [Prescription] ([ShortNotePresId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527211605_ShortNote')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_ShortNotes_ShortNotePresId] FOREIGN KEY ([ShortNotePresId]) REFERENCES [ShortNotes] ([ShortId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527211605_ShortNote')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240527211605_ShortNote', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527232849_Gen')
+BEGIN
+    ALTER TABLE [Medicines] ADD [GenName] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240527232849_Gen')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240527232849_Gen', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240528150416_nulbl')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240528150416_nulbl', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+

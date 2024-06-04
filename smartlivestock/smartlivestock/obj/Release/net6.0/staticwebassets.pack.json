@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\css\\ma5-menu.min.css"
     },
     {
+      "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\css\\prescrip.css",
+      "PackagePath": "staticwebassets\\css\\prescrip.css"
+    },
+    {
       "Id": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\wwwroot\\css\\responsive.css",
       "PackagePath": "staticwebassets\\css\\responsive.css"
     },
