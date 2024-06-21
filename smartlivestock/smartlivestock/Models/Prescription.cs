@@ -63,6 +63,13 @@ namespace smartlivestock.Models
         public int? ShortNotePresId { get; set; }
         public virtual ShortNote ShortNote {  get; set; }
 
+        [ForeignKey("Species")]
+        public int? SpeciesId { get; set; }
+        public virtual Species Species { get; set; }
+        public String? SpeciesGender { get; set; }
+        public int? SpeciesAges { get; set; }
+        public int? SpeciesQuentity { get; set; }
+
         public string? DurationType { get; set; }
         public int? Duration { get; set; }
 
@@ -71,6 +78,7 @@ namespace smartlivestock.Models
         public int? Sokal {  get; set; }
         public int? Duput { get; set; }
         public int? Rat {  get; set; }
+        public string? TypeOfAge { get; set; }
 
 
 

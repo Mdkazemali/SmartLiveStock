@@ -30,5 +30,7 @@ namespace smartlivestock.Data
         public virtual DbSet<FacilityRegistry> FacilityRegistry { get; set;}
 
         public virtual DbSet<ShortNote> ShortNotes { get; set; }
+
+        public virtual DbSet<Species> Species { get; set; }
     }
 }

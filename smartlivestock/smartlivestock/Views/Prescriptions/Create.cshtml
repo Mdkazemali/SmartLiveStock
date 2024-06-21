@@ -32,6 +32,9 @@
             margin-bottom: 2px;
             border-color: green;
         }
+        .brder{
+            border-color:blue;
+        }
 
         .remove-btn {
             float: right; /* Align the button to the right */
@@ -46,9 +49,9 @@
             <div class="row">
                 <div class="page">
                     <div class="column">
-                        <div class="card md-12">
+                        <div class="card md-6 brder">
                             
-                            <label asp-for="SinglePrescrip.RegistrationId" class="control-label"> Regi. No. --- Name ----- Phone(Patient Informations)</label>
+                            <label asp-for="SinglePrescrip.RegistrationId" class="control-label"> Regi. No. --- Name ----- Phone(Woner Informations)</label>
                             <select id="selectedCustOriId" asp-for="SinglePrescrip.RegistrationId" class="form-control select2" asp-items="ViewBag.RegistraId" required style="width:100%;">
 
                                 <option value="">-- Select --</option>
@@ -56,6 +59,36 @@
 
                             <span asp-validation-for="SinglePrescrip" class="text-danger"></span>
                         </div>
+
+                    </div>
+                    <div class="column">
+                        <div class="card md-6 brder">
+                            <div class="row">
+                                <label asp-for="SinglePrescrip.SpeciesId" class="control-label">Species</label>
+                                <select asp-for="SinglePrescrip.SpeciesId" class="select2" asp-items="ViewBag.SpeciesId" required style="width:35%">
+
+                                    <option value="">-- Select --</option>
+                                </select>
+                                <select name="SinglePrescrip.SpeciesGender" style="width:17%">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                &nbsp;
+                                <input name="SinglePrescrip.SpeciesAges" style="width:10%;" placeholder="Age" />
+
+                                <select name="SinglePrescrip.TypeOfAge" style="width:15%">
+                                    <option value="দিন">দিন</option>
+                                    <option value="সপ্তাহ">সপ্তাহ</option>
+                                    <option value="মাস">মাস</option>
+                                    <option value="বছর">বছর</option>
+                                </select>
+                                &nbsp;
+                                <input name="SinglePrescrip.SpeciesQuentity" style="width:10%" placeholder="Qty" />
+                            </div>
+                            <span asp-validation-for="SinglePrescrip" class="text-danger"></span>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -65,7 +98,7 @@
 
                         <div class="card md-6">
                             <table id="dataTableChif" class="table table-bordered mt-3">
-                                Chief Complain
+                                Clinical signs
 
                                 <td>
                                     <select name="Prescriptions[0].ChiefComplaintId" class="form-control select2" style="width:100%;">
@@ -105,7 +138,7 @@
 
 
                             <table id="dataTableDiag" class="table table-bordered mt-3">
-                                Diagnosis
+                                Diagnosis T/D
                                 <td>
                                     <select name="Prescriptions[0].DiagnosisId" class="form-control select2" style="width:100%;">
                                         <option value="">-- Select --</option>
@@ -144,7 +177,7 @@
                                 Rx
                                 <tr>
                                     <td>
-                                        <select name="Prescriptions[0].MedicineId" class="form-control select2" required style="width:100%;">
+                                        <select name="Prescriptions[0].MedicineId" class="form-control select2" style="width:100%;">
                                             <option value="">-- Select --</option>
                                             @foreach (var item in ViewData["MedicineId"] as SelectList)
                                             {
@@ -154,7 +187,6 @@
                                     </td>
 
                                     <td>
-
                                         <input name="Prescriptions[0].Sokal" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
                                         <input name="Prescriptions[0].Duput" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
                                         <input name="Prescriptions[0].Rat" type="number" min="0" max="1" step="1" value="1" style="width: 2em;" />
@@ -169,9 +201,14 @@
                                         </select>
                                     </td>
                                     <td>
-                                    
-                                        <input name="Prescriptions[0].DurationType" type="text" style="width: 3em;" />
-                                        <input name="Prescriptions[0].Duration" type="number"  value="1" style="width: 3em;" />
+                                        <input name="Prescriptions[0].Duration" type="number" value="1" style="width: 3em;" />
+                                        <select name="Prescriptions[0].DurationType" type="text" style="width:4em;">
+                                            <option value="দিন">দিন</option>
+                                            <option value="সপ্তাহ">সপ্তাহ</option>
+                                            <option value="মাস">মাস</option>
+                                            <option value="বছর">বছর</option>
+                                        </select>
+                                       
                                     </td>
 
                                     <td><input type="button" id="addNewMed" value="+" class="btn btn-primary" /></td>
@@ -356,8 +393,15 @@
                                             </td>
                                             <td>
 
-                                                        <input name="Prescriptions[${index}].DurationType" type="text" style="width: 3em;" />
-                                                        <input name="Prescriptions[${index}].Duration" type="number" min="1" max="31" step="1" value="1" style="width: 3em;" />
+                                               
+                                                 <input name="Prescriptions[${index}].Duration" type="number" min="1" max="31" step="1" value="1" style="width: 3em;" />
+
+                                                 <select name="SinglePrescrip.TypeOfAge" style="width:4em;">
+                                                    <option value="দিন">দিন</option>
+                                                    <option value="সপ্তাহ">সপ্তাহ</option>
+                                                    <option value="মাস">মাস</option>
+                                                    <option value="বছর">বছর</option>
+                                                </select>
                                             </td>
 
 

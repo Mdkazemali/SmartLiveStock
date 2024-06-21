@@ -166,6 +166,7 @@ namespace smartlivestock.Controllers
             ViewData["InvastigationId"] = new SelectList(_context.Invastigations, "InvId", "InvName");
             ViewData["MedicineId"] = new SelectList(_context.Medicines, "MedId", "MedName");
             ViewData["ReferredId"] = new SelectList(_context.ReferredTo, "ReferredId", "ReferredName");
+            ViewData["SpeciesId"] = new SelectList(_context.Species, "SpeciesId", "SpeciesName");
 
             ViewData["RegistraId"] = new SelectList(_context.Registration.Select(c => new
             {
@@ -212,7 +213,12 @@ namespace smartlivestock.Controllers
                     presc.RegistrationId = viewModel.SinglePrescrip.RegistrationId;
                     presc.UrName = User.Identity.Name.Split('@')[0];
                     presc.PresDate = DateTime.Now;
-
+                    
+                    presc.SpeciesGender = viewModel.SinglePrescrip.SpeciesGender;        //For Species Details
+                    presc.SpeciesAges = viewModel.SinglePrescrip.SpeciesAges;
+                    presc.TypeOfAge = viewModel.SinglePrescrip.TypeOfAge;
+                    presc.SpeciesQuentity = viewModel.SinglePrescrip.SpeciesQuentity;                   
+                    presc.SpeciesId = viewModel.SinglePrescrip.SpeciesId;
 
                 }
 
@@ -231,6 +237,7 @@ namespace smartlivestock.Controllers
             ViewData["GeneralExaminationId"] = new SelectList(_context.GeneralExamination, "GenId", "ExamName");
             ViewData["InvastigationId"] = new SelectList(_context.Invastigations, "InvId", "InvName");
             ViewData["MedicineId"] = new SelectList(_context.Medicines, "MedId", "MedName");
+            ViewData["SpeciesId"] = new SelectList(_context.Species, "SpeciesId", "SpeciesName");
             ViewData["RegistraId"] = new SelectList(_context.Registration.Select(c => new
             {
                 RegiId = c.RegiId,
@@ -255,11 +262,6 @@ namespace smartlivestock.Controllers
         {
             return _context.Prescription.Any(x => x.RegistrationId == idd);
         }
-
-
-
-
-
 
         // GET: Prescriptions/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -418,9 +420,6 @@ namespace smartlivestock.Controllers
                     x.FacilityRegistry.UnionName,
                     x.FacilityRegistry.FacilityEmail,
                     x.FacilityRegistry.FacilityMobile,
-                    
-                    
-
                 })
                 .Select(g => new
                 {
@@ -428,30 +427,28 @@ namespace smartlivestock.Controllers
                     Gender = g.Key.Gender,
                     Address = g.Key.Address,
                     PhoneNumber = g.Key.PhoneNumber,
-                    PassingYear=g.Key.PassingYear,
-                    Degree=g.Key.Degree,
-                    Bkash=g.Key.Bkash,
-                    NagadNo=g.Key.NagadNo,
-                    Roket=g.Key.Roket,
-                    PhotoUrl=g.Key.PhotoUrl,
-                    PresentAddrss=g.Key.PresentAddrss,
-                    ExpireDate=g.Key.ExpireDate,
-                    DVMRegiNo=g.Key.DVMRegiNo,
-                    Institute=g.Key.Institute,
-                    EmailNo=g.Key.EmailNo,
-                    Facebook=g.Key.Facebook,
-                    Website=g.Key.Website,
-                    FacilityHeadInfomations=g.Key.FacilityHeadInfomations,
-                    FalPhotoUrl=g.Key.FalPhotoUrl,
-                    FarPhotoUrl=g.Key.FarPhotoUrl,
-                    OrganizationName=g.Key.OrganizationName,
-                    DistricName=g.Key.DistricName,
+                    PassingYear = g.Key.PassingYear,
+                    Degree = g.Key.Degree,
+                    Bkash = g.Key.Bkash,
+                    NagadNo = g.Key.NagadNo,
+                    Roket = g.Key.Roket,
+                    PhotoUrl = g.Key.PhotoUrl,
+                    PresentAddrss = g.Key.PresentAddrss,
+                    ExpireDate = g.Key.ExpireDate,
+                    DVMRegiNo = g.Key.DVMRegiNo,
+                    Institute = g.Key.Institute,
+                    EmailNo = g.Key.EmailNo,
+                    Facebook = g.Key.Facebook,
+                    Website = g.Key.Website,
+                    FacilityHeadInfomations = g.Key.FacilityHeadInfomations,
+                    FalPhotoUrl = g.Key.FalPhotoUrl,
+                    FarPhotoUrl = g.Key.FarPhotoUrl,
+                    OrganizationName = g.Key.OrganizationName,
+                    DistricName = g.Key.DistricName,
                     UpozillaName = g.Key.UpozillaName,
-                    UnionName= g.Key.UnionName,
-                    FacilityEmail= g.Key.FacilityEmail,
+                    UnionName = g.Key.UnionName,
+                    FacilityEmail = g.Key.FacilityEmail,
                     FacilityMobile = g.Key.FacilityMobile,
-
-
                 })
                 .FirstOrDefault();
 
@@ -472,26 +469,24 @@ namespace smartlivestock.Controllers
                 .Include(p => p.Registration)
                 .Include(p => p.ReferredTo)
                 .Include(P => P.ShortNote)
+                .Include(p => p.Species)
                 .Where(c => c.PresName == Id)
                 .ToList();
 
             var model = prescriptions.Select(p => new PrescriptionViewModel
             {
                 // Header informations
-                FarPhotoUrl=userInformation.FarPhotoUrl,
-                FalPhotoUrl=userInformation.FalPhotoUrl,
-                FacilityHeadInfomations=userInformation.FacilityHeadInfomations,
-                OrganizationName=userInformation.OrganizationName,
-                DistricName=userInformation.DistricName,
-                UpozillaName=userInformation.UpozillaName,
-                UnionName=userInformation.UnionName,
-                FacilityMobile=userInformation.FacilityMobile,
-                FacilityEmail=userInformation.FacilityEmail,
-
-
+                FarPhotoUrl = userInformation.FarPhotoUrl,
+                FalPhotoUrl = userInformation.FalPhotoUrl,
+                FacilityHeadInfomations = userInformation.FacilityHeadInfomations,
+                OrganizationName = userInformation.OrganizationName,
+                DistricName = userInformation.DistricName,
+                UpozillaName = userInformation.UpozillaName,
+                UnionName = userInformation.UnionName,
+                FacilityMobile = userInformation.FacilityMobile,
+                FacilityEmail = userInformation.FacilityEmail,
 
                 // Dr. Information Information
-
                 UserFullName = userInformation.UserFullName,
                 Gender = userInformation.Gender,
                 Address = userInformation.Address,
@@ -510,17 +505,20 @@ namespace smartlivestock.Controllers
                 Facebook = userInformation.Facebook,
                 Website = userInformation.Website,
 
-
-
                 // Patient Informations
-                ReName =p.Registration?.ReName,
-                PtnId=p.Registration?.PtnId,
-                PresName=p.PresName,             
-                GenderRe=p.Registration?.Gender,
-                Phone =p.Registration?.Phone,
-                Ages=p.Registration?.Ages,
+                ReName = p.Registration?.ReName,
+                PtnId = p.Registration?.PtnId,
+                PresName = p.PresName,
+                GenderRe = p.Registration?.Gender,
+                Phone = p.Registration?.Phone,
+                Ages = p.Registration?.Ages,
 
-                
+                // Species Informations
+                SpeciesName = p.Species?.SpeciesName,
+                SpeciesGender = p.SpeciesGender,
+                SpeciesAges = p.SpeciesAges,
+                SpeciesQuentity = p.SpeciesQuentity,
+                TypeOfAge = p.TypeOfAge,
 
                 // Prescription Information
                 ChiName = p.ChiefComplaint?.ChiName,
@@ -531,18 +529,17 @@ namespace smartlivestock.Controllers
                 AdvName = p.Advice?.AdvName,
                 FloName = p.FlowUp?.FloName,
                 ReferredName = p.ReferredTo?.ReferredName,
-                MediType=p.Medicine?.MediType,
-                DurationType=p.DurationType,
-                Duration=p.Duration,
-                GenName=p.Medicine.GenName,
+                MediType = p.Medicine?.MediType,
+                DurationType = p.DurationType,
+                Duration = p.Duration,
+                GenName = p.Medicine?.GenName,
 
-                ShortNoteName =p.ShortNote?.ShortNoteName,
-                AditionalNotes =p.AditionalNotes,
+                ShortNoteName = p.ShortNote?.ShortNoteName,
+                AditionalNotes = p.AditionalNotes,
                 Sokal = p.Sokal,
                 Duput = p.Duput,
                 Rat = p.Rat,
             }).ToList();
-
 
             var barcodeWriter = new BarcodeWriterPixelData
             {
@@ -578,10 +575,8 @@ namespace smartlivestock.Controllers
                     System.IO.File.WriteAllBytes(barcodePath, ms.ToArray());
 
                     ViewBag.BarcodePath = "/barcodes/barcode.png";
-
                 }
             }
-
 
             return View(model);
         }

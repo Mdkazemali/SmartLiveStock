@@ -239,7 +239,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("AdvId");
 
-                    b.ToTable("Advices");
+                    b.ToTable("Advices", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.ChiefComplaint", b =>
@@ -261,7 +261,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("ChiId");
 
-                    b.ToTable("ChiefComplaint");
+                    b.ToTable("ChiefComplaint", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Diagnosis", b =>
@@ -283,7 +283,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("DiagId");
 
-                    b.ToTable("Diagnosis");
+                    b.ToTable("Diagnosis", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Doses", b =>
@@ -317,7 +317,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("DosesId");
 
-                    b.ToTable("Doses");
+                    b.ToTable("Doses", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.FacilityRegistry", b =>
@@ -372,7 +372,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("FacilityId");
 
-                    b.ToTable("FacilityRegistry");
+                    b.ToTable("FacilityRegistry", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.FlowUp", b =>
@@ -394,7 +394,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("FloId");
 
-                    b.ToTable("FlowUp");
+                    b.ToTable("FlowUp", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.GeneralExamination", b =>
@@ -416,7 +416,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("GenId");
 
-                    b.ToTable("GeneralExamination");
+                    b.ToTable("GeneralExamination", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Invastigation", b =>
@@ -438,7 +438,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("InvId");
 
-                    b.ToTable("Invastigations");
+                    b.ToTable("Invastigations", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Medicine", b =>
@@ -466,7 +466,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("MedId");
 
-                    b.ToTable("Medicines");
+                    b.ToTable("Medicines", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Prescription", b =>
@@ -534,6 +534,21 @@ namespace smartlivestock.Data.Migrations
                     b.Property<int?>("Sokal")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SpeciesAges")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SpeciesGender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SpeciesId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SpeciesQuentity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TypeOfAge")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UrName")
                         .HasColumnType("nvarchar(max)");
 
@@ -561,7 +576,9 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasIndex("ShortNotePresId");
 
-                    b.ToTable("Prescription");
+                    b.HasIndex("SpeciesId");
+
+                    b.ToTable("Prescription", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.ReferredTo", b =>
@@ -583,7 +600,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("ReferredId");
 
-                    b.ToTable("ReferredTo");
+                    b.ToTable("ReferredTo", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Registration", b =>
@@ -617,7 +634,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("RegiId");
 
-                    b.ToTable("Registration");
+                    b.ToTable("Registration", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.ShortNote", b =>
@@ -639,7 +656,29 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("ShortId");
 
-                    b.ToTable("ShortNotes");
+                    b.ToTable("ShortNotes", (string)null);
+                });
+
+            modelBuilder.Entity("smartlivestock.Models.Species", b =>
+                {
+                    b.Property<int>("SpeciesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpeciesId"), 1L, 1);
+
+                    b.Property<DateTime>("SpeciesDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SpeciesName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SpeciesId");
+
+                    b.ToTable("Species", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.Trainingvideo", b =>
@@ -664,7 +703,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasKey("vdoId");
 
-                    b.ToTable("Trainingvideo");
+                    b.ToTable("Trainingvideo", (string)null);
                 });
 
             modelBuilder.Entity("smartlivestock.Models.UserInformation", b =>
@@ -757,7 +796,7 @@ namespace smartlivestock.Data.Migrations
 
                     b.HasIndex("FacilityRegistryId");
 
-                    b.ToTable("UserInformation");
+                    b.ToTable("UserInformation", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -857,6 +896,10 @@ namespace smartlivestock.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ShortNotePresId");
 
+                    b.HasOne("smartlivestock.Models.Species", "Species")
+                        .WithMany()
+                        .HasForeignKey("SpeciesId");
+
                     b.Navigation("Advice");
 
                     b.Navigation("ChiefComplaint");
@@ -878,6 +921,8 @@ namespace smartlivestock.Data.Migrations
                     b.Navigation("Registration");
 
                     b.Navigation("ShortNote");
+
+                    b.Navigation("Species");
                 });
 
             modelBuilder.Entity("smartlivestock.Models.UserInformation", b =>

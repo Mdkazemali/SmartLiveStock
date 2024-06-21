@@ -2,7 +2,7 @@
  @model List<PrescriptionViewModel>
 
 @{
-    ViewData["Title"] ="Phone:"+@Model.First().Phone+" Name:"+@Model.First().ReName;
+    ViewData["Title"] = @Model.First().ReName + @Model.First().Phone;
 }
 
 <!-- for dependancy null-->
@@ -11,6 +11,7 @@
     string thacomma = string.Empty;
     string unioncomma = string.Empty;
     string emailcomma = string.Empty;
+
 
     string chif = string.Empty;
     string rx = string.Empty;
@@ -21,10 +22,14 @@
     string inv = string.Empty;
     string rfto = string.Empty;
 
+    string din = string.Empty;
+    string qty = string.Empty;
+
+
 
     if (Model.First().ChiName != null)
     {
-        chif = "Chif Complaint";
+        chif = "Clinical signs";
     }
     if (Model.First().MedName != null)
     {
@@ -40,7 +45,7 @@
     }
     if (Model.First().DiagName != null)
     {
-        diag = "Diagnosis";
+        diag = "Diagnosis T/D";
     }
     if (Model.First().FloName != null)
     {
@@ -61,12 +66,12 @@
     {
         thacomma = ",";
     }
- 
+
     if (Model.First().UnionName != null && Model.First().UpozillaName !=null)
     {
         unioncomma = ",";
     }
-    
+
     if (Model.First().UnionName != null && Model.First().DistricName !=null)
     {
         unioncomma = ",";
@@ -76,6 +81,17 @@
     {
         emailcomma = ",";
     }
+    if (Model.First().SpeciesAges != null)
+    {
+        din = Model.First().TypeOfAge;
+    }
+    if (Model.First().SpeciesQuentity != null)
+    {
+        qty = "Pcs";
+    }
+
+
+  
 
 
 }
@@ -187,16 +203,23 @@
         <table style="border-collapse:collapse; width:100%; margin:auto; border:1px solid black; border-radius:20px;">
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Woner Name: @Model.First().ReName
+                    Woner: @Model.First().ReName
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Gender: @Model.First().GenderRe
+                     Phone: @Model.First().Phone
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Ages: @Model.First().Ages
+                    || Spaces: @Model.First().SpeciesName
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Phone: @Model.First().Phone
+                    @Model.First().SpeciesGender
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    @Model.First().SpeciesAges @din
+                </td>
+
+                <td style="border:none; padding: 4px; text-align: left;">
+                    @Model.First().SpeciesQuentity @qty
                 </td>
                 <td>
                     <img src="@ViewBag.BarcodePath" alt="Generated Barcode" style="width: 90px; height:30px;" />
@@ -259,11 +282,30 @@
 
                     <b style="font-size:18px;"> @rx</b>
                     <ul>
-                        @foreach (var i in Model.Where(m => !string.IsNullOrEmpty(m.MedName)))
+                        @foreach (var i in Model)
                         {
-                            <li><b>@i.MedName</b><i style="color:dimgrey;"> (@i.GenName)</i><br /> @i.Sokal + @i.Duput + @i.Rat (@i.MediType)(@i.ShortNoteName) - @i.Duration @i.DurationType</li>
+                            var mediType = i.MediType ?? string.Empty;
+                            var medName = i.MedName ?? string.Empty;
+                            var genName = i.GenName ?? string.Empty;
+                            var sokal = i.Sokal?.ToString() ?? string.Empty;
+                            var duput = i.Duput?.ToString() ?? string.Empty;
+                            var rat = i.Rat?.ToString() ?? string.Empty;
+                            var shortNoteName = i.ShortNoteName ?? string.Empty;
+                            var duration = i.Duration?.ToString() ?? string.Empty;
+                            var durationType = i.DurationType ?? string.Empty;
+
+                            if (!string.IsNullOrEmpty(medName))
+                            {
+                                <li>
+                                    <b>@mediType @medName</b>
+                                    <i style="color:dimgrey;"> (@genName)</i><br />
+                                    @sokal @duput @rat (@shortNoteName) - @duration @durationType
+                                </li>
+                            }
                         }
-                    </ul>
+
+
+                    </ul> 
                    
                     <b style="font-size:18px;"> @adv</b>
                     <ul>

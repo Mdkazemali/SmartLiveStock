@@ -121,6 +121,16 @@ namespace smartlivestock.Models
         public string? SrUser { get; set; }
         public DateTime ShortDt { get; set; }
 
+        // Species 
+        public int SpeciesId { get; set; }
+        public string SpeciesName { get; set; }
+        public DateTime SpeciesDate { get; set; }
+        public string Username { get; set; }
+        public String? SpeciesGender { get; set; }
+        public int? SpeciesAges { get; set; }
+        public int? SpeciesQuentity { get; set; }
+        public string? TypeOfAge { get; set; }
+
         //Prescriptions
         public int PresId { get; set; }
         public string PresName { get; set; }
@@ -139,15 +149,13 @@ namespace smartlivestock.Models
         public int InvastigationId { get; set; }
         public virtual Invastigation Invastigation { get; set; }
 
-        public int MedicineId { get; set; }
+        public int? MedicineId { get; set; }
         public virtual Medicine Medicine { get; set; }
         public virtual Doses Doses { get; set; }
         public int AdviceId { get; set; }
         public virtual Advice Advice { get; set; }
         public int FlowUpId { get; set; }
         public virtual FlowUp FlowUp { get; set; }
-
-       
 
         public int? Sokal { get; set; }
         public int? Duput { get; set; }
