@@ -2,7 +2,7 @@
  @model List<PrescriptionViewModel>
 
 @{
-    ViewData["Title"] = @Model.First().ReName + @Model.First().Phone;
+    ViewData["Title"] = @Model.First().ReName + "_" + @Model.First().Phone + "_" + @Model.First().PresName;
 }
 
 <!-- for dependancy null-->
@@ -21,9 +21,13 @@
     string flow = string.Empty;
     string inv = string.Empty;
     string rfto = string.Empty;
-
+    string species = string.Empty;
     string din = string.Empty;
     string qty = string.Empty;
+    string gndr = string.Empty;
+    string age = string.Empty;
+    string ptid = string.Empty;
+    string woner = string.Empty;
 
 
 
@@ -89,6 +93,18 @@
     {
         qty = "Pcs";
     }
+    if (Model.First().SpeciesName != null)
+    {
+        woner = "Woner:";
+        species = "|| Species:";
+    }
+    if(Model.First().SpeciesName == null)
+    {
+        gndr ="Gender:"+Model.First().GenderRe;
+        age ="Ages:"+Model.First().Ages;
+        ptid = "ID:" + Model.First().PtnId;
+        woner = "Patient:";
+    }
 
 
   
@@ -125,14 +141,14 @@
                     }
                 </td>
                 <td style="width:80%; text-align:center; ">
-                    <b style="color:blue; font-size:30px;">@Model.First().OrganizationName </b>
-                    <p style="font-size:25px;line-height:16px;">@Model.First().UnionName@unioncomma @Model.First().UpozillaName@thacomma @Model.First().DistricName</p>
-                    <p style="font-size:20px;line-height:15px;">@Model.First().FacilityEmail@emailcomma@Model.First().FacilityMobile</p>
+                    <b style="color:blue; font-size:28px; line-height:40px;">@Model.First().OrganizationName </b>
+                    <p style="font-size:22px;line-height:25px;">@Model.First().UnionName@unioncomma @Model.First().UpozillaName@thacomma @Model.First().DistricName</p>
+                    <p style="font-size:20px;line-height:1px;">@Model.First().FacilityEmail@emailcomma@Model.First().FacilityMobile</p>
                 </td>
                 <td style="width:10%; text-align:center;">
                     @if (Model.First().FarPhotoUrl != null)
                     {
-                        <img src="~/FacilitiImages/@Model.First().FarPhotoUrl" class="fpr-pic" alt="Right Logo" />
+                        <img src="~/FacilitiImages/@Model.First().FarPhotoUrl" class="fpr-pic" alt="Right Logo"/>
                     }
                     else
                     {
@@ -203,13 +219,22 @@
         <table style="border-collapse:collapse; width:100%; margin:auto; border:1px solid black; border-radius:20px;">
             <tr>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    Woner: @Model.First().ReName
+                    @woner @Model.First().ReName
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    @ptid
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
                      Phone: @Model.First().Phone
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
-                    || Spaces: @Model.First().SpeciesName
+                    @gndr
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    @age
+                </td>
+                <td style="border:none; padding: 4px; text-align: left;">
+                    @species @Model.First().SpeciesName
                 </td>
                 <td style="border:none; padding: 4px; text-align: left;">
                     @Model.First().SpeciesGender
@@ -299,7 +324,7 @@
                                 <li>
                                     <b>@mediType @medName</b>
                                     <i style="color:dimgrey;"> (@genName)</i><br />
-                                    @sokal @duput @rat (@shortNoteName) - @duration @durationType
+                                    @sokal + @duput + @rat (@shortNoteName) - @duration @durationType
                                 </li>
                             }
                         }

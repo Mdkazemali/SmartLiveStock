@@ -19,15 +19,15 @@
     var totalRecords = ViewData["TotalRecords"] != null ? (int)ViewData["TotalRecords"] : 0;
 }
 
-<h5> &nbsp; <b>No.of Register</b> :<b style="color :red"> @LeaveCount </b> </h5>
+<h5> &nbsp; <b>No.of Woners</b> :<b style="color :red"> @LeaveCount </b> </h5>
 @using (Html.BeginForm("Index", "Registrations", FormMethod.Get))
 {
 
     <div class="form-group">
 
 
-        <input type="search"  placeholder="Name" value="@ViewData["category"]" name="category" style="width: 120px; " />
-        <input type="search"  placeholder="Patient Id" value="@ViewData["ptid"]" name="ptid" style="width: 120px; " />
+        <input type="search"  placeholder="Woner Name" value="@ViewData["category"]" name="category" style="width: 120px; " />
+        <input type="search"  placeholder="Woner Id" value="@ViewData["ptid"]" name="ptid" style="width: 120px; " />
         <input type="search" placeholder="Phone No." value="@ViewData["phn"]" name="phn" style="width: 120px; " />
         
 
@@ -105,10 +105,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ReName)
+                Woner Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PtnId)
+               Woner Id
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Phone)
@@ -120,7 +120,7 @@
                 @Html.DisplayNameFor(model => model.Ages)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreateDAte)
+                Create Date
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UsrName)
@@ -147,7 +147,7 @@
                 @Html.DisplayFor(modelItem => item.Ages)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreateDAte)
+                Create Date
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UsrName)

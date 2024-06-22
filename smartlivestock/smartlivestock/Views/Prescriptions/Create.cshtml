@@ -65,11 +65,12 @@
                         <div class="card md-6 brder">
                             <div class="row">
                                 <label asp-for="SinglePrescrip.SpeciesId" class="control-label">Species</label>
-                                <select asp-for="SinglePrescrip.SpeciesId" class="select2" asp-items="ViewBag.SpeciesId" required style="width:35%">
+                                <select asp-for="SinglePrescrip.SpeciesId" class="select2" asp-items="ViewBag.SpeciesId" style="width:35%">
 
                                     <option value="">-- Select --</option>
                                 </select>
                                 <select name="SinglePrescrip.SpeciesGender" style="width:17%">
+                                    <option value="">-Gender-</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -77,6 +78,7 @@
                                 <input name="SinglePrescrip.SpeciesAges" style="width:10%;" placeholder="Age" />
 
                                 <select name="SinglePrescrip.TypeOfAge" style="width:15%">
+                                    <option value="">-select-</option>
                                     <option value="দিন">দিন</option>
                                     <option value="সপ্তাহ">সপ্তাহ</option>
                                     <option value="মাস">মাস</option>
