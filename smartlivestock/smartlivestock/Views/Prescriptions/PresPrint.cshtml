@@ -28,6 +28,9 @@
     string age = string.Empty;
     string ptid = string.Empty;
     string woner = string.Empty;
+    string sortnoteopen = string.Empty;
+    string sortnoteclose = string.Empty;
+
 
 
 
@@ -100,10 +103,16 @@
     }
     if(Model.First().SpeciesName == null)
     {
-        gndr ="Gender:"+Model.First().GenderRe;
-        age ="Ages:"+Model.First().Ages;
+        gndr ="Gender: "+Model.First().GenderRe;
+        age ="Ages: "+Model.First().Ages;
         ptid = "ID:" + Model.First().PtnId;
         woner = "Patient:";
+        chif = "Chif Complaint";
+    }
+    if (Model.First().ShortNoteName != null)
+    {
+        sortnoteopen = "(";
+        sortnoteclose = ")";
     }
 
 
@@ -125,7 +134,7 @@
 
 <div class="col-sm-12 pr-area" id="print_are">
 
-    <div style="border: 4px solid blue; padding: 0.2in; width:8.27in; height:11.98in;">
+    <div style=" border:2px solid black; padding: 0.2in; width:8.27in; height:11.98in;">
 
         <!--Header informations-->
         <table style="border-collapse:collapse; width:100%; margin:auto; border-radius:20px; table-layout:fixed;">
@@ -306,7 +315,7 @@
                 <td style="border:none;  text-align: left;width:50%; vertical-align:top;">
 
                     <b style="font-size:18px;"> @rx</b>
-                    <ul>
+                    <ul class="numbered-list">
                         @foreach (var i in Model)
                         {
                             var mediType = i.MediType ?? string.Empty;
@@ -324,7 +333,7 @@
                                 <li>
                                     <b>@mediType @medName</b>
                                     <i style="color:dimgrey;"> (@genName)</i><br />
-                                    @sokal + @duput + @rat (@shortNoteName) - @duration @durationType
+                                    @sokal + @duput + @rat @sortnoteopen@shortNoteName@sortnoteclose - @duration @durationType
                                 </li>
                             }
                         }

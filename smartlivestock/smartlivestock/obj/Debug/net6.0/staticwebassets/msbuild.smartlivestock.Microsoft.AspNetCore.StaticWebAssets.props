@@ -272,6 +272,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\7380c681-5367-4c58-91b9-2a8cf9d9263b_Screenshot (1).png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\8bdc2821-9bd8-480a-9340-82f9e8c659be_gono_logo.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>smartlivestock</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/smartlivestock</BasePath>
+      <RelativePath>FacilitiImages/8bdc2821-9bd8-480a-9340-82f9e8c659be_gono_logo.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\8bdc2821-9bd8-480a-9340-82f9e8c659be_gono_logo.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FacilitiImages\94e39a36-2317-4044-b4f5-abd663f3f8e1_ismartlogo.png))">
       <SourceType>Package</SourceType>
       <SourceId>smartlivestock</SourceId>

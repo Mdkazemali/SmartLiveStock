@@ -216,7 +216,7 @@ namespace smartlivestock.Controllers
                     
                     presc.SpeciesGender = viewModel.SinglePrescrip.SpeciesGender;        //For Species Details
                     presc.SpeciesAges = viewModel.SinglePrescrip.SpeciesAges;
-                    presc.TypeOfAge = viewModel.SinglePrescrip.TypeOfAge;
+                    //presc.TypeOfAge = viewModel.SinglePrescrip.TypeOfAge;
                     presc.SpeciesQuentity = viewModel.SinglePrescrip.SpeciesQuentity;                   
                     presc.SpeciesId = viewModel.SinglePrescrip.SpeciesId;
 

@@ -1,6 +1,7 @@
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\smartlivestock.exe
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\appsettings.json
+F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\libman.json
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\smartlivestock.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\smartlivestock.runtimeconfig.json
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\PubTmp\Out\smartlivestock.pdb

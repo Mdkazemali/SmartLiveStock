@@ -651,3 +651,4 @@ F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\bin\Release\net6.0\DinkToPdf.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\bin\Release\net6.0\zxing.dll
 F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\obj\Release\net6.0\smartliv.06D9357A.Up2Date
+F:\DOT NET PROJECT\SmartLiveStock\smartlivestock\smartlivestock\bin\Release\net6.0\libman.json

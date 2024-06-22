@@ -1133,3 +1133,120 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621091340_SpeciesDetails')
+BEGIN
+    ALTER TABLE [Prescription] ADD [SpeciesAges] int NOT NULL DEFAULT 0;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621091340_SpeciesDetails')
+BEGIN
+    ALTER TABLE [Prescription] ADD [SpeciesGender] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621091340_SpeciesDetails')
+BEGIN
+    ALTER TABLE [Prescription] ADD [SpeciesId] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621091340_SpeciesDetails')
+BEGIN
+    ALTER TABLE [Prescription] ADD [SpeciesQuentity] int NOT NULL DEFAULT 0;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621091340_SpeciesDetails')
+BEGIN
+    CREATE TABLE [Species] (
+        [SpeciesId] int NOT NULL IDENTITY,
+        [SpeciesName] nvarchar(max) NULL,
+        [SpeciesDate] datetime2 NOT NULL,
+        [Username] nvarchar(max) NULL,
+        CONSTRAINT [PK_Species] PRIMARY KEY ([SpeciesId])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621091340_SpeciesDetails')
+BEGIN
+    CREATE INDEX [IX_Prescription_SpeciesId] ON [Prescription] ([SpeciesId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621091340_SpeciesDetails')
+BEGIN
+    ALTER TABLE [Prescription] ADD CONSTRAINT [FK_Prescription_Species_SpeciesId] FOREIGN KEY ([SpeciesId]) REFERENCES [Species] ([SpeciesId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621091340_SpeciesDetails')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240621091340_SpeciesDetails', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621165103_add')
+BEGIN
+    ALTER TABLE [Prescription] ADD [TypeOfAge] nvarchar(max) NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621165103_add')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240621165103_add', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621180248_nullable')
+BEGIN
+    DECLARE @var18 sysname;
+    SELECT @var18 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'SpeciesQuentity');
+    IF @var18 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var18 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [SpeciesQuentity] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621180248_nullable')
+BEGIN
+    DECLARE @var19 sysname;
+    SELECT @var19 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Prescription]') AND [c].[name] = N'SpeciesAges');
+    IF @var19 IS NOT NULL EXEC(N'ALTER TABLE [Prescription] DROP CONSTRAINT [' + @var19 + '];');
+    ALTER TABLE [Prescription] ALTER COLUMN [SpeciesAges] int NULL;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20240621180248_nullable')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20240621180248_nullable', N'6.0.29');
+END;
+GO
+
+COMMIT;
+GO
+
