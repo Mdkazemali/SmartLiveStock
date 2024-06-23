@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|f:\\dot net project\\smartlivestock\\smartlivestock\\smartlivestock\\views\\prescriptions\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4E32C2F-2597-417A-A298-1BDC3D10F72B}|smartlivestock\\smartlivestock.csproj|solutionrelative:smartlivestock\\views\\prescriptions\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\Views\\Prescriptions\\Create.cshtml",
+              "RelativeDocumentMoniker": "smartlivestock\\Views\\Prescriptions\\Create.cshtml",
+              "ToolTip": "F:\\DOT NET PROJECT\\SmartLiveStock\\smartlivestock\\smartlivestock\\Views\\Prescriptions\\Create.cshtml",
+              "RelativeToolTip": "smartlivestock\\Views\\Prescriptions\\Create.cshtml",
+              "ViewState": "AQIAAAcCAAAAAAAAAAAwwCICAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-23T09:47:58.392Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
